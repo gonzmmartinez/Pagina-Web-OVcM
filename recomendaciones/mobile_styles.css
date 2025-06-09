@@ -1,0 +1,319 @@
+/* PARA DISPOSITIVOS MÓVILES */
+@media (max-width: 780px) {
+
+    /* Reset general para body y html */
+    html,
+    body {
+        width: 100%;
+        margin: auto;
+        padding: 0;
+        font-size: 0.95rem;
+        /* 15px */
+    }
+
+    /* Headers y footer ocuparán todo el ancho */
+    .site-header,
+    .header-container,
+    .footer-container {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    /* .site-header: flex columna para móvil */
+    .site-header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* .header-container con flex columna, centrado, gap y padding */
+    .header-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0px;
+        padding: 2.5% 5% !important;
+        position: relative;
+        /* para posicionar menú desplegable */
+    }
+
+    /* Botón hamburguesa visible */
+    #menu-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: block;
+        padding: 8px;
+    }
+
+    #menu-toggle img {
+        height: 24px;
+        width: 24px;
+        transition: transform 0.3s ease;
+    }
+
+    /* Botón hamburguesa para el segundo header */
+    #menu-toggle-repo {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: block;
+        padding: 8px;
+    }
+
+    #menu-toggle-repo img {
+        height: 24px;
+        width: 24px;
+        transition: transform 0.3s ease;
+    }
+
+    /* Menú oculto por defecto */
+    .repository-header .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .repository-header .nav-links.open {
+        display: flex;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .repository-header .nav-links.open a {
+        font-size: 1rem;
+    }
+
+    /* Navegación principal oculta por defecto */
+    .header-container .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #fbfbfb;
+        position: absolute;
+        top: 60px;
+        /* ajustar según alto header */
+        left: 0;
+        width: 100%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease-out;
+    }
+
+    /* Cuando el menú está abierto */
+    .header-container .nav-links.open {
+        display: flex;
+        max-height: 500px;
+        /* suficiente para mostrar todos los links */
+        transition: max-height 0.3s ease-in;
+    }
+
+    /* Estilos para links en menú desplegable */
+    .header-container .nav-links a {
+        padding: 15px 20px;
+        color: #333333;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header-container .nav-links a:hover {
+        background-color: #5a2d7d;
+        color: white;
+    }
+
+    /* repository-header con flex fila, alineado a la izquierda */
+    .repository-header {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        padding: 2.5px 25px;
+    }
+
+    /* Ocultar navegación extra en repository-header */
+    .repository-header .nav-links {
+        display: none;
+    }
+
+    /* Título del repositorio */
+    .repository-header p {
+        font-size: 0.8rem;
+    }
+
+    .miniLogo img {
+        width: 25px;
+        height: 25px;
+    }
+
+    /* Navegación principal (visible en escritorio) */
+    .nav-links {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .nav-links a {
+        margin: 0;
+        font-size: 0.875rem;
+        /* 14px */
+    }
+
+    /* Logos tamaño fijo */
+    .logo img {
+        height: 35px;
+        /* 2.1875rem */
+    }
+
+    /* Contenedor principal del repositorio */
+    #repositorio-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        /* centra horizontalmente los hijos */
+        gap: 15px;
+        /* espaciado entre elementos */
+    }
+
+    /* Repositorio y filtros */
+    #repositorio,
+    #filtros {
+        width: 80%;
+        margin-top: 0;
+    }
+
+    /* Lista de documentos */
+    .lista-documentos {
+        gap: 15px;
+    }
+
+    /* Item: columna y centrado */
+    .item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .item img {
+        width: 50%;
+        height: auto;
+    }
+
+    /* Info dentro de item */
+    .info {
+        display: flex;
+        flex-direction: column;
+        font-size: 1rem;
+        padding: 10px;
+        padding-bottom: 30px;
+        gap: 5px;
+        width: 90%;
+    }
+
+    .info strong {
+        font-size: 1.125rem;
+    }
+
+    /* Paginación */
+    .paginacion {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* Detalle contenedor e info */
+    .detalle-contenedor {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .detalle-info {
+        padding: 10px;
+    }
+
+    .detalle-info table {
+        width: 100%;
+    }
+
+    /* Filtros tags */
+    .filtro-tag {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+    }
+
+    .filtro-tag button {
+        font-size: 0.75rem;
+    }
+
+    /* Footer right */
+    .footer-right {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        gap: 10px;
+    }
+
+    .footer-right a {
+        margin-left: 0;
+    }
+
+    /* Tags div y tag */
+    .tags-div {
+        gap: 5px;
+        line-height: 25px;
+        flex-wrap: wrap;
+    }
+
+    .tag {
+        font-size: 0.75rem;
+        padding: 4px 8px;
+    }
+
+    /* Botón de volver atrás */
+    .back-button {
+        font-size: 1rem;
+        gap: 5px;
+    }
+
+    /* Descripción de la sub-sección */
+    .muestra-descripcion {
+        flex-direction: column;
+        gap: 15px;
+        width: 90%;
+        margin: 30px auto;
+        margin-bottom: 60px;
+    }
+
+    .muestra-descripcion .icono {
+        width: 100px;
+        height: 100px;
+    }
+
+    .muestra-descripcion .icono img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .muestra-descripcion .texto {
+        font-size: 0.9rem;
+        text-align: center;
+    }
+
+    #lista-recomendaciones {
+        width: 80%;
+    }
+
+    .modal-content {
+        max-height: 600px;
+        padding: 5%;
+    }
+}
