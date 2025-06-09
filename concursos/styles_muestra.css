@@ -1,0 +1,289 @@
+:root {
+  --background-color: #fbfbfb;
+  --grey-color: #8c8c8c;
+  --mid-light-grey-color: #c4c4c4;
+  --light-grey-color: #fafafa;
+  --accent-color: #51c33b;
+  --accent-color-dark: #398829;
+  --main-color: #3A1D51;
+  --main-color-light: #5a2d7d;
+  --secondary-color-light: #A682BA;
+}
+
+.grid-informes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.tarjeta-informe {
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+  position: relative;
+}
+
+.tarjeta-informe:hover {
+  transform: translateY(-4px);
+}
+
+/* Imagen de portada */
+.tarjeta-informe img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Título */
+.tarjeta-informe h4 {
+  margin: 15px 0px 10px 0px;
+  font-size: 1.25rem;
+  color: #333333;
+}
+
+.tarjeta-informe h3 {
+  font-family: 'Exo', sans-serif;
+  font-size: 1rem;
+  padding: 5px;
+  padding-bottom: 20px;
+  color: #3A1D51;
+  margin: 0;
+  text-transform: uppercase;
+  position: relative;
+}
+
+/* Línea animada debajo del título */
+.tarjeta-informe h3::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 60%;
+  height: 2px;
+  background-color: #5C2D91;
+  transition: transform 0.3s ease;
+}
+
+/* Hover en tarjeta activa la línea + color del título */
+.tarjeta-informe:hover h3 {
+  color: #5C2D91;
+}
+
+.tarjeta-informe:hover h3::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.tarjeta-informe a:hover {
+  text-decoration: none;
+}
+
+/* Descripción de la sección */
+.muestra-descripcion {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 60%;
+  margin: 50px auto;
+  margin-bottom: 100px;
+  font-family: 'Exo', sans-serif;
+  color: var(--grey-color);
+}
+
+.muestra-descripcion .icono {
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.5s ease;
+}
+
+.muestra-descripcion .icono:hover {
+  background-color: var(--secondary-color-light);
+}
+
+.muestra-descripcion .icono img {
+  width: 100px;
+  height: 100px;
+}
+
+.muestra-descripcion .texto {
+  flex: 1;
+  font-size: 1rem;
+  line-height: auto;
+  text-indent: 20px;
+}
+
+/* BOTONES PRINCIPALES */
+.botonera-concursos {
+  display: flex;
+  gap: 1rem;
+  width: 60%;
+  margin: 0px auto;
+}
+
+.boton-concurso {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 25px;
+  background-color: var(--main-color-light);
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  border: none; /* sin borde */
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.boton-concurso:hover {
+  background-color: var(--accent-color); /* color suave al hacer hover */
+  text-decoration: none;
+}
+
+.boton-concurso:hover .icono-boton {
+  transform: scale(1.1) rotate(2deg);
+}
+
+.icono-boton {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Si usás <img>, esto asegura que no se estire */
+.icono-boton img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.texto-boton {
+  position: relative; /* necesario para que ::after se posicione respecto al texto */
+  font-size: 1.25rem;
+  text-align: center;
+  font-family: 'Exo', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 15px;
+  color: white;
+}
+
+.texto-boton::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 60%;
+  height: 2px;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+.boton-concurso:hover .texto-boton::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.boton-imagen {
+  flex: 1; /* para que ambas imágenes ocupen el mismo espacio */
+}
+
+.imagen-boton {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  border-radius: 8px; /* opcional, para esquinas redondeadas */
+}
+
+.imagen-boton:hover {
+  transform: scale(1.02);
+}
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* fondo oscuro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: white;
+  padding: 2.5%;
+  border-radius: 0px;
+  width: 90%;
+  max-width: 700px;
+  max-height: 500px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  position: relative;
+  animation: fadeIn 0.3s ease-out;
+  font-size: 1.125rem;
+  overflow: scroll;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 15px 25px;
+  background-color: var(--main-color-light);
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.modal-button:hover {
+  background-color: var(--accent-color);
+  color:white;
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

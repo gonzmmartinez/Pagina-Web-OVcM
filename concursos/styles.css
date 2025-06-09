@@ -1,0 +1,356 @@
+body {
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px;
+    width: 100%;
+    margin: 0;
+    background: var(--background-color);
+    color: #333;
+}
+
+:root {
+    --background-color: #fbfbfb;
+    --grey-color: #8c8c8c;
+    --mid-light-grey-color: #c4c4c4;
+    --light-grey-color: #fafafa;
+    --accent-color: #51c33b;
+    --accent-color-dark: #398829;
+    --main-color: #3A1D51;
+    --main-color-light: #5a2d7d;
+    --secondary-color-light: #A682BA;
+}
+
+h1,
+h2 {
+    font-family: 'Exo', sans-serif;
+    text-transform: uppercase;
+    color: #333;
+}
+
+a {
+    color: var(--main-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent-color-dark);
+    text-decoration: underline;
+}
+
+.lista-documentos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.item {
+    display: flex;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.item img {
+    width: 150px;
+    height: 212px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.info {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 10px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 17.5px;
+}
+
+.info strong {
+    font-size: 20px;
+}
+
+.fecha {
+    font-size: 0.75rem;
+    color: #777;
+    margin-top: 5px;
+}
+
+.paginacion {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0px;
+}
+
+.paginacion span {
+    font-weight: bold;
+}
+
+.paginacion img {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+}
+
+.paginacion a {
+    background: var(--main-color);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.paginacion a:hover {
+    background: var(--accent-color-dark);
+}
+
+#repositorio-container {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    width: 85%;
+    gap: 20px;
+}
+
+#repositorio {
+    width: 75%
+}
+
+#filtros {
+    width: 25%;
+    padding: 25px;
+    margin-top: 120px;
+    background: #f4f4f4;
+    font-family: 'Barlow', sans-serif;
+    font-size: 1rem;
+}
+
+#filtros h2 {
+    margin-top: 0;
+}
+
+#filtros select {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #333;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23999" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 16px;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#filtros select:focus {
+    outline: none;
+    border-color: var(--main-color-light, #A682BA);
+    box-shadow: 0 0 0 3px rgba(127, 17, 224, 0.1);
+}
+
+#filtros-activos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 25px;
+}
+
+.filtro-tag {
+    background: var(--main-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.filtro-tag button {
+    background: none;
+    border: none;
+    color: white;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+#filtro-anio,
+#filtro-tipo,
+#filtro-tema,
+#filtro-coleccion {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    gap: 10px
+}
+
+.tags-div {
+    font-size: 0.75rem;
+    color: #333;
+    gap: 10px;
+    margin: 5px
+}
+
+.tag {
+    background-color: #ddd;
+    color: #333;
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    user-select: none;
+}
+
+.tag:hover {
+    background-color: #aaa;
+}
+
+.tag-tipo {
+    background-color: #D81159;
+    color: white;
+}
+
+.tag-coleccion {
+    background-color: #0EAD69;
+    color: white;
+}
+
+.tag-tema {
+    background-color: #4D80CF;
+    color: white;
+}
+
+.detalle-contenedor {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    margin: auto;
+}
+
+.detalle-info {
+    padding: 1.5%;
+    background-color: #e6e6e6;
+}
+
+detalle-info table {
+    border-collapse: collapse;
+    width: 10%;
+}
+
+.detalle-info th,
+.detalle-info td {
+    padding: 2.5%;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+    /* gris claro */
+}
+
+/* Opcional: sin borde en la última fila */
+.detalle-info table tr:last-child th,
+.detalle-info table tr:last-child td {
+    border-bottom: none;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    /* espacio entre ícono y texto */
+    text-decoration: none;
+    background: none;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--accent-color-dark);
+    /* cambia esto al color que prefieras */
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.back-icon {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+#menu-toggle, #menu-toggle-repo {
+    display: none
+}
+
+#link-descarga {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background-color: var(--main-color);
+    color: white;
+    font-family: 'Exo', sans-serif;
+    font-size: 1.25rem;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+#link-descarga:hover {
+    background-color: var(--accent-color-dark);
+}
+
+.icono-descarga {
+    width: 25px;
+    height: 25px;
+}
+
+.repositorio-muestra {
+    margin: auto;
+    width: 60%
+}
+
+.header-right {
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    text-align: center;
+}
+
+.header-right {
+    flex-direction: row;
+    justify-content: right;
+    gap: 10px;
+}
+
+.header-icon {
+    display: inline-flex;
+    width: 20px;
+    height: 20px;
+    background-color: #ffffff10;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.header-icon:hover {
+    background-color: var(--main-color);
+    /* Modificá este valor a tu gusto */
+}
+
+.header-icon img {
+    width: 12px;
+    height: 12px;
+}
