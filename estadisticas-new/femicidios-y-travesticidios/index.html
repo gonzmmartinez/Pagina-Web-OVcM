@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link type="text/css" rel="stylesheet" href="../styles.css">
+    <link type="text/css" rel="stylesheet" href="./femicidios_styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas | OVcM</title>
+
+    <!-- Scripts -->
+    <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
+    <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
+    <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css">
+    
+</head>
+
+<body>
+    <!-- Botón para mostrar/ocultar la barra lateral -->
+    <button id="toggleSidebar" onclick="toggleSidebar()">☰</button>
+
+    <!-- Logo que aparecerá al colapsar la barra -->
+    <div id="collapsedLogo" class="hidden">
+        <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Logo Colapsado">
+        <span class="collapsedText">Observatorio de Violencia contra las Mujeres</span>
+    </div>
+
+    <!-- Barra lateral -->
+    <div id="sidebar">
+        <div class="sidebarDiv">
+            <a href="https://ovcmsalta.gob.ar/estadisticas/">
+                <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1" class="logoIcon">
+            </a>
+            <span class="logoText">Observatorio de Violencia contra las Mujeres</span>
+        </div>
+
+        <hr>
+
+        <h2 style="font-size: 15px; text-align: center;">ESTADÍSTICAS</h2>
+        <ul>
+            <li>
+                <a href="../femicidios-y-travesticidios/" class="active">
+                    <img src="../svg/icono_01.svg" class="sidebarIcon">
+                    <p>Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</p>
+                    <span class="tooltip">Muertes violentas y/o dudosas</span>
+                </a>
+            </li>
+            <li>
+                <a href="../denuncias-por-violencia-de-genero/">
+                    <img src="../svg/icono_02.svg" class="sidebarIcon">
+                    <p>Denuncias por violencia de género</p>
+                    <span class="tooltip">Denuncias por violencia de género</span>
+                </a>
+            </li>
+            <li>
+                <a href="../educacion-y-mercado-de-trabajo/">
+                    <img src="../svg/icono_03.svg" class="sidebarIcon">
+                    <p>Educación y mercado de trabajo</p>
+                    <span class="tooltip">Educación y mercado de trabajo</span>
+                </a>
+            </li>
+            <li>
+                <a href="../salud-y-libertad-no-reproductiva/">
+                    <img src="../svg/icono_04.svg" class="sidebarIcon">
+                    <p>Salud y libertad -no- reproductiva</p>
+                    <span class="tooltip">Salud y libertad -no- reproductiva</span>
+                </a>
+            </li>
+            <li>
+                <a href="../participacion-en-la-toma-de-decisiones/">
+                    <img src="../svg/icono_05.svg" class="sidebarIcon">
+                    <p>Participación en la toma de decisiones</p>
+                    <span class="tooltip">Participación en la toma de decisiones</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="mainContent">
+        <!-- Contenido principal -->
+        <nav id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li><a href="https://ovcmsalta.gob.ar">Inicio</a></li>
+                <li><a href="../">Estadísticas</a></li>
+                <li class="active">Femicidios y travesticidios</li>
+            </ul> 
+        </nav>
+        
+        <div class="titleContainer">
+            <img src="../svg/icono_01.svg" alt="Ícono" class="titleIcon">
+            <h1 class="pageTitle">Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</h1>
+        </div>
+
+        <br>
+
+        <div style="display: flex; justify-content: center;">
+            <button class="indicadorButton" onclick="showChart('chart5')" style="padding: 15px 25px; font-size: 1.125rem; font-weight: bold;">
+                VER REGISTRO COMPLETO
+            </button>
+        </div>
+
+        <br>
+
+        <hr>
+
+        <h2 style="font-size: 15px; text-align: center; margin-bottom: 1rem;">
+            Indicadores disponibles
+        </h2>
+
+        <!-- Contenedor de botones -->
+        <nav class="indicador-container">
+            <button class="indicadorButton active" onclick="showChart('chart1')">Características de los femicidios ocurridos</button>
+            <button class="indicadorButton" onclick="showChart('chart2')">Mapa de femicidios</button>
+            <button class="indicadorButton" onclick="showChart('chart3')">Evolución de la cantidad total de femicidios y muertes violentas</button>
+            <button class="indicadorButton" onclick="showChart('chart4')">Tasa de femicidios a nivel nacional</button>
+        </nav>
+
+        <br>
+
+        <!-- Sección de gráficos -->
+        <div id="chart1" class="chartContent active" style="width: 95%">
+            <!-- TITULO -->
+            <div style="text-align: center; height: auto;">
+                <p>
+                    <span style="font-size:20px"><strong>Muertes violentas, femicidios, travesticidios y transfemicidios</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Provincia de Salta</i></span>
+                    <br>
+                    <span style="font-size:12px"><i>Última actualización: 02/06/2025</i></span>
+                </p>
+
+                <div class="selectContainer">
+                    <p>
+                        Año:
+                    </p>
+                    <select id="Anio1" style="font-size: 1.25rem;" onchange="actualizarGraficos()">
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="divGrande">
+                <!-- MAPA -->
+                <div id="divSub1">
+                    <span id="totalFemicidios"></span>
+                    <p style="width: 50%; text-align: center; font-size: 1.5rem;">
+                        <strong>Femicidios caratulados provisoriamente</strong>
+                    </p>
+                </div>
+
+                <!-- DIBUJITO -->
+                <div id="divSub2">
+                    <p>
+                        <strong>Causas judiciales</strong>
+                    </p>
+
+                    <div id="mujeresIconos" class="mujeres-container"></div>
+
+                    <div id="causasJudiciales"></div>
+                </div>
+
+                <!-- EDADES AGRUPADAS -->
+                <div id="divSub3">
+                    <p>
+                        <strong>Por edades agrupadas</strong>
+                    </p>
+
+                    <div id="grafico1_3" style="width: 85%;"></div>
+                </div>
+
+                <div id="divSub4">
+                    <p>
+                        <strong>Cantidad de hijas/os de las víctimas</strong>
+                    </p>
+
+                    <div id="grafico1_4" style="width: 85%;"></div>
+                </div>
+
+                <div id="divSub5">
+                    <p>
+                        <strong>Medio utilizado</strong>
+                    </p>
+
+                    <div id="grafico1_5" style="width: 85%;"></div>
+                </div>
+
+                <div id="divSub6">
+                    <p>
+                        <strong>Lugar del hecho</strong>
+                    </p>
+
+                    <div id="grafico1_6" style="width: 85%;"></div>
+                </div>
+
+                <div id="divSub7">
+                    <p>
+                        <strong>Por vínculo con la persona que ejerció la agresión</strong>
+                    </p>
+
+                    <div id="grafico1_7" style="width: 90%;"></div>
+                </div>
+
+                <div id="divSub8">
+                    <p>
+                        <strong>Muertes violentas y/o dudosas, y femicidios</strong>
+                    </p>
+                    
+                    <div class="grid-container">
+                        <div class="item">
+                            <span id="totalMuertes"></span>
+                            
+                            <br>
+                            
+                            <p style="text-align: center; font-size: 1rem; margin-top: 0px;">
+                                Muertes violentas y/o dudosas y femicidios
+                            </p>
+                        </div>
+                        <div class="line"></div>
+                        <div id="grafico1_8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="chart2" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Femicidios, travesticidios, y transfemicidios ocurridos en la Provincia</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por departamento</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico2" class="graficoMapa"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Registro de casos del OVcM. Ministerio Público Fiscal de la Provincia de Salta.
+                </p>
+            </div>
+        
+            <!-- Listas desplegables -->
+            <div class="selectContainer">
+                <p>
+                    Año:
+                </p>
+                <select id="Anio2" onchange="actualizarGrafico2()">
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="chart3" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Evolución de la cantidad de femicidios, travesticidios, y transfemicidios ocurridos en la Provincia</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por año</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico3"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>NOTA</strong>: Únicamente se contabilizan los femicidios caratulados.
+
+                    <br>
+
+                    <strong>FUENTE</strong>: Registro de casos del OVcM. Ministerio Público Fiscal de la Provincia de Salta.
+                </p>
+            </div>
+        </div>
+
+        <div id="chart4" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Tasa de femicidios en la República Argentina</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por provincia, por año</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico4" class="graficoMapa"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Oficina de la Mujer de la de la Corte Suprema de Justicia de la Nación, cumplimentada y/o corregida con información correspondiente al registro propio del OVcM para los casos de la Provincia de Salta en el periodo 2020-2024.
+                </p>
+            </div>
+        
+            <!-- Listas desplegables -->
+            <div class="selectContainer">
+                <p>
+                    Año:
+                </p>
+                <select id="Anio4" onchange="actualizarGrafico4()">
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="chart5" class="chartContent" style="width: 90%;">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: center;">
+                <p>
+                    <span style="font-size:1.5rem"><strong>Registro provisorio de causas caratuladas como femicidio, transfemicidio y crímenes de odio en etapa de investigación penal</strong></span>
+                    <br>
+                    <span style="font-size:1.25rem"><i>Provincia de Salta.</i></span>
+                    <br>
+                    <span style="font-size:0.75rem"><i>Última actualización: 07/03/2025</i></span>
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div class="selectContainer">
+                <p>
+                    Año:
+                </p>
+                <select id="Anio5" onchange="actualizarGrafico5()">
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                </select>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico5">
+                <table id="tablaFemicidios" class="hover cell-border">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Fecha</th>
+                            <th>Iniciales</th>
+                            <th>Edad</th>
+                            <th>Hijos/as</th>
+                            <th>Medio utilizado</th>
+                            <th>Vínculo</th>
+                            <th>Lugar del hecho</th>
+                            <th>Departamento</th>
+                            <th>Carátula</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+            <br>
+            <hr>
+            <br>
+
+            <!-- Titulo del gráfico -->
+            <div style="text-align: center;">
+                <p>
+                    <span style="font-size:1.5rem"><strong>Registro provisorio de causas de muertes violentas y/o dudosas de mujeres cis, trans</strong></span>
+                    <br>
+                    <span style="font-size:1.25rem"><i>Provincia de Salta.</i></span>
+                </p>
+            </div>
+
+            <!-- Canvas para el chart -->
+            <div id="grafico6" style="@media (max-width: 780px){
+                overflow-x: scroll;
+            }">
+                <table id="tablaMuertes" class="hover cell-border">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Fecha</th>
+                            <th>Iniciales</th>
+                            <th>Edad</th>
+                            <th>Hijos/as</th>
+                            <th>Lugar del hecho</th>
+                            <th>Departamento</th>
+                            <th>Fuente</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Elaboración propia a partir del registro de casos del OVcM y el Registro del Poder Judicial.
+                </p>
+            </div>
+        </div>
+
+        <!-- Botón para guardar el gráfico activo como PNG -->
+        <button id="guardarBtn" onclick="guardarActivoComoPNG()">
+            <img src="../svg/icono_descargar.svg" alt="Subir" class="descargarIcon">
+            <span style="margin-left:0.5rem">Descargar gráfico en PNG</span>
+        </button>
+
+        <br>
+        <hr>
+
+        <div class="notasContent">
+            <h2>FICHA TÉCNICA</h2>
+
+            <p>
+                El OVcM recopila y configura estadísticas a partir de diversas fuentes provenientes tanto de la información que puede obtenerse del Ministerio Publico Fiscal, Poder Judicial, y cualquier órgano que pudiera brindar información relevante mediante datos oficiales.
+                <br>
+                Asimismo, se advierte la incorporación de noticias periodísticas como fuentes secundarias.
+            </p>
+
+            <h3>Definiciones</h3>
+            <p>
+                <ul>
+                    <li><strong>Femicidio</strong>: “La muerte violenta de mujeres por razones de género, ya sea que tenga lugar dentro de la familia, unidad doméstica o en cualquier otra relación interpersonal; en la comunidad, por parte de cualquier persona, o que sea perpetrada o tolerada por el Estado y sus agentes, por acción u omisión”. Esta definición proviene de la “Declaración sobre el Femicidio” aprobada por la Cuarta Reunión del Comité de Expertas/os (CEVI) en 2008 y es utilizada por el Registro Nacional de Femicidios de la Justicia Argentina (RNFJA).
+                    
+                    <br><br>
+
+                    El Registro de OVCM incluye tanto muertes violentas, femicidios, travesticidio y transfemicidio que son:
+                    <ol>
+                        <li>Casos no judicializados que encuadran en esa definición.</li>
+                        <li>Casos judiciales que tramitan con imputación por homicidios agravados</li>
+                        <ol type="a">
+                            <li>Art. 80 inciso 1º Código Penal (cuando se matare a la ascendiente, descendiente, cónyuge, ex cónyuge, persona con quien mantiene o ha mantenido una relación de pareja, mediare o no convivencia)</li>
+                            <li>Art. 80 Inciso 11 del Código Penal (cuando un hombre matare a una mujer y mediare violencia de género)</li>
+                            <li>Art. 80 inciso 4º CP (cuando un hombre matare a una mujer por odio de género, orientación sexual, identidad o expresión de género), y las causas con condena firme bajo esas calificaciones legales.</li>
+                            <li>Art. 80 inciso 12 CP (cuando se matare con el propósito de causar sufrimiento a la persona con quién se tiene o mantenía una relación de pareja)</li>
+                        </ol>
+                    </ol>
+                    </li>
+                    
+                    <br>
+                    <li><strong>Muertes violentas</strong>: aquellas causas investigadas y/o con condenas firmes por homicidio que inicialmente estaban relacionadas con la violencia de género.</li>
+                    
+                    <br>
+                    <li><strong>Muertes dudosas</strong>: aquellas causas en que el Ministerio Público Fiscal investiga el deceso de una mujer, si se relaciona con suicidio o en las que no está claro si se produjeron en un contexto violento.</li>
+                </ul>
+            </p>
+
+            <h3>Metodología</h3>
+            <p>
+                Metodología planteada en el <a href="https://ovcmsalta.gob.ar/publicaciones-e-investigaciones/informes-anuales/informe-2020/" target="_blank">Informe OVcM (33:2020)</a>
+            </p>
+        </div>
+
+    </div>
+
+    <button onclick="topFunction()" id="botonTop">
+        <img src="../svg/icono_arrow.svg" alt="Subir" class="topIcon">
+    </button>
+
+    <script src="./script.js"></script>
+    <script src="../script.js"></script>
+
+    <!-- Gráficos -->
+    <script type="text/javascript" src="./grafico1_2.js"></script>
+    <script type="text/javascript" src="./grafico1_3.js"></script>
+    <script type="text/javascript" src="./grafico1_4.js"></script>
+    <script type="text/javascript" src="./grafico1_5.js"></script>
+    <script type="text/javascript" src="./grafico1_6.js"></script>
+    <script type="text/javascript" src="./grafico1_7.js"></script>
+    <script type="text/javascript" src="./grafico1_8.js"></script>
+    <script type="text/javascript" src="./grafico2.js"></script>
+    <script type="text/javascript" src="./grafico3.js"></script>
+    <script type="text/javascript" src="./grafico4.js"></script>
+    <script type="text/javascript" src="./grafico5.js"></script>
+    <script type="text/javascript" src="./grafico6.js"></script>
+</body>
+</html>

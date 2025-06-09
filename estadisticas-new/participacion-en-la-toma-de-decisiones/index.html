@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas | OVcM</title>
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- Scripts -->
+    <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Botón para mostrar/ocultar la barra lateral -->
+    <button id="toggleSidebar" onclick="toggleSidebar()">☰</button>
+
+    <!-- Logo que aparecerá al colapsar la barra -->
+    <div id="collapsedLogo" class="hidden">
+        <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Logo Colapsado">
+        <span class="collapsedText">Observatorio de Violencia contra las Mujeres</span>
+    </div>
+
+    <!-- Barra lateral -->
+    <div id="sidebar">
+        <div class="sidebarDiv">
+            <a href="https://ovcmsalta.gob.ar/estadisticas/">
+                <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1" class="logoIcon">
+            </a>
+            <span class="logoText">Observatorio de Violencia contra las Mujeres</span>
+        </div>
+
+        <hr>
+
+        <h2 style="font-size: 15px; text-align: center;">ESTADÍSTICAS</h2>
+        <ul>
+            <li>
+                <a href="../femicidios-y-travesticidios/">
+                    <img src="../svg/icono_01.svg" class="sidebarIcon">
+                    <p>Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</p>
+                    <span class="tooltip">Muertes violentas y/o dudosas</span>
+                </a>
+            </li>
+            <li>
+                <a href="../denuncias-por-violencia-de-genero/">
+                    <img src="../svg/icono_02.svg" class="sidebarIcon">
+                    <p>Denuncias por violencia de género</p>
+                    <span class="tooltip">Denuncias por violencia de género</span>
+                </a>
+            </li>
+            <li>
+                <a href="../educacion-y-mercado-de-trabajo/">
+                    <img src="../svg/icono_03.svg" class="sidebarIcon">
+                    <p>Educación y mercado de trabajo</p>
+                    <span class="tooltip">Educación y mercado de trabajo</span>
+                </a>
+            </li>
+            <li>
+                <a href="../salud-y-libertad-no-reproductiva/">
+                    <img src="../svg/icono_04.svg" class="sidebarIcon">
+                    <p>Salud y libertad -no- reproductiva</p>
+                    <span class="tooltip">Salud y libertad -no- reproductiva</span>
+                </a>
+            </li>
+            <li>
+                <a href="../participacion-en-la-toma-de-decisiones/" class="active">
+                    <img src="../svg/icono_05.svg" class="sidebarIcon">
+                    <p>Participación en la toma de decisiones</p>
+                    <span class="tooltip">Participación en la toma de decisiones</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="mainContent">
+        <!-- Contenido principal -->
+        <nav id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li><a href="https://ovcmsalta.gob.ar">Inicio</a></li>
+                <li><a href="../">Estadísticas</a></li>
+                <li class="active">Participación en la toma de decisiones</li>
+            </ul> 
+        </nav>
+        
+        <div class="titleContainer">
+            <img src="../svg/icono_05.svg" alt="Ícono" class="titleIcon">
+            <h1 class="pageTitle">PARTICIPACIÓN EN LA TOMA DE DECISIONES</h1>
+        </div>
+
+        <br>
+        <hr>
+
+        <h2 style="font-size: 15px; text-align: center; margin-bottom: 1rem;">
+            Indicadores disponibles
+        </h2>
+
+        <!-- Botones -->
+        <div class="buttonSection">
+            <a class="buttonDiv" href="./poder-legislativo/">
+                <button class="buttonLink">
+                    <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_5.svg" alt="Icono 4" class="buttonIcon">
+                    <span class="buttonText">PODER LEGISLATIVO</span>
+                </button>
+            </a>
+            <a class="buttonDiv" href="./poder-judicial/">
+                <button class="buttonLink">
+                    <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_5.svg" alt="Icono 4" class="buttonIcon">
+                    <span class="buttonText">PODER JUDICIAL</span>
+                </button>
+            </a>
+            <a class="buttonDiv" href="./poder-ejecutivo/">
+                <button class="buttonLink">
+                    <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_5.svg" alt="Icono 4" class="buttonIcon">
+                    <span class="buttonText">PODER EJECUTIVO</span>
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <button onclick="topFunction()" id="botonTop">
+        <img src="../../svg/icono_arrow.svg" alt="Subir" class="topIcon">
+    </button>
+
+    <script src="../script.js"></script>
+</body>
+</html>

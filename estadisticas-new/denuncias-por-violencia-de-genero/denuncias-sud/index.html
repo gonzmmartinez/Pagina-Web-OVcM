@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link type="text/css" rel="stylesheet" href="../../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas | OVcM</title>
+
+    <!-- Scripts -->
+    <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
+    <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Botón para mostrar/ocultar la barra lateral -->
+    <button id="toggleSidebar" onclick="toggleSidebar()">☰</button>
+
+    <!-- Logo que aparecerá al colapsar la barra -->
+    <div id="collapsedLogo" class="hidden">
+        <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Logo Colapsado">
+        <span class="collapsedText">Observatorio de Violencia contra las Mujeres</span>
+    </div>
+
+    <!-- Barra lateral -->
+    <div id="sidebar">
+        <div class="sidebarDiv">
+            <a href="https://ovcmsalta.gob.ar/estadisticas/">
+                <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1" class="logoIcon">
+            </a>
+            <span class="logoText">Observatorio de Violencia contra las Mujeres</span>
+        </div>
+
+        <hr>
+
+        <h2 style="font-size: 15px; text-align: center;">ESTADÍSTICAS</h2>
+        <ul>
+            <li>
+                <a href="../../femicidios-y-travesticidios/">
+                    <img src="../../svg/icono_01.svg" class="sidebarIcon">
+                    <p>Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</p>
+                    <span class="tooltip">Muertes violentas y/o dudosas</span>
+                </a>
+            </li>
+            <li>
+                <a href="../../denuncias-por-violencia-de-genero/" class="active">
+                    <img src="../../svg/icono_02.svg" class="sidebarIcon">
+                    <p>Denuncias por violencia de género</p>
+                    <span class="tooltip">Denuncias por violencia de género</span>
+                </a>
+            </li>
+            <li>
+                <a href="../../educacion-y-mercado-de-trabajo/">
+                    <img src="../../svg/icono_03.svg" class="sidebarIcon">
+                    <p>Educación y mercado de trabajo</p>
+                    <span class="tooltip">Educación y mercado de trabajo</span>
+                </a>
+            </li>
+            <li>
+                <a href="../../salud-y-libertad-no-reproductiva/">
+                    <img src="../../svg/icono_04.svg" class="sidebarIcon">
+                    <p>Salud y libertad -no- reproductiva</p>
+                    <span class="tooltip">Salud y libertad -no- reproductiva</span>
+                </a>
+            </li>
+            <li>
+                <a href="../../participacion-en-la-toma-de-decisiones/">
+                    <img src="../../svg/icono_05.svg" class="sidebarIcon">
+                    <p>Participación en la toma de decisiones</p>
+                    <span class="tooltip">Participación en la toma de decisiones</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="mainContent">
+        <!-- Contenido principal -->
+        <nav id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li><a href="https://ovcmsalta.gob.ar">Inicio</a></li>
+                <li><a href="../../">Estadísticas</a></li>
+                <li><a href="../../denuncias-por-violencia-de-genero/">Denuncias por violencia de género</a></li>
+                <li class="active">Denuncias registradas en el SUD</li>
+            </ul> 
+        </nav>
+        
+        <div class="titleContainer">
+            <img src="../../svg/icono_02.svg" alt="Ícono" class="titleIcon">
+            <h1 class="pageTitle">EMERGENCIAS POR VIOLENCIA DE GÉNERO</h1>
+        </div>
+
+        <div class="subtitleText">
+            <h2>DENUNCIAS REGISTRADAS EN EL SISTEMA ÚNICO DE DENUNCIAS</h2>
+        </div>
+
+        <hr>
+
+        <h2 style="font-size: 15px; text-align: center; margin-bottom: 1rem;">
+            Indicadores disponibles
+        </h2>
+
+        <!-- Contenedor de botones -->
+        <nav class="indicador-container">
+            <button class="indicadorButton active" onclick="showChart('chart1')">Denuncias registradas por tipo de denuncia</button>
+            <button class="indicadorButton" onclick="showChart('chart2')">Evolución de la cantidad de denuncias</button>
+            <button class="indicadorButton" onclick="showChart('chart3')">Por boca de denuncia</button>
+            <button class="indicadorButton" onclick="showChart('chart4')">Tasa de denuncias por departamento</button>
+        </nav>
+
+        <br>
+       
+        <!-- Sección de gráficos -->
+        <div id="chart1" class="chartContent active">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Denuncias registradas al Sistema Único de Denuncias</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por tipo de denuncia</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico1" style="width: 100%;"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Sistema Único de Denuncias del Ministerio Público Fiscal de la Provincia de Salta y la Corte de Justicia de Salta.
+                    <br>
+                    <strong>NOTA</strong>: El SUD entró en vigencia en el mes de noviembre de 2023.
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div class="selectContainer">
+                <p>
+                    Año:
+                </p>
+                <select id="Anio1" onchange="actualizarGrafico1()">
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="chart2" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Evolución de la cantidad de denuncias registradas en el SUD</strong></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico2" style="width: 100%;"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Sistema Único de Denuncias del Ministerio Público Fiscal de la Provincia de Salta y la Corte de Justicia de Salta.
+                    <br>
+                    <strong>NOTA</strong>: El SUD entró en vigencia en el mes de noviembre de 2023.
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div class="selectContainer">
+                <p>
+                    Año:
+                </p>
+                <select id="Anio2" onchange="actualizarGrafico2()">
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="chart3" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Denuncias registradas al Sistema Único de Denuncias</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por boca de denuncia</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico3" style="width: 100%;"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Sistema Único de Denuncias del Ministerio Público Fiscal de la Provincia de Salta y la Corte de Justicia de Salta.
+                    <br>
+                    <strong>NOTA</strong>: El SUD entró en vigencia en el mes de noviembre de 2023.
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div class="selectContainer">
+                <p>
+                    Año:
+                </p>
+                <select id="Anio3" onchange="actualizarGrafico3()">
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="chart4" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Tasa de denuncias registradas al Sistema Único de Denuncias</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Denuncias por cada 100 habitantes, por departamento</i></span>
+                </p>
+            </div>
+        
+            <!-- Canvas para el chart -->
+            <div id="grafico4" style="width: 100%;"></div> 
+        
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Sistema Único de Denuncias del Ministerio Público Fiscal de la Provincia de Salta y la Corte de Justicia de Salta.
+                    <br>
+                    <strong>NOTA</strong>: El SUD entró en vigencia en el mes de noviembre de 2023.
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div class="selectContainer">
+                <p>
+                    Año:
+                </p>
+                <select id="Anio4" onchange="actualizarGrafico4()">
+                    <option value="2024">2024</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Botón para guardar el gráfico activo como PNG -->
+        <button id="guardarBtn" onclick="guardarActivoComoPNG()">
+            <img src="../../svg/icono_descargar.svg" alt="Subir" class="descargarIcon">
+            <span style="margin-left:0.5rem">Descargar gráfico en PNG</span>
+        </button>
+
+        <br>
+        <hr>
+
+        <div class="notasContent">
+            <h2>FICHA TÉCNICA</h2>
+
+            <h3>Institución o entidad que genera el registro</h3>
+            <p>
+                <ul>
+                    <li>Sistema Único de Denuncias del Ministerio Público Fiscal de la Provincia de Salta y la Corte de Justicia de Salta.</li>
+                </ul>
+            </p>
+        </div>
+
+    </div>
+
+    <button onclick="topFunction()" id="botonTop">
+        <img src="../../svg/icono_arrow.svg" alt="Subir" class="topIcon">
+    </button>
+
+    <script src="../../script.js"></script>
+
+    <!-- Gráficos -->
+    <script type="text/javascript" src="./grafico1.js"></script>
+    <script type="text/javascript" src="./grafico2.js"></script>
+    <script type="text/javascript" src="./grafico3.js"></script>
+    <script type="text/javascript" src="./grafico4.js"></script>
+</body>
+</html>

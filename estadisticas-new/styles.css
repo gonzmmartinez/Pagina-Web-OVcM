@@ -1,0 +1,703 @@
+/* Estilos generales */
+html {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+:root {
+    --grey-color: #8c8c8c;
+    --mid-light-grey-color: #c4c4c4;
+    --light-grey-color: #fafafa;
+    --accent-color: #51c33b;
+    --accent-color-dark: #398829;
+    --main-color: #3A1D51;
+    --main-color-light: #5a2d7d;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Barlow', sans-serif;
+    font-size: 16px;
+    display: flex;
+}
+
+/* Estilo de la barra lateral */
+#sidebar {
+    width: 15%;
+    background-color: #3A1D51;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    height: 100%;
+    transition: 0.1s;
+    z-index: 1;
+}
+
+/* Estilo para cada división de la barra lateral */
+.sidebarDiv {
+    flex: 1;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Estilo para el ícono */
+.logoIcon {
+    width: 100px;  /* Tamaño del ícono dentro del botón */
+    height: 100px; /* Mantiene el ícono proporcional */
+    object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
+    transition: transform 0.5s ease;
+}
+.logoIcon:hover {
+    transform: scale(1.2);
+}
+
+/* Estilo para el texto dentro del botón */
+.logoText {
+    font-size: 15px; /* Ajuste del tamaño del texto */
+    color: white;
+    font-family: 'Barlow', sans-serif;
+    margin-bottom: 10px; /* Margen de 5px abajo del texto */;
+    text-align: center;
+}
+
+/* Estilo inicial del botón para mostrar/ocultar la barra lateral */
+#toggleSidebar {
+    position: fixed;
+    top: 5px;
+    left: 15%; /* Posición inicial con la barra visible */
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #fafafa;
+    cursor: pointer;
+    z-index: 2;
+    transition: left 0.1s;
+}
+
+/* Enlaces dentro de la barra lateral */
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    font-family: 'Barlow', sans-serif;
+    left:5px;
+}
+
+#sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: left; /* Centra horizontalmente el contenido */
+    padding: 0;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    transition-duration: 0.1s;
+}
+
+#sidebar ul li a:hover {
+    background-color: #4a2b6a;
+    font-family: 'Barlow', sans-serif;
+}
+
+#sidebar ul li a.active {
+    background-color: var(--main-color-light);
+    border-radius: 5px;
+}
+
+.sidebarIcon {
+    width: 30px;  /* Tamaño del ícono dentro del botón */
+    height: 30px; /* Mantiene el ícono proporcional */
+    margin-right: 10px;
+    object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
+}
+
+/* Estilo para la barra lateral en estado colapsado */
+#sidebar.collapsed {
+    display: block;
+    width: 5%; /* Ancho reducido */
+    padding: 0px; /* Ajusta el padding para el estado colapsado */
+    align-content: center;
+    transition: 0.1s
+}
+
+/* Oculta el texto pero deja visibles los íconos */
+#sidebar.collapsed ul li a p,
+#sidebar.collapsed .sidebarDiv,
+#sidebar.collapsed .logoIcon,
+#sidebar.collapsed hr,
+#sidebar.collapsed h2,
+#sidebar.collapsed .logoText {
+    display: none;
+}
+
+/* Centra los íconos en el estado colapsado */
+#sidebar.collapsed ul li a {
+    justify-content: center;
+    padding: 10px;
+    margin: 20px 5px;
+    position: relative
+}
+
+/* Ajusta los íconos en el estado colapsado */
+#sidebar.collapsed .sidebarIcon {
+    margin-right: 0; /* Elimina el espacio entre el ícono y el texto */
+}
+
+/* Tooltip básico (invisible por defecto) */
+.tooltip {
+    visibility: hidden;
+    position: absolute;
+    left: 115%;
+    top: auto;
+    background-color: #333;
+    color: white;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+/* Mostrar el tooltip cuando el enlace tiene hover y la barra está colapsada */
+#sidebar.collapsed ul li a:hover .tooltip {
+    visibility: visible;
+    opacity: 0.95;
+}
+
+/* Eliminar el tooltip si la barra está expandida */
+#sidebar:not(.collapsed) .tooltip {
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Ajuste del contenido principal cuando la barra lateral está oculta */
+#mainContent.expanded {
+    margin-left: 10%;
+    margin-right: 5%;
+    width: 100%;
+}
+
+/* Estilo del contenido principal */
+#mainContent {
+    margin-left: 20%;
+    padding: 20px;
+    padding-top: 0px;
+    width: 80%;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+    font-family: 'Barlow', sans-serif;
+}
+
+/* Contenedor del título y el ícono */
+.titleContainer {
+    display: flex; /* Para alinear los elementos horizontalmente */
+    align-items: center; /* Alinea verticalmente el ícono con el texto */
+    gap: 10px; /* Espacio entre el texto y el ícono */
+}
+
+/* Estilo del título */
+.pageTitle {
+    font-size: 24px; /* Tamaño del texto */
+    color: black; /* Color del texto */
+    font-family: 'Barlow', sans-serif;
+    margin: 0; /* Quita los márgenes */
+}
+
+/* Estilo del ícono */
+.titleIcon {
+    width: auto; /* Ajusta el ancho automáticamente */
+    height: 3em; /* El ícono tendrá la misma altura que la línea del texto */
+    background-color: black;
+    padding: 1%;
+    border-radius: 100%;
+}
+
+.subtitleText {
+    font-family: 'Barlow', sans-serif;
+    font-size: 20px;
+    color: var(--grey-color)
+}
+
+.notasContent {
+    padding-bottom: 10%;
+}
+
+.notasContent h3 {
+    color: var(--main-color);
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--mid-light-grey-color);
+}
+
+.notasContent p {
+    padding: 0px 50px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.notasContent ul {
+    padding: 0px 50px;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* Estilo para la sección de botones */
+.buttonSection {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width:100%;
+    gap: 10px;
+    text-decoration: none;
+}
+
+/* Estilo para cada división de botón dentro de la sección */
+.buttonDiv {
+    text-decoration: none;
+    flex: 1;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para cada botón */
+.buttonLink {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra los elementos verticalmente */
+    align-items: center;     /* Centra los elementos horizontalmente */
+    width: 100%; /* Mantiene el botón con el ancho completo de su contenedor */
+    height: 175px; /* Asegura que el botón sea cuadrado (igual en alto y ancho) */
+    padding: 15px;
+    background-color: #fafafa;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Barlow', sans-serif;
+    text-align: center;
+    border-radius: 5px; /* Bordes redondeados de 5px */
+    transition: 0.5s ease;
+    box-sizing: border-box; /* Incluye el padding dentro del tamaño total */
+    filter: drop-shadow(0em 0em 5px rgba(125, 125, 125, 0.5))
+}
+
+.buttonLink:hover {
+    background-color: #3A1D51;
+    filter: drop-shadow(0em 0em 5px rgba(58, 29, 81, 0.5))
+}
+
+/* Estilo para el ícono */
+.buttonIcon {
+    width: 80px;  /* Tamaño del ícono dentro del botón */
+    height: 80px; /* Mantiene el ícono proporcional */
+    object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
+    margin-bottom: 10px; /* Espacio entre el ícono y el texto */
+    filter: invert(80%)
+}
+.buttonLink:hover .buttonIcon {
+    filter: invert(0%)
+}
+
+/* Estilo para el texto dentro del botón */
+.buttonText {
+    font-size: 16px; /* Ajuste del tamaño del texto */
+    color: black;
+    font-family: 'Barlow', sans-serif;
+    margin-bottom: 10px; /* Margen de 5px abajo del texto */;
+    text-align: center;
+}
+.buttonLink:hover .buttonText {
+    color: white
+}
+
+/* INDICADORES */
+.indicador-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+    width:100%;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.indicadorButton {
+    font-family: 'Barlow';
+    font-size: 15px;
+    padding: 5%;
+    border-radius: 5px;
+    background-color:white;
+    color:#3A1D51;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.indicadorButton:hover {
+    background-color:#3A1D51;
+    color: white;
+}
+
+.indicadorButton.active {
+    background-color: var(--accent-color);
+}
+
+.indicadorButton.active:hover {
+    background-color:#3A1D51;
+    color: white;
+}
+
+
+
+/* CONTENEDOR DEL DROPDOWN */
+.selectContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center; /* Asegura que los textos y selects estén alineados */
+    font-family: 'Barlow';
+    font-size: 12px;
+}
+
+select {
+    padding: 5px;
+    background-color: white;
+    font-family: 'Barlow';
+    font-size: 13px;
+    border-radius: 5px;
+    border-color: #3A1D51;
+    border-width: 2px;
+}
+
+/* Estilo del contenido del gráfico */
+.chartContent {
+    display: none;
+}
+
+.chartContent.active {
+    display: block; /* Temporalmente cambia a block para depurar */
+    background-color: #fafafa;
+    width: 70%;
+    min-height: 200px;
+    margin: auto;
+    padding: 2%;
+    padding-bottom: 5%;
+    border-radius: 10px;
+    background-image: url('./svg/logo_ovcm.svg');
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    background-size: 15rem 3rem;
+}
+
+/* Logo que aparece cuando la barra está colapsada */
+#collapsedLogo {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    position: fixed;
+    top: 0%; /* Espaciado desde la parte superior */
+    left: 50%; /* Punto de referencia horizontal */
+    transform: translateX(-50%); /* Centra el elemento horizontalmente */
+    z-index: 101;
+    opacity: 1; /* Visible por defecto */
+    transition: opacity 0.5s ease; /* Transición de opacidad */
+}
+
+/* Oculta el logo con una transición */
+#collapsedLogo.hidden {
+    opacity: 0; /* Cambia la opacidad a 0 */
+    pointer-events: none; /* Evita interacciones cuando está invisible */
+    transition: opacity 0s ease; /* Transición suave de opacidad */
+}
+
+#collapsedLogo img {
+    width: 3.5rem; /* Tamaño del logo */
+    height: auto;
+    object-fit: contain;
+}
+
+/* Estilo para el texto del logo colapsado */
+.collapsedText {
+    font-size: 0.75rem; /* Ajuste del tamaño del texto */
+    color: white;
+    font-family: 'Barlow', sans-serif;
+    text-align: center;
+}
+
+/* Oculta el logo con una transición */
+#collapsedText.hidden {
+    opacity: 0; /* Cambia la opacidad a 0 */
+    pointer-events: none; /* Evita interacciones cuando está invisible */
+    transition: opacity 0s ease; /* Transición suave de opacidad */
+}
+
+.notasContent img {
+    width: 50%
+}
+
+/* ###################################### */
+/* PARA DISPOSITIVOS MÓVILES */
+@media (max-width: 780px) {
+    /* Barra lateral en móviles */
+    /* Estilo del contenido principal */
+    #mainContent {
+        margin-top: 15%;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding: 0;
+        width: 90%;
+        transition: margin-left 0.3s ease, width 0.3s ease;
+        font-family: 'Barlow', sans-serif;
+    }
+
+    /* Ajuste del contenido principal cuando la barra lateral está oculta */
+    #mainContent.expanded {
+        margin-left: 5%;
+        margin-right: 5%;
+        width: 90%;
+    }
+
+    /* Estilo del contenido del gráfico */
+    .chartContent.active {
+        background-color: #fafafa;
+        width: 95%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        padding: 2%;
+        border-radius: 10px;
+        background-size: 7.5rem auto; /* Tamaño del logo, ajusta según tus necesidades */
+        overflow-x: scroll;
+    }
+
+    /* Barra lateral colapsada */
+    #sidebar.collapsed {
+        transform: translateY(-85%); /* Deja visible el 5% superior */
+        width: 100%;
+    }
+
+    #sidebar {
+        width: 100%; /* Ocupa todo el ancho */
+        height: auto; /* Ajusta la altura al contenido */
+        background-color: #3A1D51;
+        color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transition: transform 0.3s ease, height 0.3s ease;
+        z-index: 100;
+    }
+
+    /* Enlaces dentro de la barra lateral */
+    #sidebar ul {
+        display: block;
+        width: 80%;
+        list-style-type: none;
+        margin: 0 auto;
+        font-family: 'Barlow', sans-serif;
+        left:5px;
+        margin-bottom: 10%;
+    }
+
+    #sidebar ul li a {
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        align-items: left; 
+        justify-content: left; 
+        padding: 2px;
+        margin-bottom: 10px;
+        padding-left: 10px;
+        font-family: 'Barlow', sans-serif;
+        font-size: 15px;
+    }
+
+    #sidebar ul li a:hover {
+        background-color: #4a2b6a;
+        font-family: 'Barlow', sans-serif;
+    }
+
+    hr {
+        width: 80%;
+        margin: auto;
+        left: 0;
+    }
+
+    /* Estilo para el ícono */
+    .logoIcon {
+        margin-top: 2%;
+        width: 15vh;  /* Tamaño del ícono dentro del botón */
+        height: 15vh; /* Mantiene el ícono proporcional */
+        object-fit: contain; /* Asegura que el ícono se ajuste sin distorsionarse */
+    }
+
+    /* Estilo para el texto dentro del botón */
+    .logoText {
+        font-size: 2vh; /* Ajuste del tamaño del texto */
+        color: white;
+        font-family: 'Barlow', sans-serif;
+        margin-bottom: 15px; /* Margen de 5px abajo del texto */;
+        text-align: center;
+    }
+
+    /* Estilo inicial del botón para mostrar/ocultar la barra lateral */
+    #toggleSidebar {
+        position: fixed;
+        top: 1.25%;
+        left: 5%; /* Posición inicial con la barra visible */
+        font-size: 24px;
+        background: none;
+        border: none;
+        color: #fafafa;
+        cursor: pointer;
+        z-index: 101;
+        transition: left 0.3s ease;
+    }
+
+    /* Add a color to all links inside the list */
+    ul.breadcrumb li {
+        display: inline;
+        font-size: 8px;
+    }
+
+    /* Estilo para la sección de botones */
+    .buttonSection {
+        flex-direction: column;
+        margin: auto;
+        width: 75%;
+    }
+
+    /* Estilo para el container de indicadores en dispositivos móviles */
+    .indicador-container {
+        grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+    }
+
+    #collapsedLogo {
+        top: 0%; /* Ajusta la posición al lado del botón */
+    }
+
+    .notasContent img {
+        width: 100%
+    }
+
+    .notasContent p {
+        padding: 0px 30px
+    }
+
+    #guardarBtn {
+        display: flex;
+        justify-self: center;
+    }
+}
+
+/* ###################################### */
+/* Breadcrumbs */
+
+#breadcrumbs {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    margin-top: 2%;
+}
+
+/* Style the list */
+ul.breadcrumb {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-inline-start: 0px;
+}
+
+/* Display list items side by side */
+ul.breadcrumb li {
+    display: inline;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: #8c8c8c;
+    content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+    color: #8c8c8c;
+    text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+    color: #454545;
+    text-decoration: underline;
+} 
+
+ul.breadcrumb .active {
+    color: black;
+    font-weight: bold;
+}
+
+/* ###################################### */
+/* Back to top button */
+
+#botonTop {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 10px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: var(--light-grey-color); /* Set a background color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 10px; /* Some padding */
+    border-radius: 100%; /* Rounded corners */
+    transition-duration: 0.5s;
+}
+  
+#botonTop:hover {
+    background-color: var(--accent-color); /* Add a dark-grey background on hover */
+}
+
+.topIcon {
+    width: auto; /* Ajusta el ancho automáticamente */
+    height: 2em; /* El ícono tendrá la misma altura que la línea del texto */
+}
+
+#guardarBtn {
+    display: flex;
+    justify-self: center;
+    margin-top: 10px;
+    bottom: 10px; /* Place the button at the bottom of the page */
+    right: 10px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: var(--light-grey-color); /* Set a background color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 10px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    transition-duration: 0.5s;
+    font-family: 'Barlow', sans-serif;
+}
+  
+#guardarBtn:hover {
+    background-color: var(--accent-color); /* Add a dark-grey background on hover */
+}
+
+.descargarIcon {
+    width: auto; /* Ajusta el ancho automáticamente */
+    height: 1em; /* El ícono tendrá la misma altura que la línea del texto */
+}

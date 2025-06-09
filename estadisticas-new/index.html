@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas | OVcM</title>
+    <link rel="stylesheet" href="./styles.css">
+
+    <!-- Scripts -->
+    <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Botón para mostrar/ocultar la barra lateral -->
+    <button id="toggleSidebar" onclick="toggleSidebar()">☰</button>
+
+    <!-- Logo que aparecerá al colapsar la barra -->
+    <div id="collapsedLogo" class="hidden">
+        <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Logo Colapsado">
+        <span class="collapsedText">Observatorio de Violencia contra las Mujeres</span>
+    </div>
+
+    <!-- Barra lateral -->
+    <div id="sidebar">
+        <div class="sidebarDiv">
+            <a href="https://ovcmsalta.gob.ar/estadisticas/">
+                <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1" class="logoIcon">
+            </a>
+            <span class="logoText">Observatorio de Violencia contra las Mujeres</span>
+        </div>
+
+        <hr>
+
+        <h2 style="font-size: 15px; text-align: center;">ESTADÍSTICAS</h2>
+        <ul>
+            <li>
+                <a href="./femicidios-y-travesticidios/">
+                    <img src="./svg/icono_01.svg" class="sidebarIcon">
+                    <p>Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</p>
+                    <span class="tooltip">Muertes violentas y/o dudosas</span>
+                </a>
+            </li>
+            <li>
+                <a href="./denuncias-por-violencia-de-genero/">
+                    <img src="./svg/icono_02.svg" class="sidebarIcon">
+                    <p>Denuncias por violencia de género</p>
+                    <span class="tooltip">Denuncias por violencia de género</span>
+                </a>
+            </li>
+            <li>
+                <a href="./educacion-y-mercado-de-trabajo/">
+                    <img src="./svg/icono_03.svg" class="sidebarIcon">
+                    <p>Educación y mercado de trabajo</p>
+                    <span class="tooltip">Educación y mercado de trabajo</span>
+                </a>
+            </li>
+            <li>
+                <a href="./salud-y-libertad-no-reproductiva/">
+                    <img src="./svg/icono_04.svg" class="sidebarIcon">
+                    <p>Salud y libertad -no- reproductiva</p>
+                    <span class="tooltip">Salud y libertad -no- reproductiva</span>
+                </a>
+            </li>
+            <li>
+                <a href="./participacion-en-la-toma-de-decisiones/">
+                    <img src="./svg/icono_05.svg" class="sidebarIcon">
+                    <p>Participación en la toma de decisiones</p>
+                    <span class="tooltip">Participación en la toma de decisiones</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="mainContent">
+        <!-- Contenido principal -->
+        <nav id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li><a href="https://ovcmsalta.gob.ar">Inicio</a></li>
+                <li class="active">Estadisticas</li>
+            </ul> 
+        </nav>
+        
+        <div class="titleContainer">
+            <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_1.svg" alt="Ícono" class="titleIcon">
+            <h1 class="pageTitle">PORTAL ESTADÍSTICO DEL OVcM</h1>
+        </div>
+
+        <p>El OVcM, tiene como misión desarrollar un sistema de información permanente. En ésta sección podés encontrar información actualizada e histórica vinculada a las desigualdades y violencias por motivos de género en la Provincia de Salta.</p>
+
+        <br>
+
+        <hr>
+
+        <br>
+
+        <h2 style="font-size: 15px; text-align: center; margin-bottom: 2rem;">
+            Indicadores disponibles
+        </h2>
+
+        <!-- Botones -->
+        <div class="buttonSection">
+            <a class="buttonDiv" href="./femicidios-y-travesticidios/">
+                <button class="buttonLink">
+                    <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_1.svg" alt="Icono 1" class="buttonIcon">
+                    <span class="buttonText">Femicidios y travesticidios</span>
+                </button>
+            </a>
+            <a class="buttonDiv" href="./denuncias-por-violencia-de-genero/">
+                <button class="buttonLink">
+                    <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_2.svg" alt="Icono 1" class="buttonIcon">
+                    <span class="buttonText">Denuncias por violencia de género</span>
+                </button>
+            </a>
+            <a class="buttonDiv" href="./educacion-y-mercado-de-trabajo/">
+                <button class="buttonLink">
+                    <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_3.svg" alt="Icono 1" class="buttonIcon">
+                    <span class="buttonText">Educación y mercado de trabajo</span>
+                </button>
+            </a>
+            <a class="buttonDiv" href="./salud-y-libertad-no-reproductiva/">
+                <button class="buttonLink">
+                    <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_4.svg" alt="Icono 1" class="buttonIcon">
+                    <span class="buttonText">Salud y libertad -no- reproductiva</span>
+                </button>
+            </a>
+            <a class="buttonDiv" href="./participacion-en-la-toma-de-decisiones/">
+                <button class="buttonLink">
+                    <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_5.svg" alt="Icono 1" class="buttonIcon">
+                    <span class="buttonText">Participación en la toma de decisiones</span>
+                </button>
+            </a>
+        </div>
+
+        <br>
+        <br>
+
+        <hr>
+
+        <div class="notasContent">
+            <h2>ESPECIFICACIONES TÉCNICAS</h2>
+
+            <h3>Sobre el portal estadístico del OVcM</h3>
+            <p>
+                El portal estadístico del Observatorio de Violencia contra las Mujeres de la Provincia de Salta es la principal herramienta de acceso a la información estadística relacionada con la violencia de género en la región. Este portal reúne, sistematiza y publica datos recolectados por organismos oficiales y constituye una fuente clave para el análisis y monitoreo de esta problemática.
+            </p>
+            <p>
+                La disponibilidad de información estadística confiable y actualizada es fundamental para comprender las dinámicas de la violencia de género, evaluar su impacto y orientar la toma de decisiones en políticas públicas. El portal del Observatorio organiza y presenta indicadores relevantes que permiten describir y analizar la situación provincial, apoyándose en fuentes oficiales locales y nacionales.
+            </p>
+
+            <h3>Estructura</h3>
+            <p>
+                El portal estadístico del Observatorio de Violencia contra las Mujeres de la Provincia de Salta está organizado en cinco ejes principales, alineados con las necesidades de análisis de la problemática de género en la región: femicidios, denuncias y emergencias por violencia de género, educación y mercado de trabajo, salud y libertad no reproductiva, y participación en la toma de decisiones. Estos ejes integran temas transversales que, por su relevancia en el contexto provincial y nacional, reciben una atención prioritaria para facilitar el acceso y uso de la información por parte de diversos actores.
+            </p>
+
+            <img src="./svg/estructura.png" alt="Estructura del portal estadístico" style="display: block; margin: 0 auto">
+
+            <h3>Desarrollo</h3>
+            <p>
+                El portal estadístico del Observatorio de Violencia contra las Mujeres de la Provincia de Salta ha sido desarrollado empleando tecnologías web estándar que aseguran su accesibilidad y sostenibilidad. La estructura del sitio está construida íntegramente en <strong>HTML</strong> y <strong>CSS</strong>, lo que permite una base sólida y flexible para su diseño y funcionamiento. Por su parte, las aplicaciones gráficas interactivas que facilitan la visualización de los datos se implementaron en <strong>JavaScript</strong> utilizando la potente librería <a href="https://apexcharts.com/" target="_blank">Apex Charts</a>. Esta combinación tecnológica garantiza una experiencia de usuario amigable y un acceso intuitivo a los indicadores y estadísticas presentados.
+            </p>
+            <p>
+                En línea con el compromiso de transparencia en la gestión de datos públicos, el portal opera bajo una licencia <strong>GNU General Public License</strong>. Esto no solo asegura la libertad de uso, modificación y distribución del software, sino que también fomenta la confianza y participación de la ciudadanía. Asimismo, el código fuente del portal está disponible en un repositorio público en <a href="https://github.com/gonzmmartinez/Seccion-Estadisticas-OVcM" target="_blank">GitHub</a>, permitiendo a los desarrolladores y usuarios interesados colaborar en su mejora y garantizar que los datos presentados sean abiertos, verificables y accesibles para todos.
+            </p>
+                
+        </div>
+
+    </div>
+
+    <button onclick="topFunction()" id="botonTop">
+        <img src="./svg/icono_arrow.svg" alt="Subir" class="topIcon">
+    </button>
+
+    <script src="./script.js"></script>
+</body>
+</html>

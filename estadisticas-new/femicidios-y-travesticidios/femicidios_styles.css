@@ -1,0 +1,268 @@
+#divGrande {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(6);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    margin-top: 2rem;
+}
+    
+#divSub1 {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    column-gap: 25px;
+    height: auto;
+    padding: 3% 0;
+    grid-area: 1 / 1 / 2 / 3;
+    background-color: #ededed;
+    border-radius: 10px;
+}
+#divSub2 {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    height: 300px;
+    grid-area: 2 / 1 / 3 / 3;
+    background-color: #ededed;
+    border-radius: 10px;
+}
+#divSub3 {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    height: 350px;
+    grid-area: 3 / 1 / 4 / 2;
+    background-color: #ededed;
+    border-radius: 10px;
+}
+#divSub4 {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    height: 350px;
+    grid-area: 3 / 2 / 4 / 3;
+    background-color: #ededed;
+    border-radius: 10px;
+}
+#divSub5 {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    height: 350px;
+    grid-area: 4 / 1 / 5 / 2;
+    background-color: #ededed;
+    border-radius: 10px;
+}
+#divSub6 {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    height: 350px;
+    grid-area: 4 / 2 / 5 / 3;
+    background-color: #ededed;
+    border-radius: 10px;
+}
+#divSub7 {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    height: 350px;
+    grid-area: 5 / 1 / 6 / 3;
+    background-color: #ededed;
+    border-radius: 10px;
+}
+#divSub8 {
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    height: 350px;
+    grid-area: 6 / 1 / 7 / 3;
+    background-color: #ededed;
+    border-radius: 10px;
+}
+
+/* LINEA DE MUERTES VIOLENTAS */
+.line {
+    height: 2px; /* Grosor de la línea */
+    background-color: #ff5733; /* Color específico */
+    width: 100%; /* Ancho completo para que la línea ocupe todo el espacio entre los otros elementos */
+    margin: 0px 0; /* Espaciado opcional arriba y abajo */
+}
+
+/* Contenedor principal para alinear elementos utilizando Grid */
+.grid-container {
+    display: grid; /* Usamos Grid para una disposición de filas y columnas */
+    grid-template-columns: 25% 20% 100%; /* Ajusta las proporciones de las columnas */
+    align-items: center; /* Alinea verticalmente los elementos en el centro */
+    width: 750px;
+    height: 350px
+}
+
+/* Estilo para los elementos dentro del Grid */
+.grid-container .item {
+    text-align: center;
+    justify-items: center;
+}
+
+#grafico1_8 {
+    width: 65%;
+}
+
+/* Estilo para el número principal de muertes violentas */
+#totalMuertes {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    width: 4rem;
+    height: 4rem;
+    background-color: #ff5733;
+    padding: 25px;
+    border-radius: 100%;
+    color: white;
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: 'Barlow', sans-serif;
+}
+
+/* Estilo para el número principal de femicidios */
+#totalFemicidios {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    width: 4rem;
+    height: 4rem;
+    background-color: #ff5733;
+    padding: 25px;
+    border-radius: 100%;
+    color: white;
+    font-size: 4rem;
+    font-weight: bold;
+    font-family: 'Barlow', sans-serif;
+}
+
+/* Contenedor de íconos de mujeres */
+.mujeres-container {
+    display: flex;
+    justify-content: center;
+    gap: 0px;
+    margin-top: 2rem;
+  }
+
+.mujeres-icon {
+    width: 4rem;
+    height: 4rem;
+    transition: filter 0.3s;
+    filter: grayscale(100%);
+}
+
+.mujeres-icon.filled {
+      filter: invert(19%) sepia(99%) saturate(3077%) hue-rotate(263deg) brightness(77%) contrast(119%);
+      border-bottom: 3px solid black;
+}
+
+.graficoMapa {
+    width: 100%;
+    height: 600px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+#causasJudiciales {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+
+
+/* ###################################### */
+/* PARA DISPOSITIVOS MÓVILES */
+@media (max-width: 780px) {
+    #divGrande {
+        display: flex; /* Cambia el contenedor a Flexbox */
+        flex-direction: column; /* Organiza los elementos en una sola columna */
+        gap: 10px; /* Espacio entre los elementos */
+        margin-top: 2rem; /* Conserva el margen superior */
+    }
+
+    #divSub1 {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        background-color: #ededed;
+        border-radius: 10px;
+    }
+
+    #divSub5 {
+        height: 225px;
+    }
+
+    #divSub7 {
+        text-align: center;
+        width: 100%;
+        height: 275px;
+    }
+
+    #divSub8 {
+        height: 450px;
+        width: 100%;
+        justify-content: start;
+        row-gap: 20px;
+    }
+
+    #totalMuertes {
+        font-size: 2.5rem;
+    }
+
+    .mujeres-icon {
+        width: 1.75rem;
+        height: 1.75rem;
+        transition: filter 0.3s;
+        filter: grayscale(100%);
+    }
+
+    .grid-container {
+        display: grid; /* Usamos Grid */
+        grid-template-columns: 1fr; /* Una sola columna */
+        grid-template-rows: 1fr 1fr 5fr; /* Tres filas con altura automática */
+        align-items: center; /* Alinea los elementos verticalmente */
+        justify-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 10rem
+    }
+
+    /* Estilo para los elementos dentro del Grid */
+    .grid-container .item {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 5px;
+        text-align: center;
+    }
+
+    .line {
+        width: 2px; /* Grosor de la línea vertical */
+        background-color: #ff5733; /* Color específico */
+        height: 50px; /* Altura completa para que ocupe todo el espacio disponible */
+        margin: 0 auto; /* Centra la línea horizontalmente */
+    }
+
+    #grafico1_8 {
+        width: 100%;
+    }
+
+    #grafico2 {
+        width: 100%;
+        height: 450px;
+    }
+
+    #causasJudiciales {
+        font-size: 1.25rem;
+    }
+}

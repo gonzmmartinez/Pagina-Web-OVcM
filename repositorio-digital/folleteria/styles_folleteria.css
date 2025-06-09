@@ -1,0 +1,200 @@
+:root {
+  --background-color: #fbfbfb;
+  --grey-color: #8c8c8c;
+  --mid-light-grey-color: #c4c4c4;
+  --light-grey-color: #fafafa;
+  --accent-color: #51c33b;
+  --accent-color-dark: #398829;
+  --main-color: #3A1D51;
+  --main-color-light: #5a2d7d;
+  --secondary-color-light: #A682BA;
+}
+
+.galeria-folletos {
+    margin: auto;
+    width: 60%
+}
+
+.grid-folletos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 50px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.tarjeta-folletos {
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+  position: relative;
+}
+
+.tarjeta-folletos:hover {
+  transform: translateY(-4px);
+}
+
+.tarjeta-folletos.clickable-folleto {
+  cursor: pointer;
+}
+
+/* Imagen de portada */
+.tarjeta-folletos img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Título */
+.tarjeta-folletos h3 {
+  font-family: 'Exo', sans-serif;
+  font-size: 1.25rem;
+  padding: 20px 0px;
+  color: #3A1D51;
+  margin: 0;
+  position: relative;
+}
+
+/* Línea animada debajo del título */
+.tarjeta-folletos h3::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 60%;
+  height: 2px;
+  background-color: #5C2D91;
+  transition: transform 0.3s ease;
+}
+
+/* Hover en tarjeta activa la línea + color del título */
+.tarjeta-folletos:hover h3 {
+  color: #5C2D91;
+}
+
+.tarjeta-folletos:hover h3::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.tarjeta-folletos a:hover {
+  text-decoration: none;
+}
+
+.slider {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slider img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Carrousel de galería */
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  user-select: none;
+  cursor: grab;
+}
+
+.carousel-img {
+  width: 400px;
+  height: auto;
+}
+
+.carousel-img.active {
+  transform: scale(1.2);
+  z-index: 1;
+}
+
+.carousel-img.small {
+  width: 180px;
+  opacity: 0.6;
+  filter: blur(5px);
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 50;
+}
+
+.carousel-btn img {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.5s ease;
+}
+
+.carousel-btn:hover img {
+  transform: scale(1.2);
+}
+
+.carousel-btn.prev {
+  left: -50px;
+}
+
+.carousel-btn.next {
+  right: -50px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(1.01); }
+  to   { opacity: 1; transform: scale(1.05); }
+}
+
+@media screen and (max-width: 768px) {
+  .carousel-wrapper {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .carousel-img {
+    width: 100% !important;
+    max-width: 300px;
+  }
+
+  .carousel-img.small {
+    display: none; /* Ocultar imágenes laterales en móvil */
+  }
+
+  .carousel-btn {
+    top: auto;
+    bottom: -20px;
+    transform: none;
+  }
+
+  .carousel-btn.prev {
+    left: 20%;
+  }
+
+  .carousel-btn.next {
+    right: 20%;
+  }
+
+  .carousel-btn img {
+    width: 30px;
+    height: 30px;
+  }
+}

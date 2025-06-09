@@ -1,0 +1,65 @@
+<!-- Botón de regreso -->
+<div style="margin-bottom: 50px;">
+    <a href="index.html" class="back-button">
+        <img src="svg/navigation_back.svg" alt="Volver" class="back-icon">
+        Regresar al repositorio
+    </a>
+</div>
+
+<!-- Título principal con ícono -->
+<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 50px;">
+    <img src="svg/document.svg" alt="Ícono documento" width="75px" height="75px" style="flex-shrink: 0;">
+    <h1 id="main-titulo-doc" style="font-size: 1.5rem; margin: 0;"></h1>
+</div>
+
+<!-- EL DETALLE DE CADA DOCUMENTO -->
+<div class="detalle-contenedor" style="display: flex; gap: 2rem">
+    <!-- Columna izquierda: portada -->
+    <div class="detalle-portada">
+        <img id="portada-doc" src="" alt="Portada" width="250" height="354"
+            style="object-fit: cover; box-shadow: 0 0px 20px 0px rgba(0, 0, 0, 0.1)" />
+    </div>
+
+    <!-- Columna derecha: tabla de información -->
+    <div class="detalle-info" style="flex: 1">
+        <table style="width: 100%">
+            <tr>
+                <th style="text-align: left">Fecha</th>
+                <td id="fecha-doc"></td>
+            </tr>
+            <tr>
+                <th style="text-align: left">Título completo</th>
+                <td id="titulo-doc" style="font-weight: bold;"></td>
+            </tr>
+            <tr>
+                <th style="text-align: left">Autor(es/as)</th>
+                <td id="autor-doc"></td>
+            </tr>
+            <tr>
+                <th style="text-align: left">Tipo de documento</th>
+                <td id="tipo-doc"></td>
+            </tr>
+            <tr>
+                <th style="text-align: left">Tema</th>
+                <td id="tema-doc"></td>
+            </tr>
+            <tr>
+                <th style="text-align: left">Colección</th>
+                <td id="coleccion-doc"></td>
+            </tr>
+            <tr>
+                <th style="text-align: left">URL del archivo</th>
+                <td><a id="url-doc" href="#" target="_blank"></a></td>
+            </tr>
+            <tr>
+                <th style="text-align: left">Descargar</th>
+                <td>
+                    <a id="link-descarga" class="boton-descarga" href="#" target="_blank" download>
+                        <img src="svg/descargar_documento.svg" alt="" class="icono-descarga" />
+                        DESCARGAR
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
