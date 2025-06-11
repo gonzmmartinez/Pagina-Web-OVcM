@@ -1,4 +1,5 @@
 const contenedorDosieres = document.querySelector(".concursos-muestra");
+const contenedorDiseno = document.querySelector(".concursos-muestra-2");
 const JSON_URL = "./documentos_concursos.json";
 
 async function cargarDosieres() {
@@ -40,7 +41,47 @@ async function cargarDosieres() {
     contenedorDosieres.innerHTML = `<p>Error al cargar los dosieres.</p>`;
     console.error("Error al cargar dosieres:", error);
   }
-}
+};
+
+async function cargarDiseno() {
+  try {
+    const res = await fetch(JSON_URL);
+    const documentos = await res.json();
+
+    const disenos = documentos
+      .filter(doc => {
+        if (Array.isArray(doc.tipo_concurso)) {
+          return doc.tipo_concurso.includes("Diseño");
+        }
+        return doc.tipo_concurso === "Diseño";
+      })
+      .sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+
+    if (disenos.length === 0) {
+      contenedorDiseno.innerHTML = "<p>No se encontraron documentos de diseño.</p>";
+    } else {
+      const html = `<div class="grid-informes">
+        ${disenos.map(doc => {
+          const anio = new Date(doc.fecha).getFullYear();
+          return `
+            <div class="tarjeta-informe">
+              <a href="${doc.archivo}" target="_blank" rel="noopener noreferrer">
+                <img src="${doc.portada}" alt="Portada de ${doc.titulo}">
+                <h4>${anio}</h4>
+                <h3>${doc.titulo}</h3>
+              </a>
+            </div>
+          `;
+        }).join("")}
+      </div>`;
+      contenedorDiseno.innerHTML = html;
+    }
+
+  } catch (error) {
+    contenedorDiseno.innerHTML = `<p>Error al cargar los documentos de diseño.</p>`;
+    console.error("Error al cargar documentos de diseño:", error);
+  }
+};
 
 document.addEventListener('DOMContentLoaded', function () {
   const menuToggle = document.getElementById('menu-toggle');
@@ -78,3 +119,4 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 cargarDosieres();
+cargarDiseno();

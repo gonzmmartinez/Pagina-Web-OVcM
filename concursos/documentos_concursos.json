@@ -1,5 +1,14 @@
 [
   {
+    "slug": "dossier-diseno-2024",
+    "titulo": "Concurso de Diseño Gráfico - 2024",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2024-12-04",
+    "tipo_concurso": "Diseño",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/06/GanadorConcursoDiseno2024.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/06/GanadorConcursoDiseno2024.jpg"
+  },
+  {
     "slug": "dossier-tesis-2024",
     "titulo": "Dossier Tesis de Grado con Perspectiva de Género - 2024",
     "autor": ["Observatorio de Violencia contra las Mujeres"],
