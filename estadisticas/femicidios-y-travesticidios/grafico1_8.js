@@ -93,10 +93,7 @@ function crearGrafico1_8(categories, values) {
       title: {},
       colors: ["#e3753d", "#45488d", "#e3a22e", "#a9a226", "#2b768a", "#1468b1", "#e3474b"],
       dataLabels: {
-        enabled: false,
-        style: {
-          fontSize: '8px'
-        }
+        enabled: false
       },
       tooltip: {
         y: {
@@ -127,7 +124,7 @@ function crearGrafico1_8(categories, values) {
         enabled: true,
         dropShadow: false,
         style: {
-          fontSize: '0.5rem',
+          fontSize: '1rem',
           fontWeight: 'bold',
           color: 'white'
         },

@@ -104,7 +104,7 @@ function crearGrafico1_5(categories, values) {
         enabled: true,
         dropShadow: false,
         style: {
-          fontSize: '0.5rem',
+          fontSize: '0.75rem',
           fontWeight: 'bold',
           color: 'white'
         },
