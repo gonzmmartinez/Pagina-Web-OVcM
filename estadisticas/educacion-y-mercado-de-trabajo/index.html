@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <link type="text/css" rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -8,9 +9,10 @@
     <title>Estadísticas | OVcM</title>
 
     <!-- Scripts -->
-    <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
-    <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
 <body>
@@ -27,7 +29,8 @@
     <div id="sidebar">
         <div class="sidebarDiv">
             <a href="https://ovcmsalta.gob.ar/estadisticas/">
-                <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1" class="logoIcon">
+                <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1"
+                    class="logoIcon">
             </a>
             <span class="logoText">Observatorio de Violencia contra las Mujeres</span>
         </div>
@@ -81,9 +84,9 @@
                 <li><a href="https://ovcmsalta.gob.ar">Inicio</a></li>
                 <li><a href="../">Estadísticas</a></li>
                 <li class="active">Educación y Mercado de Trabajo</li>
-            </ul> 
+            </ul>
         </nav>
-        
+
         <div class="titleContainer">
             <img src="../svg/icono_03.svg" alt="Ícono" class="titleIcon">
             <h1 class="pageTitle">EDUCACIÓN Y MERCADO DE TRABAJO</h1>
@@ -99,13 +102,17 @@
 
         <!-- Contenedor de botones -->
         <nav class="indicador-container">
-            <button class="indicadorButton active" onclick="showChart('chart1')">Matriculas educativas por género</button>
+            <button class="indicadorButton active" onclick="showChart('chart1')">Matriculas educativas por
+                género</button>
             <button class="indicadorButton" onclick="showChart('chart2')">Docentes en actividad por género</button>
-            <button class="indicadorButton" onclick="showChart('chart3')">Tasa de actividad laboral</button>
+            <button class="indicadorButton" onclick="showChart('chart4')">Tasa de actividad laboral</button>
+            <button class="indicadorButton" onclick="showChart('chart5')">Tasa de empleo</button>
+            <button class="indicadorButton" onclick="showChart('chart6')">Tasa de subocupación laboral</button>
+            <button class="indicadorButton" onclick="showChart('chart7')">Tasa de desocupación laboral</button>
         </nav>
 
         <br>
-       
+
         <!-- Sección de gráficos -->
         <div id="chart1" class="chartContent active">
             <!-- Titulo del gráfico -->
@@ -116,14 +123,15 @@
                     <span style="font-size:15px"><i>Por género</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico1" style="width: 100%;"></div> 
-        
+            <div id="grafico1" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
-                    <strong>FUENTE</strong>: Ministerio de Educación, Cultura, Ciencia y Tecnología. Subsecretaría de Desarrollo Curricular e Innovación Pedagógica. Departamento de Estadística.
+                    <strong>FUENTE</strong>: Ministerio de Educación, Cultura, Ciencia y Tecnología. Subsecretaría de
+                    Desarrollo Curricular e Innovación Pedagógica. Departamento de Estadística.
                 </p>
             </div>
 
@@ -134,6 +142,7 @@
                         Año:
                     </p>
                     <select id="Anio1" onchange="actualizarGrafico1()">
+                        <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
                         <option value="2021">2021</option>
@@ -184,14 +193,15 @@
                     <span style="font-size:15px"><i>Por género y departamento</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
             <div id="grafico2" style="width: 100%;"></div>
-        
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
-                    <strong>FUENTE</strong>: Ministerio de Educación, Cultura, Ciencia y Tecnología. Subsecretaría de Desarrollo Curricular e Innovación Pedagógica. Departamento de Estadística.
+                    <strong>FUENTE</strong>: Ministerio de Educación, Cultura, Ciencia y Tecnología. Subsecretaría de
+                    Desarrollo Curricular e Innovación Pedagógica. Departamento de Estadística.
                 </p>
             </div>
 
@@ -202,6 +212,7 @@
                         Año:
                     </p>
                     <select id="Anio2" onchange="actualizarGrafico2()">
+                        <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
                         <option value="2021">2021</option>
@@ -211,24 +222,158 @@
         </div>
 
         <!-- Sección de gráficos -->
-        <div id="chart3" class="chartContent">
+        <div id="chart4" class="chartContent">
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
                     <span style="font-size:20px"><strong>Evolución de la tasa de actividad laboral</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Por género. Por trimestre. Provincia de Salta.</i></span>
+                    <span id="subtitulo4" style="font-size:15px"><i>Por género. Por trimestre. Provincia de
+                            Salta.</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico3" style="width: 100%;"></div> 
-        
+            <div id="grafico4" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
-                    <strong>FUENTE</strong>: Encuesta Permanente de Hogares del Instituto Nacional de Estadísticas y Censos (EPH-INDEC).
+                    <strong>FUENTE</strong>: Encuesta Permanente de Hogares del Instituto Nacional de Estadísticas y
+                    Censos (EPH-INDEC).
                 </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
+                <div class="selectContainer">
+                    <p>
+                        Año:
+                    </p>
+                    <select id="Anio4" onchange="actualizarGrafico4()">
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de gráficos -->
+        <div id="chart5" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Evolución de la tasa de empleo</strong></span>
+                    <br>
+                    <span id="subtitulo5" style="font-size:15px"><i>Por género. Por trimestre. Provincia de
+                            Salta.</i></span>
+                </p>
+            </div>
+
+            <!-- Canvas para el chart -->
+            <div id="grafico5" style="width: 100%;"></div>
+
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Encuesta Permanente de Hogares del Instituto Nacional de Estadísticas y
+                    Censos (EPH-INDEC).
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
+                <div class="selectContainer">
+                    <p>
+                        Año:
+                    </p>
+                    <select id="Anio5" onchange="actualizarGrafico5()">
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de gráficos -->
+        <div id="chart6" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Evolución de la tasa de subocupación laboral</strong></span>
+                    <br>
+                    <span id="subtitulo6" style="font-size:15px"><i>Por género. Por trimestre. Provincia de
+                            Salta.</i></span>
+                </p>
+            </div>
+
+            <!-- Canvas para el chart -->
+            <div id="grafico6" style="width: 100%;"></div>
+
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Encuesta Permanente de Hogares del Instituto Nacional de Estadísticas y
+                    Censos (EPH-INDEC).
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
+                <div class="selectContainer">
+                    <p>
+                        Año:
+                    </p>
+                    <select id="Anio6" onchange="actualizarGrafico6()">
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de gráficos -->
+        <div id="chart7" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Evolución de la tasa de desocupación laboral</strong></span>
+                    <br>
+                    <span id="subtitulo7" style="font-size:15px"><i>Por género. Por trimestre. Provincia de
+                            Salta.</i></span>
+                </p>
+            </div>
+
+            <!-- Canvas para el chart -->
+            <div id="grafico7" style="width: 100%;"></div>
+
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Encuesta Permanente de Hogares del Instituto Nacional de Estadísticas y
+                    Censos (EPH-INDEC).
+                </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
+                <div class="selectContainer">
+                    <p>
+                        Año:
+                    </p>
+                    <select id="Anio7" onchange="actualizarGrafico7()">
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                    </select>
+                </div>
             </div>
         </div>
 
@@ -246,17 +391,37 @@
 
             <h3>Institución o entidad que genera el registro</h3>
             <p>
-                <ul>
-                    <li>Encuesta Permanente de Hogares (EPH). Instituto Nacional de Estadística y Censos (INDEC)</li>
-                    <li>Ministerio de Educación, Cultura, Ciencia y Tecnología. Subsecretaria de Desarrollo Curricular e Innovación Pedagógica. Departamento de Estadística.</li>
-                </ul>
+            <ul>
+                <li>Encuesta Permanente de Hogares (EPH). Instituto Nacional de Estadística y Censos (INDEC)</li>
+                <li>Ministerio de Educación, Cultura, Ciencia y Tecnología. Subsecretaria de Desarrollo Curricular e
+                    Innovación Pedagógica. Departamento de Estadística. Provincia de Salta.</li>
+            </ul>
             </p>
 
             <h3>Definiciones utilizadas en el registro</h3>
             <ul>
-                <li>La <strong>tasa de actividad</strong> mide la proporción de la población económicamente activa (PEA) sobre la población total de referencia. La PEA incluye a quienes tienen empleo y a quienes buscan activamente uno. Según la Encuesta Permanente de Hogares (EPH), se consideran dentro de este grupo tanto las personas que trabajan a cambio de una remuneración en dinero o en especie como aquellas que colaboran sin pago en negocios familiares.</li>
-                <li>La <strong>tasa de desocupación</strong> representa el porcentaje de personas que no tienen empleo pero lo buscan activamente dentro de la población económicamente activa. Por otro lado, la tasa de subocupación mide la proporción de quienes trabajan menos de 35 horas semanales por razones involuntarias y están disponibles para trabajar más.</li>
-                <li>La <strong>inactividad</strong> se refiere a la situación de las personas que no forman parte de la población económicamente activa, es decir, que no trabajan ni buscan empleo de manera activa. Dentro de esta categoría se incluyen a estudiantes, jubilados, personas dedicadas a tareas del hogar y aquellas que, por diversas razones, no participan en el mercado laboral.</li>
+                <li><strong>Tasa de actividad</strong>: mide la proporción de la población económicamente activa (PEA)
+                    sobre la población total de referencia. La PEA incluye a quienes tienen empleo y a quienes buscan
+                    activamente uno. Según la Encuesta Permanente de Hogares (EPH), se consideran dentro de este grupo
+                    tanto las personas que trabajan a cambio de una remuneración en dinero o en especie como aquellas
+                    que colaboran sin pago en negocios familiares.</li>
+                <li><strong>Tasa de desocupación</strong>: representa el porcentaje de personas que no tienen empleo
+                    pero lo buscan activamente dentro de la población económicamente activa. Por otro lado, la tasa de
+                    subocupación mide la proporción de quienes trabajan menos de 35 horas semanales por razones
+                    involuntarias y están disponibles para trabajar más.</li>
+                <li><strong>Tasa de subocupación</strong>: mide la proporción de quienes trabajan menos de 35 horas
+                    semanales por razones involuntarias y están disponibles para trabajar más.</li>
+                <li><strong>Inactividad</strong>: se refiere a la situación de las personas que no forman parte de la
+                    población económicamente activa, es decir, que no trabajan ni buscan empleo de manera activa. Dentro
+                    de esta categoría se incluyen a estudiantes, jubilados, personas dedicadas a tareas del hogar y
+                    aquellas que, por diversas razones, no participan en el mercado laboral.</li>
+                <li><strong>Matricula educativa</strong>: Hace referencia a la cantidad de personas inscriptas en una
+                    institución educativa en un período determinado, independientemente de si asisten regularmente o no.
+                </li>
+                <li><strong>Docente en actividad</strong>: Se considera docente en actividad a toda persona que se
+                    desempeña laboralmente en tareas de enseñanza en el sistema educativo formal durante el período de
+                    referencia. Incluye a quienes ejercen funciones frente a curso en establecimientos educativos de
+                    gestión pública o privada, en cualquiera de los niveles del sistema.</li>
             </ul>
 
             <h3>¿Qué se registra?</h3>
@@ -266,7 +431,8 @@
 
             <h3>Notas</h3>
             <p>
-                Los datos informados para la cantidad de matrículas solo pertenecen al régimen formal, se excluyen, cursos de oficio, etc.
+                Los datos informados para la cantidad de matrículas solo pertenecen al régimen formal, se excluyen,
+                cursos de oficio, etc.
             </p>
         </div>
 
@@ -281,6 +447,10 @@
     <!-- Gráficos -->
     <script type="text/javascript" src="./grafico1.js"></script>
     <script type="text/javascript" src="./grafico2.js"></script>
-    <script type="text/javascript" src="./grafico3.js"></script>
+    <script type="text/javascript" src="./grafico4.js"></script>
+    <script type="text/javascript" src="./grafico5.js"></script>
+    <script type="text/javascript" src="./grafico6.js"></script>
+    <script type="text/javascript" src="./grafico7.js"></script>
 </body>
+
 </html>

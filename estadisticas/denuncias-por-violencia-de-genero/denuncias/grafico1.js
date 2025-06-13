@@ -1,12 +1,12 @@
 // Datos
 const archivo1 = "../../datos/json/denuncias_ovfg_ingresadas.json";
 
-// 3. Función para filtrar los datos por distrito
+// Función para filtrar los datos por distrito
 function filtrarPorDistrito(data, distrito) {
   return data.filter(item => item.Distrito === distrito);
 }
 
-// 4. Función para procesar los datos y agruparlos por Año-Trimestre
+// Función para procesar los datos y agruparlos por Año-Trimestre
 function procesarDatos1(data1) {
     // Crear los arrays para las categorías y los valores de las barras
     const categories1 = [];
@@ -117,29 +117,6 @@ function crearGrafico1(categories, values, groups) {
     });
 }
 
-// 6. Función principal que orquesta el proceso
-function iniciar1() {
-  cargarDatos(archivo1) // Cargar los datos del JSON
-        .then(data1 => {
-            // Parsear los datos
-            const parsedData1 = parsearDatos(data1);
-
-            // Filtrar por el distrito seleccionado
-            const distritoSeleccionado1 = "TODOS";
-            const datosFiltrados1 = filtrarPorDistrito(parsedData1, distritoSeleccionado1);
-
-            // Procesar los datos filtrados
-            const { categories1, values1, groups1 } = procesarDatos1(datosFiltrados1);
-
-            // Crear y renderizar el gráfico
-            window.chart1 = crearGrafico1(categories1, values1, groups1);
-            window.chart1.render();
-        })
-        .catch(error1 => {
-            document.getElementById("grafico1").textContent = `Error: ${error1.message}`;
-        });
-}
-
 function actualizarGrafico1() {
   cargarDatos(archivo1)
       .then(data1 => {
@@ -162,6 +139,29 @@ function actualizarGrafico1() {
       .catch(error => {
           document.getElementById("grafico1").textContent = `Error: ${error.message}`;
       });
+}
+
+// Función principal que orquesta el proceso
+function iniciar1() {
+  cargarDatos(archivo1) // Cargar los datos del JSON
+        .then(data1 => {
+            // Parsear los datos
+            const parsedData1 = parsearDatos(data1);
+
+            // Filtrar por el distrito seleccionado
+            const distritoSeleccionado1 = "TODOS";
+            const datosFiltrados1 = filtrarPorDistrito(parsedData1, distritoSeleccionado1);
+
+            // Procesar los datos filtrados
+            const { categories1, values1, groups1 } = procesarDatos1(datosFiltrados1);
+
+            // Crear y renderizar el gráfico
+            window.chart1 = crearGrafico1(categories1, values1, groups1);
+            window.chart1.render();
+        })
+        .catch(error1 => {
+            document.getElementById("grafico1").textContent = `Error: ${error1.message}`;
+        });
 }
 
 // Llamar la función principal al cargar la página

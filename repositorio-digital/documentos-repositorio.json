@@ -1,5 +1,27 @@
 [
   {
+    "slug": "conta-con-respeto-spotlight-2019",
+    "titulo": "Contá con respeto: Consejos para la cobertura periodística sobre hechos de violencia de género y femicidio",
+    "autor": ["Iniciativa Spotlight"],
+    "fecha": "2019-11-01",
+    "tipo_documento": "Guía",
+    "tema": "Comunicación",
+    "coleccion": "",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/06/ContaConRespetoSpotlight2019.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/06/ContaConRespetoSpotlight2019.jpg"
+  },
+  {
+    "slug": "encuesta-prevalencia-spotlight-2021",
+    "titulo": "Encuesta de prevalencia de violencia contra las mujeres, con resultados de la Provincia de Salta",
+    "autor": ["Iniciativa Spotlight", "Ministerio de las Mujeres, Gëneros y Diversidad de la República Argentina"],
+    "fecha": "2021-08-15",
+    "tipo_documento": "Encuesta",
+    "tema": "Prevalencia de la violencia de género",
+    "coleccion": "",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/06/EncuestaPrevalenciaSpotlightSalta.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/06/EncuestaPrevalenciaSpotlightSalta.jpg"
+  },
+  {
     "slug": "informe-exploratorio-unidad-carcelaria-2024",
     "titulo": "Estudio exploratorio sobre las condiciones de acceso a derechos de las personas privadas de la libertad en la Unidad Carcelaria N° 4 de la Provincia de Salta",
     "autor": ["Observatorio de Violencia contra las Mujeres"],

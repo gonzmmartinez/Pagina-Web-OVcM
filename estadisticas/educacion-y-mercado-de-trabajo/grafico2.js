@@ -114,7 +114,7 @@ function crearGrafico2(categories_M, values_M, categories_V, values_V) {
         },
         xaxis: {
             title: {
-                text: "Matricula"
+                text: "Departamento"
             },
             labels: {
                 rotate: -90,

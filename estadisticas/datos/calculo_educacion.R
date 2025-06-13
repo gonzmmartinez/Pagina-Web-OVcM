@@ -24,12 +24,12 @@ Raw1 <- read_sheet(ss = planilla, sheet = "Docentes_en_actividad")
 
 # Matriculas por genero
 Data1 <- Raw0 %>%
-  mutate(Año = as.character(Año)) %>%
-  arrange(Año, Matricula_ord, Género)
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
+  arrange(AÃ±o, Matricula_ord, GÃ©nero)
 totalData1 <- Raw0 %>%
-  mutate(Año = as.character(Año)) %>%
-  arrange(Año, Matricula_ord, Género) %>%
-  group_by(Año, Matricula, Matricula_ord, Género) %>%
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
+  arrange(AÃ±o, Matricula_ord, GÃ©nero) %>%
+  group_by(AÃ±o, Matricula, Matricula_ord, GÃ©nero) %>%
   summarise(Frecuencia = sum(Frecuencia)) %>%
   ungroup %>%
   mutate(Departamento = "TODOS")
@@ -37,8 +37,8 @@ Data1 <- rbind(Data1, totalData1)
 
 # Docentes en actividad
 Data2 <- Raw1 %>%
-  mutate(Año = as.character(Año)) %>%
-  arrange(Año, Departamento, Género)
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
+  arrange(AÃ±o, Departamento, GÃ©nero)
 
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data1), path = paste0(dir, "/json/educacion_matriculas.json"))

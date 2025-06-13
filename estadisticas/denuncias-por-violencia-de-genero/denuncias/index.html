@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <link type="text/css" rel="stylesheet" href="../../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -8,9 +9,10 @@
     <title>Estadísticas | OVcM</title>
 
     <!-- Scripts -->
-    <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
-    <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
 <body>
@@ -28,7 +30,8 @@
     <div id="sidebar">
         <div class="sidebarDiv">
             <a href="https://ovcmsalta.gob.ar/estadisticas/">
-                <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1" class="logoIcon">
+                <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1"
+                    class="logoIcon">
             </a>
             <span class="logoText">Observatorio de Violencia contra las Mujeres</span>
         </div>
@@ -83,7 +86,7 @@
                 <li><a href="../../">Estadísticas</a></li>
                 <li><a href="../../denuncias-por-violencia-de-genero/">Denuncias por violencia de género</a></li>
                 <li class="active">Denuncias registradas por la OVFG</li>
-            </ul> 
+            </ul>
         </nav>
 
         <div class="titleContainer">
@@ -103,14 +106,20 @@
 
         <!-- Contenedor de botones -->
         <nav class="indicador-container">
-            <button class="indicadorButton active" onclick="showChart('chart1')">Evolución de las denuncias ingresadas</button>
+            <button class="indicadorButton active" onclick="showChart('chart1')">Evolución de las denuncias
+                ingresadas</button>
             <button class="indicadorButton" onclick="showChart('chart2')">Modalidades de violencia</button>
             <button class="indicadorButton" onclick="showChart('chart3')">Tipos de violencia</button>
-            <button class="indicadorButton" onclick="showChart('chart4')">Vínculo con la persona que ejerció la agresión</button>
-            <button class="indicadorButton" onclick="showChart('chart5')">Proporción de género de las personas que realizaron las denuncias</button>
-            <button class="indicadorButton" onclick="showChart('chart6')">Proporción de género de las personas que resultaron denunciadas</button>
-            <button class="indicadorButton" onclick="showChart('chart7')">Edades de las personas que realizaron las denuncias</button>
-            <button class="indicadorButton" onclick="showChart('chart8')">Edades de las personas que resultaron denunciadas</button>
+            <button class="indicadorButton" onclick="showChart('chart4')">Vínculo con la persona que ejerció la
+                agresión</button>
+            <button class="indicadorButton" onclick="showChart('chart5')">Proporción de género de las personas que
+                realizaron las denuncias</button>
+            <button class="indicadorButton" onclick="showChart('chart6')">Proporción de género de las personas que
+                resultaron denunciadas</button>
+            <button class="indicadorButton" onclick="showChart('chart7')">Edades de las personas que realizaron las
+                denuncias</button>
+            <button class="indicadorButton" onclick="showChart('chart8')">Edades de las personas que resultaron
+                denunciadas</button>
         </nav>
 
         <br>
@@ -120,22 +129,23 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Evolución de la cantidad de denuncias registradas por OVFG</strong></span>
+                    <span style="font-size:20px"><strong>Evolución de la cantidad de denuncias registradas por
+                            OVFG</strong></span>
                     <br>
                     <span style="font-size:15px"><i>Por trimestre en cada año</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico1" style="width: 100%;"></div> 
-        
+            <div id="grafico1" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
                     <strong>FUENTE</strong>: Oficina de Violencia Familiar y de Género. Corte de Justicia de Salta.
                 </p>
             </div>
-        
+
             <!-- Listas desplegables -->
             <div class="selectContainer">
                 <p>
@@ -156,15 +166,16 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en OVFG</strong></span>
+                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en
+                            OVFG</strong></span>
                     <br>
                     <span style="font-size:15px"><i>Por modalidad de violencia</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico2" style="width: 100%;"></div> 
-        
+            <div id="grafico2" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
@@ -187,21 +198,22 @@
                 </select>
             </div>
         </div>
-          
+
         <div id="chart3" class="chartContent">
 
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en OVFG</strong></span>
+                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en
+                            OVFG</strong></span>
                     <br>
                     <span style="font-size:15px"><i>Por tipo de violencia</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico3" style="width: 100%;"></div> 
-        
+            <div id="grafico3" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
@@ -230,15 +242,16 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en OVFG</strong></span>
+                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en
+                            OVFG</strong></span>
                     <br>
                     <span style="font-size:15px"><i>Por vínculo con la persona que realizó la agresión</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico4" style="width: 100%;"></div> 
-        
+            <div id="grafico4" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
@@ -263,15 +276,17 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en OVFG</strong></span>
+                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en
+                            OVFG</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Proporción de género de las personas que realizaron las denuncias</i></span>
+                    <span style="font-size:15px"><i>Proporción de género de las personas que realizaron las
+                            denuncias</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico5" style="width: 100%;"></div> 
-        
+            <div id="grafico5" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
@@ -300,15 +315,17 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en OVFG</strong></span>
+                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en
+                            OVFG</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Proporción de género de las personas que resultaron denunciadas</i></span>
+                    <span style="font-size:15px"><i>Proporción de género de las personas que resultaron
+                            denunciadas</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico6" style="width: 100%;"></div> 
-        
+            <div id="grafico6" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
@@ -337,15 +354,16 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en OVFG</strong></span>
+                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en
+                            OVFG</strong></span>
                     <br>
                     <span style="font-size:15px"><i>Edades de las personas que realizaron las denuncias</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico7" style="width: 100%;"></div> 
-        
+            <div id="grafico7" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
@@ -374,14 +392,15 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en OVFG</strong></span>
+                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en
+                            OVFG</strong></span>
                     <br>
                     <span style="font-size:15px"><i>Edades de las personas que resultaron denunciadas</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico8" style="width: 100%;"></div> 
+            <div id="grafico8" style="width: 100%;"></div>
 
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
@@ -420,18 +439,19 @@
 
             <h3>Institución o entidad que genera el registro</h3>
             <p>
-                <ul>
-                    <li>Oficina de Violencia Familiar y de Género - Corte de Justicia de Salta</li>
-                </ul>
+            <ul>
+                <li>Oficina de Violencia Familiar y de Género - Corte de Justicia de Salta</li>
+            </ul>
             </p>
 
             <h3>¿Qué se registra?</h3>
             <p>
-                <ul>
-                    <li>Denuncias por violencia de género que son remitidas a los Juzgados de Violencia Familiar y de Género</li>
-                    <li>Personas que realizan denuncias por violencia de género</li>
-                    <li>Personas que son denunciadas por violencia de género</li>
-                </ul>
+            <ul>
+                <li>Denuncias por violencia de género que son remitidas a los Juzgados de Violencia Familiar y de Género
+                </li>
+                <li>Personas que realizan denuncias por violencia de género</li>
+                <li>Personas que son denunciadas por violencia de género</li>
+            </ul>
             </p>
 
             <h3>¿Qué competencias tienen los Juzgados de Violencia Familiar y de Género?</h3>
@@ -441,38 +461,91 @@
 
             <h3>¿Qué definiciones se utilizan en el registro?</h3>
             <p>
-                <ul>
-                    <li><strong>Distrito judicial</strong>: división jurisdiccional por distritos del Poder Judicial de Salta.</li>
+            <ul>
+                <li><strong>Distrito judicial</strong>: división jurisdiccional por distritos del Poder Judicial de
+                    Salta.</li>
+                <br>
+                <li><strong>Violencia contra las mujeres</strong>: ”(…) toda conducta, acción u omisión, que de manera
+                    directa o indirecta, tanto en el ámbito público como en el privado, basada en una relación desigual
+                    de poder, afecte su vida, libertad, dignidad, integridad física, sicológica, sexual, económica o
+                    patrimonial, como así también su seguridad personal. Quedan comprendidas las perpetradas desde el
+                    Estado o por sus agentes.” (Ley Nº26.485)</li>
+                <br>
+                <li><strong>Tipos de violencia</strong> (Ley Nº26.485):
                     <br>
-                    <li><strong>Violencia contra las mujeres</strong>:  ”(…) toda conducta, acción u omisión, que de manera directa o indirecta, tanto en el ámbito público como en el privado, basada en una relación desigual de poder, afecte su vida, libertad, dignidad, integridad física, sicológica, sexual, económica o patrimonial, como así también su seguridad personal. Quedan comprendidas las perpetradas desde el Estado o por sus agentes.” (Ley Nº26.485)</li>
+                    <ol type="a">
+                        <li><i>Física</i>: La que se emplea contra el cuerpo de la mujer produciendo dolor, daño o
+                            riesgo de producirlo y cualquier otra forma de maltrato agresión que afecte su integridad
+                            física.</li>
+                        <li><i>Psicológica</i>: La que causa daño emocional y disminución de la autoestima o perjudica y
+                            perturba el pleno desarrollo personal o que busca degradar o controlar sus acciones,
+                            comportamientos, creencias y decisiones, mediante amenaza, acoso, hostigamiento,
+                            restricción, humillación, deshonra, descrédito, manipulación aislamiento. Incluye también la
+                            culpabilización, vigilancia constante, exigencia de obediencia sumisión, coerción verbal,
+                            persecución, insulto, indiferencia, abandono, celos excesivos, chantaje, ridiculización,
+                            explotación y limitación del derecho de circulación o cualquier otro medio que cause
+                            perjuicio a su salud psicológica y a la autodeterminación.</li>
+                        <li><i>Sexual</i>: Cualquier acción que implique la vulneración en todas sus formas, con o sin
+                            acceso genital, del derecho de la mujer de decidir voluntariamente acerca de su vida sexual
+                            o reproductiva a través de amenazas, coerción, uso de la fuerza o intimidación, incluyendo
+                            la violación dentro del matrimonio o de otras relaciones vinculares o de parentesco, exista
+                            o no convivencia, así como la prostitución forzada, explotación, esclavitud, acoso, abuso
+                            sexual y trata de mujeres.</li>
+                        <li><i>Económica y patrimonial</i>: La que se dirige a ocasionar un menoscabo en los recursos
+                            económicos o patrimoniales de la mujer.</li>
+                        <li><i>Simbólica</i>: La que a través de patrones estereotipados, mensajes, valores, íconos o
+                            signos transmita y reproduzca dominación, desigualdad y discriminación en las relaciones
+                            sociales, naturalizando la subordinación de la mujer en la sociedad.</li>
+                    </ol>
+                </li>
+                <br>
+                <li><strong>Modalidades de violencia</strong> (Ley Nº26.485): ámbitos en los que se desarrolla la
+                    violencia.
                     <br>
-                    <li><strong>Tipos de violencia</strong> (Ley Nº26.485):
-                        <br>
-                        <ol type="a">
-                            <li><i>Física</i>: La que se emplea contra el cuerpo de la mujer produciendo dolor, daño o riesgo de producirlo y cualquier otra forma de maltrato agresión que afecte su integridad física.</li>
-                            <li><i>Psicológica</i>: La que causa daño emocional y disminución de la autoestima o perjudica y perturba el pleno desarrollo personal o que busca degradar o controlar sus acciones, comportamientos, creencias y decisiones, mediante amenaza, acoso, hostigamiento, restricción, humillación, deshonra, descrédito, manipulación aislamiento. Incluye también la culpabilización, vigilancia constante, exigencia de obediencia sumisión, coerción verbal, persecución, insulto, indiferencia, abandono, celos excesivos, chantaje, ridiculización, explotación y limitación del derecho de circulación o cualquier otro medio que cause perjuicio a su salud psicológica y a la autodeterminación.</li>
-                            <li><i>Sexual</i>: Cualquier acción que implique la vulneración en todas sus formas, con o sin acceso genital, del derecho de la mujer de decidir voluntariamente acerca de su vida sexual o reproductiva a través de amenazas, coerción, uso de la fuerza o intimidación, incluyendo la violación dentro del matrimonio o de otras relaciones vinculares o de parentesco, exista o no convivencia, así como la prostitución forzada, explotación, esclavitud, acoso, abuso sexual y trata de mujeres.</li>
-                            <li><i>Económica y patrimonial</i>: La que se dirige a ocasionar un menoscabo en los recursos económicos o patrimoniales de la mujer.</li>
-                            <li><i>Simbólica</i>: La que a través de patrones estereotipados, mensajes, valores, íconos o signos transmita y reproduzca dominación, desigualdad y discriminación en las relaciones sociales, naturalizando la subordinación de la mujer en la sociedad.</li>
-                        </ol>
-                    </li>
-                    <br>
-                    <li><strong>Modalidades de violencia</strong> (Ley Nº26.485): ámbitos en los que se desarrolla la violencia.
-                        <br>
-                        <ol type="a">
-                            <li><i>Violencia doméstica</i>: aquella ejercida contra las mujeres por un integrante del grupo familiar, independientemente del espacio físico donde ésta ocurra, que dañe la dignidad, el bienestar, la integridad física, psicológica, sexual, económica o patrimonial, la libertad, comprendiendo la libertad reproductiva y el derecho al pleno desarrollo de las mujeres. Se entiende por grupo familiar el originado en el parentesco sea por consanguinidad o por afinidad, el matrimonio, las uniones de hecho y las parejas o noviazgos. Incluye las relaciones vigentes o finalizadas, no siendo requisito la convivencia.</li>
-                            <li><i>Violencia institucional</i>: aquella realizada por las/los funcionarias/os, profesionales, personal y agentes pertenecientes a cualquier órgano, ente o institución pública, que tenga como fin retardar, obstaculizar o impedir que las mujeres tengan acceso a las políticas públicas y ejerzan los derechos previstos en esta ley.
-                                <br>
-                                Quedan comprendidas, además, las que se ejercen en los partidos políticos, sindicatos, organizaciones empresariales, deportivas y de la sociedad civil</li>
-                            <li><i>Violencia laboral</i>: aquella que discrimina a las mujeres en los ámbitos de trabajo públicos o privados y que obstaculiza su acceso al empleo, contratación, ascenso, estabilidad o permanencia en el mismo, exigiendo requisitos sobre estado civil, maternidad, edad, apariencia física o la realización de test de embarazo. Constituye también violencia contra las mujeres en el ámbito laboral quebrantar el derecho de igual remuneración por igual tarea o función. Asimismo, incluye el hostigamiento psicológico en forma sistemática sobre una determinada trabajadora con el fin de lograr su exclusión labora</li>
-                            <li><i>Violencia contra la libertad reproductiva</i>: aquella que vulnere el derecho de las mujeres a decidir libre y responsablemente el número de embarazos o el intervalo entre los nacimientos, de conformidad con la Ley Nº25.673 de Creación del Programa Nacional de Salud Sexual y Procreación Responsable</li>
-                            <li><i>Violencia obstétrica</i>: aquella que ejerce el personal de salud sobre el cuerpo y los procesos reproductivos de las mujeres, expresada en un trato deshumanizado, un abuso de medicalización y patologización de los procesos naturales, de conformidad con la Ley Nº25.929.</li>
-                            <li><i>Violencia mediática</i>: contra las mujeres: aquella publicación o difusión de mensajes e imágenes estereotipados a través de cualquier medio masivo de comunicación, que de manera directa o indirecta promueva la explotación de mujeres o sus imágenes, injurie, difame, discrimine, deshonre, humille o atente contra la dignidad de las mujeres, como así también la utilización de mujeres, adolescentes y niñas en mensajes e imágenes pornográficas, legitimando la desigualdad de trato o construya patrones socioculturales reproductores de la desigualdad o generadores de violencia contra las mujeres.</li>
-                        </ol>
-                    </li>
-                    <br>
-                    <li><strong>Vínculo con el agresor</strong>:  existencia o no de relación y su tipo entre la persona que realiza la denuncia y el denunciado.</li>
-                </ul>
+                    <ol type="a">
+                        <li><i>Violencia doméstica</i>: aquella ejercida contra las mujeres por un integrante del grupo
+                            familiar, independientemente del espacio físico donde ésta ocurra, que dañe la dignidad, el
+                            bienestar, la integridad física, psicológica, sexual, económica o patrimonial, la libertad,
+                            comprendiendo la libertad reproductiva y el derecho al pleno desarrollo de las mujeres. Se
+                            entiende por grupo familiar el originado en el parentesco sea por consanguinidad o por
+                            afinidad, el matrimonio, las uniones de hecho y las parejas o noviazgos. Incluye las
+                            relaciones vigentes o finalizadas, no siendo requisito la convivencia.</li>
+                        <li><i>Violencia institucional</i>: aquella realizada por las/los funcionarias/os,
+                            profesionales, personal y agentes pertenecientes a cualquier órgano, ente o institución
+                            pública, que tenga como fin retardar, obstaculizar o impedir que las mujeres tengan acceso a
+                            las políticas públicas y ejerzan los derechos previstos en esta ley.
+                            <br>
+                            Quedan comprendidas, además, las que se ejercen en los partidos políticos, sindicatos,
+                            organizaciones empresariales, deportivas y de la sociedad civil
+                        </li>
+                        <li><i>Violencia laboral</i>: aquella que discrimina a las mujeres en los ámbitos de trabajo
+                            públicos o privados y que obstaculiza su acceso al empleo, contratación, ascenso,
+                            estabilidad o permanencia en el mismo, exigiendo requisitos sobre estado civil, maternidad,
+                            edad, apariencia física o la realización de test de embarazo. Constituye también violencia
+                            contra las mujeres en el ámbito laboral quebrantar el derecho de igual remuneración por
+                            igual tarea o función. Asimismo, incluye el hostigamiento psicológico en forma sistemática
+                            sobre una determinada trabajadora con el fin de lograr su exclusión labora</li>
+                        <li><i>Violencia contra la libertad reproductiva</i>: aquella que vulnere el derecho de las
+                            mujeres a decidir libre y responsablemente el número de embarazos o el intervalo entre los
+                            nacimientos, de conformidad con la Ley Nº25.673 de Creación del Programa Nacional de Salud
+                            Sexual y Procreación Responsable</li>
+                        <li><i>Violencia obstétrica</i>: aquella que ejerce el personal de salud sobre el cuerpo y los
+                            procesos reproductivos de las mujeres, expresada en un trato deshumanizado, un abuso de
+                            medicalización y patologización de los procesos naturales, de conformidad con la Ley
+                            Nº25.929.</li>
+                        <li><i>Violencia mediática</i>: contra las mujeres: aquella publicación o difusión de mensajes e
+                            imágenes estereotipados a través de cualquier medio masivo de comunicación, que de manera
+                            directa o indirecta promueva la explotación de mujeres o sus imágenes, injurie, difame,
+                            discrimine, deshonre, humille o atente contra la dignidad de las mujeres, como así también
+                            la utilización de mujeres, adolescentes y niñas en mensajes e imágenes pornográficas,
+                            legitimando la desigualdad de trato o construya patrones socioculturales reproductores de la
+                            desigualdad o generadores de violencia contra las mujeres.</li>
+                    </ol>
+                </li>
+                <br>
+                <li><strong>Vínculo con el agresor</strong>: existencia o no de relación y su tipo entre la persona que
+                    realiza la denuncia y el denunciado.</li>
+            </ul>
             </p>
         </div>
 
@@ -494,4 +567,5 @@
     <script type="text/javascript" src="./grafico7.js"></script>
     <script type="text/javascript" src="./grafico8.js"></script>
 </body>
+
 </html>

@@ -23,11 +23,11 @@ Raw1 <- read_sheet(ss = planilla, sheet = "Mortalidad_materna")
 
 # Mortalidad materna por rango etario
 Data1 <- Raw1 %>%
-  mutate(AÃ±o = as.character(AÃ±o)) %>%
-  group_by(AÃ±o, Rango_etario, Ord_rango_etario) %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año, Rango_etario, Ord_rango_etario) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
   ungroup %>%
-  arrange(AÃ±o, Ord_rango_etario)
+  arrange(Año, Ord_rango_etario)
 
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data1), path = paste0(dir, "/json/salud_mm.json"))

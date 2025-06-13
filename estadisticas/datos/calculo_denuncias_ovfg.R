@@ -33,14 +33,18 @@ Data1 <- Raw1 %>%
   group_by(Año, Distrito, Trimestre) %>%
   summarise(Cantidad = sum(Frecuencia)) %>%
   ungroup %>%
-  mutate(year_trimestre = paste0(Trimestre, "-", str_sub(Año, 3,4)))
+  mutate(Semestre = ifelse(Trimestre %in% c(1,2), 1, 2)) %>%
+  mutate(year_trimestre = paste0(Trimestre, "-", str_sub(Año, 3,4))) %>%
+  mutate(year_semestre = paste0(Semestre, "-", str_sub(Año, 3,4)))
 totalData1 <- Raw1 %>%
   filter(Tipo %ni% c("No configura VFG", "Consultas")) %>%
   group_by(Año, Trimestre) %>%
   summarise(Cantidad = sum(Frecuencia)) %>%
   ungroup %>%
+  mutate(Semestre = ifelse(Trimestre %in% c(1,2), 1, 2)) %>%
   mutate(Distrito = "TODOS") %>%
-  mutate(year_trimestre = paste0(Trimestre, "-", str_sub(Año, 3,4)))
+  mutate(year_trimestre = paste0(Trimestre, "-", str_sub(Año, 3,4))) %>%
+  mutate(year_semestre = paste0(Semestre, "-", str_sub(Año, 3,4)))
 Data1 <- rbind(Data1, totalData1)
 
 # Modalidad
