@@ -98,7 +98,7 @@ function iniciar2() {
             const datosParseados2 = parsearDatos(data2);
 
             // Filtrar datos
-            const anioSeleccionado2 = "2024";
+            const anioSeleccionado2 = "2025";
             const datosFiltrados2 = filtrarPorAnio(datosParseados2, anioSeleccionado2);
 
             // Procesar los datos filtrados

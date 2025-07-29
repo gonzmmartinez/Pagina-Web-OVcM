@@ -22,7 +22,8 @@ Raw2 <- read_sheet(ss = planilla, sheet = "SUD_db_completa")
 
 ######### TRANSFORMAR DATOS #########
 # Tipo de denuncias
-Data1 <- Raw1 %>%
+Data1 <- Raw2 %>%
+  filter(Tipo != "Penal") %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Año, Tipo) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
@@ -33,7 +34,8 @@ Data1 <- Raw1 %>%
                           Tipo == "No penal" ~ "Violencia no penal"))
 
 # Evolucion
-Data2 <- Raw1 %>%
+Data2 <- Raw2 %>%
+  filter(Tipo %in% c("Género", "Familiar", "No penal")) %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Año, Mes, Mes_ord) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
@@ -41,7 +43,8 @@ Data2 <- Raw1 %>%
   ungroup
 
 # Por boca de denuncia
-Data3 <- Raw1 %>%
+Data3 <- Raw2 %>%
+  filter(Tipo %in% c("Género", "Familiar", "No penal")) %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Año, Organismo) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
