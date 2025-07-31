@@ -11,6 +11,7 @@ library(stringr)
 library(readr)
 library(googlesheets4)
 library(janitor)
+library(lubridate)
 
 ######### LEER DATOS #########
 dir <- dirname(rstudioapi::getActiveDocumentContext()$path)
@@ -23,50 +24,52 @@ Raw3 <- read_sheet(ss=planilla, sheet="Hora")
 
 
 ######### TRANSFORMAR DATOS #########
-# Evoluci�n
+# Evolución
 Data1 <- Raw1 %>%
   filter(Tipo != "Abuso sexual", Mes_num <= 6) %>%
-  mutate(A�o = as.character(A�o)) %>%
-  group_by(A�o) %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
-  arrange(A�o)
+  arrange(Año)
 
 # Por mes
 Data2 <- Raw1 %>%
   filter(Tipo != "Abuso sexual") %>%
-  mutate(A�o = as.character(A�o)) %>%
-  group_by(A�o, Mes, Mes_num) %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año, Mes, Mes_num) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
-  arrange(A�o, Mes_num)
+  arrange(Año, Mes_num) %>%
+  ungroup %>%
+  mutate(Fecha = make_date(Año, Mes_num, 1))
 
 # Tipo de violencia y accion
 Data3 <- Raw1 %>%
   filter(Tipo != "Abuso sexual") %>%
-  mutate(A�o = as.character(A�o)) %>%
-  group_by(A�o, Accion, Tipo) %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año, Accion, Tipo) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
   ungroup %>%
   mutate(Accion_ord = case_when(Accion == "Llamadas" ~ 1,
                                 Accion == "Intervenciones" ~ 2,
                                 Accion == "Intervenciones SAMEC" ~ 3)) %>%
-  arrange(A�o, Accion_ord)
+  arrange(Año, Accion_ord)
 
 # Requerimientos por dia
 Data4 <- Raw2 %>%
   filter(Tipo != "Abuso sexual") %>%
-  mutate(A�o = as.character(A�o)) %>%
-  group_by(A�o, Mes, Mes_num, Dia, Dia_num) %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año, Mes, Mes_num, Dia, Dia_num) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
-  arrange(A�o, desc(Mes_num), Dia_num)
+  arrange(Año, desc(Mes_num), Dia_num)
 
 # Requerimientos por hora
 Data5 <- Raw3 %>%
   filter(Tipo != "Abuso sexual") %>%
-  mutate(A�o = as.character(A�o),
+  mutate(Año = as.character(Año),
          Hora = formatC(Hora, width=2, flag="0")) %>%
-  group_by(A�o, Mes, Mes_num, Hora) %>%
+  group_by(Año, Mes, Mes_num, Hora) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
-  arrange(A�o, desc(Mes_num), Hora)
+  arrange(Año, desc(Mes_num), Hora)
 
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data1), path = paste0(dir, "/json/denuncias_911_evolucion.json"))

@@ -20,7 +20,7 @@ function procesarDatos4(data) {
         data: mesesAgrupados[mes]
     }));
 
-    return series ;
+    return series;
 }
 
 // FILTRAR DATOS
@@ -30,7 +30,7 @@ function filtrarPorAnio(data, year) {
 
 // INICIALIZACIÓN
 function iniciar4() {
-  cargarDatos(archivo4) // Cargar los datos del JSON
+    cargarDatos(archivo4) // Cargar los datos del JSON
         .then(data4 => {
             // Parsear los datos
             const parsedData4 = parsearDatos(data4);
@@ -52,41 +52,60 @@ function iniciar4() {
 };
 
 function actualizarGrafico4() {
-  cargarDatos(archivo4)
-      .then(data4 => {
-        const parsedData4 = parsearDatos(data4);
+    cargarDatos(archivo4)
+        .then(data4 => {
+            const parsedData4 = parsearDatos(data4);
 
-        // Filtrar por el distrito seleccionado
-        const anioSeleccionado4 = document.getElementById("Anio4").value;
-        const datosFiltrados4 = filtrarPorAnio(parsedData4, anioSeleccionado4);
+            // Filtrar por el distrito seleccionado
+            const anioSeleccionado4 = document.getElementById("Anio4").value;
+            const datosFiltrados4 = filtrarPorAnio(parsedData4, anioSeleccionado4);
 
-        // Procesar datos
-        const series4  = procesarDatos4(datosFiltrados4);
+            // Procesar datos
+            const series4 = procesarDatos4(datosFiltrados4);
 
-        // Actualizar las series y categorías con animación
-        window.chart4.updateOptions({
-            ...window.chart4.w.config, // Copia las opciones actuales
-            series: [...series4]
+            // Actualizar las series y categorías con animación
+            window.chart4.updateOptions({
+                ...window.chart4.w.config, // Copia las opciones actuales
+                series: [...series4]
+            })
         })
-      })
-      .catch(error => {
-          document.getElementById("grafico4").textContent = `Error: ${error.message}`;
-      });
+        .catch(error => {
+            document.getElementById("grafico4").textContent = `Error: ${error.message}`;
+        });
 };
 
 // 5. Función para configurar y renderizar el gráfico
 function crearGrafico4(series) {
+
+    // Rangos
+    const min = 1000;
+    const max = 6000;
+    const colores = ["#e6bc75", "#e7a071", "#e18675", "#d36f7e", "#bc5e87",
+        "#9c538f", "#754c91", "#45478c", "#42264d", "#23101c"]
+
+    const numDivisiones = 10;
+    const paso = Math.floor((max - min) / numDivisiones);
+
+    const ranges = Array.from({ length: numDivisiones }, (_, i) => {
+        const from = min + i * paso;
+        const to = i === numDivisiones - 1 ? max - 1 : from + paso - 1;
+        return {
+            from,
+            to,
+            color: colores[i]
+        };
+    });
+
     return new ApexCharts(document.querySelector("#grafico4"), {
         chart: {
             type: 'heatmap',
             height: '500px',
             toolbar: {
-              show: false
+                show: false
             }
         },
         series: series,
         title: {},
-        colors: ["#45488d"],
         yaxis: {
             title: {
                 text: "Mes"
@@ -101,13 +120,29 @@ function crearGrafico4(series) {
             enabled: true,
             followCursor: true,
             y: {
-                formatter: function(value) {
+                formatter: function (value) {
                     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " requerimientos";
                 }
             }
         },
         legend: {
-            enabled: true
+            show: false,
+            position: 'right',
+            horizontalAlign: 'center',
+            fontSize: '12px',
+            fontWeight: 300,
+            itemMargin: {
+                horizontal: 4,
+                vertical: 0
+            },
+            markers: {
+                size: 6,
+                strokeWidth: 0
+            },
+            labels: {
+                colors: '#555', // o tu color base
+                useSeriesColors: false
+            }
         },
         dataLabels: {
             enabled: true,
@@ -115,16 +150,18 @@ function crearGrafico4(series) {
             style: {
                 fontSize: '0.75rem'
             },
-            formatter: function(value) {
+            formatter: function (value) {
                 return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
             }
         },
         plotOptions: {
             heatmap: {
+                enableShades: false,
+                radius: 0,
+                useFillColorAsStroke: true,
                 colorScale: {
-                  min: 0,
-                  max: 1000
-                },        
+                    ranges: ranges
+                },
             }
         }
     });
