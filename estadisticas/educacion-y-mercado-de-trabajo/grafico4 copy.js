@@ -40,10 +40,14 @@ function iniciar4() {
             // Parsear los datos
             const parsedData4 = parsearDatos(data4);
 
+            // Filtrar por el distrito seleccionado
+            const anioSeleccionado4 = "2024";
+            const datosFiltrados4 = filtrarPorAnio(parsedData4, anioSeleccionado4);
+
             actualizarSubtitulo4();
 
             // Procesar los datos filtrados
-            const { categories_M_4, values_M_4, categories_V_4, values_V_4 } = procesarDatos4(parsedData4);
+            const { categories_M_4, values_M_4, categories_V_4, values_V_4 } = procesarDatos4(datosFiltrados4);
 
             // Crear y renderizar el gráfico
             window.chart4 = crearGrafico4(categories_M_4, values_M_4, categories_V_4, values_V_4);
@@ -95,8 +99,7 @@ function crearGrafico4(categories_M, values_M, categories_V, values_V) {
             type: 'line',
             height: '350px',
             toolbar: {
-                show: false,
-                autoSelected: 'pan'
+                show: false
             }
         },
         series: [{

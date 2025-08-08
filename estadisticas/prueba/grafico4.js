@@ -35,24 +35,31 @@ function filtrarPorAnio(data, year) {
 
 // INICIALIZACIÓN
 function iniciar4() {
-    cargarDatos(archivo4) // Cargar los datos del JSON
+    return cargarDatos(archivo4)
         .then(data4 => {
-            // Parsear los datos
             const parsedData4 = parsearDatos(data4);
 
-            actualizarSubtitulo4();
-
-            // Procesar los datos filtrados
             const { categories_M_4, values_M_4, categories_V_4, values_V_4 } = procesarDatos4(parsedData4);
 
-            // Crear y renderizar el gráfico
-            window.chart4 = crearGrafico4(categories_M_4, values_M_4, categories_V_4, values_V_4);
-            window.chart4.render();
+            if (window.chart4) {
+                try { window.chart4.destroy(); } catch (e) { }
+            }
+
+            const contenedor = document.querySelector("#grafico4");
+            if (contenedor) contenedor.innerHTML = "";
+
+            const chart = crearGrafico4(categories_M_4, values_M_4, categories_V_4, values_V_4);
+            chart.render();
+            window.chart4 = chart;
+
+            return chart;
         })
         .catch(error4 => {
             document.getElementById("grafico4").textContent = `Error: ${error4.message}`;
+            return null;
         });
-};
+}
+
 
 function actualizarGrafico4() {
     cargarDatos(archivo4)
@@ -62,8 +69,6 @@ function actualizarGrafico4() {
             // Filtrar por el distrito seleccionado
             const anioSeleccionado4 = document.getElementById("Anio4").value;
             const datosFiltrados4 = filtrarPorAnio(parsedData4, anioSeleccionado4);
-
-            actualizarSubtitulo4(); // Actualizá también el subtítulo
 
             // Procesar datos
             const { categories_M_4, values_M_4, categories_V_4, values_V_4 } = procesarDatos4(datosFiltrados4);
@@ -121,15 +126,7 @@ function crearGrafico4(categories_M, values_M, categories_V, values_V) {
             title: {
                 text: "Trimestre"
             },
-            categories: categories_M,
-            labels: {
-                formatter: function (value) {
-                    if (value == null) {
-                        return ''; // Manejo de valores no válidos
-                    }
-                    return value + "° T."
-                }
-            }
+            categories: categories_M
         },
         tooltip: {
             enabled: true,
