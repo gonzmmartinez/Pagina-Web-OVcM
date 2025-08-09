@@ -49,6 +49,8 @@ function iniciar1() {
 
       const { categories_M_1, values_M_1, categories_V_1, values_V_1 } = procesarDatos1(datosFiltrados1_2);
 
+      actualizarSubtitulo1();
+
       if (window.chart1) {
         try { window.chart1.destroy(); } catch(e) {}
       }
@@ -67,7 +69,7 @@ function iniciar1() {
     });
 }
 
-
+// ACTUALIZACIÓN
 function actualizarGrafico1() {
     cargarDatos(archivo1)
         .then(data1 => {
@@ -95,7 +97,15 @@ function actualizarGrafico1() {
         });
 }
 
-// Configurar las opciones
+function actualizarSubtitulo1() {
+    const anioSeleccionado = document.getElementById("Anio1").value;
+    const deptoSeleccionado = document.getElementById("Depto1").value;
+
+    const subtitulo = document.getElementById("subtitulo1");
+    subtitulo.innerHTML = `<i>Provincia de Salta. Año ${anioSeleccionado}. Departamento: ${deptoSeleccionado}</i>`;
+}
+
+// CONFIGURACIÓN
 function crearGrafico1(categories_M, values_M, categories_V, values_V) {
     return new ApexCharts(document.querySelector("#grafico1"), {
         chart: {

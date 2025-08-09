@@ -16,9 +16,6 @@ async function cargarGraficos() {
   }
 }
 
-
-
-
 function renderGraficos() {
   const contenedorBotones = document.getElementById("indicador-container");
   const contenedorGraficos = document.getElementById("graficos-container");
@@ -28,7 +25,7 @@ function renderGraficos() {
     const btn = document.createElement("button");
     btn.className = "indicadorButton" + (index === 0 ? " active" : "");
     btn.textContent = grafico.titulo;
-    btn.onclick = () => showChart(grafico.id); // <-- PASAMOS EL ID, no "chartX"
+    btn.onclick = () => showChart(grafico.id);
     contenedorBotones.appendChild(btn);
 
     // Crear sección
@@ -40,7 +37,7 @@ function renderGraficos() {
       <div style="text-align: left;">
         <p>
           <span style="font-size:20px"><strong>${grafico.titulo}</strong></span><br>
-          <span style="font-size:15px"><i>${grafico.subtitulo}</i></span>
+          <span  id="subtitulo${grafico.id}" style="font-size:15px"><i>${grafico.subtitulo}</i></span>
         </p>
       </div>
       <div id="grafico${grafico.id}" style="width: 100%;"></div>

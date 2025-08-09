@@ -1,8 +1,8 @@
 [
   {
     "id": "1",
-    "titulo": "Matriculas educativas en la Provincia",
-    "subtitulo": "Por género",
+    "titulo": "Proporción de género en las matriculas educativas",
+    "subtitulo": "Provincia de Salta.",
     "fuente": "Ministerio de Educación, Cultura, Ciencia y Tecnología. Subsecretaría de Desarrollo Curricular e Innovación Pedagógica. Departamento de Estadística.",
     "selects": [
       {
