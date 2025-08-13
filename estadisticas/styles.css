@@ -384,7 +384,7 @@ select {
 .chartContent.active {
     display: block; /* Temporalmente cambia a block para depurar */
     background-color: #fafafa;
-    width: 70%;
+    width: 85%;
     min-height: 200px;
     margin: auto;
     padding: 2%;
