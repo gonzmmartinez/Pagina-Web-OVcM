@@ -100,7 +100,12 @@ function crearGrafico4(categories_M, values_M, categories_V, values_V) {
             height: '350px',
             toolbar: {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 show: false
+=======
+                show: false,
+                autoSelected: 'pan',
+>>>>>>> Stashed changes
 =======
                 show: false,
                 autoSelected: 'pan',

@@ -53,10 +53,15 @@ function iniciar4() {
             const parsedData4 = parsearDatos(data4);
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             actualizarSubtitulo4();
 
             // Procesar los datos filtrados
             const { categories_M_4, values_M_4, categories_V_4, values_V_4 } = procesarDatos4(parsedData4);
+=======
+            // Procesar los datos filtrados
+            const { categories, values_M_4, values_V_4, groups } = procesarDatos4(parsedData4);
+>>>>>>> Stashed changes
 =======
             // Procesar los datos filtrados
             const { categories, values_M_4, values_V_4, groups } = procesarDatos4(parsedData4);
@@ -110,9 +115,12 @@ function crearGrafico4(categories, values_M_4, values_V_4, groups) {
             height: 350,
             toolbar: {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 show: false,
                 autoSelected: 'pan'
 =======
+=======
+>>>>>>> Stashed changes
                 show: true,
                 autoSelected: 'pan',
                 tools: {
@@ -128,6 +136,9 @@ function crearGrafico4(categories, values_M_4, values_V_4, groups) {
                 enabled: true,
                 type: 'x',       // zoom solo en eje X
                 autoScaleYaxis: true // opcional para ajustar el eje Y
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             }
         },
