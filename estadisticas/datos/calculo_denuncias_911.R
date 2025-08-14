@@ -22,10 +22,18 @@ Raw1 <- read_sheet(ss=planilla, sheet="Mes")
 Raw2 <- read_sheet(ss=planilla, sheet="Dia")
 Raw3 <- read_sheet(ss=planilla, sheet="Hora")
 
+######### DICCIONARIOS #########
+Dias <- data.frame(Dia = c("Lunes", "Martes", "Miércoles", "Jueves",
+                           "Viernes", "Sábado", "Domingo"),
+                   Dia_num = 1:7)
+Meses <- data.frame(Mes = c("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"),
+                    Mes_num = 1:12)
 
 ######### TRANSFORMAR DATOS #########
 # Evolución
 Data1 <- Raw1 %>%
+  left_join(Meses, by="Mes") %>%
   filter(Tipo != "Abuso sexual", Mes_num <= 6) %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Año) %>%
@@ -34,6 +42,7 @@ Data1 <- Raw1 %>%
 
 # Por mes
 Data2 <- Raw1 %>%
+  left_join(Meses, by="Mes") %>%
   filter(Tipo != "Abuso sexual") %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Año, Mes, Mes_num) %>%
@@ -56,6 +65,8 @@ Data3 <- Raw1 %>%
 
 # Requerimientos por dia
 Data4 <- Raw2 %>%
+  left_join(Meses, by="Mes") %>%
+  left_join(Dias, by="Dia") %>%
   filter(Tipo != "Abuso sexual") %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Año, Mes, Mes_num, Dia, Dia_num) %>%
@@ -64,6 +75,7 @@ Data4 <- Raw2 %>%
 
 # Requerimientos por hora
 Data5 <- Raw3 %>%
+  left_join(Meses, by="Mes") %>%
   filter(Tipo != "Abuso sexual") %>%
   mutate(Año = as.character(Año),
          Hora = formatC(Hora, width=2, flag="0")) %>%

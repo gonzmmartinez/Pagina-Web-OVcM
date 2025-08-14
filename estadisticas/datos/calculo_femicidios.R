@@ -45,7 +45,7 @@ Data3 <- Raw0 %>%
                                       Rango_etario == "Sin dato" ~ 6,)) %>%
   arrange(Ord_rango_etario)
 
-# V?nculo
+# Vínculo
 Data4 <- Raw0 %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Año, Vinculo) %>%

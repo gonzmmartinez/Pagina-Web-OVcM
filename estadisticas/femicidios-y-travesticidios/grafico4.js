@@ -4,7 +4,7 @@ const archivo4 = "../datos/json/femicidios_tasa_nacional.json";
 // PROCESAMIENTO
 function procesarDatos4(data) {
     return data.map(item => ({
-        name: item.Provincia_corto,
+        name: item.Provincia,
         value: item.Tasa
     }));
 }
@@ -26,7 +26,7 @@ function iniciar4() {
             const parsedData4 = parsearDatos(rawData4);
 
             // Paso 3: Filtrar o procesar los datos según la lógica específica
-            const anioSeleccionado4 = "2023"; // Puedes reemplazarlo por el valor dinámico de un selector
+            const anioSeleccionado4 = "2024"; // Puedes reemplazarlo por el valor dinámico de un selector
             const datosFiltrados4 = filtrarFemicidiosPorAnio(parsedData4, anioSeleccionado4);
 
             const datosProcesados4 = procesarDatos4(datosFiltrados4);

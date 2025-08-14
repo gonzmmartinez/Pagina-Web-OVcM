@@ -3,47 +3,35 @@ const archivo4 = "../datos/json/trabajo_actividad.json";
 
 // 4. Función para procesar los datos y agruparlos por Año-Trimestre
 function procesarDatos4(data4) {
-    const categoriasSet = new Set();
-    const valoresM = new Map();
-    const valoresV = new Map();
+    // Crear los arrays para las categorías y los valores de las barras
+    const categories_M_4 = [];
+    const values_M_4 = [];
+    const categories_V_4 = [];
+    const values_V_4 = [];
 
-    data4.forEach(item => {
-        // Clave única combinando trimestre y año corto, ejemplo: '1-20'
-        const key = item.year_trimestre ?? (item.Trimestre + "-" + item.Año.slice(-2));
-        categoriasSet.add(key);
+    // Filtrar los datos por género
+    const data_M = data4.filter(item => item.Género === "Mujeres");
+    const data_V = data4.filter(item => item.Género === "Varones");
 
-        if (item.Género === "Mujeres") valoresM.set(key, item.Tasa_Actividad);
-        else if (item.Género === "Varones") valoresV.set(key, item.Tasa_Actividad);
+    // Procesar los datos para mujeres
+    data_M.forEach(item => {
+        categories_M_4.push(item.Trimestre);  // Añadir year_trimestre al eje X
+        values_M_4.push(item.Tasa_Actividad);      // Añadir Tasa_actividad al eje Y
     });
 
-    // Ordenar categorías por año y trimestre
-    const categories = Array.from(categoriasSet).sort((a, b) => {
-        const [tA, yA] = a.split("-");
-        const [tB, yB] = b.split("-");
-        if (yA !== yB) return yA - yB;
-        return tA - tB;
+    // Procesar los datos para varones
+    data_V.forEach(item => {
+        categories_V_4.push(item.Trimestre);  // Añadir year_trimestre al eje X
+        values_V_4.push(item.Tasa_Actividad);      // Añadir Tasa_actividad al eje Y
     });
 
-    // Mapear valores para cada categoría
-    const values_M_4 = categories.map(cat => valoresM.get(cat) ?? null);
-    const values_V_4 = categories.map(cat => valoresV.get(cat) ?? null);
-
-    // Contar trimestres por año para grupos
-    const yearCounts = categories.reduce((acc, cat) => {
-        const year = cat.split("-")[1];
-        acc[year] = (acc[year] || 0) + 1;
-        return acc;
-    }, {});
-
-    // Crear grupos para ApexCharts
-    const groups = Object.entries(yearCounts).map(([year, count]) => ({
-        title: "20" + year,
-        cols: count
-    }));
-
-    return { categories, values_M_4, values_V_4, groups };
+    return { categories_M_4, values_M_4, categories_V_4, values_V_4 };
 }
 
+// FILTRAR DATOS
+function filtrarPorAnio(data, year) {
+    return data.filter(item => item.Año === year);
+};
 
 // INICIALIZACIÓN
 function iniciar4() {
@@ -52,24 +40,17 @@ function iniciar4() {
             // Parsear los datos
             const parsedData4 = parsearDatos(data4);
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+            // Filtrar por el distrito seleccionado
+            const anioSeleccionado4 = "2024";
+            const datosFiltrados4 = filtrarPorAnio(parsedData4, anioSeleccionado4);
+
             actualizarSubtitulo4();
 
             // Procesar los datos filtrados
-            const { categories_M_4, values_M_4, categories_V_4, values_V_4 } = procesarDatos4(parsedData4);
-=======
-            // Procesar los datos filtrados
-            const { categories, values_M_4, values_V_4, groups } = procesarDatos4(parsedData4);
->>>>>>> Stashed changes
-=======
-            // Procesar los datos filtrados
-            const { categories, values_M_4, values_V_4, groups } = procesarDatos4(parsedData4);
->>>>>>> Stashed changes
+            const { categories_M_4, values_M_4, categories_V_4, values_V_4 } = procesarDatos4(datosFiltrados4);
 
-            console.log(groups)
-
-            window.chart4 = crearGrafico4(categories, values_M_4, values_V_4, groups);
+            // Crear y renderizar el gráfico
+            window.chart4 = crearGrafico4(categories_M_4, values_M_4, categories_V_4, values_V_4);
             window.chart4.render();
         })
         .catch(error4 => {
@@ -82,19 +63,23 @@ function actualizarGrafico4() {
         .then(data4 => {
             const parsedData4 = parsearDatos(data4);
 
+            // Filtrar por el distrito seleccionado
+            const anioSeleccionado4 = document.getElementById("Anio4").value;
+            const datosFiltrados4 = filtrarPorAnio(parsedData4, anioSeleccionado4);
+
+            actualizarSubtitulo4(); // Actualizá también el subtítulo
+
             // Procesar datos
-            const { categories, values_M_4, values_V_4, groups } = procesarDatos4(parsedData4);
+            const { categories_M_4, values_M_4, categories_V_4, values_V_4 } = procesarDatos4(datosFiltrados4);
 
             // Actualizar las series y categorías con animación
             window.chart4.updateOptions({
-                ...window.chart4.w.config,
+                ...window.chart4.w.config, // Copia las opciones actuales
                 series: [{ data: [...values_M_4] }, { data: [...values_V_4] }],
                 xaxis: {
-                    categories: [...categories],
-                    group: { groups: [...groups] }
+                    categories: [...categories_M_4]
                 }
             });
-
         })
         .catch(error => {
             document.getElementById("grafico4").textContent = `Error: ${error.message}`;
@@ -108,64 +93,51 @@ function actualizarSubtitulo4() {
 }
 
 // 5. Función para configurar y renderizar el gráfico
-function crearGrafico4(categories, values_M_4, values_V_4, groups) {
+function crearGrafico4(categories_M, values_M, categories_V, values_V) {
     return new ApexCharts(document.querySelector("#grafico4"), {
         chart: {
-            type: 'bar',
-            height: 350,
+            type: 'line',
+            height: '350px',
             toolbar: {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
                 show: false,
-                autoSelected: 'pan'
-=======
-=======
->>>>>>> Stashed changes
-                show: true,
                 autoSelected: 'pan',
-                tools: {
-                    zoom: true,
-                    pan: true,
-                    zoomin: true,
-                    zoomout: true,
-                    reset: true,
-                    selection: false  // si querés desactivar la selección de área
-                }
-            },
-            zoom: {
-                enabled: true,
-                type: 'x',       // zoom solo en eje X
-                autoScaleYaxis: true // opcional para ajustar el eje Y
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
             }
         },
-        series: [
-            { name: 'Tasa Mujeres', data: values_M_4 },
-            { name: 'Tasa Varones', data: values_V_4 }
-        ],
+        series: [{
+            name: 'Tasa Mujeres',
+            type: 'line',
+            data: values_M
+        }, {
+            name: 'Tasa Varones',
+            type: 'line',
+            data: values_V
+        }],
+        title: {},
         colors: ["#45488d", "#e3753d"],
         yaxis: {
-            title: { text: "Tasa de actividad" },
+            title: {
+                text: "Tasa de actividad"
+            },
             min: 20,
             max: 80
         },
         xaxis: {
-            type: 'category',
-            categories: [...categories],
-            group: {
-                style: {
-                    fontSize: '12px',
-                    fontWeight: 700
-                },
-                groups: [...groups]
+            title: {
+                text: "Trimestre"
+            },
+            categories: categories_M,
+            labels: {
+                formatter: function (value) {
+                    if (value == null) {
+                        return ''; // Manejo de valores no válidos
+                    }
+                    return value + "° T."
+                }
             }
         },
         tooltip: {
             enabled: true,
-            followCursor: true
+            followCursor: true,
         }
     });
-}
+};

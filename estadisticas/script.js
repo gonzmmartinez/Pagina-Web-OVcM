@@ -93,9 +93,10 @@ function showChart(chartId) {
 
 // FUNCIÓN SOBRE LOS GRÁFICOS
 
-// Función para hacer el fetch
+// Función para hacer el fetch sin usar caché
 function cargarDatos(archivo) {
-    return fetch(archivo) // Ruta al archivo JSON
+    const url = `${archivo}?_=${Date.now()}`; // agrega parámetro único
+    return fetch(url, { cache: 'no-store' }) // fuerza no usar caché
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Error al cargar JSON: ${response.status}`);
@@ -103,6 +104,7 @@ function cargarDatos(archivo) {
             return response.json();
         });
 }
+
 
 // Función para parsear
 function parsearDatos(data) {

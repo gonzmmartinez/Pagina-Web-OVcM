@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <link type="text/css" rel="stylesheet" href="../../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -8,9 +9,10 @@
     <title>Estadísticas | OVcM</title>
 
     <!-- Scripts -->
-    <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
-    <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
 <body>
@@ -28,7 +30,8 @@
     <div id="sidebar">
         <div class="sidebarDiv">
             <a href="https://ovcmsalta.gob.ar/estadisticas/">
-                <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1" class="logoIcon">
+                <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1"
+                    class="logoIcon">
             </a>
             <span class="logoText">Observatorio de Violencia contra las Mujeres</span>
         </div>
@@ -83,9 +86,9 @@
                 <li><a href="../../">Estadísticas</a></li>
                 <li><a href="../../denuncias-por-violencia-de-genero/">Denuncias por violencia de género</a></li>
                 <li class="active">Requerimientos al Sistema de Emergencias 911</li>
-            </ul> 
+            </ul>
         </nav>
-        
+
         <div class="titleContainer">
             <img src="../../svg/icono_02.svg" alt="Ícono" class="titleIcon">
             <h1 class="pageTitle">EMERGENCIAS POR VIOLENCIA DE GÉNERO</h1>
@@ -103,35 +106,42 @@
 
         <!-- Contenedor de botones -->
         <nav class="indicador-container">
-            <button class="indicadorButton active" onclick="showChart('chart1')">Evolución de los requerimientos registrados</button>
+            <button class="indicadorButton active" onclick="showChart('chart1')">Evolución de los requerimientos
+                registrados</button>
             <button class="indicadorButton" onclick="showChart('chart2')">Requerimientos por mes</button>
-            <button class="indicadorButton" onclick="showChart('chart3')">Requerimientos por tipo de violencia y acción requerida</button>
-            <button class="indicadorButton" onclick="showChart('chart4')">Requerimientos por violencia de género por día</button>
-            <button class="indicadorButton" onclick="showChart('chart5')">Requerimientos por violencia de género por hora</button>
+            <button class="indicadorButton" onclick="showChart('chart3')">Requerimientos por tipo de violencia y acción
+                requerida</button>
+            <button class="indicadorButton" onclick="showChart('chart4')">Requerimientos por violencia de género por
+                día</button>
+            <button class="indicadorButton" onclick="showChart('chart5')">Requerimientos por violencia de género por
+                hora</button>
         </nav>
 
         <br>
-       
+
         <!-- Sección de gráficos -->
         <div id="chart1" class="chartContent active">
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Evolución de los requerimientos registrados por el S.E. 911</strong></span>
+                    <span style="font-size:20px"><strong>Evolución de los requerimientos registrados por el S.E.
+                            911</strong></span>
                     <br>
                     <span style="font-size:15px"><i>Primeros semestres de cada año</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico1" style="width: 100%;"></div> 
-        
+            <div id="grafico1" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
                     <strong>FUENTE</strong>: Sistema de Emergencias 911.
                     <br>
-                    <strong>NOTA</strong>: Debido a un cambio en el sistema registral del S.E. 911 no se cuenta con los datos del segundo semestre del año 2023, por lo que la comparación se realiza exclusivamente entre primeros semestres para mantener la consistencia entre períodos de análisis.
+                    <strong>NOTA</strong>: Debido a un cambio en el sistema registral del S.E. 911 no se cuenta con los
+                    datos del segundo semestre del año 2023, por lo que la comparación se realiza exclusivamente entre
+                    primeros semestres para mantener la consistencia entre períodos de análisis.
                 </p>
             </div>
         </div>
@@ -145,14 +155,18 @@
                     <span style="font-size:15px"><i>Por mes en un año</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico2" style="width: 100%;"></div> 
-        
+            <div id="grafico2" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
                     <strong>FUENTE</strong>: Sistema de Emergencias 911.
+                    <br>
+                    <strong>NOTA</strong>: Debido a un cambio en el sistema registral del S.E. 911 no se cuenta con los
+                    datos del segundo semestre del año 2023, por lo que la comparación se realiza exclusivamente entre
+                    primeros semestres para mantener la consistencia entre períodos de análisis.
                 </p>
             </div>
         </div>
@@ -166,10 +180,10 @@
                     <span style="font-size:15px"><i>Por tipo de violencia y acción requerida</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico3" style="width: 100%;"></div> 
-        
+            <div id="grafico3" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
@@ -201,16 +215,17 @@
                     <span style="font-size:15px"><i>Por día de la semana en un mes</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico4" style="width: 100%;"></div> 
-        
+            <div id="grafico4" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
                     <strong>FUENTE</strong>: Sistema de Emergencias 911.
                     <br>
-                    <strong>NOTA</strong>: Los requerimientos consisten en llamadas, intervenciones, e intervenciones conjuntas con agencias SAMEC solicitadas.
+                    <strong>NOTA</strong>: Los requerimientos consisten en llamadas, intervenciones, e intervenciones
+                    conjuntas con agencias SAMEC solicitadas.
                 </p>
             </div>
 
@@ -238,16 +253,17 @@
                     <span style="font-size:15px"><i>Por hora del día en un mes</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico5" style="width: 100%;"></div> 
-        
+            <div id="grafico5" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
                     <strong>FUENTE</strong>: Sistema de Emergencias 911.
                     <br>
-                    <strong>NOTA</strong>: Los requerimientos consisten en llamadas, intervenciones, e intervenciones conjuntas con agencias SAMEC solicitadas.
+                    <strong>NOTA</strong>: Los requerimientos consisten en llamadas, intervenciones, e intervenciones
+                    conjuntas con agencias SAMEC solicitadas.
                 </p>
             </div>
 
@@ -280,9 +296,9 @@
 
             <h3>Institución o entidad que genera el registro</h3>
             <p>
-                <ul>
-                    <li>Sistema de Emergencias 911 - Ministerio de Seguridad y Justicia de la Provincia de Salta</li>
-                </ul>
+            <ul>
+                <li>Sistema de Emergencias 911 - Ministerio de Seguridad y Justicia de la Provincia de Salta</li>
+            </ul>
             </p>
 
             <h3>¿Qué se registra?</h3>
@@ -297,21 +313,37 @@
 
             <h3>¿Qué definiciones se utilizan en el registro?</h3>
             <p>
-                <ul>
-                    <li><strong>Llamadas</strong>: comunicaciones telefónicas al sistema de emergencia 911 por situación de violencia familiar o de género.</li>
-                    <br>
-                    <li><strong>Intervenciones</strong>:  desplazamiento y actuaciones de agencias policiales por situación de violencia familiar o de género.</li>
-                    <br>
-                    <li><strong>Intervenciones conjuntas con agencia SAMEC</strong>: desplazamiento y actuaciones de agencias por situación de violencia familiar o de género con el Sistema de Atención Médica para Emergencias y Catástrofes (SAMEC)</li>
-                    <br>
-                    <li><strong>Abuso sexual</strong>: es una agresión que atenta contra la libertad sexual de las personas y su derecho a elegir las actividades sexuales que quiere realizar.</li>
-                    <br>
-                    <li><strong>Violencia familiar en curso</strong>: hechos enmarcados en la ley provincial Nº 7.403. Incluye violencia física, psicológica y/o verbal con un vínculo actual o pasado, dentro o fuera del domicilio de residencia que ocurra en el momento de la comunicación. También contempla: abandono de persona, exclusión del hogar, agresión a menores, robo entre familiares, amenazas entre familiares, entre otras.</li>
-                    <br>
-                    <li><strong>Violencia familiar histórica</strong>: hechos enmarcados en la ley provincial Nº 7.403. Incluye violencia física, psicológica y/o verbal con un vínculo actual o pasado, dentro o fuera del domicilio de residencia cuando la/el damnificada/o se comunica a posterior de ocurrido el hecho. También contempla: abandono de persona, exclusión del hogar, agresión a menores, robo entre familiares, amenazas entre familiares, entre otras.</li>
-                    <br>
-                    <li><strong>Violencia de género</strong>: hechos enmarcados en la ley provincial Nº 7.888. Violencia física, psicológica y/o verbal hacia mujeres y personas de la diversidad sexual basada en una relación desigual de poder dentro o fuera del domicilio. Los hechos pueden ocurrir en el momento de la comunicación o previamente.</li>
-                </ul>
+            <ul>
+                <li><strong>Llamadas</strong>: comunicaciones telefónicas al sistema de emergencia 911 por situación de
+                    violencia familiar o de género.</li>
+                <br>
+                <li><strong>Intervenciones</strong>: desplazamiento y actuaciones de agencias policiales por situación
+                    de violencia familiar o de género.</li>
+                <br>
+                <li><strong>Intervenciones conjuntas con agencia SAMEC</strong>: desplazamiento y actuaciones de
+                    agencias por situación de violencia familiar o de género con el Sistema de Atención Médica para
+                    Emergencias y Catástrofes (SAMEC)</li>
+                <br>
+                <li><strong>Abuso sexual</strong>: es una agresión que atenta contra la libertad sexual de las personas
+                    y su derecho a elegir las actividades sexuales que quiere realizar.</li>
+                <br>
+                <li><strong>Violencia familiar en curso</strong>: hechos enmarcados en la ley provincial Nº 7.403.
+                    Incluye violencia física, psicológica y/o verbal con un vínculo actual o pasado, dentro o fuera del
+                    domicilio de residencia que ocurra en el momento de la comunicación. También contempla: abandono de
+                    persona, exclusión del hogar, agresión a menores, robo entre familiares, amenazas entre familiares,
+                    entre otras.</li>
+                <br>
+                <li><strong>Violencia familiar histórica</strong>: hechos enmarcados en la ley provincial Nº 7.403.
+                    Incluye violencia física, psicológica y/o verbal con un vínculo actual o pasado, dentro o fuera del
+                    domicilio de residencia cuando la/el damnificada/o se comunica a posterior de ocurrido el hecho.
+                    También contempla: abandono de persona, exclusión del hogar, agresión a menores, robo entre
+                    familiares, amenazas entre familiares, entre otras.</li>
+                <br>
+                <li><strong>Violencia de género</strong>: hechos enmarcados en la ley provincial Nº 7.888. Violencia
+                    física, psicológica y/o verbal hacia mujeres y personas de la diversidad sexual basada en una
+                    relación desigual de poder dentro o fuera del domicilio. Los hechos pueden ocurrir en el momento de
+                    la comunicación o previamente.</li>
+            </ul>
             </p>
         </div>
 
@@ -330,4 +362,5 @@
     <script type="text/javascript" src="./grafico4.js"></script>
     <script type="text/javascript" src="./grafico5.js"></script>
 </body>
+
 </html>
