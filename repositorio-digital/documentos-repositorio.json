@@ -1,5 +1,16 @@
 [
   {
+    "slug": "monitoreo-presupuesto-perspectiva-genero-2025",
+    "titulo": "Monitoreo del Presupuesto con Perspectiva de Género",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2025-08-01",
+    "tipo_documento": "Infografía",
+    "tema": ["Monitoreo", "Economía", "Presupuesto con perspectiva de género"],
+    "coleccion": "",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/08/OVcM_Monitoreo_PPG.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/08/OVcM_Monitoreo_PPG_Portada.jpg"
+  },
+  {
     "slug": "responsabilidad-parental-2025",
     "titulo": "Guía sobre aspectos de la responsabilidad parental y el acceso a la cuota alimentaria",
     "autor": ["Observatorio de Violencia contra las Mujeres"],
@@ -199,10 +210,10 @@
   },
   {
     "slug": "infografia-violencia-politica-2025",
-    "titulo": "Informe infográfico sobre Violencia Política por razones de género: estrategias para democratizar el ejercicio de la política",
+    "titulo": "Infografía sobre Violencia Política por razones de género: estrategias para democratizar el ejercicio de la política",
     "autor": ["Observatorio de Violencia contra las Mujeres"],
     "fecha": "2025-05-08",
-    "tipo_documento": "Informe temático",
+    "tipo_documento": "Infografía",
     "tema": "Violencia política",
     "coleccion": "",
     "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/05/Informe_Conversatorio_Violencia_Politica_OVcM.pdf",
