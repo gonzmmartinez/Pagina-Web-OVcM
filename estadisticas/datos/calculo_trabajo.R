@@ -21,7 +21,13 @@ Raw <- get_microdata(
         period = 1:4,
         type = "individual",
         vars = c("ANO4", "TRIMESTRE", "REGION", "AGLOMERADO", "PONDERA" , "CH04",
-                 "CH06", "ESTADO", "CAT_OCUP", "CAT_INAC", "INTENSI", "PP03J"))
+                 "CH06", "ESTADO", "CAT_OCUP", "CAT_INAC", "INTENSI", "PP03J")) %>%
+  rbind(get_microdata(
+    year = 2025,
+    period = 1,
+    type = "individual",
+    vars = c("ANO4", "TRIMESTRE", "REGION", "AGLOMERADO", "PONDERA" , "CH04",
+             "CH06", "ESTADO", "CAT_OCUP", "CAT_INAC", "INTENSI", "PP03J")))
 
 ######### TRANSFORMAR DATOS #########
 
