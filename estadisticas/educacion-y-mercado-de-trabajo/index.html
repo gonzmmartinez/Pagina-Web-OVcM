@@ -2,20 +2,19 @@
 <html lang="es">
 
 <head>
-    <link type="text/css" rel="stylesheet" href="../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estadísticas | OVcM</title>
+    <link rel="stylesheet" href="../styles.css">
 
     <!-- Scripts -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
+
     <!-- Botón para mostrar/ocultar la barra lateral -->
     <button id="toggleSidebar" onclick="toggleSidebar()">☰</button>
 
@@ -83,359 +82,63 @@
             <ul class="breadcrumb">
                 <li><a href="https://ovcmsalta.gob.ar">Inicio</a></li>
                 <li><a href="../">Estadísticas</a></li>
-                <li class="active">Educación y Mercado de Trabajo</li>
+                <li class="active">Educación y mercado de trabajo</li>
             </ul>
         </nav>
 
         <div class="titleContainer">
-            <img src="../svg/icono_03.svg" alt="Ícono" class="titleIcon">
+            <img src="../svg/icono_04.svg" alt="Ícono" class="titleIcon">
             <h1 class="pageTitle">EDUCACIÓN Y MERCADO DE TRABAJO</h1>
         </div>
 
         <br>
-
         <hr>
 
         <h2 style="font-size: 15px; text-align: center; margin-bottom: 1rem;">
             Indicadores disponibles
         </h2>
 
-        <!-- Contenedor de botones -->
-        <nav class="indicador-container">
-            <button class="indicadorButton active" onclick="showChart('chart1')">Matriculas educativas por
-                género</button>
-            <button class="indicadorButton" onclick="showChart('chart2')">Docentes en actividad por género</button>
-            <button class="indicadorButton" onclick="showChart('chart4')">Tasa de actividad laboral</button>
-            <button class="indicadorButton" onclick="showChart('chart5')">Tasa de empleo</button>
-            <button class="indicadorButton" onclick="showChart('chart6')">Tasa de subocupación laboral</button>
-            <button class="indicadorButton" onclick="showChart('chart7')">Tasa de desocupación laboral</button>
-        </nav>
-
-        <br>
-
-        <!-- Sección de gráficos -->
-        <div id="chart1" class="chartContent active">
-            <!-- Titulo del gráfico -->
-            <div style="text-align: left;">
-                <p>
-                    <span style="font-size:20px"><strong>Matriculas educativas en la Provincia</strong></span>
-                    <br>
-                    <span style="font-size:15px"><i>Por género</i></span>
-                </p>
-            </div>
-
-            <!-- Canvas para el chart -->
-            <div id="grafico1" style="width: 100%;"></div>
-
-            <!-- Fuente del gráfico -->
-            <div style="text-align: right; font-size: 12px; color: gray">
-                <p style="margin-top: 0;">
-                    <strong>FUENTE</strong>: Ministerio de Educación, Cultura, Ciencia y Tecnología. Subsecretaría de
-                    Desarrollo Curricular e Innovación Pedagógica. Departamento de Estadística.
-                </p>
-            </div>
-
-            <!-- Listas desplegables -->
-            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
-                <div class="selectContainer">
-                    <p>
-                        Año:
-                    </p>
-                    <select id="Anio1" onchange="actualizarGrafico1()">
-                        <option value="2024">2024</option>
-                        <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                    </select>
-                </div>
-
-                <div class="selectContainer">
-                    <p>
-                        Departamento:
-                    </p>
-                    <select id="Depto1" onchange="actualizarGrafico1()">
-                        <option value="TODOS">TODOS</option>
-                        <option value="Anta">Anta</option>
-                        <option value="Cachi">Cachi</option>
-                        <option value="Cafayate">Cafayate</option>
-                        <option value="Capital">Capital</option>
-                        <option value="Cerrillos">Cerrillos</option>
-                        <option value="Chicoana">Chicoana</option>
-                        <option value="General Güemes">General Güemes</option>
-                        <option value="General José de San Martín">General José de San Martín</option>
-                        <option value="Guachipas">Guachipas</option>
-                        <option value="Iruya">Iruya</option>
-                        <option value="La Caldera">La Caldera</option>
-                        <option value="La Candelaria">La Candelaria</option>
-                        <option value="La Poma">La Poma</option>
-                        <option value="La Viña">La Viña</option>
-                        <option value="Los Andes">Los Andes</option>
-                        <option value="Metán">Metán</option>
-                        <option value="Molinos">Molinos</option>
-                        <option value="Orán">Orán</option>
-                        <option value="Rivadavia">Rivadavia</option>
-                        <option value="Rosario de la Frontera">Rosario de la Frontera</option>
-                        <option value="Rosario de Lerma">Rosario de Lerma</option>
-                        <option value="San Carlos">San Carlos</option>
-                        <option value="Santa Victoria">Santa Victoria</option>
-                    </select>
-                </div>
-            </div>
+        <!-- Botones -->
+        <div class="buttonSection">
+            <a class="buttonDiv" href="./educacion/">
+                <button class="buttonLink">
+                    <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_3.svg" alt="Icono 4"
+                        class="buttonIcon">
+                    <span class="buttonText">EDUCACIÓN</span>
+                </button>
+            </a>
+            <a class="buttonDiv" href="./mercado-de-trabajo/">
+                <button class="buttonLink">
+                    <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/icono_3.svg" alt="Icono 4"
+                        class="buttonIcon">
+                    <span class="buttonText">MERCADO DE TRABAJO</span>
+                </button>
+            </a>
         </div>
-
-        <!-- Sección de gráficos -->
-        <div id="chart2" class="chartContent">
-            <!-- Titulo del gráfico -->
-            <div style="text-align: left;">
-                <p>
-                    <span style="font-size:20px"><strong>Docentes en actividad en la Provincia</strong></span>
-                    <br>
-                    <span style="font-size:15px"><i>Por género y departamento</i></span>
-                </p>
-            </div>
-
-            <!-- Canvas para el chart -->
-            <div id="grafico2" style="width: 100%;"></div>
-
-            <!-- Fuente del gráfico -->
-            <div style="text-align: right; font-size: 12px; color: gray">
-                <p style="margin-top: 0;">
-                    <strong>FUENTE</strong>: Ministerio de Educación, Cultura, Ciencia y Tecnología. Subsecretaría de
-                    Desarrollo Curricular e Innovación Pedagógica. Departamento de Estadística.
-                </p>
-            </div>
-
-            <!-- Listas desplegables -->
-            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
-                <div class="selectContainer">
-                    <p>
-                        Año:
-                    </p>
-                    <select id="Anio2" onchange="actualizarGrafico2()">
-                        <option value="2024">2024</option>
-                        <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sección de gráficos -->
-        <div id="chart4" class="chartContent">
-            <!-- Titulo del gráfico -->
-            <div style="text-align: left;">
-                <p>
-                    <span style="font-size:20px"><strong>Evolución de la tasa de actividad laboral</strong></span>
-                    <br>
-                    <span id="subtitulo4" style="font-size:15px"><i>Por género. Por trimestre. Provincia de
-                            Salta.</i></span>
-                </p>
-            </div>
-
-            <!-- Canvas para el chart -->
-            <div id="grafico4" style="width: 100%;"></div>
-
-            <!-- Fuente del gráfico -->
-            <div style="text-align: right; font-size: 12px; color: gray">
-                <p style="margin-top: 0;">
-                    <strong>FUENTE</strong>: Encuesta Permanente de Hogares del Instituto Nacional de Estadísticas y
-                    Censos (EPH-INDEC).
-                </p>
-            </div>
-
-            <!-- Listas desplegables -->
-            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
-                <div class="selectContainer">
-                    <p>
-                        Año:
-                    </p>
-                    <select id="Anio4" onchange="actualizarGrafico4()">
-                        <option value="2024">2024</option>
-                        <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sección de gráficos -->
-        <div id="chart5" class="chartContent">
-            <!-- Titulo del gráfico -->
-            <div style="text-align: left;">
-                <p>
-                    <span style="font-size:20px"><strong>Evolución de la tasa de empleo</strong></span>
-                    <br>
-                    <span id="subtitulo5" style="font-size:15px"><i>Por género. Por trimestre. Provincia de
-                            Salta.</i></span>
-                </p>
-            </div>
-
-            <!-- Canvas para el chart -->
-            <div id="grafico5" style="width: 100%;"></div>
-
-            <!-- Fuente del gráfico -->
-            <div style="text-align: right; font-size: 12px; color: gray">
-                <p style="margin-top: 0;">
-                    <strong>FUENTE</strong>: Encuesta Permanente de Hogares del Instituto Nacional de Estadísticas y
-                    Censos (EPH-INDEC).
-                </p>
-            </div>
-
-            <!-- Listas desplegables -->
-            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
-                <div class="selectContainer">
-                    <p>
-                        Año:
-                    </p>
-                    <select id="Anio5" onchange="actualizarGrafico5()">
-                        <option value="2024">2024</option>
-                        <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sección de gráficos -->
-        <div id="chart6" class="chartContent">
-            <!-- Titulo del gráfico -->
-            <div style="text-align: left;">
-                <p>
-                    <span style="font-size:20px"><strong>Evolución de la tasa de subocupación laboral</strong></span>
-                    <br>
-                    <span id="subtitulo6" style="font-size:15px"><i>Por género. Por trimestre. Provincia de
-                            Salta.</i></span>
-                </p>
-            </div>
-
-            <!-- Canvas para el chart -->
-            <div id="grafico6" style="width: 100%;"></div>
-
-            <!-- Fuente del gráfico -->
-            <div style="text-align: right; font-size: 12px; color: gray">
-                <p style="margin-top: 0;">
-                    <strong>FUENTE</strong>: Encuesta Permanente de Hogares del Instituto Nacional de Estadísticas y
-                    Censos (EPH-INDEC).
-                </p>
-            </div>
-
-            <!-- Listas desplegables -->
-            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
-                <div class="selectContainer">
-                    <p>
-                        Año:
-                    </p>
-                    <select id="Anio6" onchange="actualizarGrafico6()">
-                        <option value="2024">2024</option>
-                        <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <!-- Sección de gráficos -->
-        <div id="chart7" class="chartContent">
-            <!-- Titulo del gráfico -->
-            <div style="text-align: left;">
-                <p>
-                    <span style="font-size:20px"><strong>Evolución de la tasa de desocupación laboral</strong></span>
-                    <br>
-                    <span id="subtitulo7" style="font-size:15px"><i>Por género. Por trimestre. Provincia de
-                            Salta.</i></span>
-                </p>
-            </div>
-
-            <!-- Canvas para el chart -->
-            <div id="grafico7" style="width: 100%;"></div>
-
-            <!-- Fuente del gráfico -->
-            <div style="text-align: right; font-size: 12px; color: gray">
-                <p style="margin-top: 0;">
-                    <strong>FUENTE</strong>: Encuesta Permanente de Hogares del Instituto Nacional de Estadísticas y
-                    Censos (EPH-INDEC).
-                </p>
-            </div>
-
-            <!-- Listas desplegables -->
-            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
-                <div class="selectContainer">
-                    <p>
-                        Año:
-                    </p>
-                    <select id="Anio7" onchange="actualizarGrafico7()">
-                        <option value="2024">2024</option>
-                        <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-        <!-- Botón para guardar el gráfico activo como PNG -->
-        <button id="guardarBtn" onclick="guardarActivoComoPNG()">
-            <img src="../svg/icono_descargar.svg" alt="Subir" class="descargarIcon">
-            <span style="margin-left:0.5rem">Descargar gráfico en PNG</span>
-        </button>
 
         <br>
         <hr>
 
-        <div class="notasContent">
-            <h2>FICHA TÉCNICA</h2>
+        <div class="notasContent" style="width: 90%">
+            <h3>¿Por qué estos datos son relevantes?</h3>
+            <p>El análisis de la situación de las mujeres en el sistema educativo y en el mercado de trabajo permite
+                identificar desigualdades que, de acuerdo con la <strong>Ley N.º 26.485</strong>, constituyen formas de
+                violencia indirecta.</p>
 
-            <h3>Institución o entidad que genera el registro</h3>
-            <p>
-            <ul>
-                <li>Encuesta Permanente de Hogares (EPH). Instituto Nacional de Estadística y Censos (INDEC)</li>
-                <li>Ministerio de Educación, Cultura, Ciencia y Tecnología. Subsecretaria de Desarrollo Curricular e
-                    Innovación Pedagógica. Departamento de Estadística. Provincia de Salta.</li>
-            </ul>
-            </p>
+            <blockquote style="font-style: italic; max-width: 80%; margin: 1em auto; line-height: 1.5;">
+                “Se entiende por violencia indirecta toda conducta, acción, omisión, disposición, criterio o práctica
+                discriminatoria que ponga a la mujer en desventaja con respecto al varón.”
+                <br><span style="font-style: normal;">(Ley N.º 26.485, Art. 4)</span>
+            </blockquote>
 
-            <h3>Definiciones utilizadas en el registro</h3>
-            <ul>
-                <li><strong>Tasa de actividad</strong>: mide la proporción de la población económicamente activa (PEA)
-                    sobre la población total de referencia. La PEA incluye a quienes tienen empleo y a quienes buscan
-                    activamente uno. Según la Encuesta Permanente de Hogares (EPH), se consideran dentro de este grupo
-                    tanto las personas que trabajan a cambio de una remuneración en dinero o en especie como aquellas
-                    que colaboran sin pago en negocios familiares.</li>
-                <li><strong>Tasa de desocupación</strong>: representa el porcentaje de personas que no tienen empleo
-                    pero lo buscan activamente dentro de la población económicamente activa. Por otro lado, la tasa de
-                    subocupación mide la proporción de quienes trabajan menos de 35 horas semanales por razones
-                    involuntarias y están disponibles para trabajar más.</li>
-                <li><strong>Tasa de subocupación</strong>: mide la proporción de quienes trabajan menos de 35 horas
-                    semanales por razones involuntarias y están disponibles para trabajar más.</li>
-                <li><strong>Inactividad</strong>: se refiere a la situación de las personas que no forman parte de la
-                    población económicamente activa, es decir, que no trabajan ni buscan empleo de manera activa. Dentro
-                    de esta categoría se incluyen a estudiantes, jubilados, personas dedicadas a tareas del hogar y
-                    aquellas que, por diversas razones, no participan en el mercado laboral.</li>
-                <li><strong>Matricula educativa</strong>: Hace referencia a la cantidad de personas inscriptas en una
-                    institución educativa en un período determinado, independientemente de si asisten regularmente o no.
-                </li>
-                <li><strong>Docente en actividad</strong>: Se considera docente en actividad a toda persona que se
-                    desempeña laboralmente en tareas de enseñanza en el sistema educativo formal durante el período de
-                    referencia. Incluye a quienes ejercen funciones frente a curso en establecimientos educativos de
-                    gestión pública o privada, en cualquiera de los niveles del sistema.</li>
-            </ul>
+            <p>Las diferencias en el acceso a la educación y en las condiciones laborales no solo reflejan desigualdades
+                económicas: también limitan la autonomía personal, reducen las oportunidades de desarrollo y perpetúan
+                situaciones de dependencia que pueden favorecer la continuidad de la violencia de género.</p>
 
-            <h3>¿Qué se registra?</h3>
-            <p>
-                Datos relacionados a la educación y al mercado de trabajo de las personas por sexo.
-            </p>
-
-            <h3>Notas</h3>
-            <p>
-                Los datos informados para la cantidad de matrículas solo pertenecen al régimen formal, se excluyen,
-                cursos de oficio, etc.
-            </p>
+            <p>Visibilizar estas brechas es fundamental para comprender cómo los contextos educativos y laborales
+                influyen en la vida de las mujeres, y por qué garantizar igualdad de oportunidades en estos ámbitos es
+                una condición necesaria para avanzar hacia una sociedad más justa y libre de violencia.</p>
         </div>
-
     </div>
 
     <button onclick="topFunction()" id="botonTop">
@@ -443,14 +146,6 @@
     </button>
 
     <script src="../script.js"></script>
-
-    <!-- Gráficos -->
-    <script type="text/javascript" src="./grafico1.js"></script>
-    <script type="text/javascript" src="./grafico2.js"></script>
-    <script type="text/javascript" src="./grafico4.js"></script>
-    <script type="text/javascript" src="./grafico5.js"></script>
-    <script type="text/javascript" src="./grafico6.js"></script>
-    <script type="text/javascript" src="./grafico7.js"></script>
 </body>
 
 </html>

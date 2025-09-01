@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link type="text/css" rel="stylesheet" href="../../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas | OVcM</title>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <!-- Botón para mostrar/ocultar la barra lateral -->
+    <button id="toggleSidebar" onclick="toggleSidebar()">☰</button>
+
+    <!-- Logo que aparecerá al colapsar la barra -->
+    <div id="collapsedLogo" class="hidden">
+        <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Logo Colapsado">
+        <span class="collapsedText">Observatorio de Violencia contra las Mujeres</span>
+    </div>
+
+    <!-- Barra lateral -->
+    <div id="sidebar">
+        <div class="sidebarDiv">
+            <a href="https://ovcmsalta.gob.ar/estadisticas/">
+                <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1"
+                    class="logoIcon">
+            </a>
+            <span class="logoText">Observatorio de Violencia contra las Mujeres</span>
+        </div>
+
+        <hr>
+
+        <h2 style="font-size: 15px; text-align: center;">ESTADÍSTICAS</h2>
+        <ul>
+            <li>
+                <a href="../../femicidios-y-travesticidios/">
+                    <img src="../../svg/icono_01.svg" class="sidebarIcon">
+                    <p>Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</p>
+                    <span class="tooltip">Muertes violentas y/o dudosas</span>
+                </a>
+            </li>
+            <li>
+                <a href="../../denuncias-por-violencia-de-genero/">
+                    <img src="../../svg/icono_02.svg" class="sidebarIcon">
+                    <p>Denuncias por violencia de género</p>
+                    <span class="tooltip">Denuncias por violencia de género</span>
+                </a>
+            </li>
+            <li>
+                <a href="../../educacion-y-mercado-de-trabajo/" class="active">
+                    <img src="../../svg/icono_03.svg" class="sidebarIcon">
+                    <p>Educación y mercado de trabajo</p>
+                    <span class="tooltip">Educación y mercado de trabajo</span>
+                </a>
+            </li>
+            <li>
+                <a href="../../salud-y-libertad-no-reproductiva/">
+                    <img src="../../svg/icono_04.svg" class="sidebarIcon">
+                    <p>Salud y libertad -no- reproductiva</p>
+                    <span class="tooltip">Salud y libertad -no- reproductiva</span>
+                </a>
+            </li>
+            <li>
+                <a href="../../participacion-en-la-toma-de-decisiones/">
+                    <img src="../../svg/icono_05.svg" class="sidebarIcon">
+                    <p>Participación en la toma de decisiones</p>
+                    <span class="tooltip">Participación en la toma de decisiones</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="mainContent">
+        <!-- Contenido principal -->
+        <nav id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li><a href="https://ovcmsalta.gob.ar">Inicio</a></li>
+                <li><a href="../../">Estadísticas</a></li>
+                <li><a href="../">Educación y mercado de trabajo</a></li>
+                <li class="active">Mercado de trabajo</li>
+            </ul>
+        </nav>
+
+        <div class="titleContainer">
+            <img src="../../svg/icono_03.svg" alt="Ícono" class="titleIcon">
+            <h1 class="pageTitle">MERCADO DE TRABAJO</h1>
+        </div>
+
+        <br>
+
+        <hr>
+
+        <h2 style="font-size: 15px; text-align: center; margin-bottom: 1rem;">
+            Indicadores disponibles
+        </h2>
+
+        <!-- Contenedor de botones -->
+        <nav class="indicador-container">
+            <button class="indicadorButton active" onclick="showChart('chart1')">Tasa de actividad laboral</button>
+            <button class="indicadorButton" onclick="showChart('chart2')">Tasa de empleo</button>
+            <button class="indicadorButton" onclick="showChart('chart3')">Tasa de subocupación laboral</button>
+            <button class="indicadorButton" onclick="showChart('chart4')">Tasa de desocupación laboral</button>
+        </nav>
+
+        <br>
+
+        <!-- Sección de gráficos -->
+        <div id="chart1" class="chartContent active">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Evolución de la tasa de actividad laboral</strong></span>
+                    <br>
+                    <span id="subtitulo1" style="font-size:15px"><i>Por género. Por trimestre. Provincia de
+                            Salta.</i></span>
+                </p>
+            </div>
+
+            <!-- Canvas para el chart -->
+            <div id="grafico1" style="width: 100%;"></div>
+
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Encuesta Permanente de Hogares del Instituto Nacional de Estadísticas y
+                    Censos (EPH-INDEC).
+                </p>
+            </div>
+        </div>
+
+        <!-- Sección de gráficos -->
+        <div id="chart2" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Evolución de la tasa de empleo</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por género. Por trimestre. Provincia de
+                            Salta.</i></span>
+                </p>
+            </div>
+
+            <!-- Canvas para el chart -->
+            <div id="grafico2" style="width: 100%;"></div>
+
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Encuesta Permanente de Hogares del Instituto Nacional de Estadísticas y
+                    Censos (EPH-INDEC).
+                </p>
+            </div>
+        </div>
+
+        <!-- Sección de gráficos -->
+        <div id="chart3" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Evolución de la tasa de subocupación laboral</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por género. Por trimestre. Provincia de
+                            Salta.</i></span>
+                </p>
+            </div>
+
+            <!-- Canvas para el chart -->
+            <div id="grafico3" style="width: 100%;"></div>
+
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Encuesta Permanente de Hogares del Instituto Nacional de Estadísticas y
+                    Censos (EPH-INDEC).
+                </p>
+            </div>
+        </div>
+
+        <!-- Sección de gráficos -->
+        <div id="chart4" class="chartContent">
+            <!-- Titulo del gráfico -->
+            <div style="text-align: left;">
+                <p>
+                    <span style="font-size:20px"><strong>Evolución de la tasa de desocupación laboral</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por género. Por trimestre. Provincia de
+                            Salta.</i></span>
+                </p>
+            </div>
+
+            <!-- Canvas para el chart -->
+            <div id="grafico4" style="width: 100%;"></div>
+
+            <!-- Fuente del gráfico -->
+            <div style="text-align: right; font-size: 12px; color: gray">
+                <p style="margin-top: 0;">
+                    <strong>FUENTE</strong>: Encuesta Permanente de Hogares del Instituto Nacional de Estadísticas y
+                    Censos (EPH-INDEC).
+                </p>
+            </div>
+        </div>
+
+        <!-- Botón para guardar el gráfico activo como PNG -->
+        <button id="guardarBtn" onclick="guardarActivoComoPNG()">
+            <img src="../../svg/icono_descargar.svg" alt="Subir" class="descargarIcon">
+            <span style="margin-left:0.5rem">Descargar gráfico en PNG</span>
+        </button>
+
+        <br>
+        <hr>
+
+        <div class="notasContent">
+            <h2>FICHA TÉCNICA</h2>
+
+            <h3>Institución o entidad que genera el registro</h3>
+            <p>
+            <ul>
+                <li>Encuesta Permanente de Hogares (EPH). Instituto Nacional de Estadística y Censos (INDEC)</li>
+            </ul>
+            </p>
+
+            <h3>Definiciones utilizadas en el registro</h3>
+            <ul>
+                <li><strong>Tasa de actividad</strong>: mide la proporción de la población económicamente activa (PEA)
+                    sobre la población total de referencia. La PEA incluye a quienes tienen empleo y a quienes buscan
+                    activamente uno. Según la Encuesta Permanente de Hogares (EPH), se consideran dentro de este grupo
+                    tanto las personas que trabajan a cambio de una remuneración en dinero o en especie como aquellas
+                    que colaboran sin pago en negocios familiares.</li>
+                <li><strong>Tasa de desocupación</strong>: representa el porcentaje de personas que no tienen empleo
+                    pero lo buscan activamente dentro de la población económicamente activa. Por otro lado, la tasa de
+                    subocupación mide la proporción de quienes trabajan menos de 35 horas semanales por razones
+                    involuntarias y están disponibles para trabajar más.</li>
+                <li><strong>Tasa de subocupación</strong>: mide la proporción de quienes trabajan menos de 35 horas
+                    semanales por razones involuntarias y están disponibles para trabajar más.</li>
+                <li><strong>Inactividad</strong>: se refiere a la situación de las personas que no forman parte de la
+                    población económicamente activa, es decir, que no trabajan ni buscan empleo de manera activa. Dentro
+                    de esta categoría se incluyen a estudiantes, jubilados, personas dedicadas a tareas del hogar y
+                    aquellas que, por diversas razones, no participan en el mercado laboral.</li>
+            </ul>
+
+            <h3>¿Qué se registra?</h3>
+            <p>
+                Datos relacionados al mercado de trabajo de las personas por sexo.
+            </p>
+
+            <h3>Nota metodológica</h3>
+            <p>Todas las tasas presentadas en esta sección se calculan a partir de estimaciones basadas en la Encuesta
+                Permanente de Hogares (EPH), que utiliza una muestra estadísticamente representativa de la población del
+                Aglomerado Salta.</p>
+        </div>
+
+    </div>
+
+    <button onclick="topFunction()" id="botonTop">
+        <img src="../../svg/icono_arrow.svg" alt="Subir" class="topIcon">
+    </button>
+
+    <script src="../../script.js"></script>
+
+    <!-- Gráficos -->
+    <script type="text/javascript" src="./grafico1.js"></script>
+    <script type="text/javascript" src="./grafico2.js"></script>
+    <script type="text/javascript" src="./grafico3.js"></script>
+    <script type="text/javascript" src="./grafico4.js"></script>
+</body>
+
+</html>

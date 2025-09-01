@@ -1,5 +1,5 @@
 // Datos
-const archivo2 = "../datos/json/educacion_docentes.json";
+const archivo2 = "../../datos/json/educacion_docentes.json";
 
 // PROCESAMIENTO
 function procesarDatos2(data) {
