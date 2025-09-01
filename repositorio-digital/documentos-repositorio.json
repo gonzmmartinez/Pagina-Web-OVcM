@@ -603,5 +603,71 @@
     "coleccion": "",
     "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/05/Presupuesto_con_perspectiva_de_genero_2025.pdf",
     "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/05/Presupuesto_perspectiva_genero_2025-scaled.jpg"
+  },
+  {
+    "slug": "dossier-diseno-2024",
+    "titulo": "Concurso de Diseño Gráfico - 2024",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2024-12-04",
+    "tipo_documento": "Dossier concurso de tésis",
+    "tema": ["Dossier de concurso de diseño gráfico"],
+    "coleccion": "Concursos de tésis de grado y posgrado con perspectiva de género",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/06/GanadorConcursoDiseno2024.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/06/GanadorConcursoDiseno2024.jpg"
+  },
+  {
+    "slug": "dossier-tesis-2024",
+    "titulo": "Dossier Tesis de Grado con Perspectiva de Género - 2024",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2024-12-04",
+    "tipo_documento": "Dossier concurso de tésis",
+    "tema": ["Dossier de tésis", "Investigación"],
+    "coleccion": "Concursos de tésis de grado y posgrado con perspectiva de género",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2024/12/dossier-de-tesis-2023.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/05/DossierTesis2024.jpg"
+  },
+  {
+    "slug": "dossier-tesis-2023",
+    "titulo": "Dossier Tesis de Grado con Perspectiva de Género - 2023",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2023-10-30",
+    "tipo_documento": "Dossier concurso de tésis",
+    "tema": ["Dossier de tésis", "Investigación"],
+    "coleccion": "Concursos de tésis de grado y posgrado con perspectiva de género",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2023/11/Tesis-de-Grado-con-Perspectiva-de-Genero-en-Salta-2023.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/05/DossierTesis2023.jpg"
+  },
+  {
+    "slug": "dossier-tesis-2022",
+    "titulo": "Dossier Tesis de Grado con Perspectiva de Género - 2022",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2022-10-30",
+    "tipo_documento": "Dossier concurso de tésis",
+    "tema": ["Dossier de tésis", "Investigación"],
+    "coleccion": "Concursos de tésis de grado y posgrado con perspectiva de género",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/tesis-de-grado-con-perspectiva-de-genero-Marzo-2022.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/05/DossierTesis2022.jpg"
+  },
+  {
+    "slug": "dossier-tesis-noviembre-2020",
+    "titulo": "Dossier Tesis de Grado con Perspectiva de Género - Noviembre 2020",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2020-10-30",
+    "tipo_documento": "Dossier concurso de tésis",
+    "tema": ["Dossier de tésis", "Investigación"],
+    "coleccion": "Concursos de tésis de grado y posgrado con perspectiva de género",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/tesis-de-grado-con-perspectiva-de-generoNoviembre-2020.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/05/DossierTesisNoviembre2020.jpg"
+  },
+  {
+    "slug": "dossier-tesis-julio-2020",
+    "titulo": "Dossier Tesis de Grado con Perspectiva de Género - Julio 2020",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2020-07-10",
+    "tipo_documento": "Dossier concurso de tésis",
+    "tema": ["Dossier de tésis", "Investigación"],
+    "coleccion": "Concursos de tésis de grado y posgrado con perspectiva de género",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/tesis-de-grado-con-perspectiva-de-genero-julio-2020.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/05/DossierTesisJulio2020.jpg"
   }
 ]
