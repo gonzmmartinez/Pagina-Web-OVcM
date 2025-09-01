@@ -72,11 +72,12 @@ function renderizar(searchQuery = "") {
     });
   }
 
-  // 🔍 Filtro de búsqueda textual
+  // Filtro de búsqueda textual
   if (searchQuery) {
-    const q = searchQuery.toLowerCase();
+    const terms = searchQuery.toLowerCase().split(/\s+/).filter(Boolean);
+
     docsFiltrados = docsFiltrados.filter(d => {
-      const texto = [
+      const campos = [
         d.slug,
         d.titulo,
         d.autor?.join(" "),
@@ -84,11 +85,17 @@ function renderizar(searchQuery = "") {
         Array.isArray(d.tipo_documento) ? d.tipo_documento.join(" ") : d.tipo_documento,
         Array.isArray(d.tema) ? d.tema.join(" ") : d.tema,
         d.coleccion,
-        d.archivo
-      ].join(" ").toLowerCase();
-      return texto.includes(q);
+        d.archivo,
+        Array.isArray(d.keywords) ? d.keywords.join(" ") : d.keywords
+      ].filter(Boolean);
+
+      // Requiere que *todas* las palabras buscadas estén en algún campo
+      return terms.every(term =>
+        campos.some(campo => campo.toLowerCase().includes(term))
+      );
     });
   }
+
 
   mostrarFiltros({ year, type: tipo, coleccion, tema });
   construirSelects(documentos);

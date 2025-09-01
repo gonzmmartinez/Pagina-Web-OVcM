@@ -15,7 +15,7 @@ const concursos = {
     'concurso-diseno-2025': {
         titulo: 'Concurso de Diseño con Perspectiva de Género 2025',
         descripcion: `
-        <strong style="color:#51c33b">PRÓXIMAMENTE</strong><br><br><br>
+        <strong style="color:#51c33b">CONVOCATORIA FINALIZADA</strong><br><br><br>
       🟣 <strong>El Observatorio de Violencia contra las Mujeres</strong> invita a estudiantes y graduadxs a postularse al Concurso de Diseño con Perspectiva de Género en la Provincia de Salta, edición 2025.<br><br>
       🟣 Esta convocatoria tiene por objetivo invitar a profesionales a transversalizar la perspectiva de género en sus ámbitos de competencia, ya que es un papel importante el que cumple la comunicación y la producción visual a la hora de remover los estereotipos de género y prevenir violencias simbólicas.<br><br>
       🟣 <strong>Postulaciones:</strong> del 01/07/2025 al 18/07/2025 vía correo a: <a href="mailto:observatoriomujersalta@gmail.com">observatoriomujersalta@gmail.com</a><br><br>
