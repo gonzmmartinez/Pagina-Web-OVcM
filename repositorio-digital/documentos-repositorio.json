@@ -1,5 +1,16 @@
 [
   {
+    "slug": "dossier-tesis-2025",
+    "titulo": "Dossier Tesis de Grado con Perspectiva de Género - 2025",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2025-09-11",
+    "tipo_documento": "Dossier concurso de tésis",
+    "tema": ["Dossier de tésis", "Investigación"],
+    "coleccion": "Concursos de tésis de grado y posgrado con perspectiva de género",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/09/Dossier_Tesis_2025.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/09/Dossier_Tesis_2025.jpg"
+  },
+  {
     "slug": "flujograma-abordaje-2025",
     "titulo": "Flujograma para el abordaje y la gestión de situaciones de violencia por motivos de género",
     "autor": ["Observatorio de Violencia contra las Mujeres"],

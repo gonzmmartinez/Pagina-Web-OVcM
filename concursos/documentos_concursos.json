@@ -1,5 +1,14 @@
 [
   {
+    "slug": "dossier-tesis-2025",
+    "titulo": "Dossier Tesis de Grado con Perspectiva de Género - 2025",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2025-09-11",
+    "tipo_concurso": "Tesis",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/09/Dossier_Tesis_2025.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/09/Dossier_Tesis_2025.jpg"
+  },
+  {
     "slug": "dossier-diseno-2024",
     "titulo": "Concurso de Diseño Gráfico - 2024",
     "autor": ["Observatorio de Violencia contra las Mujeres"],
