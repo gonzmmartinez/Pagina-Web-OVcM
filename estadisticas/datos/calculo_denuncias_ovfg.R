@@ -88,7 +88,6 @@ Data4 <- Raw4 %>%
   group_by(Año, Vínculo) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
   ungroup %>%
-  mutate(Vínculo = ifelse((100 * Cantidad / sum(Cantidad)) <= 1, "Otro", Vínculo)) %>%
   group_by(Año, Vínculo) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
   ungroup %>%
@@ -99,7 +98,6 @@ totalData4 <- Raw4 %>%
   group_by(Vínculo) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
   ungroup %>%
-  mutate(Vínculo = ifelse((100 * Cantidad / sum(Cantidad)) <= 1, "Otro", Vínculo)) %>%
   group_by(Vínculo) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
   ungroup %>%
