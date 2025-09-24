@@ -22,29 +22,29 @@ Raw2 <- read_sheet(ss = planilla, sheet = "Cesareas_partos_edad")
 
 ######### TRANSFORMAR DATOS #########
 
-# Cesáreas y partos por departamento
+# Ces?reas y partos por departamento
 Data1 <- Raw1 %>%
-  mutate(Año = as.character(Año)) %>%
-  group_by(Año, Departamento) %>%
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
+  group_by(AÃ±o, Departamento) %>%
   summarise(Cantidad = sum(Frecuencia)) %>%
   ungroup %>%
-  arrange(Año, Departamento)
+  arrange(AÃ±o, Departamento)
 
-# Cesáreas y partos por tipo de parto
+# Ces?reas y partos por tipo de parto
 Data2 <- Raw1 %>%
-  mutate(Año = as.character(Año)) %>%
-  group_by(Año, Tipo) %>%
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
+  group_by(AÃ±o, Tipo) %>%
   summarise(Cantidad = sum(Frecuencia)) %>%
   ungroup %>%
-  arrange(Año, desc(Cantidad))
+  arrange(AÃ±o, desc(Cantidad))
 
-# Cesáreas y partos por edades agrupadas
+# Ces?reas y partos por edades agrupadas
 Data3 <- Raw2 %>%
-  mutate(Año = as.character(Año)) %>%
-  group_by(Año, Rango_etario, Rango_ord) %>%
+  mutate(AÃ±o = as.character(AÃ±o)) %>%
+  group_by(AÃ±o, Rango_etario, Rango_ord) %>%
   summarise(Cantidad = sum(Frecuencia)) %>%
   ungroup %>%
-  arrange(Año, Rango_ord)
+  arrange(AÃ±o, Rango_ord)
 
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data1), path = paste0(dir, "/json/salud_partos_departamento.json"))
