@@ -5,9 +5,9 @@
     html,
     body {
         width: 100%;
-        margin: auto;
+        margin: 0;
         padding: 0;
-        font-size: 0.95rem;
+        font-size: 0.9375rem;
         /* 15px */
     }
 
@@ -85,6 +85,7 @@
     .repository-header .nav-links.open a {
         font-size: 1rem;
     }
+
 
     /* Navegación principal oculta por defecto */
     .header-container .nav-links {
@@ -308,12 +309,28 @@
         text-align: center;
     }
 
-    #lista-recomendaciones {
-        width: 80%;
+    /* BOTONERA */
+    .botonera-concursos {
+        flex-direction: column;
     }
 
-    .modal-content {
-        max-height: 600px;
-        padding: 5%;
+    .boton-concurso {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 0.75rem;
+        text-align: center;
+    }
+
+    .icono {
+        margin: 0;
+    }
+
+    .texto-boton {
+        font-size: 1rem;
+    }
+
+    .titulo-seccion h2 {
+        width: 80%;
     }
 }

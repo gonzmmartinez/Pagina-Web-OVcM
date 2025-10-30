@@ -1,0 +1,20 @@
+[
+  {
+    "titulo": "Informe completo",
+    "tipo_documento": "Informe Anual 2025",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/INFORME-ANUAL-OVCM-2024.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2024/11/InformeAnual_2024.png"
+  },
+  {
+    "titulo": "Resumen ejecutivo",
+    "tipo_documento": "Informe Anual 2025",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/09/Dossier_Tesis_2025.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/05/InformeAnual2024ResumenEjecutivo.jpg"
+  },
+  {
+    "titulo": "Presentación",
+    "tipo_documento": "Informe Anual 2025",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/09/Dossier_Tesis_2025.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/10/PortadaPresentacionInformeAnual2024.png"
+  }
+]
