@@ -9,14 +9,14 @@ async function cargarDocumentos() {
     // Ordenar únicamente por el campo "orden" (maneja valores nulos/indefinidos)
     const docsOrdenados = documentos
       .slice() // evita mutar el array original por si hace falta
-      .sort((a, b) => ( (a.orden ?? 0) - (b.orden ?? 0) ));
+      .sort((a, b) => ((a.orden ?? 0) - (b.orden ?? 0)));
 
     if (docsOrdenados.length === 0) {
       contenedorDocumentos.innerHTML = "<p>No se encontraron documentos.</p>";
     } else {
       const html = `<div class="grid-informes">
         ${docsOrdenados.map(doc => {
-          return `
+        return `
             <div class="tarjeta-informe">
               <a href="${doc.archivo}" target="_blank" rel="noopener noreferrer">
                 <img src="${doc.portada}" alt="Portada de ${doc.titulo}">
@@ -25,7 +25,7 @@ async function cargarDocumentos() {
               </a>
             </div>
           `;
-        }).join("")}
+      }).join("")}
       </div>`;
       contenedorDocumentos.innerHTML = html;
     }
@@ -73,3 +73,52 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 cargarDocumentos();
+
+// Visibilidad de las tarjetas
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.3 // se activa cuando el 20% de la tarjeta es visible
+});
+
+cards.forEach(card => observer.observe(card));
+
+// SCROLL SUAVE
+function scrollToElement(targetEl, duration = 2000) {
+    const start = window.scrollY;
+    const end = targetEl.getBoundingClientRect().top + window.scrollY;
+    const distance = end - start;
+    let startTime = null;
+
+    function animation(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const ease = progress < 0.5
+            ? 2 * progress * progress
+            : -1 + (4 - 2 * progress) * progress;
+        window.scrollTo(0, start + distance * ease);
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animation);
+        }
+    }
+
+    requestAnimationFrame(animation);
+}
+
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+        const targetId = card.getAttribute('data-target');
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+            scrollToElement(targetEl, 1500); // 2000ms = 2 segundos
+        }
+    });
+});
