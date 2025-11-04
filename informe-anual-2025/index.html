@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="./mobile_styles.css" />
     <link rel="stylesheet" href="./styles_muestra.css" />
     <link rel="stylesheet" href="./header_footer.css" />
+
+    <!-- Scripts -->
+    <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -99,7 +102,11 @@
         <h1>INFORME ANUAL 2025</h1>
     </div>
 
-    <hr style="width: 25%; color: #fafafa; margin: 100px auto 50px auto">
+    <div class="logo-container">
+        <img src="./svg/Logo_cuadrado.svg" alt="Logo del los diez años del Observatorio" class="logo-observatorio">
+    </div>
+
+    <hr style="width: 25%; color: #fafafa; margin: 50px auto 50px auto">
 
     <div class="titulo-seccion">
         <h2>Explorá las distintas versiones del Informe Anual 2025</h2>
@@ -114,7 +121,7 @@
     </div>
 
     <div class="container">
-        <div class="card badge-left" data-target="titulo-seccion">
+        <div class="card badge-left">
             <span class="badge" aria-hidden="true">
                 <svg viewBox="0 0 7.5 3" xmlns="http://www.w3.org/2000/svg" width="7.5rem" height="3rem">
                     <rect x="0" y="0" width="7.5" height="3" rx="0.625" ry="0.625" fill="#2b42a0" />
@@ -125,13 +132,14 @@
             </span>
             <h3>Capítulo 1</h3>
             <h4>Estadísticas</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam et tincidunt nisl. Integer eu eleifend nisl.
-                Etiam vitae nunc at lacus rutrum posuere et eu metus. Pellentesque cursus ullamcorper odio vel
-                condimentum. Nam ultrices eu lectus sit amet lobortis. Morbi porttitor sagittis lacus, non mollis turpis
-                tincidunt nec. Suspendisse id magna ac ipsum pharetra rhoncus. Morbi vitae malesuada magna.</p>
+            <p>En este capítulo se presentan los principales datos estadísticos sobre la violencia en la provincia,
+                elaborados a partir de información proveniente de distintos organismos. El análisis de indicadores y
+                tendencias permite dimensionar la magnitud del problema, reconocer su evolución a lo largo del tiempo y
+                aportar evidencia sólida para el diseño y fortalecimiento de políticas públicas orientadas a su
+                prevención.</p>
         </div>
 
-        <div class="card badge-right" data-target="titulo-seccion">
+        <div class="card badge-right">
             <span class="badge" aria-hidden="true">
                 <svg viewBox="0 0 7.5 3" xmlns="http://www.w3.org/2000/svg" width="7.5rem" height="3rem">
                     <rect x="0" y="0" width="7.5" height="3" rx="0.625" ry="0.625" fill="#ff621d" />
@@ -143,13 +151,13 @@
             </span>
             <h3>Capítulo 2</h3>
             <h4>Monitoreo</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam et tincidunt nisl. Integer eu eleifend nisl.
-                Etiam vitae nunc at lacus rutrum posuere et eu metus. Pellentesque cursus ullamcorper odio vel
-                condimentum. Nam ultrices eu lectus sit amet lobortis. Morbi porttitor sagittis lacus, non mollis turpis
-                tincidunt nec. Suspendisse id magna ac ipsum pharetra rhoncus. Morbi vitae malesuada magna.</p>
+            <p>En este capítulo se reúnen los ejercicios de monitoreo desarrollados durante 2024 y el primer semestre de
+                2025, orientados a evaluar la implementación de políticas clave como la Ley Micaela y los Hogares de
+                Protección. El análisis de estos procesos permite identificar avances y desafíos en la garantía de los
+                derechos de las mujeres y diversidades a vivir una vida libre de violencias.</p>
         </div>
 
-        <div class="card badge-left" data-target="titulo-seccion">
+        <div class="card badge-left">
             <span class="badge" aria-hidden="true">
                 <svg viewBox="0 0 7.5 3" xmlns="http://www.w3.org/2000/svg" width="7.5rem" height="3rem">
                     <rect x="0" y="0" width="7.5" height="3" rx="0.625" ry="0.625" fill="#852f8c" />
@@ -160,13 +168,14 @@
             </span>
             <h3>Capítulo 3</h3>
             <h4>Capacitación</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam et tincidunt nisl. Integer eu eleifend nisl.
-                Etiam vitae nunc at lacus rutrum posuere et eu metus. Pellentesque cursus ullamcorper odio vel
-                condimentum. Nam ultrices eu lectus sit amet lobortis. Morbi porttitor sagittis lacus, non mollis turpis
-                tincidunt nec. Suspendisse id magna ac ipsum pharetra rhoncus. Morbi vitae malesuada magna.</p>
+            <p>Esta sección aborda las acciones de formación impulsadas durante el período, destinadas a incorporar la
+                perspectiva de género en organismos públicos y privados. Las iniciativas sobre violencia laboral,
+                presupuesto con enfoque de género y prácticas inclusivas promueven transformaciones institucionales y
+                culturales que fortalecen la igualdad, previenen la discriminación y favorecen entornos laborales y
+                comunitarios más justos y respetuosos de los derechos humanos.</p>
         </div>
 
-        <div class="card badge-right" data-target="titulo-seccion">
+        <div class="card badge-right">
             <span class="badge" aria-hidden="true">
                 <svg viewBox="0 0 7.5 3" xmlns="http://www.w3.org/2000/svg" width="7.5rem" height="3rem">
                     <rect x="0" y="0" width="7.5" height="3" rx="0.625" ry="0.625" fill="#206170" />
@@ -178,13 +187,14 @@
             </span>
             <h3>Capítulo 4</h3>
             <h4>Articulación y asistencia técnica</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam et tincidunt nisl. Integer eu eleifend nisl.
-                Etiam vitae nunc at lacus rutrum posuere et eu metus. Pellentesque cursus ullamcorper odio vel
-                condimentum. Nam ultrices eu lectus sit amet lobortis. Morbi porttitor sagittis lacus, non mollis turpis
-                tincidunt nec. Suspendisse id magna ac ipsum pharetra rhoncus. Morbi vitae malesuada magna.</p>
+            <p>En este capítulo se detallan las acciones de apoyo técnico y articulación interinstitucional
+                desarrolladas a lo largo de 2025. Mediante alianzas con organismos públicos, privados y académicos, se
+                fortalecieron capacidades locales, se promovió la transversalización del enfoque de género y se
+                consolidaron redes territoriales de trabajo orientadas a mejorar las estrategias estatales de prevención
+                y abordaje de las violencias.</p>
         </div>
 
-        <div class="card badge-left" data-target="titulo-seccion">
+        <div class="card badge-left">
             <span class="badge" aria-hidden="true">
                 <svg viewBox="0 0 7.5 3" xmlns="http://www.w3.org/2000/svg" width="7.5rem" height="3rem">
                     <rect x="0" y="0" width="7.5" height="3" rx="0.625" ry="0.625" fill="#d3335e" />
@@ -195,13 +205,14 @@
             </span>
             <h3>Capítulo 5</h3>
             <h4>Investigación</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam et tincidunt nisl. Integer eu eleifend nisl.
-                Etiam vitae nunc at lacus rutrum posuere et eu metus. Pellentesque cursus ullamcorper odio vel
-                condimentum. Nam ultrices eu lectus sit amet lobortis. Morbi porttitor sagittis lacus, non mollis turpis
-                tincidunt nec. Suspendisse id magna ac ipsum pharetra rhoncus. Morbi vitae malesuada magna.</p>
+            <p>Este apartado reúne las investigaciones y estudios desarrollados durante el período, en cumplimiento de
+                la función institucional de generar conocimiento sobre las violencias por motivos de género. Se destacan
+                la nueva edición del Concurso de Tesis con Perspectiva de Género y estudios sobre prácticas en el ámbito
+                de la salud, que aportan evidencia valiosa para el diseño de políticas públicas y acciones preventivas.
+            </p>
         </div>
 
-        <div class="card badge-right" data-target="titulo-seccion">
+        <div class="card badge-right">
             <span class="badge" aria-hidden="true">
                 <svg viewBox="0 0 7.5 3" xmlns="http://www.w3.org/2000/svg" width="7.5rem" height="3rem">
                     <rect x="0" y="0" width="7.5" height="3" rx="0.625" ry="0.625" fill="#f93e35" />
@@ -213,12 +224,18 @@
             </span>
             <h3>Capítulo 6</h3>
             <h4>Difusión</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam et tincidunt nisl. Integer eu eleifend nisl.
-                Etiam vitae nunc at lacus rutrum posuere et eu metus. Pellentesque cursus ullamcorper odio vel
-                condimentum. Nam ultrices eu lectus sit amet lobortis. Morbi porttitor sagittis lacus, non mollis turpis
-                tincidunt nec. Suspendisse id magna ac ipsum pharetra rhoncus. Morbi vitae malesuada magna.</p>
+            <p>En este capítulo se presentan las estrategias de comunicación y sensibilización desarrolladas para
+                visibilizar las violencias y promover una cultura de equidad. A través de campañas, publicaciones,
+                materiales audiovisuales y la modernización de los canales digitales, se fortalecen los vínculos entre
+                el conocimiento especializado, las políticas públicas y la ciudadanía, impulsando una participación
+                social más activa e informada.</p>
         </div>
     </div>
+
+    <!-- BOTÓN PARA SUBIR -->
+    <button onclick="topFunction()" id="botonTop">
+        <img src="../svg/icono_arrow.svg" alt="Subir" class="topIcon">
+    </button>
 
     <footer class="site-footer">
         <div class="footer-container">

@@ -92,33 +92,80 @@ cards.forEach(card => observer.observe(card));
 
 // SCROLL SUAVE
 function scrollToElement(targetEl, duration = 2000) {
-    const start = window.scrollY;
-    const end = targetEl.getBoundingClientRect().top + window.scrollY;
-    const distance = end - start;
-    let startTime = null;
+  const start = window.scrollY;
+  const end = targetEl.getBoundingClientRect().top + window.scrollY;
+  const distance = end - start;
+  let startTime = null;
 
-    function animation(currentTime) {
-        if (!startTime) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const progress = Math.min(timeElapsed / duration, 1);
-        const ease = progress < 0.5
-            ? 2 * progress * progress
-            : -1 + (4 - 2 * progress) * progress;
-        window.scrollTo(0, start + distance * ease);
-        if (timeElapsed < duration) {
-            requestAnimationFrame(animation);
-        }
+  function animation(currentTime) {
+    if (!startTime) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const progress = Math.min(timeElapsed / duration, 1);
+    const ease = progress < 0.5
+      ? 2 * progress * progress
+      : -1 + (4 - 2 * progress) * progress;
+    window.scrollTo(0, start + distance * ease);
+    if (timeElapsed < duration) {
+      requestAnimationFrame(animation);
     }
+  }
 
-    requestAnimationFrame(animation);
+  requestAnimationFrame(animation);
 }
 
 document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', () => {
-        const targetId = card.getAttribute('data-target');
-        const targetEl = document.getElementById(targetId);
-        if (targetEl) {
-            scrollToElement(targetEl, 1500); // 2000ms = 2 segundos
-        }
-    });
+  card.addEventListener('click', () => {
+    const targetId = card.getAttribute('data-target');
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+      scrollToElement(targetEl, 1500); // 1500ms = 1.5 segundos
+    }
+  });
+});
+
+// MOVIMIENTO DEL LOGO
+const logo = document.querySelector('.logo-observatorio');
+logo.addEventListener('mousemove', (e) => {
+  const rect = logo.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
+
+  const rotateX = ((y - centerY) / centerY) * 15;
+  const rotateY = ((x - centerX) / centerX) * 15;
+
+  logo.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.15)`;
+});
+
+logo.addEventListener('mouseleave', () => {
+  logo.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+});
+
+// BOTÓN PARA SUBIR
+let mybutton = document.getElementById("botonTop");
+
+window.onscroll = function () { scrollFunction() };
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  $('html, body').animate({ scrollTop: 0 }, 250);
+}
+
+// Evento para los enlaces con desplazamiento suave
+$('a').click(function () {
+  const target = $($(this).attr('href'));
+  if (target.length) {
+    $('html, body').animate({
+      scrollTop: target.offset().top
+    }, 250);
+  }
+  return false;
 });
