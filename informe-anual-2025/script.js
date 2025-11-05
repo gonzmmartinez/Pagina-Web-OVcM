@@ -144,7 +144,6 @@ logo.addEventListener('mouseleave', () => {
 
 // BOTÓN PARA SUBIR
 let mybutton = document.getElementById("botonTop");
-
 window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
