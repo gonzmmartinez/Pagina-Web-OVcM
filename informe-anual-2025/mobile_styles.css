@@ -8,7 +8,7 @@
         margin: 0;
         padding: 0;
         font-size: 0.9375rem;
-        /* 15px */
+        background-image: url('./elementos/Background_mobile.svg');
     }
 
     /* Headers y footer ocuparán todo el ancho */
