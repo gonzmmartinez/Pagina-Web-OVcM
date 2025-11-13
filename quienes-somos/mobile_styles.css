@@ -341,4 +341,13 @@
         width: 90%;
         padding: 1.5rem;
     }
+
+    /* CARROUSEL DE IMAGENES */
+    .novedades-swiper {
+        width: 95%;
+    }
+
+    .novedades-titulo {
+        font-size: 1.4rem;
+    }
 }

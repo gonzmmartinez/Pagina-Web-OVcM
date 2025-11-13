@@ -13,8 +13,11 @@
     <link rel="stylesheet" href="./mobile_styles.css" />
     <link rel="stylesheet" href="./header_footer.css" />
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
     <!-- Scripts -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 </head>
 
 <body>
@@ -210,8 +213,16 @@
 
     </div>
 
+    <hr style="width: 25%; color: #fafafa; margin: 100px auto 50px auto">
 
-
+    <section class="novedades-section">
+        <div class="swiper novedades-swiper">
+            <div class="swiper-wrapper" id="novedades-container">
+                <!-- Las imágenes se insertan dinámicamente con JS -->
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
 
     <!-- BOTÓN PARA SUBIR -->
     <button onclick="topFunction()" id="botonTop">
