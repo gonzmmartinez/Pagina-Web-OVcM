@@ -1,49 +1,3 @@
-const contenedorRecomendaciones = document.querySelector("#lista-recomendaciones");
-const JSON_URL = "./lista_recomendaciones.json";
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Menú hamburguesa
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.querySelector('.header-container .nav-links');
-  const icon = menuToggle.querySelector('img');
-
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-    icon.src = navLinks.classList.contains('open') ? './svg/close_menu.svg' : './svg/menu.svg';
-    icon.style.transform = navLinks.classList.contains('open') ? 'rotate(90deg)' : 'rotate(0deg)';
-  });
-
-  // Carga de recomendaciones
-  fetch(JSON_URL)
-    .then(res => res.json())
-    .then(data => {
-      data.forEach((item, index) => {
-        const tarjeta = document.createElement("div");
-        tarjeta.classList.add("recomendacion-tarjeta");
-
-        // Agregar los data-* directamente a la tarjeta
-        tarjeta.setAttribute("data-titulo", item.titulo);
-        tarjeta.setAttribute("data-descripcion", item.descripcion);
-        tarjeta.setAttribute("data-link", item.link);
-        tarjeta.setAttribute("data-numero", item.numero);
-
-        tarjeta.innerHTML = `
-          <div class="recomendacion-numero">${item.numero}</div>
-          <div class="recomendacion-contenido">
-            <div class="recomendacion-titulo">Recomendación N° ${item.numero}</div>
-            <h2>${item.titulo}</h2>
-          </div>
-        `;
-
-        contenedorRecomendaciones.appendChild(tarjeta);
-      });
-    })
-    .catch(err => {
-      console.error("Error al cargar las recomendaciones:", err);
-      contenedorRecomendaciones.innerHTML = "<p>Error al cargar las recomendaciones.</p>";
-    });
-});
-
 // MOVIMIENTO DEL LOGO
 const logo = document.querySelector('.logo-observatorio');
 logo.addEventListener('mousemove', (e) => {
@@ -130,3 +84,43 @@ fetch("https://ovcmsalta.gob.ar/wp-json/wp/v2/posts?categories=20&per_page=15&_e
 
   })
   .catch(err => console.error("Error al cargar las novedades:", err));
+
+// ====== FUNCIÓN PARA RECORTAR TEXTO ======
+function recortarTexto(texto, max = 150) {
+  if (texto.length <= max) return texto;
+  return texto.substring(0, max).trim() + "...";
+}
+
+// ====== GENERADOR DE TARJETAS ======
+document.addEventListener("DOMContentLoaded", () => {
+  const contenedor = document.getElementById("directorio-container");
+
+  fetch("./directoras.json")
+    .then(response => response.json())
+    .then(directoras => {
+
+      directoras.forEach(dir => {
+
+        const card = document.createElement("div");
+        card.classList.add("directora-card");
+
+        // Datos para el modal
+        card.dataset.nombre = dir.nombre;
+        card.dataset.img = dir.img;
+        card.dataset.desc = dir.descripcion;
+
+        // Crear descripción breve automáticamente
+        const breve = recortarTexto(dir.descripcion, 150);
+
+        card.innerHTML = `
+                    <img src="${dir.img}" class="directora-img" alt="${dir.nombre}">
+                    <h3 class="directora-nombre">${dir.nombre}</h3>
+                    <p class="directora-desc">${breve}</p>
+                `;
+
+        contenedor.appendChild(card);
+      });
+
+      document.dispatchEvent(new Event("tarjetas-cargadas"));
+    });
+});

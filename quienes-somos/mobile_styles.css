@@ -318,8 +318,12 @@
     }
 
     /* ---- MISION VISION VALORES ---- */
-    .card-mvv,
-    .card-mvv.derecha {
+    .bloque-mvv {
+        width: 90%;
+        margin: auto;
+    }
+
+    .card-mvv {
         flex-direction: column;
         text-align: center;
     }
@@ -332,9 +336,17 @@
         margin-bottom: 1rem;
     }
 
+    .icono-mvv-arriba {
+        display:flex;
+    }
+
+    .icono-mvv-derecha {
+        display: none;
+    }
+
     .img-mvv {
-        width: 60px;
-        height: 60px;
+        width: 100px;
+        height: 100px;
     }
 
     .card-mvv {
@@ -344,10 +356,57 @@
 
     /* CARROUSEL DE IMAGENES */
     .novedades-swiper {
-        width: 95%;
+        width: 90%;
     }
 
-    .novedades-titulo {
-        font-size: 1.4rem;
+    .swiper-slide {
+        width: 75% !important;
+        height: 30vh !important;
+    }
+
+    /* DIRECTORIO */
+    .directorio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .directora-img {
+        height: 40vh;
+    }
+
+    /* EQUIPO TÉCNICO */
+    .equipo-grid .card-equipo {
+        flex: 1 1 100%;
+    }
+
+    .equipo-proyecto {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .equipo-proyecto .card-equipo {
+        width: auto;
+    }
+
+    .proyecto-cards {
+        flex-direction: column;
+    }
+
+    /* LOGO OBSERVATORIO */
+    .logo-observatorio {
+        width: 90%;
+    }
+
+    .logo-desktop {
+        display: none;
+    }
+    .logo-mobile {
+        display: block;
+    }
+
+    /* TEXTO */
+    .content {
+        width: 90%;
     }
 }

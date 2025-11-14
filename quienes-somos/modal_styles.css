@@ -10,68 +10,7 @@
     --secondary-color-light: #A682BA;
 }
 
-/* Contenedor de las tarjetas */
-#lista-recomendaciones {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin: auto;
-  margin-top: 30px;
-  padding: 0 20px;
-  width: 50%;
-}
-
-/* Tarjeta de recomendación */
-.recomendacion-tarjeta {
-  display: flex;
-  align-items: center; /* Alinear contenido superiormente */
-  padding: 20px 25px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  gap: 16px; /* Espacio entre número y contenido */
-}
-
-.recomendacion-tarjeta:hover {
-  background-color: #d0badb;
-}
-
-/* Número dentro de la tarjeta */
-.recomendacion-numero {
-  font-size: 2rem;
-  font-weight: 900;
-  color: var(--main-color, #3A1D51);
-  min-width: 40px;
-  text-align: center;
-}
-
-/* Contenedor del contenido de la tarjeta */
-.recomendacion-contenido {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Texto "Recomendación N° X" */
-.recomendacion-titulo {
-  font-size: 1.125rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: var(--main-color, #3A1D51);
-  margin-bottom: 5px;
-}
-
-/* Título principal */
-.recomendacion-contenido h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  text-transform: none;
-  margin: 0;
-  color: #333;
-}
-
-/* MODAL */
+/* MODAL DE LA LEY */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -79,7 +18,6 @@
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
-    /* fondo oscuro */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,7 +29,7 @@
     padding: 2.5%;
     border-radius: 0px;
     max-width: 700px;
-    max-height: 500px;
+    height: 75vh;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     position: relative;
     animation: fadeIn 0.3s ease-out;
@@ -158,16 +96,22 @@
 
 /* Título del modal */
 #modal-title {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #222;
+    color: var(--main-color);
 }
 
 /* Alineación del texto justificado solo para la descripción */
 #modal-description {
     text-align: justify;
     width: 90%;
+}
+
+#modal-description p {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    text-indent: 1em;
 }
 
 /* Ícono en el botón */
@@ -191,4 +135,13 @@
 .modal-icon {
     width: 1.2rem;
     height: 1.2rem;
+}
+
+/* ===== DIRECTORIO ===== */
+.modal-img {
+    width: 60%;
+    max-width: 300px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }

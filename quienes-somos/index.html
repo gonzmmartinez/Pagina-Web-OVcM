@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiénes somos | OVcM</title>
     <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="./lista_styles.css" />
+    <link rel="stylesheet" href="./modal_styles.css" />
     <link rel="stylesheet" href="./mobile_styles.css" />
     <link rel="stylesheet" href="./header_footer.css" />
 
@@ -103,10 +103,11 @@
     </div>
 
     <div class="logo-container">
-        <img src="./svg/Logo_horizontal.svg" alt="Logo del los diez años del Observatorio" class="logo-observatorio">
+        <img src="./svg/Logo_horizontal.svg" alt="Logo horizontal" class="logo-observatorio logo-desktop">
+        <img src="./svg/Logo_cuadrado.svg" alt="Logo cuadrado" class="logo-observatorio logo-mobile">
     </div>
 
-    <hr style="width: 25%; color: #fafafa; margin: 100px auto 50px auto">
+    <hr style="width: 50%; color: #fafafa; margin: 100px auto 50px auto">
 
     <div class="content">
         <p>
@@ -179,13 +180,16 @@
         <!-- Visión: ícono a la derecha -->
         <div class="card-mvv">
             <div class="texto-mvv">
+                <div class="icono-mvv-arriba">
+                    <img src="./svg/vision.svg" alt="Ícono visión" class="img-mvv">
+                </div>
                 <h2 style="text-align: right;">Su <strong>visión</strong> es...</h2>
                 <p>lograr que las mujeres salteñas víctimas de violencia se sientan respetadas, amparadas y protegidas
                     por el Estado Provincial y difundir la gravitación que tiene la eliminación de la violencia contra
                     las mujeres para el logro de una sociedad más democrática y justa, ya que la construcción de
                     vínculos no violentos depende no solo de las mujeres sino del conjunto social.</p>
             </div>
-            <div class="icono-mvv">
+            <div class="icono-mvv-derecha">
                 <img src="./svg/vision.svg" alt="Ícono visión" class="img-mvv">
             </div>
         </div>
@@ -213,22 +217,109 @@
 
     </div>
 
-    <hr style="width: 25%; color: #fafafa; margin: 100px auto 50px auto">
+    <hr style="width: 50%; color: #fafafa; margin: 100px auto 50px auto">
 
     <section class="novedades-section">
         <div class="swiper novedades-swiper">
             <div class="swiper-wrapper" id="novedades-container">
-                <!-- Las imágenes se insertan dinámicamente con JS -->
             </div>
             <div class="swiper-pagination"></div>
         </div>
     </section>
+
+    <hr style="width: 50%; color: #fafafa; margin: 150px auto 50px auto">
+
+    <!-- ======= DIRECTORIO ======= -->
+    <section class="directorio-section">
+        <h2 class="directorio-title">Directorio</h2>
+
+        <div id="directorio-container" class="directorio-grid">
+            <!-- Las tarjetas se generarán automáticamente -->
+        </div>
+    </section>
+
+    <!-- ======= MODAL REUTILIZABLE ======= -->
+    <div id="modal-directora" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="modal-close" id="cerrar-modal-directora">&times;</button>
+
+            <img id="modal-img" src="" alt="" class="modal-img">
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+        </div>
+    </div>
+
+    <hr style="width: 50%; color: #fafafa; margin: 100px auto 50px auto">
+
+    <section class="equipo-section">
+
+        <h2 class="equipo-title">EQUIPO TÉCNICO</h2>
+
+        <!-- Primera subsección: grilla flexible -->
+        <div class="equipo-grid">
+            <div class="card-equipo">
+                <h3 class="card-nombre">Dra. Flavia Garagorri</h3>
+                <p class="card-cargo">Abogada</p>
+            </div>
+
+            <div class="card-equipo">
+                <h3 class="card-nombre">Lic. Gabriela Ferro</h3>
+                <p class="card-cargo">Licenciada en Sociología</p>
+            </div>
+
+            <div class="card-equipo">
+                <h3 class="card-nombre">Tec. Constanza Quiuan</h3>
+                <p class="card-cargo">Técnica en Recursos Humanos</p>
+            </div>
+        </div>
+
+
+        <!-- Segunda subsección -->
+        <div class="equipo-proyecto">
+
+            <div class="proyecto-titulo">
+                <h3>PROYECTO DESARROLLO DE LA PÁGINA WEB</h3>
+            </div>
+
+            <div class="proyecto-cards">
+                <div class="card-equipo">
+                    <h3 class="card-nombre">Lic. María Cecilia Carraro</h3>
+                    <p class="card-cargo">Licenciada en Diseño Gráfico</p>
+                </div>
+
+                <div class="card-equipo">
+                    <h3 class="card-nombre">Tec. Gonzalo Matias Martinez</h3>
+                    <p class="card-cargo">Técnico en Estadística</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Tercera subsección -->
+        <div class="equipo-proyecto">
+
+            <div class="proyecto-titulo">
+                <h3>PROYECTO CREACIÓN DE CONTENIDO PARA CAPACITACIONES</h3>
+            </div>
+
+            <div class="proyecto-cards">
+                <div class="card-equipo">
+                    <h3 class="card-nombre">Emilse Alvarado</h3>
+                    <p class="card-cargo">Estudiante de Ciencias de la Educación</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
 
     <!-- BOTÓN PARA SUBIR -->
     <button onclick="topFunction()" id="botonTop">
         <img src="./svg/icono_arrow.svg" alt="Subir" class="topIcon">
     </button>
 
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="footer-container">
 
