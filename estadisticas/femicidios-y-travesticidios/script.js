@@ -16,7 +16,7 @@ function iniciar1() {
 
 // FUNCION PARA ACTUALIZAR TODOS LOS GRAFICOS
 function actualizarGraficos() {
-  actualizarGrafico1_2();  
+  actualizarGrafico1_2();
   actualizarGrafico1_3();
   actualizarGrafico1_4();
   actualizarGrafico1_5();
@@ -54,7 +54,7 @@ function procesarCausas() {
       // Obtener el contenedor de íconos
       const iconContainer = document.getElementById('mujeresIconos');
 
-      // **Vaciar el contenedor antes de añadir nuevos íconos**
+      // Vaciar el contenedor antes de añadir nuevos íconos
       iconContainer.innerHTML = '';
 
       // Generar los íconos dinámicamente
@@ -72,12 +72,29 @@ function procesarCausas() {
         iconContainer.appendChild(imgElement);
       };
 
-      // **Actualizar el texto en el contenedor "causasJudiciales"**
+      // Actualizar el texto en el contenedor "causasJudiciales"
       const causasContainer = document.getElementById('causasJudiciales');
-      causasContainer.innerHTML = `
-        <strong>Son ${Y} los casos que no tienen causa judicial</strong><br>
-        por la muerte posterior al hecho del presunto femicida
-      `;
+
+      let texto = '';
+
+      if (Y > 1) {
+        texto = `
+    <strong>Hay ${Y} los casos en los que se extinguió la acción penal</strong><br>
+    por la muerte posterior a los hechos de los presuntos femicidas
+  `;
+      } else if (Y === 1) {
+        texto = `
+    <strong>Hay ${Y} caso en el que se extinguió la acción penal</strong><br>
+    por la muerte posterior al hecho del presunto femicida
+  `;
+      } else { // Y === 0
+        texto = `
+    <strong>Todos los casos tienen acción penal vigente</strong>
+  `;
+      }
+
+      causasContainer.innerHTML = texto;
+
 
     })
     .catch(error => {
@@ -88,26 +105,26 @@ function procesarCausas() {
 
 // Función para recortar texto
 function cortarTexto(texto, limite) {
-    const palabras = texto.toString().split(" ");
-    const resultado = []; // Aquí almacenaremos las líneas
-    let lineaActual = "";
-  
-    palabras.forEach(palabra => {
-      if ((lineaActual + " " + palabra).trim().length > limite) {
-        resultado.push(lineaActual.trim()); // Agrega la línea actual al array
-        lineaActual = palabra; // Inicia una nueva línea
-      } else {
-        lineaActual += " " + palabra; // Continúa con la línea actual
-      }
-    });
-  
-    // Agregar la última línea si quedó algo
-    if (lineaActual) {
-      resultado.push(lineaActual.trim());
-    }
+  const palabras = texto.toString().split(" ");
+  const resultado = []; // Aquí almacenaremos las líneas
+  let lineaActual = "";
 
-    return resultado;
+  palabras.forEach(palabra => {
+    if ((lineaActual + " " + palabra).trim().length > limite) {
+      resultado.push(lineaActual.trim()); // Agrega la línea actual al array
+      lineaActual = palabra; // Inicia una nueva línea
+    } else {
+      lineaActual += " " + palabra; // Continúa con la línea actual
+    }
+  });
+
+  // Agregar la última línea si quedó algo
+  if (lineaActual) {
+    resultado.push(lineaActual.trim());
   }
-  
-  // 8. Llamar la función principal al cargar la página
+
+  return resultado;
+}
+
+// 8. Llamar la función principal al cargar la página
 window.addEventListener("load", iniciar1);
