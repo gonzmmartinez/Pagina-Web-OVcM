@@ -79,7 +79,7 @@ function procesarCausas() {
 
       if (Y > 1) {
         texto = `
-    <strong>Hay ${Y} los casos en los que se extinguió la acción penal</strong><br>
+    <strong>Hay ${Y} casos en los que se extinguió la acción penal</strong><br>
     por la muerte posterior a los hechos de los presuntos femicidas
   `;
       } else if (Y === 1) {
