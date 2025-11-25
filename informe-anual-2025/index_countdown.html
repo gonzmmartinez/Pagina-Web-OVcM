@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap"
+        rel="stylesheet">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Informe Anual 2025 | OVcM</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./mobile_styles.css" />
+    <link rel="stylesheet" href="./styles_muestra.css" />
+    <link rel="stylesheet" href="./header_footer.css" />
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="repository-header">
+            <p style="font-size: 0.75rem; color: white; text-transform: none; margin: 0">Salta - Argentina</p>
+
+            <div class="header-right">
+                <a href="https://www.facebook.com/ovcmsalta/" class="header-icon" aria-label="Facebook">
+                    <img src="./svg/facebook.svg" alt="Facebook" />
+                </a>
+                <a href="https://www.instagram.com/ovcmsalta/" class="header-icon" aria-label="Instagram">
+                    <img src="./svg/instagram.svg" alt="Instagram" />
+                </a>
+                <a href="https://www.linkedin.com/company/ovcm-salta" class="header-icon" aria-label="LinkedIn">
+                    <img src="./svg/linkedin.svg" alt="LinkedIn" />
+                </a>
+                <a href="mailto:observatoriomujersalta@gmail.com" class="header-icon" aria-label="Correo">
+                    <img src="./svg/correo.svg" alt="Email" />
+                </a>
+            </div>
+        </div>
+
+        <div class="header-container">
+            <div class="logo">
+                <a href="https://ovcmsalta.gob.ar/">
+                    <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/08/Logotipo-completo-color-1-1-e1746839769147.png"
+                        alt="Logo OVCM" />
+                </a>
+            </div>
+
+            <!-- Botón hamburguesa -->
+            <button id="menu-toggle" aria-label="Abrir menú">
+                <img src="svg/menu.svg" alt="Ícono menú" />
+            </button>
+
+            <nav class="nav-links">
+                <a href="https://ovcmsalta.gob.ar/">Inicio</a>
+                <a href="https://ovcmsalta.gob.ar/quienes-somos/">Quiénes somos</a>
+                <a href="https://ovcmsalta.gob.ar/estadisticas/">Estadísticas</a>
+
+                <!-- Repositorio digital con submenú -->
+                <div class="dropdown">
+                    <a href="https://ovcmsalta.gob.ar/repositorio-digital/" class="dropdown-toggle">
+                        Repositorio digital
+                        <img src="./svg/down_arrow.svg" alt="Submenú" class="dropdown-icon" />
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="https://ovcmsalta.gob.ar/repositorio-digital/informes-anuales/">Informes anuales</a>
+                        <a href="https://ovcmsalta.gob.ar/repositorio-digital/?type=Informe+tem%C3%A1tico">Informes
+                            temáticos</a>
+                        <a href="https://ovcmsalta.gob.ar/repositorio-digital/?type=Gu%C3%ADa">Guías</a>
+                        <a href="https://ovcmsalta.gob.ar/repositorio-digital/?type=Herramientas">Herramientas</a>
+                        <a href="https://ovcmsalta.gob.ar/concursos/">Folletería</a>
+                    </div>
+                </div>
+
+                <!-- Servicios y herramientas con submenú -->
+                <div class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Servicios y herramientas
+                        <img src="./svg/down_arrow.svg" alt="Submenú" class="dropdown-icon" />
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="https://ovcmsalta.gob.ar/protocolos/">Protocolos</a>
+                        <a href="https://ovcmsalta.gob.ar/recomendaciones/">Recomendaciones</a>
+                        <a href="https://ovcmsalta.gob.ar/capacitaciones/">Solicitar capacitación</a>
+                        <a href="https://ovcmsalta.gob.ar/concursos/">Concursos</a>
+                    </div>
+                </div>
+
+                <a href="https://ovcmsalta.gob.ar/novedades/">Novedades</a>
+                <a href="https://ovcmsalta.gob.ar/contacto/">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="titulo-seccion" class="titulo-seccion">
+        <p>Informes anuales</p>
+        <h1>INFORME ANUAL 2025</h1>
+    </div>
+
+    <div class="logo-container">
+        <img src="./svg/Logo_cuadrado.svg" alt="Logo del los diez años del Observatorio" class="logo-observatorio">
+    </div>
+
+    <hr style="width: 25%; color: #fafafa; margin: 50px auto 50px auto">
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="countdown-section">
+        <h2 class="countdown-title">
+            FALTA POCO PARA LA PRESENTACIÓN DEL
+            <span style="font-weight: 800; color: #2b42a0;">INFORME ANUAL 2025</span>
+        </h2>
+
+        <div class="countdown-wrapper">
+            <div class="countdown-item">
+                <span id="days" class="count-value">00</span>
+                <span class="count-label">DÍAS</span>
+            </div>
+            <div class="countdown-item">
+                <span id="hours" class="count-value">00</span>
+                <span class="count-label">HS</span>
+            </div>
+            <div class="countdown-item">
+                <span id="minutes" class="count-value">00</span>
+                <span class="count-label">MIN</span>
+            </div>
+            <div class="countdown-item">
+                <span id="seconds" class="count-value">00</span>
+                <span class="count-label">SEG</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTÓN PARA SUBIR -->
+    <button onclick="topFunction()" id="botonTop">
+        <img src="./svg/icono_arrow.svg" alt="Subir" class="topIcon">
+    </button>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+
+            <!-- Izquierda -->
+            <div class="footer-left">
+                <div class="logo-footer">
+                    <a href="https://ovcmsalta.gob.ar/">
+                        <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco--e1732716397908.png"
+                            alt="Logo OVCM" />
+                    </a>
+                </div>
+                <p>&copy; 2025 Observatorio de Violencia contra las Mujeres</p>
+            </div>
+
+            <!-- Centro -->
+            <div class="footer-center">
+                <p>25 de Mayo 225 - Salta Capital - Argentina</p>
+            </div>
+
+            <!-- Derecha -->
+            <div class="footer-right">
+                <a href="https://www.facebook.com/ovcmsalta/" class="footer-icon" aria-label="Facebook">
+                    <img src="./svg/facebook.svg" alt="Facebook" />
+                </a>
+                <a href="https://www.instagram.com/ovcmsalta/" class="footer-icon" aria-label="Instagram">
+                    <img src="./svg/instagram.svg" alt="Instagram" />
+                </a>
+                <a href="https://www.linkedin.com/company/ovcm-salta" class="footer-icon" aria-label="LinkedIn">
+                    <img src="./svg/linkedin.svg" alt="LinkedIn" />
+                </a>
+                <a href="mailto:observatoriomujersalta@gmail.com" class="footer-icon" aria-label="Correo">
+                    <img src="./svg/correo.svg" alt="Email" />
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+    <script src="./modal_script.js"></script>
+    <script src="./countdown_script.js"></script>
+</body>
+
+</html>
