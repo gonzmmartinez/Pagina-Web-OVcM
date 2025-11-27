@@ -14,7 +14,7 @@ let documentos = [];
 
 async function cargarDocumentos() {
   try {
-    const res = await fetch(JSON_URL);
+    const res = await fetch(`${JSON_URL}?v=${Date.now()}`);
     documentos = await res.json();
     documentos.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
 

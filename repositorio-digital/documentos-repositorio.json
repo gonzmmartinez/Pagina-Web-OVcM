@@ -1,5 +1,27 @@
 [
   {
+    "slug": "informe-anual-2025",
+    "titulo": "Informe anual 2025",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2025-11-25",
+    "tipo_documento": "Informe anual",
+    "tema": "Gestión del OVcM",
+    "coleccion": "Informes anuales del OVcM",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/11/Informe-Anual-2025-OVcM.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/11/Informe-Anual-2025-OVcM-scaled.jpg"
+  },
+  {
+    "slug": "informe-anual-2025-resumen-ejecutivo",
+    "titulo": "Informe anual 2025 (resumen ejecutivo)",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2025-11-25",
+    "tipo_documento": "Resumen ejecutivo del informe anual",
+    "tema": "Gestión del OVcM",
+    "coleccion": "Resumenes ejecutivos de los informes anuales",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/11/Resumen-Ejecutivo-Informe-Anual-2025-OVcM.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2025/11/Resumen-Ejecutivo-Informe-Anual-2025-OVcM-scaled.jpg"
+  },
+  {
     "slug": "dossier-tesis-2025",
     "titulo": "Dossier Tesis de Grado con Perspectiva de Género - 2025",
     "autor": ["Observatorio de Violencia contra las Mujeres"],
