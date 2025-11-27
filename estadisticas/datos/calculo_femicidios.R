@@ -144,6 +144,11 @@ Data15 <- Raw4 %>%
   ungroup %>%
   mutate(Fecha_short = format(as.Date(Fecha, format="%Y-%m-%d"), "%d-%m"))
 
+
+######### ACTUALIZACIÓN #########
+actualizacion <- paste0("Última actualización: ", format(Sys.Date(), "%d/%m/%Y"))
+writeLines(actualizacion, paste0(dir, "/json/ultima_actualizacion.txt"))
+
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data3), path = paste0(dir, "/json/femicidios_edades.json"))
 

@@ -199,3 +199,16 @@ function guardarActivoComoPNG() {
         alert('No hay gráfico activo.');
     }
 }
+
+// ACTUALIZACIÓN DE LOS DATOS
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("../datos/json/ultima_actualizacion.txt")
+        .then(response => response.text())
+        .then(texto => {
+            const span = document.getElementById("ultima-actualizacion");
+            if (span) {
+                span.innerHTML = `<i>${texto}</i>`;
+            }
+        })
+        .catch(error => console.error("Error cargando la fecha:", error));
+});
