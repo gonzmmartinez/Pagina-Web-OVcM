@@ -7,52 +7,34 @@ const filtroTipo = document.getElementById("filtro-tipo");
 const filtroColeccion = document.getElementById("filtro-coleccion");
 const filtroTema = document.getElementById("filtro-tema");
 
-let documentos = [];
-
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHRcsRqtbkL0dyAGD7-8ldJly3B2W8RPnanVPQo_nF_mEdgLR6aU1zGYKj6miexk3h97JLfiXL_CGT/pub?gid=0&single=true&output=csv";
+const JSON_URL = "documentos-repositorio.json";
 const ITEMS_POR_PAGINA = 10;
+
+let documentos = [];
 
 async function cargarDocumentos() {
   try {
-    const res = await fetch(SHEET_URL + "&cachebust=" + Date.now()); // evita caché
-    const csv = await res.text();
-
-    const filas = csv.split("\n").map(f => f.split(","));
-    const headers = filas[0].map(h => h.trim());
-
-    documentos = filas.slice(1).map(f => {
-      const obj = {};
-
-      headers.forEach((h, i) => {
-        let valor = f[i] ? f[i].trim() : "";
-
-        // Campos que deben convertirse en array
-        const camposLista = ["autor", "tipo_documento", "tema"];
-
-        if (camposLista.includes(h)) {
-          obj[h] = valor
-            ? valor.split(";").map(v => v.trim()).filter(v => v !== "")
-            : [];
-        } else {
-          obj[h] = valor;
-        }
-      });
-
-      return obj;
-    });
-
-    // Ordenar por fecha
+    const res = await fetch(`${JSON_URL}?v=${Date.now()}`);
+    documentos = await res.json();
     documentos.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
 
-    renderizar();
+    const searchInput = document.getElementById("search-input");
+
+    // Escuchar cambios en la barra de búsqueda
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        const query = e.target.value.trim().toLowerCase();
+        renderizar(query);
+      });
+    }
+
+    renderizar(); // render inicial sin búsqueda
 
   } catch (error) {
+    contenedor.innerHTML = `<p>Error al cargar los documentos.</p>`;
     console.error("Error al cargar los documentos:", error);
-  } finally {
-    ocultarLoader();
   }
 }
-
 
 function renderizar(searchQuery = "") {
   const params = new URLSearchParams(window.location.search);
@@ -388,20 +370,3 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 cargarDocumentos();
-
-// Loader
-function mostrarLoader() {
-  const overlay = document.getElementById("loader-overlay");
-  overlay.classList.remove("oculto");
-}
-
-function ocultarLoader() {
-  const overlay = document.getElementById("loader-overlay");
-
-  // duración mínima aleatoria entre 1000 y 2000 ms
-  const delay = 500 + Math.random() * 500;
-
-  setTimeout(() => {
-    overlay.classList.add("oculto");
-  }, delay);
-}
