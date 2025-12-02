@@ -24,7 +24,7 @@ Raw <- get_microdata(
                  "CH06", "ESTADO", "CAT_OCUP", "CAT_INAC", "INTENSI", "PP03J")) %>%
   rbind(get_microdata(
     year = 2025,
-    period = 1,
+    period = 1:2,
     type = "individual",
     vars = c("ANO4", "TRIMESTRE", "REGION", "AGLOMERADO", "PONDERA" , "CH04",
              "CH06", "ESTADO", "CAT_OCUP", "CAT_INAC", "INTENSI", "PP03J")))
@@ -78,6 +78,10 @@ Data4 <- Data0 %>%
   select(Año, Trimestre, Género, Tasa_Desocupacion) %>%
   mutate(year_trimestre = paste0(Trimestre, "-", str_sub(Año, 3, 4))) %>%
   arrange(Año,Trimestre)
+
+######### ACTUALIZACIÓN #########
+actualizacion <- paste0("Última actualización de los datos de esta sección: ", format(Sys.Date(), "%d/%m/%Y"))
+writeLines(actualizacion, paste0(dir, "/json/actualizacion_trabajo.txt"))
 
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data1), path = paste0(dir, "/json/trabajo_actividad.json"))

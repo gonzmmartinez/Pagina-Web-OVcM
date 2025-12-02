@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <link type="text/css" rel="stylesheet" href="../styles.css">
     <link type="text/css" rel="stylesheet" href="./femicidios_styles.css">
@@ -9,13 +10,14 @@
     <title>Estadísticas | OVcM</title>
 
     <!-- Scripts -->
-    <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
-    <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
-    <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css">
-    
+
 </head>
 
 <body>
@@ -32,7 +34,8 @@
     <div id="sidebar">
         <div class="sidebarDiv">
             <a href="https://ovcmsalta.gob.ar/estadisticas/">
-                <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1" class="logoIcon">
+                <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1"
+                    class="logoIcon">
             </a>
             <span class="logoText">Observatorio de Violencia contra las Mujeres</span>
         </div>
@@ -86,9 +89,9 @@
                 <li><a href="https://ovcmsalta.gob.ar">Inicio</a></li>
                 <li><a href="../">Estadísticas</a></li>
                 <li class="active">Femicidios y travesticidios</li>
-            </ul> 
+            </ul>
         </nav>
-        
+
         <div class="titleContainer">
             <img src="../svg/icono_01.svg" alt="Ícono" class="titleIcon">
             <h1 class="pageTitle">Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</h1>
@@ -97,7 +100,8 @@
         <br>
 
         <div style="display: flex; justify-content: center;">
-            <button class="indicadorButton" onclick="showChart('chart5')" style="padding: 15px 25px; font-size: 1.125rem; font-weight: bold;">
+            <button class="indicadorButton" onclick="showChart('chart5')"
+                style="padding: 15px 25px; font-size: 1.125rem; font-weight: bold;">
                 VER REGISTRO COMPLETO
             </button>
         </div>
@@ -112,9 +116,11 @@
 
         <!-- Contenedor de botones -->
         <nav class="indicador-container">
-            <button class="indicadorButton active" onclick="showChart('chart1')">Características de los femicidios ocurridos</button>
+            <button class="indicadorButton active" onclick="showChart('chart1')">Características de los femicidios
+                ocurridos</button>
             <button class="indicadorButton" onclick="showChart('chart2')">Mapa de femicidios</button>
-            <button class="indicadorButton" onclick="showChart('chart3')">Evolución de la cantidad total de femicidios y muertes violentas</button>
+            <button class="indicadorButton" onclick="showChart('chart3')">Evolución de la cantidad total de femicidios y
+                muertes violentas</button>
             <button class="indicadorButton" onclick="showChart('chart4')">Tasa de femicidios a nivel nacional</button>
         </nav>
 
@@ -125,11 +131,15 @@
             <!-- TITULO -->
             <div style="text-align: center; height: auto;">
                 <p>
-                    <span style="font-size:20px"><strong>Muertes violentas, femicidios, travesticidios y transfemicidios</strong></span>
+                    <span style="font-size:20px"><strong>Muertes violentas, femicidios, travesticidios y
+                            transfemicidios</strong></span>
                     <br>
                     <span style="font-size:15px"><i>Provincia de Salta</i></span>
                     <br>
-                    <span id="ultima-actualizacion" style="font-size:12px"></span>
+                    <!-- Última actualización -->
+                    <span class="ultima-actualizacion" data-src="../datos/json/actualizacion_femicidios.txt"
+                        style="font-size:0.75rem; display:block; text-align:center; margin-top: 10px;">
+                    </span>
                 </p>
 
                 <div class="selectContainer">
@@ -146,7 +156,7 @@
                     </select>
                 </div>
             </div>
-            
+
             <div id="divGrande">
                 <!-- MAPA -->
                 <div id="divSub1">
@@ -212,13 +222,13 @@
                     <p>
                         <strong>Muertes violentas y/o dudosas, y femicidios</strong>
                     </p>
-                    
+
                     <div class="grid-container">
                         <div class="item">
                             <span id="totalMuertes"></span>
-                            
+
                             <br>
-                            
+
                             <p style="text-align: center; font-size: 1rem; margin-top: 0px;">
                                 Muertes violentas y/o dudosas y femicidios
                             </p>
@@ -234,22 +244,24 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Femicidios, travesticidios, y transfemicidios ocurridos en la Provincia</strong></span>
+                    <span style="font-size:20px"><strong>Femicidios, travesticidios, y transfemicidios ocurridos en la
+                            Provincia</strong></span>
                     <br>
                     <span style="font-size:15px"><i>Por departamento</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico2" class="graficoMapa"></div> 
-        
+            <div id="grafico2" class="graficoMapa"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
-                    <strong>FUENTE</strong>: Registro de casos del OVcM. Ministerio Público Fiscal de la Provincia de Salta.
+                    <strong>FUENTE</strong>: Registro de casos del OVcM. Ministerio Público Fiscal de la Provincia de
+                    Salta.
                 </p>
             </div>
-        
+
             <!-- Listas desplegables -->
             <div class="selectContainer">
                 <p>
@@ -270,15 +282,16 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Evolución de la cantidad de femicidios, travesticidios, y transfemicidios ocurridos en la Provincia</strong></span>
+                    <span style="font-size:20px"><strong>Evolución de la cantidad de femicidios, travesticidios, y
+                            transfemicidios ocurridos en la Provincia</strong></span>
                     <br>
                     <span style="font-size:15px"><i>Por año</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico3"></div> 
-        
+            <div id="grafico3"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
@@ -286,7 +299,8 @@
 
                     <br>
 
-                    <strong>FUENTE</strong>: Registro de casos del OVcM. Ministerio Público Fiscal de la Provincia de Salta.
+                    <strong>FUENTE</strong>: Registro de casos del OVcM. Ministerio Público Fiscal de la Provincia de
+                    Salta.
                 </p>
             </div>
         </div>
@@ -297,22 +311,26 @@
                 <p>
                     <span style="font-size:20px"><strong>Tasa de femicidios en la República Argentina</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Femicidios por cada 100.000 mujeres. Por provincia, por año.</i></span>
+                    <span style="font-size:15px"><i>Femicidios por cada 100.000 mujeres. Por provincia, por
+                            año.</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico4" class="graficoMapa"></div> 
-        
+            <div id="grafico4" class="graficoMapa"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
-                    <strong>FUENTE</strong>: Oficina de la Mujer de la de la Corte Suprema de Justicia de la Nación, cumplimentada y/o corregida con información correspondiente al registro propio del OVcM para los casos de la Provincia de Salta en el periodo 2020-2024.
+                    <strong>FUENTE</strong>: Oficina de la Mujer de la de la Corte Suprema de Justicia de la Nación,
+                    cumplimentada y/o corregida con información correspondiente al registro propio del OVcM para los
+                    casos de la Provincia de Salta en el periodo 2020-2024.
                     <br>
-                    <strong>NOTA</strong>: El cálculo se realiza en base a las proyecciones poblacionales del Instituto Nacional de Estadísticas y Censo (INDEC).
+                    <strong>NOTA</strong>: El cálculo se realiza en base a las proyecciones poblacionales del Instituto
+                    Nacional de Estadísticas y Censo (INDEC).
                 </p>
             </div>
-        
+
             <!-- Listas desplegables -->
             <div class="selectContainer">
                 <p>
@@ -332,11 +350,15 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: center;">
                 <p>
-                    <span style="font-size:1.5rem"><strong>Registro provisorio de causas caratuladas como femicidio, transfemicidio y crímenes de odio en etapa de investigación penal</strong></span>
+                    <span style="font-size:1.5rem"><strong>Registro provisorio de causas caratuladas como femicidio,
+                            transfemicidio y crímenes de odio en etapa de investigación penal</strong></span>
                     <br>
                     <span style="font-size:1.25rem"><i>Provincia de Salta.</i></span>
                     <br>
-                    <span style="font-size:0.75rem"><i>Última actualización: 19/09/2025</i></span>
+                    <!-- Última actualización -->
+                    <span class="ultima-actualizacion" data-src="../datos/json/actualizacion_femicidios.txt"
+                        style="font-size:0.75rem; display:block; text-align:center; margin-top: 10px;">
+                    </span>
                 </p>
             </div>
 
@@ -354,7 +376,7 @@
                     <option value="2020">2020</option>
                 </select>
             </div>
-        
+
             <!-- Canvas para el chart -->
             <div id="grafico5">
                 <table id="tablaFemicidios" class="hover cell-border">
@@ -383,7 +405,8 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: center;">
                 <p>
-                    <span style="font-size:1.5rem"><strong>Registro provisorio de causas de muertes violentas y/o dudosas de mujeres cis, trans</strong></span>
+                    <span style="font-size:1.5rem"><strong>Registro provisorio de causas de muertes violentas y/o
+                            dudosas de mujeres cis, trans</strong></span>
                     <br>
                     <span style="font-size:1.25rem"><i>Provincia de Salta.</i></span>
                 </p>
@@ -408,12 +431,13 @@
                     </thead>
                     <tbody></tbody>
                 </table>
-            </div> 
-        
+            </div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
-                    <strong>FUENTE</strong>: Elaboración propia a partir del registro de casos del OVcM y el Registro del Poder Judicial.
+                    <strong>FUENTE</strong>: Elaboración propia a partir del registro de casos del OVcM y el Registro
+                    del Poder Judicial.
                 </p>
             </div>
         </div>
@@ -431,42 +455,61 @@
             <h2>FICHA TÉCNICA</h2>
 
             <p>
-                El OVcM recopila y configura estadísticas a partir de diversas fuentes provenientes tanto de la información que puede obtenerse del Ministerio Publico Fiscal, Poder Judicial, y cualquier órgano que pudiera brindar información relevante mediante datos oficiales.
+                El OVcM recopila y configura estadísticas a partir de diversas fuentes provenientes tanto de la
+                información que puede obtenerse del Ministerio Publico Fiscal, Poder Judicial, y cualquier órgano que
+                pudiera brindar información relevante mediante datos oficiales.
                 <br>
                 Asimismo, se advierte la incorporación de noticias periodísticas como fuentes secundarias.
             </p>
 
             <h3>Definiciones</h3>
             <p>
-                <ul>
-                    <li><strong>Femicidio</strong>: “La muerte violenta de mujeres por razones de género, ya sea que tenga lugar dentro de la familia, unidad doméstica o en cualquier otra relación interpersonal; en la comunidad, por parte de cualquier persona, o que sea perpetrada o tolerada por el Estado y sus agentes, por acción u omisión”. Esta definición proviene de la “Declaración sobre el Femicidio” aprobada por la Cuarta Reunión del Comité de Expertas/os (CEVI) en 2008 y es utilizada por el Registro Nacional de Femicidios de la Justicia Argentina (RNFJA).
-                    
+            <ul>
+                <li><strong>Femicidio</strong>: “La muerte violenta de mujeres por razones de género, ya sea que tenga
+                    lugar dentro de la familia, unidad doméstica o en cualquier otra relación interpersonal; en la
+                    comunidad, por parte de cualquier persona, o que sea perpetrada o tolerada por el Estado y sus
+                    agentes, por acción u omisión”. Esta definición proviene de la “Declaración sobre el Femicidio”
+                    aprobada por la Cuarta Reunión del Comité de Expertas/os (CEVI) en 2008 y es utilizada por el
+                    Registro Nacional de Femicidios de la Justicia Argentina (RNFJA).
+
                     <br><br>
 
-                    El Registro de OVCM incluye tanto muertes violentas, femicidios, travesticidio y transfemicidio que son:
+                    El Registro de OVCM incluye tanto muertes violentas, femicidios, travesticidio y transfemicidio que
+                    son:
                     <ol>
                         <li>Casos no judicializados que encuadran en esa definición.</li>
                         <li>Casos judiciales que tramitan con imputación por homicidios agravados</li>
                         <ol type="a">
-                            <li>Art. 80 inciso 1º Código Penal (cuando se matare a la ascendiente, descendiente, cónyuge, ex cónyuge, persona con quien mantiene o ha mantenido una relación de pareja, mediare o no convivencia)</li>
-                            <li>Art. 80 Inciso 11 del Código Penal (cuando un hombre matare a una mujer y mediare violencia de género)</li>
-                            <li>Art. 80 inciso 4º CP (cuando un hombre matare a una mujer por odio de género, orientación sexual, identidad o expresión de género), y las causas con condena firme bajo esas calificaciones legales.</li>
-                            <li>Art. 80 inciso 12 CP (cuando se matare con el propósito de causar sufrimiento a la persona con quién se tiene o mantenía una relación de pareja)</li>
+                            <li>Art. 80 inciso 1º Código Penal (cuando se matare a la ascendiente, descendiente,
+                                cónyuge, ex cónyuge, persona con quien mantiene o ha mantenido una relación de pareja,
+                                mediare o no convivencia)</li>
+                            <li>Art. 80 Inciso 11 del Código Penal (cuando un hombre matare a una mujer y mediare
+                                violencia de género)</li>
+                            <li>Art. 80 inciso 4º CP (cuando un hombre matare a una mujer por odio de género,
+                                orientación sexual, identidad o expresión de género), y las causas con condena firme
+                                bajo esas calificaciones legales.</li>
+                            <li>Art. 80 inciso 12 CP (cuando se matare con el propósito de causar sufrimiento a la
+                                persona con quién se tiene o mantenía una relación de pareja)</li>
                         </ol>
                     </ol>
-                    </li>
-                    
-                    <br>
-                    <li><strong>Muertes violentas</strong>: aquellas causas investigadas y/o con condenas firmes por homicidio que inicialmente estaban relacionadas con la violencia de género.</li>
-                    
-                    <br>
-                    <li><strong>Muertes dudosas</strong>: aquellas causas en que el Ministerio Público Fiscal investiga el deceso de una mujer, si se relaciona con suicidio o en las que no está claro si se produjeron en un contexto violento.</li>
-                </ul>
+                </li>
+
+                <br>
+                <li><strong>Muertes violentas</strong>: aquellas causas investigadas y/o con condenas firmes por
+                    homicidio que inicialmente estaban relacionadas con la violencia de género.</li>
+
+                <br>
+                <li><strong>Muertes dudosas</strong>: aquellas causas en que el Ministerio Público Fiscal investiga el
+                    deceso de una mujer, si se relaciona con suicidio o en las que no está claro si se produjeron en un
+                    contexto violento.</li>
+            </ul>
             </p>
 
             <h3>Metodología</h3>
             <p>
-                Metodología planteada en el <a href="https://ovcmsalta.gob.ar/repositorio-digital/?doc=informe-anual-2020" target="_blank">Informe OVcM (33:2020)</a>
+                Metodología planteada en el <a
+                    href="https://ovcmsalta.gob.ar/repositorio-digital/?doc=informe-anual-2020" target="_blank">Informe
+                    OVcM (33:2020)</a>
             </p>
         </div>
 
@@ -493,4 +536,5 @@
     <script type="text/javascript" src="./grafico5.js"></script>
     <script type="text/javascript" src="./grafico6.js"></script>
 </body>
+
 </html>

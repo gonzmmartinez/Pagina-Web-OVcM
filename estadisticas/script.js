@@ -125,31 +125,31 @@ function parsearDatos(data) {
 let mybutton = document.getElementById("botonTop");
 
 // When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
 }
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
     $('html, body').animate({ scrollTop: 0 }, 250); // Desplazamiento suave al inicio
-  }
-  
-  // Evento para los enlaces con desplazamiento suave
-  $('a').click(function() {
+}
+
+// Evento para los enlaces con desplazamiento suave
+$('a').click(function () {
     const target = $($(this).attr('href'));
     if (target.length) {
-      $('html, body').animate({
-        scrollTop: target.offset().top
-      }, 250);
+        $('html, body').animate({
+            scrollTop: target.offset().top
+        }, 250);
     }
     return false;
-  });
+});
 
 // FUNCIÓN PARA GUARDAR EL DIV COMO PNG
 function guardarActivoComoPNG() {
@@ -158,11 +158,11 @@ function guardarActivoComoPNG() {
     if (chartActivo) {
         // Tratamos los elementos SVG antes de capturarlos con html2canvas
         var svgElements = chartActivo.querySelectorAll('svg');
-        svgElements.forEach(function(item) {
+        svgElements.forEach(function (item) {
             // Establecer explícitamente los atributos width y height del SVG
             item.setAttribute("width", item.getBoundingClientRect().width);
             item.setAttribute("height", item.getBoundingClientRect().height);
-            
+
             // Limpiar cualquier estilo previo de width y height
             item.style.width = null;
             item.style.height = null;
@@ -183,7 +183,7 @@ function guardarActivoComoPNG() {
             // Creamos un enlace para descargar la imagen
             const enlace = document.createElement('a');
             enlace.download = 'grafico_ovcm.png';
-            
+
             // Convertimos el canvas a una imagen en formato PNG
             enlace.href = canvas.toDataURL('image/png');
 
@@ -200,15 +200,22 @@ function guardarActivoComoPNG() {
     }
 }
 
-// ACTUALIZACIÓN DE LOS DATOS
+// ÚLTIMA ACTUALIZACIÓN
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("../datos/json/ultima_actualizacion.txt")
-        .then(response => response.text())
-        .then(texto => {
-            const span = document.getElementById("ultima-actualizacion");
-            if (span) {
+
+    // Selecciona todos los spans que pidan una actualización
+    const spans = document.querySelectorAll(".ultima-actualizacion");
+
+    spans.forEach(span => {
+        // lee el archivo indicado en data-src
+        const url = span.getAttribute("data-src");
+
+        fetch(url)
+            .then(response => response.text())
+            .then(texto => {
                 span.innerHTML = `<i>${texto}</i>`;
-            }
-        })
-        .catch(error => console.error("Error cargando la fecha:", error));
+            })
+            .catch(err => console.error("Error cargando la fecha:", err));
+    });
+
 });

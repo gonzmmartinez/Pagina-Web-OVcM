@@ -676,25 +676,23 @@ ul.breadcrumb .active {
     height: 2em; /* El ícono tendrá la misma altura que la línea del texto */
 }
 
+/* Botón para descargar el gráfico */
 #guardarBtn {
-    display: flex;
-    justify-self: center;
-    margin-top: 10px;
-    bottom: 10px; /* Place the button at the bottom of the page */
-    right: 10px; /* Place the button 30px from the right */
-    z-index: 99; /* Make sure it does not overlap */
-    border: none; /* Remove borders */
-    outline: none; /* Remove outline */
-    background-color: var(--light-grey-color); /* Set a background color */
-    cursor: pointer; /* Add a mouse pointer on hover */
-    padding: 10px; /* Some padding */
-    border-radius: 10px; /* Rounded corners */
+    display: block;
+    margin: 10px auto 0 auto;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: var(--light-grey-color);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 10px;
     transition-duration: 0.5s;
     font-family: 'Barlow', sans-serif;
 }
   
 #guardarBtn:hover {
-    background-color: var(--accent-color); /* Add a dark-grey background on hover */
+    background-color: var(--accent-color);
 }
 
 .descargarIcon {

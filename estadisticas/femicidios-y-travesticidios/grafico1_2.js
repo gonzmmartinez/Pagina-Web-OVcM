@@ -7,10 +7,10 @@ function procesarDatos1_2(data) {
 
     // Procesar los datos de cada entrada
     data.forEach(item => {
-        values1_2.push(item.Cantidad);            
+        values1_2.push(item.Cantidad);
     });
 
-    return values1_2 ;
+    return values1_2;
 };
 
 // FILTRAR DATOS
@@ -20,7 +20,7 @@ function filtrarPorAnio(data, year) {
 
 // INICIALIZACIÓN
 function iniciar1_2() {
-  cargarDatos(archivo1_2) // Cargar los datos del JSON
+    cargarDatos(archivo1_2) // Cargar los datos del JSON
         .then(data1_2 => {
             // Parsear los datos
             const parsedData1_2 = parsearDatos(data1_2);
@@ -30,7 +30,7 @@ function iniciar1_2() {
             const datosFiltrados1_2 = filtrarPorAnio(parsedData1_2, anioSeleccionado1_2);
 
             // Procesar los datos filtrados
-            const values1_2  = procesarDatos1_2(datosFiltrados1_2);
+            const values1_2 = procesarDatos1_2(datosFiltrados1_2);
 
             document.getElementById("totalFemicidios").innerText = `${values1_2}`;
         })
@@ -40,20 +40,20 @@ function iniciar1_2() {
 };
 
 function actualizarGrafico1_2() {
-  cargarDatos(archivo1_2)
-      .then(data1_2 => {
-          const parsedData1_2 = parsearDatos(data1_2);
+    cargarDatos(archivo1_2)
+        .then(data1_2 => {
+            const parsedData1_2 = parsearDatos(data1_2);
 
-          // Filtrar por el distrito seleccionado
-          const anioSeleccionado1_2 = document.getElementById("Anio1").value;
-          const datosFiltrados1_2 = filtrarPorAnio(parsedData1_2, anioSeleccionado1_2);
+            // Filtrar por el distrito seleccionado
+            const anioSeleccionado1_2 = document.getElementById("Anio1").value;
+            const datosFiltrados1_2 = filtrarPorAnio(parsedData1_2, anioSeleccionado1_2);
 
-          // Procesar datos
-          const values1_2 = procesarDatos1_2(datosFiltrados1_2);
+            // Procesar datos
+            const values1_2 = procesarDatos1_2(datosFiltrados1_2);
 
-          document.getElementById("totalFemicidios").innerText = `${values1_2}`;
-      })
-      .catch(error => {
-          document.getElementById("grafico1_2").textContent = `Error: ${error.message}`;
-      });
+            document.getElementById("totalFemicidios").innerText = `${values1_2}`;
+        })
+        .catch(error => {
+            document.getElementById("grafico1_2").textContent = `Error: ${error.message}`;
+        });
 }

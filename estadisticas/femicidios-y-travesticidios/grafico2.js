@@ -26,7 +26,7 @@ function iniciar2() {
             const parsedData2 = parsearDatos(rawData2);
 
             // Paso 3: Filtrar o procesar los datos según la lógica específica
-            const anioSeleccionado2 = "2024"; // Puedes reemplazarlo por el valor dinámico de un selector
+            const anioSeleccionado2 = "2025";
             const datosFiltrados2 = filtrarFemicidiosPorAnio(parsedData2, anioSeleccionado2);
 
             const datosProcesados2 = procesarDatos2(datosFiltrados2);

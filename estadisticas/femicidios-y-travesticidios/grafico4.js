@@ -85,7 +85,7 @@ function crearGrafico4(data) {
             max: 2.5, // Ajusta este valor según los datos
             left: 'center',
             orient: 'horizontal',
-            text: ['Casos'],
+            text: ['Femicidios'],
             calculable: true,
             inRange: {
                 color: ['#ffffff', '#C68FE6', "#6C48C5", '#1230AE']

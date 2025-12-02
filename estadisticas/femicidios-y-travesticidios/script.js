@@ -2,6 +2,14 @@
 const archivo1 = "../datos/json/femicidios_causas_judiciales.json";
 
 // FUNCION PARA INICIALIZAR TODOS LOS OTROS GRAFICOS
+let chart1_2 = null;
+let chart1_3 = null;
+let chart1_4 = null;
+let chart1_5 = null;
+let chart1_6 = null;
+let chart1_7 = null;
+let chart1_8 = null;
+
 function iniciar1() {
   iniciar1_2();
   iniciar1_3();
@@ -128,3 +136,16 @@ function cortarTexto(texto, limite) {
 
 // 8. Llamar la función principal al cargar la página
 window.addEventListener("load", iniciar1);
+
+// ACTUALIZACIÓN DE LOS DATOS
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("../datos/json/ultima_actualizacion.txt")
+        .then(response => response.text())
+        .then(texto => {
+            const span = document.getElementById("ultima-actualizacion");
+            if (span) {
+                span.innerHTML = `<i>${texto}</i>`;
+            }
+        })
+        .catch(error => console.error("Error cargando la fecha:", error));
+});

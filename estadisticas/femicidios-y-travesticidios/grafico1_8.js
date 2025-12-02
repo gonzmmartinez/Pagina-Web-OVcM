@@ -18,6 +18,13 @@ function procesarDatos1_8(data) {
 
 // INICIALIZACIÓN
 function iniciar1_8() {
+  if (chart1_8) {
+        chart1_8.destroy();
+        chart1_8 = null;
+    }
+
+    document.getElementById("grafico1_8").innerHTML = "";
+
   cargarDatos(archivo1_8) // Cargar los datos del JSON
         .then(data1_8 => {
             // Parsear los datos

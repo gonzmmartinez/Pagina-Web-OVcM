@@ -146,32 +146,20 @@ Data15 <- Raw4 %>%
 
 
 ######### ACTUALIZACIÓN #########
-actualizacion <- paste0("Última actualización: ", format(Sys.Date(), "%d/%m/%Y"))
-writeLines(actualizacion, paste0(dir, "/json/ultima_actualizacion.txt"))
+actualizacion <- paste0("Última actualización de los datos de esta sección: ", format(Sys.Date(), "%d/%m/%Y"))
+writeLines(actualizacion, paste0(dir, "/json/actualizacion_femicidios.txt"))
 
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data3), path = paste0(dir, "/json/femicidios_edades.json"))
-
 write_json(toJSON(Data4), path = paste0(dir, "/json/femicidios_vinculo.json"))
-
 write_json(toJSON(Data5), path = paste0(dir, "/json/femicidios_hijos.json"))
-
 write_json(toJSON(Data6), path = paste0(dir, "/json/femicidios_lugar_del_hecho.json"))
-
 write_json(toJSON(Data7), path = paste0(dir, "/json/femicidios_medio_utilizado.json"))
-
 write_json(toJSON(Data8), path=paste0(dir, "/json/femicidios_causas_totales.json"))
-
 write_json(toJSON(Data9), path=paste0(dir, "/json/femicidios_causas_judiciales.json"))
-
 write_json(toJSON(Data10), path=paste0(dir, "/json/femicidios_localidad.json"))
-
 write_json(toJSON(Data11), path=paste0(dir, "/json/femicidios_cantidad.json"))
-
 write_json(toJSON(Data12), path=paste0(dir, "/json/femicidios_evolucion.json"))
-
 write_json(toJSON(Data13), path=paste0(dir, "/json/femicidios_tasa_nacional.json"))
-
 write_json(toJSON(Data14), path=paste0(dir, "/json/femicidios_registro.json"))
-
 write_json(toJSON(Data15), path=paste0(dir, "/json/muertes_registro.json"))

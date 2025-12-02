@@ -24,30 +24,30 @@ Raw2 <- read_sheet(ss = planilla, sheet = "Provinciales")
 
 # Diputados nacionales por Salta
 Data1 <- Raw1 %>%
-  mutate(A�o = as.character(A�o)) %>%
+  mutate(Año = as.character(Año)) %>%
   filter(Cargo == "Diputados Nacionales") %>%
   rename(Cantidad = "Frecuencia") %>%
-  arrange(A�o)
+  arrange(Año)
 
 # Senadores nacionales por Salta
 Data2 <- Raw1 %>%
-  mutate(A�o = as.character(A�o)) %>%
+  mutate(Año = as.character(Año)) %>%
   filter(Cargo == "Senadores Nacionales") %>%
   rename(Cantidad = "Frecuencia") %>%
-  arrange(A�o)
+  arrange(Año)
 
 # Diputados Provinciales
 Data3 <- Raw2 %>%
-  mutate(A�o = as.character(A�o)) %>%
+  mutate(Año = as.character(Año)) %>%
   filter(Cargo == "Diputados Provinciales") %>%
   rename(Cantidad = "Frecuencia") %>%
-  arrange(A�o) %>%
+  arrange(Año) %>%
   select(-Cargo)
 totales3 <- Raw2 %>%
-  mutate(A�o = as.character(A�o)) %>%
+  mutate(Año = as.character(Año)) %>%
   filter(Cargo == "Diputados Provinciales") %>%
   rename(Cantidad = "Frecuencia") %>%
-  group_by(A�o, G�nero) %>%
+  group_by(Año, Género) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
   ungroup %>%
   mutate(Departamento = "TODOS")
@@ -55,16 +55,16 @@ Data3 <- rbind(Data3, totales3)
 
 # Senadores Provinciales
 Data4 <- Raw2 %>%
-  mutate(A�o = as.character(A�o)) %>%
+  mutate(Año = as.character(Año)) %>%
   filter(Cargo == "Senadores Provinciales") %>%
   rename(Cantidad = "Frecuencia") %>%
-  arrange(A�o) %>%
+  arrange(Año) %>%
   select(-Cargo)
 totales4 <- Raw2 %>%
-  mutate(A�o = as.character(A�o)) %>%
+  mutate(Año = as.character(Año)) %>%
   filter(Cargo == "Senadores Provinciales") %>%
   rename(Cantidad = "Frecuencia") %>%
-  group_by(A�o, G�nero) %>%
+  group_by(Año, Género) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
   ungroup %>%
   mutate(Departamento = "TODOS")
@@ -72,20 +72,24 @@ Data4 <- rbind(Data4, totales4)
 
 # Concejo deliberante
 Data5 <- Raw2 %>%
-  mutate(A�o = as.character(A�o)) %>%
+  mutate(Año = as.character(Año)) %>%
   filter(Cargo == "Concejo Deliberante") %>%
   rename(Cantidad = "Frecuencia") %>%
-  arrange(A�o) %>%
+  arrange(Año) %>%
   select(-Cargo)
 totales5 <- Raw2 %>%
-  mutate(A�o = as.character(A�o)) %>%
+  mutate(Año = as.character(Año)) %>%
   filter(Cargo == "Concejo Deliberante") %>%
   rename(Cantidad = "Frecuencia") %>%
-  group_by(A�o, G�nero) %>%
+  group_by(Año, Género) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
   ungroup %>%
   mutate(Departamento = "TODOS")
 Data5 <- rbind(Data5, totales5)
+
+######### ACTUALIZACIÓN #########
+actualizacion <- paste0("Última actualización de los datos de esta sección: ", format(Sys.Date(), "%d/%m/%Y"))
+writeLines(actualizacion, paste0(dir, "/json/actualizacion_poder_legislativo.txt"))
 
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data1), path = paste0(dir, "/json/poder_legislativo_diputados.json"))

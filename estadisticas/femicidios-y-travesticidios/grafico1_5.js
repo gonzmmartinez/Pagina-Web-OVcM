@@ -18,6 +18,13 @@ function procesarDatos1_5(data) {
 
 // INICIALIZACIÓN
 function iniciar1_5() {
+  if (chart1_5) {
+        chart1_5.destroy();
+        chart1_5 = null;
+    }
+
+    document.getElementById("grafico1_5").innerHTML = "";
+
   cargarDatos(archivo1_5) // Cargar los datos del JSON
         .then(data1_5 => {
             // Parsear los datos
@@ -92,7 +99,13 @@ function crearGrafico1_5(categories, values) {
       },
       legend: {
         show: true,
-      },
+        formatter: function(seriesName, opts) {
+          // Recortar texto de la leyenda a 30 caracteres y unir las líneas con un salto de línea
+          const lineas = cortarTexto(seriesName, 30);
+          return lineas.join("<br>"); // Usa "<br>" para saltos de línea en HTML
+        },
+        useHtml: true // Permitir HTML en la leyenda
+      },   
       plotOptions: {
         pie: {
           donut: {
