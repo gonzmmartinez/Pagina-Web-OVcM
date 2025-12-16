@@ -79,6 +79,10 @@ Data6 <- Raw3 %>%
   arrange(Año, Semanas_ord) %>%
   mutate(Semanas = as.character(Semanas))
 
+######### ACTUALIZACIÓN #########
+actualizacion <- paste0("Última actualización de los datos de esta sección: ", format(Sys.Date(), "%d/%m/%Y"))
+writeLines(actualizacion, paste0(dir, "/json/actualizacion_salud_iveile.txt"))
+
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data1), path = paste0(dir, "/json/salud_ive.json"))
 write_json(toJSON(Data2), path = paste0(dir, "/json/salud_ive_edad.json"))
