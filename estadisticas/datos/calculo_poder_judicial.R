@@ -23,53 +23,56 @@ Raw1 <- read_sheet(ss = planilla, sheet = "Poder_judicial")
 
 # Camaras
 Data1 <- Raw1 %>%
-  mutate(A�o = as.character(A�o)) %>%
+  mutate(Año = as.character(Año)) %>%
   filter(Cargo == "Camaras") %>%
   rename(Cantidad = "Frecuencia") %>%
-  arrange(A�o)
+  arrange(Año)
 
 # Corte Superior de Justicia
 Data2 <- Raw1 %>%
-  mutate(A�o = as.character(A�o)) %>%
+  mutate(Año = as.character(Año)) %>%
   filter(Cargo == "Corte Superior de Justicia") %>%
   rename(Cantidad = "Frecuencia") %>%
-  arrange(A�o)
+  arrange(Año)
 
 # Juzgados
 Data3 <- Raw1 %>%
-  mutate(A�o = as.character(A�o)) %>%
+  mutate(Año = as.character(Año)) %>%
   filter(Cargo == "Juzgados") %>%
   rename(Cantidad = "Frecuencia") %>%
-  arrange(A�o)
+  arrange(Año)
 
 # Otros funcionarias/os
 Data4 <- Raw1 %>%
-  mutate(A�o = as.character(A�o)) %>%
+  mutate(Año = as.character(Año)) %>%
   filter(Cargo == "Otros funcionarias/os") %>%
   rename(Cantidad = "Frecuencia") %>%
-  arrange(A�o)
+  arrange(Año)
 
 # Personal administrativo
 Data5 <- Raw1 %>%
-  mutate(A�o = as.character(A�o)) %>%
+  mutate(Año = as.character(Año)) %>%
   filter(Cargo == "Personal administrativo") %>%
   rename(Cantidad = "Frecuencia") %>%
-  arrange(A�o)
+  arrange(Año)
 
 # Personal de servicio
 Data6 <- Raw1 %>%
-  mutate(A�o = as.character(A�o)) %>%
+  mutate(Año = as.character(Año)) %>%
   filter(Cargo == "Personal de servicio") %>%
   rename(Cantidad = "Frecuencia") %>%
-  arrange(A�o)
+  arrange(Año)
 
 # Secretarias
 Data7 <- Raw1 %>%
-  mutate(A�o = as.character(A�o)) %>%
+  mutate(Año = as.character(Año)) %>%
   filter(Cargo == "Secretarias") %>%
   rename(Cantidad = "Frecuencia") %>%
-  arrange(A�o)
+  arrange(Año)
 
+######### ACTUALIZACIÓN #########
+actualizacion <- paste0("Última actualización de los datos de esta sección: ", format(Sys.Date(), "%d/%m/%Y"))
+writeLines(actualizacion, paste0(dir, "/json/actualizacion_poder_judicial.txt"))
 
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data1), path = paste0(dir, "/json/poder_judicial_camaras.json"))
