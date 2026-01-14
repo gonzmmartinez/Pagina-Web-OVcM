@@ -6,53 +6,36 @@ const filtroAnio = document.getElementById("filtro-anio");
 const filtroTipo = document.getElementById("filtro-tipo");
 const filtroColeccion = document.getElementById("filtro-coleccion");
 const filtroTema = document.getElementById("filtro-tema");
+const filtroAutor = document.getElementById("filtro-autor");
+
+const JSON_URL = "documentos-repositorio.json";
+const ITEMS_POR_PAGINA = 10;
 
 let documentos = [];
 
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRHRcsRqtbkL0dyAGD7-8ldJly3B2W8RPnanVPQo_nF_mEdgLR6aU1zGYKj6miexk3h97JLfiXL_CGT/pub?gid=0&single=true&output=csv";
-const ITEMS_POR_PAGINA = 10;
-
 async function cargarDocumentos() {
   try {
-    const res = await fetch(SHEET_URL + "&cachebust=" + Date.now()); // evita caché
-    const csv = await res.text();
-
-    const filas = csv.split("\n").map(f => f.split(","));
-    const headers = filas[0].map(h => h.trim());
-
-    documentos = filas.slice(1).map(f => {
-      const obj = {};
-
-      headers.forEach((h, i) => {
-        let valor = f[i] ? f[i].trim() : "";
-
-        // Campos que deben convertirse en array
-        const camposLista = ["autor", "tipo_documento", "tema"];
-
-        if (camposLista.includes(h)) {
-          obj[h] = valor
-            ? valor.split(";").map(v => v.trim()).filter(v => v !== "")
-            : [];
-        } else {
-          obj[h] = valor;
-        }
-      });
-
-      return obj;
-    });
-
-    // Ordenar por fecha
+    const res = await fetch(`${JSON_URL}?v=${Date.now()}`);
+    documentos = await res.json();
     documentos.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
 
-    renderizar();
+    const searchInput = document.getElementById("search-input");
+
+    // Escuchar cambios en la barra de búsqueda
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        const query = e.target.value.trim().toLowerCase();
+        renderizar(query);
+      });
+    }
+
+    renderizar(); // render inicial sin búsqueda
 
   } catch (error) {
+    contenedor.innerHTML = `<p>Error al cargar los documentos.</p>`;
     console.error("Error al cargar los documentos:", error);
-  } finally {
-    ocultarLoader();
   }
 }
-
 
 function renderizar(searchQuery = "") {
   const params = new URLSearchParams(window.location.search);
@@ -65,6 +48,7 @@ function renderizar(searchQuery = "") {
   const tipo = params.get("type");
   const coleccion = params.get("coleccion");
   const tema = params.get("tema");
+  const autorFiltro = params.get("autor");
 
   let docsFiltrados = documentos;
 
@@ -87,6 +71,20 @@ function renderizar(searchQuery = "") {
       } else {
         return d.tema === tema;
       }
+    });
+  }
+  if (autorFiltro) {
+    docsFiltrados = docsFiltrados.filter(d => {
+      if (!Array.isArray(d.autor)) return false;
+
+      const esOVcM = d.autor.some(a =>
+        a.includes("Observatorio de Violencia contra las Mujeres")
+      );
+
+      if (autorFiltro === "ovcm") return esOVcM;
+      if (autorFiltro === "externo") return !esOVcM;
+
+      return true;
     });
   }
 
@@ -115,7 +113,7 @@ function renderizar(searchQuery = "") {
   }
 
 
-  mostrarFiltros({ year, type: tipo, coleccion, tema });
+  mostrarFiltros({ year, type: tipo, coleccion, tema, autor: autorFiltro });
   construirSelects(documentos);
 
   const totalPaginas = Math.ceil(docsFiltrados.length / ITEMS_POR_PAGINA);
@@ -296,11 +294,21 @@ function construirSelects(data) {
   filtroTema.innerHTML = `<label>Tema</label><select><option value="">Todos</option>` +
     temas.map(t => `<option value="${t}">${t}</option>`).join("") + `</select>`;
 
+  filtroAutor.innerHTML = `
+  <label>Autoría</label>
+  <select>
+    <option value="">Todas</option>
+    <option value="ovcm">Producciones del OVcM</option>
+    <option value="externo">Autores externos</option>
+  </select>
+`;
+
   const selects = [
     { div: filtroAnio, key: "year" },
     { div: filtroTipo, key: "type" },
     { div: filtroColeccion, key: "coleccion" },
-    { div: filtroTema, key: "tema" }
+    { div: filtroTema, key: "tema" },
+    { div: filtroAutor, key: "autor" }
   ];
 
   selects.forEach(({ div, key }) => {
@@ -329,14 +337,22 @@ function mostrarFiltros(filtros) {
     year: "Año",
     type: "Tipo",
     coleccion: "Colección",
-    tema: "Tema"
+    tema: "Tema",
+    autor: "Autoría"
+  };
+
+  const valoresAutor = {
+    ovcm: "Producciones del OVcM",
+    externo: "Autores externos"
   };
 
   Object.entries(filtros).forEach(([clave, valor]) => {
     if (valor) {
       const tag = document.createElement("span");
       tag.className = "filtro-tag";
-      tag.innerHTML = `${etiquetas[clave]}: ${valor} <button data-clave="${clave}">✕</button>`;
+      const valorTexto =
+        clave === "autor" ? valoresAutor[valor] : valor;
+      tag.innerHTML = `${etiquetas[clave]}: ${valorTexto} <button data-clave="${clave}">✕</button>`;
       filtrosActivos.appendChild(tag);
     }
   });
@@ -388,20 +404,3 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 cargarDocumentos();
-
-// Loader
-function mostrarLoader() {
-  const overlay = document.getElementById("loader-overlay");
-  overlay.classList.remove("oculto");
-}
-
-function ocultarLoader() {
-  const overlay = document.getElementById("loader-overlay");
-
-  // duración mínima aleatoria entre 1000 y 2000 ms
-  const delay = 500 + Math.random() * 500;
-
-  setTimeout(() => {
-    overlay.classList.add("oculto");
-  }, delay);
-}

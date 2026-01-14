@@ -1,5 +1,71 @@
 [
   {
+    "slug": "custodia-violencia-mujeres-ninos-2023",
+    "titulo": "Custodia, violencia contra las mujeres y violencia contra los niños",
+    "autor": ["Consejo de Derechos Humanos de las Naciones Unidas (ONU)"],
+    "fecha": "2023-07-14",
+    "tipo_documento": "Informe temático",
+    "tema": ["Convivencia y violencia", "Impacto de la violencia de género en niños y niñas"],
+    "coleccion": "",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/01/Custodia_Violencia_Mujeres_Ninos_2023.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/01/Custodia_Violencia_Mujeres_Ninos_2023.jpg"
+  },
+  {
+    "slug": "prevencion-violencia-domestica-ela-2020",
+    "titulo": "Invertir en prevención de la violencia doméstica, ¿opción o necesidad? Los costos de la violencia doméstica hacia las mujeres y su impacto en el ámbito sanitario y laboral: estudio en la Ciudad de Buenos Aires (resumen ejecutivo)",
+    "autor": ["Equipo Latinoamericano de Justicia y Género, Comisión Argentina para los Refugiados y Migrantes (CAREF)", "Fundación para Estudio e Investigación de la Mujer (FEIM)", "Fundación Siglo 21"],
+    "fecha": "2020-11-15",
+    "tipo_documento": "Informe temático",
+    "tema": ["Convivencia y violencia", "Violencia doméstica"],
+    "coleccion": "",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/01/Violencia_Domestica_ELA_2020.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/01/Violencia_Domestica_ELA_2020.jpg"
+  },
+  {
+    "slug": "informe-mundial-violencia-ninos-2010",
+    "titulo": "Informe mundial sobre la violencia contra los niños y las niñas",
+    "autor": ["Fondo de las Naciones Unidas para la Infancia (UNICEF España)"],
+    "fecha": "2010-06-15",
+    "tipo_documento": "Informe temático",
+    "tema": ["Impacto de la violencia de género en niños y niñas", "Convivencia y violencia"],
+    "coleccion": "",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/01/Informe_Mundial_Violencia_Ninos_2010.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/01/Informe_Mundial_Violencia_Ninos_2010_1.jpg"
+  },
+  {
+    "slug": "violencia-ninos-ninas-adolescentes-uruguay-2021",
+    "titulo": "La violencia contra niños, niñas y adolescentes. Análisis en el marco de la Segunda Encuesta Nacional de Prevalencia sobre Violencia Basada en Género y Generaciones (Uruguay 2019)",
+    "autor": ["Fondo de las Naciones Unidas para la Infancia (UNICEF Uruguay)", "Ministerio de Desarrollo Social (Uruguay)", "Instituto Nacional de las Mujeres (INMUJERES Uruguay)", "Sistema Integral de Protección a la Infancia y a la Adolescencia contra la Violencia (SIPIAV)"],
+    "fecha": "2021-11-15",
+    "tipo_documento": "Informe temático",
+    "tema": ["Impacto de la violencia de género en niños y niñas", "Convivencia y violencia"],
+    "coleccion": "",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/01/Violencia_Infancia_Montevideo_2021.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/01/Violencia_Infancia_Montevideo_2021_1.jpg"
+  },
+  {
+    "slug": "violencia-genero-infancias-uruguay-2023",
+    "titulo": "El impacto de la violencia de género en la infancia y la adolescencia: relatos de vida",
+    "autor": ["Fondo de las Naciones Unidas para la Infancia (UNICEF Uruguay)", "Ministerio de Desarrollo Social (Uruguay)", "Instituto Nacional de las Mujeres (INMUJERES Uruguay)", "Sistema Integral de Protección a la Infancia y a la Adolescencia contra la Violencia (SIPIAV)"],
+    "fecha": "2023-10-15",
+    "tipo_documento": "Informe temático",
+    "tema": ["Impacto de la violencia de género en niños y niñas", "Convivencia y violencia"],
+    "coleccion": "",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/01/Violencia_Genero_Infancia_Uruguay_2023.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/01/Violencia_Genero_Infancia_Uruguay_2023_1.jpg"
+  },
+  {
+    "slug": "ley_19580_violencia_uruguay",
+    "titulo": "Ley N° 19.580: Violencia hacia las mujeres basada en género (Uruguay)",
+    "autor": ["Gobierno de Uruguay"],
+    "fecha": "2021-10-26",
+    "tipo_documento": "Leyes y normas",
+    "tema": "Fundamentos legales para el tratamiento de la violencia de género",
+    "coleccion": "",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/01/Ley_19580_Violencia_Uruguay.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/01/Ley_19580_Violencia_Uruguay_1.jpg"
+  },
+  {
     "slug": "informe-anual-2025",
     "titulo": "Informe anual 2025",
     "autor": ["Observatorio de Violencia contra las Mujeres"],
