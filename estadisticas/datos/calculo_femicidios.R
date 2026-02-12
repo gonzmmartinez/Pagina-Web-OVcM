@@ -93,8 +93,8 @@ Data9 <- Raw2 %>%
 Departamentos <- data.frame(Localidad = rep(c("Anta", "Cachi", "Cafayate", "Capital", "Cerrillos", "Chicoana", "General Güemes",
                                           "General José de San Martín", "Guachipas", "Iruya", "La Caldera", "La Candelaria",
                                           "La Poma", "La Viña", "Los Andes", "Metán", "Molinos", "Orán", "Rivadavia",
-                                          "Rosario de la Frontera", "Rosario de Lerma", "San Carlos", "Santa Victoria"), 6)) %>%
-  mutate(Año = rep(c("2020", "2021", "2022", "2023", "2024", "2025"), each=23)) %>%
+                                          "Rosario de la Frontera", "Rosario de Lerma", "San Carlos", "Santa Victoria"), 7)) %>%
+  mutate(Año = rep(c("2020", "2021", "2022", "2023", "2024", "2025", "2026"), each=23)) %>%
   mutate(ID = paste0(str_sub(Año, 3), "-", Localidad))
 Data10 <- Raw0 %>%
   mutate(Año = as.character(Año)) %>%
