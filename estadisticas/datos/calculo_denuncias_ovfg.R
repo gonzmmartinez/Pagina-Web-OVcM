@@ -186,6 +186,10 @@ Data8 <- Data8 %>%
   mutate(Porcentaje = ifelse(Género == "Mujeres", -1 * Porcentaje, Porcentaje)) %>%
   arrange(desc(Rango_etario))
 
+######### ACTUALIZACIÓN #########
+actualizacion <- paste0("Última actualización de los datos de esta sección: ", format(Sys.Date(), "%d/%m/%Y"))
+writeLines(actualizacion, paste0(dir, "/json/actualizacion_denuncias_ovfg.txt"))
+
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data1), path = paste0(dir, "/json/denuncias_ovfg_ingresadas.json"))
 

@@ -64,6 +64,10 @@ Data4 <- Raw2 %>%
   mutate(Tasa_denuncias = (100 * Cantidad)/Poblacion) %>%
   arrange(desc(Tasa_denuncias))
 
+######### ACTUALIZACIÓN #########
+actualizacion <- paste0("Última actualización de los datos de esta sección: ", format(Sys.Date(), "%d/%m/%Y"))
+writeLines(actualizacion, paste0(dir, "/json/actualizacion_denuncias_sud.txt"))
+
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data1), path = paste0(dir, "/json/denuncias_sud_tipo.json"))
 write_json(toJSON(Data2), path = paste0(dir, "/json/denuncias_sud_evolucion.json"))
