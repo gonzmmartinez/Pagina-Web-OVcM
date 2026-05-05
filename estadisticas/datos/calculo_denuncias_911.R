@@ -83,6 +83,10 @@ Data5 <- Raw3 %>%
   summarise(Cantidad = sum(Cantidad)) %>%
   arrange(Año, desc(Mes_num), Hora)
 
+######### ACTUALIZACIÓN #########
+actualizacion <- paste0("Última actualización de los datos de esta sección: ", format(Sys.Date(), "%d/%m/%Y"))
+writeLines(actualizacion, paste0(dir, "/json/actualizacion_requerimientos_911.txt"))
+
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data1), path = paste0(dir, "/json/denuncias_911_evolucion.json"))
 
