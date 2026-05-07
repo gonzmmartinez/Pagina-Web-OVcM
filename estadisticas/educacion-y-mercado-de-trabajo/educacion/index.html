@@ -139,6 +139,7 @@
                         Año:
                     </p>
                     <select id="Anio1" onchange="actualizarGrafico1()">
+                        <option value="2025">2025</option>
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
@@ -197,8 +198,9 @@
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
-                    <strong>FUENTE</strong>: Ministerio de Educación, Cultura, Ciencia y Tecnología. Subsecretaría de
-                    Desarrollo Curricular e Innovación Pedagógica. Departamento de Estadística.
+                    <strong>FUENTE</strong>: Ministerio de Educación, Cultura, Ciencia y Tecnología. Coordinación
+                    Estratégica de Planeamiento y Desarrollo Educativo. Dirección General de Información y Acreditación
+                    de Títulos. Dirección de Información Educativa. Departamento de Estadística.
                 </p>
             </div>
 
@@ -209,6 +211,7 @@
                         Año:
                     </p>
                     <select id="Anio2" onchange="actualizarGrafico2()">
+                        <option value="2025">2025</option>
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
@@ -223,6 +226,11 @@
             <img src="../../svg/icono_descargar.svg" alt="Subir" class="descargarIcon">
             <span style="margin-left:0.5rem">Descargar gráfico en PNG</span>
         </button>
+
+        <!-- Última actualización -->
+        <span class="ultima-actualizacion" data-src="../../datos/json/actualizacion_educacion.txt"
+            style="font-size:0.75rem; display:block; text-align:center; margin-top: 10px;">
+        </span>
 
         <br>
         <hr>
@@ -256,8 +264,11 @@
 
             <h3>Notas</h3>
             <p>
-                Los datos informados para la cantidad de matrículas solo pertenecen al régimen formal, se excluyen,
-                cursos de oficio, etc.
+            <ul>
+                <li>Los datos informados para la cantidad de matrículas solo pertenecen al régimen formal, se excluyen,
+                    cursos de oficio, etc.</li>
+                <li>La base de datos registra el género de forma binaria (varones/mujeres)</li>
+            </ul>
             </p>
         </div>
 

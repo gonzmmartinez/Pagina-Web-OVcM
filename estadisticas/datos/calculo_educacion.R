@@ -20,25 +20,34 @@ planilla <- "https://docs.google.com/spreadsheets/d/1_8JfsvUuQN7QX9wAtGexCCd8jrL
 Raw0 <- read_sheet(ss = planilla, sheet = "Matricula_por_genero")
 Raw1 <- read_sheet(ss = planilla, sheet = "Docentes_en_actividad")
 
+######### DICCIONARIOS #########
+
+Niveles <- c("Nivel inicial", "Nivel primario", "Nivel secundario", "Nivel superior", "Educación especial")
+
 ######### TRANSFORMAR DATOS #########
 
 # Matriculas por genero
 Data1 <- Raw0 %>%
-  mutate(Año = as.character(Año)) %>%
+  mutate(Año = as.character(Año),
+         Matricula_ord = match(Matricula, Niveles)) %>%
   arrange(Año, Matricula_ord, Género)
 totalData1 <- Raw0 %>%
-  mutate(Año = as.character(Año)) %>%
-  arrange(Año, Matricula_ord, Género) %>%
+  mutate(Año = as.character(Año),
+         Matricula_ord = match(Matricula, Niveles)) %>%
   group_by(Año, Matricula, Matricula_ord, Género) %>%
-  summarise(Frecuencia = sum(Frecuencia)) %>%
-  ungroup %>%
-  mutate(Departamento = "TODOS")
+  summarise(Cantidad = sum(Cantidad), .groups = "drop") %>%
+  mutate(Departamento = "TODOS") %>%
+  arrange(Año, Matricula_ord, Género)
 Data1 <- rbind(Data1, totalData1)
 
 # Docentes en actividad
 Data2 <- Raw1 %>%
   mutate(Año = as.character(Año)) %>%
   arrange(Año, Departamento, Género)
+
+######### ACTUALIZACIÓN #########
+actualizacion <- paste0("Última actualización de los datos de esta sección: ", format(Sys.Date(), "%d/%m/%Y"))
+writeLines(actualizacion, paste0(dir, "/json/actualizacion_educacion.txt"))
 
 ######### ESCRIBIR DATOS #########
 write_json(toJSON(Data1), path = paste0(dir, "/json/educacion_matriculas.json"))

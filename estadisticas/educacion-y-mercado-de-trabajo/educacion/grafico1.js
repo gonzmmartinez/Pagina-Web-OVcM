@@ -44,7 +44,7 @@ function iniciar1() {
               const parsedData1 = parsearDatos(data1);
   
               // Filtrar por el distrito seleccionado
-              const anioSeleccionado1 = "2023";
+              const anioSeleccionado1 = "2025";
               const datosFiltrados1_1 = filtrarPorAnio(parsedData1, anioSeleccionado1);
 
               // Filtrar por el departamento seleccionado
