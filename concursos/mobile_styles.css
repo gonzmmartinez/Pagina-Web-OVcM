@@ -312,6 +312,7 @@
     /* BOTONERA */
     .botonera-concursos {
         flex-direction: column;
+        width: 70% !important;
     }
 
     .boton-concurso {

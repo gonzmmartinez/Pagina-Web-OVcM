@@ -78,7 +78,7 @@ async function cargarDiseno() {
     }
 
   } catch (error) {
-    contenedorDiseno.innerHTML = `<p>Error al cargar los documentos de diseño.</p>`;
+    contenedorDiseno.innerHTML = `<p>Error al cargar los dosieres.</p>`;
     console.error("Error al cargar documentos de diseño:", error);
   }
 };

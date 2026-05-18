@@ -133,50 +133,35 @@
   text-indent: 20px;
 }
 
-/* BOTONES PRINCIPALES */
+/* CONTENEDOR */
 .botonera-concursos {
   display: flex;
+  justify-content: center;
   gap: 1rem;
-  width: 60%;
-  margin: 0px auto;
+  margin: 0 auto;
+  flex-wrap: wrap;
 }
 
-.boton-concurso {
-  flex: 1 1 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 50px 25px;
-  background-color: var(--main-color-light);
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  border: none; /* sin borde */
-  border-radius: 5px;
-  text-decoration: none;
+.boton-imagen {
+  display: inline-block;
+  max-width: 500px;
 }
 
-.boton-concurso:hover {
-  background-color: var(--accent-color); /* color suave al hacer hover */
-  text-decoration: none;
+.imagen-boton {
+  display: block;
+  max-width: 100%;
+  max-height: 625px;
+
+  width: auto;
+  height: auto;
+
+  border-radius: 8px;
+  box-shadow: 0px 0px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
 }
 
-.boton-concurso:hover .icono-boton {
-  transform: scale(1.1) rotate(2deg);
-}
-
-.icono-boton {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 0.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Si usás <img>, esto asegura que no se estire */
-.icono-boton img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.boton-imagen:hover .imagen-boton {
+  transform: scale(1.02);
 }
 
 .texto-boton {
