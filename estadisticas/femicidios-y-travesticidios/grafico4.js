@@ -12,12 +12,12 @@ function procesarDatos4(data) {
 // FILTRAR DATOS
 function filtrarFemicidiosPorAnio(data, year) {
     return data.filter(item => item.Año === year);
-  }
+}
 
 // Función principal para inicializar el gráfico
 function iniciar4() {
     const chartDom4 = document.getElementById('grafico4');
-    const myChart4 = echarts.init(chartDom4, null, {renderer: 'svg'});
+    const myChart4 = echarts.init(chartDom4, null, { renderer: 'svg' });
 
     // Paso 1: Cargar los datos del archivo JSON
     cargarDatos(archivo4)
@@ -26,7 +26,7 @@ function iniciar4() {
             const parsedData4 = parsearDatos(rawData4);
 
             // Paso 3: Filtrar o procesar los datos según la lógica específica
-            const anioSeleccionado4 = "2024"; // Puedes reemplazarlo por el valor dinámico de un selector
+            const anioSeleccionado4 = "2025"; // Puedes reemplazarlo por el valor dinámico de un selector
             const datosFiltrados4 = filtrarFemicidiosPorAnio(parsedData4, anioSeleccionado4);
 
             const datosProcesados4 = procesarDatos4(datosFiltrados4);
@@ -51,23 +51,23 @@ function iniciar4() {
 // Función para actualizar el gráfico
 function actualizarGrafico4() {
     const chartDom4 = document.getElementById('grafico4');
-    const myChart4 = echarts.init(chartDom4, null, {renderer: 'svg'});
+    const myChart4 = echarts.init(chartDom4, null, { renderer: 'svg' });
 
     cargarDatos(archivo4)
-    .then(rawData4 => {
-        const parsedData4 = parsearDatos(rawData4);
+        .then(rawData4 => {
+            const parsedData4 = parsearDatos(rawData4);
 
-        const anioSeleccionado4 = document.getElementById("Anio4").value;
-        const datosFiltrados4 = filtrarFemicidiosPorAnio(parsedData4, anioSeleccionado4);
+            const anioSeleccionado4 = document.getElementById("Anio4").value;
+            const datosFiltrados4 = filtrarFemicidiosPorAnio(parsedData4, anioSeleccionado4);
 
-        const nuevosDatosProcesados4 = procesarDatos4(datosFiltrados4);
+            const nuevosDatosProcesados4 = procesarDatos4(datosFiltrados4);
 
-        myChart4.setOption({
-            series: [{
-                data: nuevosDatosProcesados4
-            }]
+            myChart4.setOption({
+                series: [{
+                    data: nuevosDatosProcesados4
+                }]
+            })
         })
-    })
 };
 
 // Función para crear las opciones del gráfico
@@ -75,7 +75,14 @@ function crearGrafico4(data) {
     return {
         tooltip: {
             trigger: 'item',
-            formatter: '{b}: {c}' // {b} es el nombre del departamento, {c} es el valor
+            formatter: function (params) {
+                const valor = new Intl.NumberFormat('es-AR', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }).format(params.value);
+
+                return `${params.name}: ${valor} femicidios cada 100.000 mujeres`;
+            }
         },
         toolbox: {
             show: false

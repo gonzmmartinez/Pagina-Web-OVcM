@@ -122,7 +122,8 @@ Data12 <- Raw0 %>%
 # Tasa nacional
 Data13 <- Raw3 %>%
   filter(Año >= 2020) %>%
-  mutate(Año = as.character(Año))
+  mutate(Año = as.character(Año)) %>%
+  mutate()
 
 # Registro completo
 Data14 <- Raw0 %>%
