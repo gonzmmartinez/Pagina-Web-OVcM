@@ -33,6 +33,7 @@ Raw4 <- read_sheet(ss = planilla, sheet = "MUERTES")
 
 # Rango etario
 Data3 <- Raw0 %>%
+  filter(Vinculado == "FALSE") %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Año, Rango_etario) %>%
   summarise(Cantidad = n()) %>%
@@ -47,6 +48,7 @@ Data3 <- Raw0 %>%
 
 # Vínculo
 Data4 <- Raw0 %>%
+  filter(Vinculado == "FALSE") %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Año, Vinculo) %>%
   summarise(Cantidad = n()) %>%
@@ -55,6 +57,7 @@ Data4 <- Raw0 %>%
 
 # Hijas/os de las victimas
 Data5 <- Raw0 %>%
+  filter(Vinculado == "FALSE") %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Año, Hijos) %>%
   summarise(Cantidad = n()) %>%
@@ -63,6 +66,7 @@ Data5 <- Raw0 %>%
 
 # Lugar del hecho
 Data6 <- Raw0 %>%
+  filter(Vinculado == "FALSE") %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Año, Lugar_del_hecho) %>%
   summarise(Cantidad = n()) %>%
@@ -71,6 +75,7 @@ Data6 <- Raw0 %>%
 
 # Medio utilizado
 Data7 <- Raw0 %>%
+  filter(Vinculado == "FALSE") %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Año, Medio_utilizado) %>%
   summarise(Cantidad = n()) %>%
