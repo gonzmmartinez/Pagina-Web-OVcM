@@ -6,21 +6,35 @@
     grid-row-gap: 10px;
     margin-top: 2rem;
 }
-    
+
 #divSub1 {
-    display:flex;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
-    column-gap: 25px;
-    height: auto;
+    row-gap: 10px;
     padding: 3% 0;
     grid-area: 1 / 1 / 2 / 3;
     background-color: #ededed;
     border-radius: 10px;
 }
+
+.filaSuperior {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0px;
+    width: 100%;
+}
+
+.filaInferior {
+    display: flex;
+    justify-content: center;
+}
+
 #divSub2 {
-    display:flex;
+    display: flex;
     align-items: center;
     flex-direction: column;
     height: 300px;
@@ -28,8 +42,9 @@
     background-color: #ededed;
     border-radius: 10px;
 }
+
 #divSub3 {
-    display:flex;
+    display: flex;
     align-items: center;
     flex-direction: column;
     height: 350px;
@@ -37,8 +52,9 @@
     background-color: #ededed;
     border-radius: 10px;
 }
+
 #divSub4 {
-    display:flex;
+    display: flex;
     align-items: center;
     flex-direction: column;
     height: 350px;
@@ -46,8 +62,9 @@
     background-color: #ededed;
     border-radius: 10px;
 }
+
 #divSub5 {
-    display:flex;
+    display: flex;
     align-items: center;
     flex-direction: column;
     height: 350px;
@@ -55,8 +72,9 @@
     background-color: #ededed;
     border-radius: 10px;
 }
+
 #divSub6 {
-    display:flex;
+    display: flex;
     align-items: center;
     flex-direction: column;
     height: 350px;
@@ -64,8 +82,9 @@
     background-color: #ededed;
     border-radius: 10px;
 }
+
 #divSub7 {
-    display:flex;
+    display: flex;
     align-items: center;
     flex-direction: column;
     height: 350px;
@@ -73,8 +92,9 @@
     background-color: #ededed;
     border-radius: 10px;
 }
+
 #divSub8 {
-    display:flex;
+    display: flex;
     align-items: center;
     flex-direction: column;
     height: 350px;
@@ -85,17 +105,24 @@
 
 /* LINEA DE MUERTES VIOLENTAS */
 .line {
-    height: 2px; /* Grosor de la línea */
-    background-color: #ff5733; /* Color específico */
-    width: 100%; /* Ancho completo para que la línea ocupe todo el espacio entre los otros elementos */
-    margin: 0px 0; /* Espaciado opcional arriba y abajo */
+    height: 2px;
+    /* Grosor de la línea */
+    background-color: #ff5733;
+    /* Color específico */
+    width: 100%;
+    /* Ancho completo para que la línea ocupe todo el espacio entre los otros elementos */
+    margin: 0px 0;
+    /* Espaciado opcional arriba y abajo */
 }
 
 /* Contenedor principal para alinear elementos utilizando Grid */
 .grid-container {
-    display: grid; /* Usamos Grid para una disposición de filas y columnas */
-    grid-template-columns: 25% 20% 100%; /* Ajusta las proporciones de las columnas */
-    align-items: center; /* Alinea verticalmente los elementos en el centro */
+    display: grid;
+    /* Usamos Grid para una disposición de filas y columnas */
+    grid-template-columns: 25% 20% 100%;
+    /* Ajusta las proporciones de las columnas */
+    align-items: center;
+    /* Alinea verticalmente los elementos en el centro */
     width: 750px;
     height: 350px
 }
@@ -144,13 +171,20 @@
     font-family: 'Barlow', sans-serif;
 }
 
+#caratulasFemicidios {
+    width: 100%;
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.75rem;
+}
+
 /* Contenedor de íconos de mujeres */
 .mujeres-container {
     display: flex;
     justify-content: center;
     gap: 0px;
     margin-top: 2rem;
-  }
+}
 
 .mujeres-icon {
     width: 4rem;
@@ -160,8 +194,8 @@
 }
 
 .mujeres-icon.filled {
-      filter: invert(19%) sepia(99%) saturate(3077%) hue-rotate(263deg) brightness(77%) contrast(119%);
-      border-bottom: 3px solid black;
+    filter: invert(19%) sepia(99%) saturate(3077%) hue-rotate(263deg) brightness(77%) contrast(119%);
+    border-bottom: 3px solid black;
 }
 
 .graficoMapa {
@@ -183,19 +217,26 @@
 /* PARA DISPOSITIVOS MÓVILES */
 @media (max-width: 780px) {
     #divGrande {
-        display: flex; /* Cambia el contenedor a Flexbox */
-        flex-direction: column; /* Organiza los elementos en una sola columna */
-        gap: 10px; /* Espacio entre los elementos */
-        margin-top: 2rem; /* Conserva el margen superior */
+        display: flex;
+        /* Cambia el contenedor a Flexbox */
+        flex-direction: column;
+        /* Organiza los elementos en una sola columna */
+        gap: 10px;
+        /* Espacio entre los elementos */
+        margin-top: 2rem;
+        /* Conserva el margen superior */
     }
 
-    #divSub1 {
-        display:flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        background-color: #ededed;
-        border-radius: 10px;
+    #divGrande {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 2rem;
+    }
+
+    .filaSuperior {
+        flex-direction: column;
+        row-gap: 10px;
     }
 
     #divSub5 {
@@ -227,10 +268,14 @@
     }
 
     .grid-container {
-        display: grid; /* Usamos Grid */
-        grid-template-columns: 1fr; /* Una sola columna */
-        grid-template-rows: 1fr 1fr 5fr; /* Tres filas con altura automática */
-        align-items: center; /* Alinea los elementos verticalmente */
+        display: grid;
+        /* Usamos Grid */
+        grid-template-columns: 1fr;
+        /* Una sola columna */
+        grid-template-rows: 1fr 1fr 5fr;
+        /* Tres filas con altura automática */
+        align-items: center;
+        /* Alinea los elementos verticalmente */
         justify-items: center;
         justify-content: center;
         width: 100%;
@@ -239,7 +284,7 @@
 
     /* Estilo para los elementos dentro del Grid */
     .grid-container .item {
-        display:flex;
+        display: flex;
         flex-direction: column;
         align-items: center;
         row-gap: 5px;
@@ -247,10 +292,14 @@
     }
 
     .line {
-        width: 2px; /* Grosor de la línea vertical */
-        background-color: #ff5733; /* Color específico */
-        height: 50px; /* Altura completa para que ocupe todo el espacio disponible */
-        margin: 0 auto; /* Centra la línea horizontalmente */
+        width: 2px;
+        /* Grosor de la línea vertical */
+        background-color: #ff5733;
+        /* Color específico */
+        height: 50px;
+        /* Altura completa para que ocupe todo el espacio disponible */
+        margin: 0 auto;
+        /* Centra la línea horizontalmente */
     }
 
     #grafico1_8 {

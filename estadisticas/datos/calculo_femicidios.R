@@ -11,6 +11,7 @@ library(stringr)
 library(readr)
 library(googlesheets4)
 library(janitor)
+library(tidyr)
 
 # Pruéba
 
@@ -117,6 +118,32 @@ Data11 <- Raw0 %>%
   group_by(Año) %>%
   summarise(Cantidad = n())
 
+# Caratulas femicidios
+Data11_2 <- Raw0 %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año, Vinculado) %>%
+  summarise(Cantidad = n(), .groups = "drop") %>%
+  pivot_wider(names_from = Vinculado, values_from = Cantidad, values_fill = 0) %>%
+  rename( Directos = `FALSE`, Vinculados = `TRUE`) %>%
+  mutate(Texto = paste0(
+    "<span><strong>",
+    Directos,
+    if_else(Directos == 1,
+            "</strong> femicidio directo",
+            "</strong> femicidios directos"),
+    "</span>",
+    if_else(
+      Vinculados > 0,
+      paste0(
+        "<br><span><strong>",
+        Vinculados,
+        if_else(Vinculados == 1,
+                "</strong> femicidio vinculado",
+                "</strong> femicidios vinculados"),
+        "</span>"
+      ),
+      "")))
+
 # Evolucion
 Data12 <- Raw0 %>%
   mutate(Año = as.character(Año)) %>%
@@ -165,6 +192,7 @@ write_json(toJSON(Data8), path=paste0(dir, "/json/femicidios_causas_totales.json
 write_json(toJSON(Data9), path=paste0(dir, "/json/femicidios_causas_judiciales.json"))
 write_json(toJSON(Data10), path=paste0(dir, "/json/femicidios_localidad.json"))
 write_json(toJSON(Data11), path=paste0(dir, "/json/femicidios_cantidad.json"))
+write_json(toJSON(Data11_2), path=paste0(dir, "/json/femicidios_caratulas.json"))
 write_json(toJSON(Data12), path=paste0(dir, "/json/femicidios_evolucion.json"))
 write_json(toJSON(Data13), path=paste0(dir, "/json/femicidios_tasa_nacional.json"))
 write_json(toJSON(Data14), path=paste0(dir, "/json/femicidios_registro.json"))
