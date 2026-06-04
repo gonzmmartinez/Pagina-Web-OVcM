@@ -410,7 +410,8 @@ detalle-info table {
     align-items: center;
     text-align: center;
 
-    margin: 0 auto; /* centra el bloque horizontalmente */
+    margin: 0 auto;
+    /* centra el bloque horizontalmente */
     padding: 12px 20px;
 }
 
@@ -437,7 +438,8 @@ detalle-info table {
     border-radius: 15px;
     padding: 30px;
     box-sizing: border-box;
-    overflow: scroll;
+    overflow-x: auto;
+    overflow-y: visible;
 }
 
 .cuadro_info * {
