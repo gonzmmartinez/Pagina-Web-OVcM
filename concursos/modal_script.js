@@ -6,7 +6,7 @@ const concursos = {
         <strong style="color:#51c33b">CONVOCATORIA ABIERTA</strong><br><br><br>
       🟣 <strong>El Observatorio de Violencia contra las Mujeres</strong> invita a estudiantes y graduadxs a participar del Concurso de Tesis 2026.<br><br>
       🟣 Esta convocatoria busca fomentar la investigación con perspectiva de género en distintas disciplinas.<br><br>
-      🟣 <strong>Postulaciones:</strong> del 19/05/2026 al 15/06/2026 vía correo a: <a href="mailto:observatoriomujersalta@gmail.com">observatoriomujersalta@gmail.com</a><br><br>
+      🟣 <strong>Postulaciones:</strong> plazo extendido hasta el 23/06/2026 vía correo a: <a href="mailto:observatoriomujersalta@gmail.com">observatoriomujersalta@gmail.com</a><br><br>
       🟣 Podés encontrar las bases completas aquí:
     `,
         pdf: 'https://ovcmsalta.gob.ar/wp-content/uploads/2026/05/BASES_ConcursoTesis_2026_.pdf',
