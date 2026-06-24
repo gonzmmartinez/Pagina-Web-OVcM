@@ -33,12 +33,21 @@ Meses <- data.frame(Mes = c("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio
 ######### TRANSFORMAR DATOS #########
 # Evolución
 Data1 <- Raw1 %>%
-  left_join(Meses, by="Mes") %>%
-  filter(Tipo != "Abuso sexual", Mes_num <= 6) %>%
+  filter(Tipo != "Abuso sexual") %>%
   mutate(Año = as.character(Año)) %>%
-  group_by(Año) %>%
+  group_by(Mes, Año) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
-  arrange(Año)
+  left_join(Meses, by="Mes") %>%
+  mutate(Trimestre=case_when(Mes_num >= 1 & Mes_num <= 3 ~ 1,
+                            Mes_num >= 4 & Mes_num <= 6 ~ 2,
+                            Mes_num >= 7 & Mes_num <= 9 ~ 3,
+                            Mes_num >= 10 & Mes_num <= 12 ~ 4),
+         Semestre = case_when(Mes_num >= 1 & Mes_num <= 6 ~ 1,
+                              Mes_num >= 7 & Mes_num <= 12 ~ 2),
+         year_mes=paste0(sprintf("%02d", Mes_num),"-",str_sub(Año,3,4)),
+         year_trimestre=paste0(sprintf("%02d", Trimestre), "-", str_sub(Año, 3, 4)),
+         year_semestre=paste0(sprintf("%02d",Semestre), "-", str_sub(Año,3,4))) %>%
+  arrange(Año, Mes_num)
 
 # Por mes
 Data2 <- Raw1 %>%

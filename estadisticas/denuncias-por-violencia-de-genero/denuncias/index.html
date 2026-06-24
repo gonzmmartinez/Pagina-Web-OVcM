@@ -132,7 +132,7 @@
                     <span style="font-size:20px"><strong>Evolución de la cantidad de denuncias registradas por
                             OVFG</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Por trimestre en cada año</i></span>
+                    <span id="subtitulo_chart1" style="font-size:15px"></span>
                 </p>
             </div>
 
@@ -159,6 +159,31 @@
                     <option value="Sur-Anta">Sur-Anta</option>
                     <option value="Sur-Metán">Sur-Metán</option>
                 </select>
+            </div>
+
+            <div class="selectContainer">
+                <p>
+                    Granularidad:
+                </p>
+                <div id="Granularidad" class="granularidad">
+
+                    <label>
+                        <input type="radio" name="granularidad" value="trimestre" checked
+                            onchange="actualizarGrafico1()">
+                        Trimestral
+                    </label>
+
+                    <label>
+                        <input type="radio" name="granularidad" value="semestre" onchange="actualizarGrafico1()">
+                        Semestral
+                    </label>
+
+                    <label>
+                        <input type="radio" name="granularidad" value="anio" onchange="actualizarGrafico1()">
+                        Anual
+                    </label>
+
+                </div>
             </div>
         </div>
 

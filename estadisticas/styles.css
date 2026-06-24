@@ -699,3 +699,8 @@ ul.breadcrumb .active {
     width: auto; /* Ajusta el ancho automáticamente */
     height: 1em; /* El ícono tendrá la misma altura que la línea del texto */
 }
+
+
+.apexcharts-xaxis-group-label {
+    transform: translateY(10px);
+}

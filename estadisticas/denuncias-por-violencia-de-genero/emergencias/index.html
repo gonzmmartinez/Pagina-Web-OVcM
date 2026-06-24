@@ -108,7 +108,6 @@
         <nav class="indicador-container">
             <button class="indicadorButton active" onclick="showChart('chart1')">Evolución de los requerimientos
                 registrados</button>
-            <button class="indicadorButton" onclick="showChart('chart2')">Requerimientos por mes</button>
             <button class="indicadorButton" onclick="showChart('chart3')">Requerimientos por tipo de violencia y acción
                 requerida</button>
             <button class="indicadorButton" onclick="showChart('chart4')">Requerimientos por violencia de género por
@@ -127,7 +126,7 @@
                     <span style="font-size:20px"><strong>Evolución de los requerimientos registrados por el S.E.
                             911</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Primeros semestres de cada año</i></span>
+                    <span id="subtitulo_chart1" style="font-size:15px"></span>
                 </p>
             </div>
 
@@ -140,9 +139,36 @@
                     <strong>FUENTE</strong>: Sistema de Emergencias 911.
                     <br>
                     <strong>NOTA</strong>: Debido a un cambio en el sistema registral del S.E. 911 no se cuenta con los
-                    datos del segundo semestre del año 2023, por lo que la comparación se realiza exclusivamente entre
-                    primeros semestres para mantener la consistencia entre períodos de análisis.
+                    datos del segundo semestre del año 2023.
                 </p>
+            </div>
+
+            <!-- Listas desplegables -->
+            <div class="selectContainer">
+                <p>
+                    Granularidad:
+                </p>
+                <div id="Granularidad" class="granularidad">
+                    <label>
+                        <input type="radio" name="granularidad" value="mes" checked
+                            onchange="actualizarGrafico1()">
+                        Mensual
+                    </label>
+                    <label>
+                        <input type="radio" name="granularidad" value="trimestre" checked
+                            onchange="actualizarGrafico1()">
+                        Trimestral
+                    </label>
+                    <label>
+                        <input type="radio" name="granularidad" value="semestre" onchange="actualizarGrafico1()">
+                        Semestral
+                    </label>
+                    <label>
+                        <input type="radio" name="granularidad" value="anio" onchange="actualizarGrafico1()">
+                        Anual
+                    </label>
+
+                </div>
             </div>
         </div>
 
