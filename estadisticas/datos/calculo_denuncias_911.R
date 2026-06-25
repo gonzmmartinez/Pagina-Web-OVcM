@@ -47,6 +47,15 @@ Data1 <- Raw1 %>%
          year_mes=paste0(sprintf("%02d", Mes_num),"-",str_sub(Año,3,4)),
          year_trimestre=paste0(sprintf("%02d", Trimestre), "-", str_sub(Año, 3, 4)),
          year_semestre=paste0(sprintf("%02d",Semestre), "-", str_sub(Año,3,4))) %>%
+  rbind(data.frame(Mes=c("Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"),
+                   Año="2023",
+                   Cantidad = NA,
+                   Mes_num = 7:12,
+                   Trimestre = rep(c(3, 4), each=3),
+                   Semestre = 2) %>%
+          mutate(year_mes = paste0(sprintf("%02d", Mes_num), "-", str_sub(Año, 3,4)),
+                 year_trimestre=paste0(sprintf("%02d", Trimestre), "-", str_sub(Año, 3, 4)),
+                 year_semestre=paste0(sprintf("%02d",Semestre), "-", str_sub(Año,3,4)))) %>%
   arrange(Año, Mes_num)
 
 # Por mes
@@ -97,7 +106,7 @@ actualizacion <- paste0("Última actualización de los datos de esta sección: "
 writeLines(actualizacion, paste0(dir, "/json/actualizacion_requerimientos_911.txt"))
 
 ######### ESCRIBIR DATOS #########
-write_json(toJSON(Data1), path = paste0(dir, "/json/denuncias_911_evolucion.json"))
+write_json(toJSON(Data1), path = paste0(dir, "/json/denuncias_911_evolucion.json"), na = "null")
 
 write_json(toJSON(Data2), path = paste0(dir, "/json/denuncias_911_por_mes.json"))
 

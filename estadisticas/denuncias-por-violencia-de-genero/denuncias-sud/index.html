@@ -106,9 +106,10 @@
 
         <!-- Contenedor de botones -->
         <nav class="indicador-container">
-            <button class="indicadorButton active" onclick="showChart('chart1')">Denuncias registradas por tipo de
+            <button class="indicadorButton active" onclick="showChart('chart1')">Evolución de la cantidad de
+                denuncias</button>
+            <button class="indicadorButton" onclick="showChart('chart2')">Denuncias registradas por tipo de
                 denuncia</button>
-            <button class="indicadorButton" onclick="showChart('chart2')">Evolución de la cantidad de denuncias</button>
             <button class="indicadorButton" onclick="showChart('chart3')">Por boca de denuncia</button>
             <button class="indicadorButton" onclick="showChart('chart4')">Tasa de denuncias por departamento</button>
         </nav>
@@ -120,10 +121,10 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Denuncias registradas al Sistema Único de
-                            Denuncias</strong></span>
+                    <span style="font-size:20px"><strong>Evolución de la cantidad de denuncias registradas en el
+                            SUD</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Por tipo de denuncia</i></span>
+                    <span id="subtitulo_chart1" style="font-size:15px"></span>
                 </p>
             </div>
 
@@ -143,13 +144,27 @@
             <!-- Listas desplegables -->
             <div class="selectContainer">
                 <p>
-                    Año:
+                    Granularidad:
                 </p>
-                <select id="Anio1" onchange="actualizarGrafico1()">
-                    <option value="2025">2025</option>
-                    <option value="2024">2024</option>
-                    <option value="2023">2023</option>
-                </select>
+                <div id="Granularidad" class="granularidad">
+                    <label>
+                        <input type="radio" name="granularidad" value="mes" onchange="actualizarGrafico1()">
+                        Mensual
+                    </label>
+                    <label>
+                        <input type="radio" name="granularidad" value="trimestre" checked
+                            onchange="actualizarGrafico1()">
+                        Trimestral
+                    </label>
+                    <label>
+                        <input type="radio" name="granularidad" value="semestre" onchange="actualizarGrafico1()">
+                        Semestral
+                    </label>
+                    <label>
+                        <input type="radio" name="granularidad" value="anio" onchange="actualizarGrafico1()">
+                        Anual
+                    </label>
+                </div>
             </div>
         </div>
 
@@ -157,8 +172,10 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Evolución de la cantidad de denuncias registradas en el
-                            SUD</strong></span>
+                    <span style="font-size:20px"><strong>Denuncias registradas al Sistema Único de
+                            Denuncias</strong></span>
+                    <br>
+                    <span style="font-size:15px"><i>Por tipo de denuncia</i></span>
                 </p>
             </div>
 

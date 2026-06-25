@@ -474,6 +474,7 @@ select {
         flex-direction: column;
         margin: auto;
         padding: 2%;
+        padding-bottom: 50px;
         border-radius: 10px;
         background-size: 7.5rem auto; /* Tamaño del logo, ajusta según tus necesidades */
         overflow-x: scroll;

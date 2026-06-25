@@ -144,13 +144,13 @@
             </div>
 
             <!-- Listas desplegables -->
-            <div class="selectContainer">
+            <div class="selectContainer" style="@media (max-width: 780px) {margin-bottom: 100px;}">
                 <p>
                     Granularidad:
                 </p>
                 <div id="Granularidad" class="granularidad">
                     <label>
-                        <input type="radio" name="granularidad" value="mes" checked
+                        <input type="radio" name="granularidad" value="mes"
                             onchange="actualizarGrafico1()">
                         Mensual
                     </label>
@@ -167,7 +167,6 @@
                         <input type="radio" name="granularidad" value="anio" onchange="actualizarGrafico1()">
                         Anual
                     </label>
-
                 </div>
             </div>
         </div>

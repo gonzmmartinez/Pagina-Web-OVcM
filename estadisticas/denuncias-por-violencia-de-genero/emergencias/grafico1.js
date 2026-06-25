@@ -73,7 +73,7 @@ function procesarDatos1(data1, granularidad = "anio") {
           };
         }
 
-        agrupados[key].cantidad += item.Cantidad;
+        agrupados[key].cantidad += Number(item.Cantidad) || 0;
       });
 
       datosProcesados = Object.values(agrupados);
@@ -108,36 +108,58 @@ function procesarDatos1(data1, granularidad = "anio") {
 // CONFIGURACIÓN
 function crearGrafico1(categories, values, groups, granularidad) {
 
+  // =========================
+  // CONFIGURACIÓN DINÁMICA
+  // =========================
+
+  const n = values.length;
+
+  const minBars = 2;
+  const maxBars = 40;
+
+  const maxFont = 1.5; // rem
+  const minFont = 0.5; // rem
+
+  // clamp
+  const clamped = Math.min(Math.max(n, minBars), maxBars);
+
+  // normalización (0 → pocas barras, 1 → muchas barras)
+  const t = (clamped - minBars) / (maxBars - minBars);
+
+  // interpolación inversa
+  const fontSizeRem = maxFont - t * (maxFont - minFont);
+
+  const fontSize = `${fontSizeRem.toFixed(2)}rem`;
+  const xLabelSize = `${(fontSizeRem * 0.75).toFixed(2)}rem`;
+
+  const hideDataLabels = n > 40;
+
+  // =========================
+  // TÍTULO SEGÚN GRANULARIDAD
+  // =========================
+
   let tituloX;
-  let fontSize;
-  let xLabelSize;
 
   switch (granularidad) {
-
     case "mes":
       tituloX = "Mes-Año";
-      fontSize = "0.5rem";
-      xLabelSize = "0.5rem";
       break;
-
     case "trimestre":
       tituloX = "Trimestre-Año";
-      fontSize = "0.75rem";
-      xLabelSize = "0.625rem";
       break;
-
     case "semestre":
       tituloX = "Semestre-Año";
-      fontSize = "1rem";
-      xLabelSize = "0.75rem";
       break;
-
     case "anio":
       tituloX = "Año";
-      fontSize = "1.25rem";
-      xLabelSize = "1rem";
       break;
+    default:
+      tituloX = "";
   }
+
+  // =========================
+  // CONFIGURACIÓN EJE X
+  // =========================
 
   const xaxisConfig = {
     title: {
@@ -171,7 +193,11 @@ function crearGrafico1(categories, values, groups, granularidad) {
       },
       groups: groups
     };
-  };
+  }
+
+  // =========================
+  // RETURN CHART
+  // =========================
 
   return new ApexCharts(document.querySelector("#grafico1"), {
 
@@ -182,6 +208,7 @@ function crearGrafico1(categories, values, groups, granularidad) {
         show: false
       }
     },
+
     series: [
       {
         name: 'Cantidad',
@@ -189,19 +216,26 @@ function crearGrafico1(categories, values, groups, granularidad) {
         data: values
       }
     ],
+
     colors: ["#e3753d"],
-    title: {},
+
     xaxis: xaxisConfig,
 
     yaxis: {
       title: {
         text: 'Cantidad'
+      },
+      labels: {
+        formatter: function (value) {
+          return value.toLocaleString("es-AR");
+        }
       }
     },
 
     dataLabels: {
-      enabledOnSeries: [0],
-      offsetX: 5,
+      enabled: !hideDataLabels,
+      textAnchor: 'middle',
+      offsetX: 3,
       style: {
         fontSize: fontSize,
         fontWeight: 'normal'
@@ -221,11 +255,40 @@ function crearGrafico1(categories, values, groups, granularidad) {
 
     tooltip: {
       enabled: true,
-      enabledOnSeries: [0],
       followCursor: true,
-      y: {
-        formatter: function (value) {
-          return value.toLocaleString("es-AR");
+      x: {
+        formatter: function (val) {
+
+          if (!val.includes("-")) {
+            return val;
+          }
+
+          const [periodo, year] = val.split("-");
+
+          switch (granularidad) {
+
+            case "mes": {
+              const meses = [
+                "Enero", "Febrero", "Marzo", "Abril",
+                "Mayo", "Junio", "Julio", "Agosto",
+                "Septiembre", "Octubre", "Noviembre", "Diciembre"
+              ];
+
+              return `${meses[parseInt(periodo, 10) - 1]} 20${year}`;
+            }
+
+            case "trimestre":
+              return `${parseInt(periodo, 10)}° Trimestre 20${year}`;
+
+            case "semestre":
+              return `${parseInt(periodo, 10)}° Semestre 20${year}`;
+
+            case "anio":
+              return `20${year}`;
+
+            default:
+              return val;
+          }
         }
       }
     },
@@ -247,13 +310,21 @@ function iniciar1() {
       const granularidad =
         document.querySelector('input[name="granularidad"]:checked').value;
 
+      document.getElementById("subtitulo_chart1").innerHTML =
+        `<i>${cambiarSubtitulo1(granularidad)}</i>`;
+
       const { categories1, values1, groups1 } =
         procesarDatos1(datosParseados1, granularidad);
 
       window.chart1 =
         crearGrafico1(categories1, values1, groups1, granularidad);
 
-      window.chart1.render();
+      window.chart1.render().then(() => {
+        document.querySelectorAll('#grafico1 .apexcharts-datalabel')
+          .forEach(el => {
+            el.setAttribute('dominant-baseline', 'middle');
+          });
+      });
 
     })
     .catch(error1 => {
@@ -272,6 +343,9 @@ function actualizarGrafico1() {
       const granularidad =
         document.querySelector('input[name="granularidad"]:checked').value;
 
+      document.getElementById("subtitulo_chart1").innerHTML =
+        `<i>${cambiarSubtitulo1(granularidad)}</i>`;
+
       const { categories1, values1, groups1 } =
         procesarDatos1(datosParseados1, granularidad);
 
@@ -284,13 +358,42 @@ function actualizarGrafico1() {
         granularidad
       );
 
-      window.chart1.render();
+      window.chart1.render().then(() => {
+        document.querySelectorAll('#grafico1 .apexcharts-datalabel')
+          .forEach(el => {
+            el.setAttribute('dominant-baseline', 'middle');
+          });
+      });
 
     })
     .catch(error => {
       document.getElementById("grafico1").textContent =
         `Error: ${error.message}`;
     });
+}
+
+// Función para actualizar dinámicamente el subtítulo
+function cambiarSubtitulo1(granularidad) {
+  let texto = "";
+
+  switch (granularidad) {
+    case "mes":
+      texto = "Serie mensual de denuncias.";
+      break;
+    case "trimestre":
+      texto = "Serie trimestral de denuncias.";
+      break;
+    case "semestre":
+      texto = "Serie semestral de denuncias.";
+      break;
+    case "anio":
+      texto = "Serie anual de denuncias.";
+      break;
+    default:
+      texto = "";
+  }
+
+  return texto += " Provincia de Salta.";
 }
 
 // Llamar la función principal al cargar la página

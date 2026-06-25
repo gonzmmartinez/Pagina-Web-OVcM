@@ -110,30 +110,55 @@ function procesarDatos1(data1, granularidad = "trimestre") {
 
 // Función para configurar y renderizar el gráfico
 function crearGrafico1(categories, values, groups, granularidad) {
+
+  // =========================
+  // TÍTULO SEGÚN GRANULARIDAD
+  // =========================
+
   let tituloX;
-  let fontSize;
 
   switch (granularidad) {
 
     case "trimestre":
       tituloX = "Trimestre-Año";
-      fontSize = "0.5rem";
       break;
 
     case "semestre":
       tituloX = "Semestre-Año";
-      fontSize = "0.75rem";
       break;
 
     case "anio":
       tituloX = "Año";
-      fontSize = "1rem";
       break;
 
     default:
       tituloX = "";
-      fontSize = "0.5rem";
   }
+
+  // =========================
+  // DINÁMICA POR CANTIDAD DE BARRAS
+  // =========================
+
+  const n = values.length;
+
+  const minBars = 2;
+  const maxBars = 40;
+
+  const maxFont = 1.5; // rem
+  const minFont = 0.5; // rem
+
+  const clamped = Math.min(Math.max(n, minBars), maxBars);
+  const t = (clamped - minBars) / (maxBars - minBars);
+
+  const fontSizeRem = maxFont - t * (maxFont - minFont);
+
+  const fontSize = `${fontSizeRem.toFixed(2)}rem`;
+
+  const hideDataLabels = n > 40;
+
+  // =========================
+  // X AXIS
+  // =========================
 
   const xaxisConfig = {
     title: {
@@ -166,42 +191,55 @@ function crearGrafico1(categories, values, groups, granularidad) {
     };
   }
 
+  // =========================
+  // RETURN CHART
+  // =========================
+
   return new ApexCharts(document.querySelector("#grafico1"), {
+
     chart: {
-      type: 'bar', // Tipo de gráfico: barras
+      type: 'bar',
       height: 350,
       toolbar: {
         show: false
       }
     },
+
     series: [{
       name: 'Cantidad',
       type: 'column',
       data: values
     }],
+
     colors: ["#e3753d"],
+
     title: {},
+
     xaxis: xaxisConfig,
+
     yaxis: {
       title: {
         text: 'Cantidad'
       },
       labels: {
-        formatter: function(val) {
+        formatter: function (val) {
           return val.toLocaleString("es-AR");
         }
       }
     },
+
     dataLabels: {
-      offsetX: 5,
+      enabled: !hideDataLabels,
+      offsetX: 3,
       style: {
         fontSize: fontSize,
-        fontWeight: 'normal',
+        fontWeight: 'normal'
       },
       formatter: function (val) {
         return val.toLocaleString("es-AR");
-      },
+      }
     },
+
     plotOptions: {
       bar: {
         dataLabels: {
@@ -209,9 +247,9 @@ function crearGrafico1(categories, values, groups, granularidad) {
         }
       }
     },
+
     tooltip: {
       enabled: true,
-      enabledOnSeries: [0],
       followCursor: true,
       x: {
         formatter: function (val) {
@@ -222,14 +260,24 @@ function crearGrafico1(categories, values, groups, granularidad) {
 
           const [periodo, year] = val.split("-");
 
-          if (periodo.includes("S")) {
-            return periodo.replace("S", "° Semestre ") + "20" + year;
-          }
+          switch (granularidad) {
 
-          return periodo + "° Trimestre 20" + year;
+            case "trimestre":
+              return `${parseInt(periodo, 10)}° Trimestre 20${year}`;
+
+            case "semestre":
+              return `${parseInt(periodo, 10)}° Semestre 20${year}`;
+
+            case "anio":
+              return `20${year}`;
+
+            default:
+              return val;
+          }
         }
       }
     },
+
     legend: {
       show: false
     }
@@ -270,7 +318,12 @@ function actualizarGrafico1() {
         granularidad
       );
 
-      window.chart1.render();
+      window.chart1.render().then(() => {
+        document.querySelectorAll('#grafico1 .apexcharts-datalabel')
+          .forEach(el => {
+            el.setAttribute('dominant-baseline', 'middle');
+          });
+      });
 
     })
     .catch(error => {
@@ -305,7 +358,12 @@ function iniciar1() {
       window.chart1 =
         crearGrafico1(categories1, values1, groups1, granularidad);
 
-      window.chart1.render();
+      window.chart1.render().then(() => {
+        document.querySelectorAll('#grafico1 .apexcharts-datalabel')
+          .forEach(el => {
+            el.setAttribute('dominant-baseline', 'middle');
+          });
+      });
 
     })
     .catch(error => {
@@ -314,8 +372,8 @@ function iniciar1() {
     });
 };
 
+// Función para actualizar dinámicamente el subtítulo
 function cambiarSubtitulo1(granularidad, distrito) {
-
   let texto = "";
 
   switch (granularidad) {

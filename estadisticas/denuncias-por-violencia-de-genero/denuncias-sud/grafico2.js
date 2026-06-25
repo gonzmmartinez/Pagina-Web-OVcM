@@ -1,93 +1,41 @@
 // Datos
-const archivo2 = "../../datos/json/denuncias_sud_evolucion.json";
+const archivo2 = "../../datos/json/denuncias_sud_tipo.json";
 
 // PROCESAMIENTO
-function procesarDatos2(data2) {
+function procesarDatos2(data) {
     // Crear los arrays para las categorías y los valores de las barras
     const categories2 = [];
     const values2 = [];
 
     // Procesar los datos de cada entrada
-    data2.forEach(item => {
-        categories2.push(item.Mes);  // Añadir year_trimestre al eje X
-        values2.push(item.Cantidad);            // Añadir Cantidad al eje Y
+    data.forEach(item => {
+        categories2.push(item.Tipo);
+        values2.push(item.Cantidad);            
     });
+
     return { categories2, values2 };
 };
 
 // FILTRAR DATOS
 function filtrarPorAnio(data, year) {
-    return data.filter(item => item.Año === year);
+  return data.filter(item => item.Año === year);
 };
 
-// CONFIGURACIÓN
-function crearGrafico2(categories, values) {
-    return new ApexCharts(document.querySelector("#grafico2"), {
-        chart: {
-            type: 'bar', // Tipo de gráfico: barras
-            height: 350,
-            toolbar: {
-              show: false
-            }
-        },
-        stroke: {
-          width: [0, 4],
-          curve: 'straight'
-        },
-        series: [{
-            name: 'Cantidad',
-            type: 'column',
-            data: values
-        },{
-          name: 'Cantidad',
-          type: 'line',
-          data: values
-        }],
-        colors: ["#e3474b", "#6e3169"],
-        title: {},
-        xaxis: {
-          title: {
-            text: 'Mes'
-          },
-          categories: categories, // Valores para el eje X
-        },
-        yaxis: {
-            title: {
-                text: 'Cantidad'
-            }
-        },
-        dataLabels: {
-          enabledOnSeries: [0],
-          offsetX: 5,
-          style: {
-            fontSize: '1rem',
-            fontWeight: 'normal',
-          },
-          formatter: function(value) {
-            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-          }
-        },
-        plotOptions : {
-          bar: {
-            dataLabels: {
-              orientation: 'vertical'
-            }
-          }
-        },
-        tooltip: {
-          enabled: true,
-          enabledOnSeries: [0],
-          followCursor: true,
-          y: {
-            formatter: function(value) {
-              return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-            }
-          }
-        },
-        legend: {
-          show: false
-        }
-    });
+// COLORES
+// Función para asignar colores
+function assignColors2(categories2) {
+  return categories2.map(category => {
+    switch (category) {
+      case "Violencia familiar":
+        return "#2b768a";
+      case "Violencia de género":
+        return "#e3474b"; 
+      case "Violencia no penal":
+        return "#1468b1";
+      default:
+        return "#CCCCCC"; // Gris por defecto
+    }
+  });
 };
 
 // INICIALIZACIÓN
@@ -95,43 +43,119 @@ function iniciar2() {
   cargarDatos(archivo2) // Cargar los datos del JSON
         .then(data2 => {
             // Parsear los datos
-            const datosParseados2 = parsearDatos(data2);
+            const parsedData2 = parsearDatos(data2);
 
-            // Filtrar datos
+            // Filtrar por el distrito seleccionado
             const anioSeleccionado2 = "2025";
-            const datosFiltrados2 = filtrarPorAnio(datosParseados2, anioSeleccionado2);
+            const datosFiltrados2 = filtrarPorAnio(parsedData2, anioSeleccionado2);
 
             // Procesar los datos filtrados
             const { categories2, values2 } = procesarDatos2(datosFiltrados2);
 
             // Crear y renderizar el gráfico
-            window.chart2 = crearGrafico2(categories2, values2 );
+            window.chart2 = crearGrafico2(categories2, values2);
             window.chart2.render();
         })
         .catch(error2 => {
-            document.getElementById("grafico2").textContent = `Error: ${error1.message}`;
+            document.getElementById("grafico2").textContent = `Error: ${error2.message}`;
         });
 };
 
 function actualizarGrafico2() {
   cargarDatos(archivo2)
       .then(data2 => {
-          const datosParseados2 = parsearDatos(data2);
+          const parsedData2 = parsearDatos(data2);
 
           // Filtrar por el distrito seleccionado
           const anioSeleccionado2 = document.getElementById("Anio2").value;
-          const datosFiltrados2 = filtrarPorAnio(datosParseados2, anioSeleccionado2);
+          const datosFiltrados2 = filtrarPorAnio(parsedData2, anioSeleccionado2);
 
           // Procesar datos
           const { categories2, values2 } = procesarDatos2(datosFiltrados2);
 
+          // Cambiar colores
+          const colors2 = assignColors2(categories2);
+
           // Actualizar las series y categorías con animación
           window.chart2.updateOptions({
             ...window.chart2.w.config, // Copia las opciones actuales
-            series: [{ data: [...values2] }, { data: [...values2] }],
-            xaxis: { categories: [...categories2] } }, true); // Animación en opciones
+            series: [...values2],
+            labels: [...categories2],
+            colors: [...colors2]
+          });
       })
       .catch(error => {
           document.getElementById("grafico2").textContent = `Error: ${error.message}`;
       });
+};
+
+// 5. Función para configurar y renderizar el gráfico
+function crearGrafico2(categories, values) {
+  // Asignar colores según las categorías
+  const colors = assignColors2(categories);
+
+  return new ApexCharts(document.querySelector("#grafico2"), {
+      chart: {
+          type: 'donut',
+          height: '350px',
+          toolbar: {
+            show: false
+          }
+      },
+      series: values, // Los valores para el gráfico (arreglo de números)
+      labels: categories, // Las etiquetas para cada segmento
+      title: {},
+      colors: colors,
+      tooltip: {
+        enabled: true,
+        followCursor: true,
+        y: {
+          formatter: function(value) {
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+          }
+        }
+      },
+      legend: {
+        show: true,
+        fontSize: '7.5rem',
+        formatter: function(seriesName, opts) {
+          return [seriesName + " - " + opts.w.globals.series[opts.seriesIndex]].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      }
+      },
+      plotOptions: {
+        pie: {
+          donut: {
+            size: '50%',
+            labels: {
+              show: true,
+              total: {
+                show: true,
+                label: "Total",
+                formatter: function(w) {
+                  return w.globals.seriesTotals.reduce((a, b) => {
+                    return a + b
+                  }, 0)
+                }
+              }
+            }
+          }
+        }
+      },
+      dataLabels: {
+        enabled: true,
+        formatter: function (val) {
+          if (val >= 5) {
+            return Math.round(val * 10) / 10 + "%"
+          } else {
+            return ''
+          }
+        },
+        dropShadow: false,
+        style: {
+          fontSize: '0.8rem',
+          fontWeight: 'bold',
+          color: 'white'
+        },
+      }
+  });
 };
