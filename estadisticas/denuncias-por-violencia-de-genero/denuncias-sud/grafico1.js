@@ -397,10 +397,3 @@ function cambiarSubtitulo1(granularidad) {
 
 // Llamar la función principal al cargar la página
 window.addEventListener("load", iniciar1);
-
-
-document
-  .querySelectorAll('.apexcharts-datalabel')
-  .forEach(el => {
-    el.setAttribute('dominant-baseline', 'middle');
-  });

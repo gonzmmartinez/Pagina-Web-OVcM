@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <link type="text/css" rel="stylesheet" href="../../styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -8,9 +9,10 @@
     <title>Estadísticas | OVcM</title>
 
     <!-- Scripts -->
-    <script type = "text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
-    <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/apexcharts@4.2.0/dist/apexcharts.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 
 <body>
@@ -27,7 +29,8 @@
     <div id="sidebar">
         <div class="sidebarDiv">
             <a href="https://ovcmsalta.gob.ar/estadisticas/">
-                <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1" class="logoIcon">
+                <img src="https://ovcmsalta.gob.ar/wp-content/uploads/2023/09/Isologo-blanco-.png" alt="Icono 1"
+                    class="logoIcon">
             </a>
             <span class="logoText">Observatorio de Violencia contra las Mujeres</span>
         </div>
@@ -36,11 +39,25 @@
 
         <h2 style="font-size: 15px; text-align: center;">ESTADÍSTICAS</h2>
         <ul>
-            <li><a href="../../femicidios-y-travesticidios/"><img src="../../svg/icono_01.svg" class="sidebarIcon"></i><p>Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</p></a></li>
-            <li><a href="../../denuncias-por-violencia-de-genero/"><img src="../../svg/icono_02.svg" class="sidebarIcon"></i><p>Denuncias por violencia de género</p></a></li>
-            <li><a href="../../educacion-y-mercado-de-trabajo/"><img src="../../svg/icono_03.svg" class="sidebarIcon"></i><p>Educación y mercado de trabajo</p></a></li>
-            <li><a href="../../salud-y-libertad-no-reproductiva/" class="active"><img src="../../svg/icono_04.svg" class="sidebarIcon"></i><p>Salud y libertad -no- reproductiva</p></a></li>
-            <li><a href="../../participacion-en-la-toma-de-decisiones/"><img src="../../svg/icono_05.svg" class="sidebarIcon"></i><p>Participación en la toma de decisiones</p></a></li>
+            <li><a href="../../femicidios-y-travesticidios/"><img src="../../svg/icono_01.svg" class="sidebarIcon"></i>
+                    <p>Muertes violentas y/o dudosas, femicidios, travesticidios, y transfemicidios</p>
+                </a></li>
+            <li><a href="../../denuncias-por-violencia-de-genero/"><img src="../../svg/icono_02.svg"
+                        class="sidebarIcon"></i>
+                    <p>Denuncias por violencia de género</p>
+                </a></li>
+            <li><a href="../../educacion-y-mercado-de-trabajo/"><img src="../../svg/icono_03.svg"
+                        class="sidebarIcon"></i>
+                    <p>Educación y mercado de trabajo</p>
+                </a></li>
+            <li><a href="../../salud-y-libertad-no-reproductiva/" class="active"><img src="../../svg/icono_04.svg"
+                        class="sidebarIcon"></i>
+                    <p>Salud y libertad -no- reproductiva</p>
+                </a></li>
+            <li><a href="../../participacion-en-la-toma-de-decisiones/"><img src="../../svg/icono_05.svg"
+                        class="sidebarIcon"></i>
+                    <p>Participación en la toma de decisiones</p>
+                </a></li>
         </ul>
     </div>
 
@@ -52,9 +69,9 @@
                 <li><a href="../../">Estadísticas</a></li>
                 <li><a href="../">Salud y libertad -no- reproductiva</a></li>
                 <li class="active">IVE/ILE</li>
-            </ul> 
+            </ul>
         </nav>
-        
+
         <div class="titleContainer">
             <img src="../../svg/icono_04.svg" alt="Ícono" class="titleIcon">
             <h1 class="pageTitle">SALUD Y LIBERTAD -NO- REPRODUCTIVA</h1>
@@ -72,49 +89,65 @@
 
         <!-- Contenedor de botones -->
         <nav class="indicador-container">
-            <button class="indicadorButton active" onclick="showChart('chart1')">IVE por mes</button>
-            <button class="indicadorButton" onclick="showChart('chart2')">IVE por edad de la persona gestante</button>
-            <button class="indicadorButton" onclick="showChart('chart3')">IVE por semanas de gestación</button>
-            <button class="indicadorButton" onclick="showChart('chart4')">ILE por mes</button>
-            <button class="indicadorButton" onclick="showChart('chart5')">ILE por edad de la persona gestante</button>
-            <button class="indicadorButton" onclick="showChart('chart6')">ILE por semanas de gestación</button>
+            <button class="indicadorButton active" onclick="showChart('chart1')">IVE/ILE por mes</button>
+            <button class="indicadorButton" onclick="showChart('chart2')">IVE/ILE por edad de la persona
+                gestante</button>
+            <button class="indicadorButton" onclick="showChart('chart3')">IVE/ILE por semanas de gestación</button>
         </nav>
 
         <br>
-       
+
         <!-- Sección de gráficos -->
         <div id="chart1" class="chartContent active">
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Interrupciones Voluntarias del Embarazo</strong></span>
+                    <span style="font-size:20px"><strong>Interrupciones Legales y Voluntarias del
+                            Embarazo</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Por mes</i></span>
+                    <span id="subtitulo_chart1" style="font-size:15px"></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico1" style="width: 100%;"></div> 
-        
+            <div id="grafico1" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
                     <strong>FUENTE</strong>: Ministerio de Salud Pública de la Provincia de Salta.
                 </p>
+                <p style="text-align: right; font-size: 12px; color: gray; width: 60%; justify-self: end">
+                    <strong>NOTA</strong>: La Interrupción Voluntaria del Embarazo (IVE) fue
+                    incorporada al marco legal argentino mediante la Ley N.º 27.610, que entró en vigencia en enero de
+                    2021. En consecuencia, la información correspondiente a IVE se encuentra disponible a partir de ese
+                    año.
+                </p>
             </div>
 
             <!-- Listas desplegables -->
-            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
-                <div class="selectContainer">
-                    <p>
-                        Año:
-                    </p>
-                    <select id="Anio1" onchange="actualizarGrafico1()">
-                        <option value="2024">2024</option>
-                        <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                    </select>
+            <div class="selectContainer">
+                <p>
+                    Granularidad:
+                </p>
+                <div id="Granularidad" class="granularidad">
+                    <label>
+                        <input type="radio" name="granularidad" value="mes" onchange="actualizarGrafico1()">
+                        Mensual
+                    </label>
+                    <label>
+                        <input type="radio" name="granularidad" value="trimestre" checked
+                            onchange="actualizarGrafico1()">
+                        Trimestral
+                    </label>
+                    <label>
+                        <input type="radio" name="granularidad" value="semestre" onchange="actualizarGrafico1()">
+                        Semestral
+                    </label>
+                    <label>
+                        <input type="radio" name="granularidad" value="anio" onchange="actualizarGrafico1()">
+                        Anual
+                    </label>
                 </div>
             </div>
         </div>
@@ -124,15 +157,16 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Interrupciones Voluntarias del Embarazo</strong></span>
+                    <span style="font-size:20px"><strong>Interrupciones Legales y Voluntarias del
+                            Embarazo</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Por edad de la persona gestante</i></span>
+                    <span style="font-size:15px"><i>Por edad de la persona gestante. Provincia de Salta.</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico2" style="width: 100%;"></div> 
-        
+            <div id="grafico2" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
@@ -147,6 +181,7 @@
                         Año:
                     </p>
                     <select id="Anio2" onchange="actualizarGrafico2()">
+                        <option value="2025">2025</option>
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
@@ -161,15 +196,16 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Interrupciones Voluntarias del Embarazo</strong></span>
+                    <span style="font-size:20px"><strong>Interrupciones Legales y Voluntarias del
+                            Embarazo</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Por semanas de gestación</i></span>
+                    <span style="font-size:15px"><i>Por semanas de gestación. Provincia de Salta.</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico3" style="width: 100%;"></div> 
-        
+            <div id="grafico3" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
@@ -184,6 +220,7 @@
                         Año:
                     </p>
                     <select id="Anio3" onchange="actualizarGrafico3()">
+                        <option value="2025">2025</option>
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
@@ -203,10 +240,10 @@
                     <span style="font-size:15px"><i>Por mes</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico4" style="width: 100%;"></div> 
-        
+            <div id="grafico4" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
@@ -241,10 +278,10 @@
                     <span style="font-size:15px"><i>Por edad de la persona gestante</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico5" style="width: 100%;"></div> 
-        
+            <div id="grafico5" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
@@ -279,10 +316,10 @@
                     <span style="font-size:15px"><i>Por semanas de gestación</i></span>
                 </p>
             </div>
-        
+
             <!-- Canvas para el chart -->
-            <div id="grafico6" style="width: 100%;"></div> 
-        
+            <div id="grafico6" style="width: 100%;"></div>
+
             <!-- Fuente del gráfico -->
             <div style="text-align: right; font-size: 12px; color: gray">
                 <p style="margin-top: 0;">
@@ -326,15 +363,16 @@
 
             <h3>Institución o entidad que genera el registro</h3>
             <p>
-                <ul>
-                    <li>Instituto Nacional de Estadística y Censos (INDEC)</li>
-                    <li>Ministerio de Salud Pública</li>
-                </ul>
+            <ul>
+                <li>Instituto Nacional de Estadística y Censos (INDEC)</li>
+                <li>Ministerio de Salud Pública</li>
+            </ul>
             </p>
 
             <h3>¿Qué se registra?</h3>
             <p>
-                Datos relacionados al acceso a los servicios de salud, a la salud sexual y reproductiva, enfermedades hepáticas y muertes por suicidios.
+                Datos relacionados al acceso a los servicios de salud, a la salud sexual y reproductiva, enfermedades
+                hepáticas y muertes por suicidios.
             </p>
         </div>
 
@@ -354,4 +392,5 @@
     <script type="text/javascript" src="./grafico5.js"></script>
     <script type="text/javascript" src="./grafico6.js"></script>
 </body>
+
 </html>
