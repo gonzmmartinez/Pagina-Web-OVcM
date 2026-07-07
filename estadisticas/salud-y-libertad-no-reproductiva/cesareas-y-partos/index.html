@@ -84,9 +84,9 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Cesáreas y partos en la Provincia</strong></span>
+                    <span style="font-size:20px"><strong>Cesáreas y partos registrados en el sistema de salud pública de Salta</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Por departamento</i></span>
+                    <span id="subtitulo_chart1" style="font-size:15px"></span>
                 </p>
             </div>
         
@@ -107,6 +107,7 @@
                         Año:
                     </p>
                     <select id="Anio1" onchange="actualizarGrafico1()">
+                        <option value="2025">2025</option>
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
@@ -122,9 +123,9 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Cesáreas y partos en la Provincia</strong></span>
+                    <span style="font-size:20px"><strong>Cesáreas y partos registrados en el sistema de salud pública de Salta</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Por tipo de parto</i></span>
+                    <span id="subtitulo_chart2" style="font-size:15px"></span>
                 </p>
             </div>
         
@@ -145,6 +146,7 @@
                         Año:
                     </p>
                     <select id="Anio2" onchange="actualizarGrafico2()">
+                        <option value="2025">2025</option>
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
@@ -160,9 +162,9 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Cesáreas y partos en la Provincia</strong></span>
+                    <span style="font-size:20px"><strong>Cesáreas y partos registrados en el sistema de salud pública de Salta</strong></span>
                     <br>
-                    <span style="font-size:15px"><i>Por edades agrupadas</i></span>
+                    <span id="subtitulo_chart3" style="font-size:15px"></span>
                 </p>
             </div>
         
@@ -183,6 +185,7 @@
                         Año:
                     </p>
                     <select id="Anio3" onchange="actualizarGrafico3()">
+                        <option value="2025">2025</option>
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
                         <option value="2022">2022</option>
@@ -198,6 +201,11 @@
             <img src="../../svg/icono_descargar.svg" alt="Subir" class="descargarIcon">
             <span style="margin-left:0.5rem">Descargar gráfico en PNG</span>
         </button>
+
+        <!-- Última actualización -->
+        <span class="ultima-actualizacion" data-src="../../datos/json/actualizacion_salud_iveile.txt"
+            style="font-size:0.75rem; display:block; text-align:center; margin-top: 10px;">
+        </span>
 
         <br>
         <hr>

@@ -10,7 +10,7 @@ function procesarDatos3(data) {
     // Procesar los datos de cada entrada
     data.forEach(item => {
         categories3.push(item.Rango_etario);
-        values3.push(item.Cantidad);            
+        values3.push(item.Cantidad);
     });
 
     return { categories3, values3 };
@@ -23,17 +23,20 @@ function filtrarPorAnio(data, year) {
 
 // INICIALIZACIÓN
 function iniciar3() {
-  cargarDatos(archivo3) // Cargar los datos del JSON
+    cargarDatos(archivo3) // Cargar los datos del JSON
         .then(data3 => {
             // Parsear los datos
             const parsedData3 = parsearDatos(data3);
 
             // Filtrar por el distrito seleccionado
-            const anioSeleccionado3 = "2024";
+            const anioSeleccionado3 = "2025";
             const datosFiltrados3 = filtrarPorAnio(parsedData3, anioSeleccionado3);
 
             // Procesar los datos filtrados
             const { categories3, values3 } = procesarDatos3(datosFiltrados3);
+
+            document.getElementById("subtitulo_chart3").innerHTML =
+                `<i>${cambiarSubtitulo3(anioSeleccionado3)}</i>`;
 
             // Crear y renderizar el gráfico
             window.chart3 = crearGrafico3(categories3, values3);
@@ -45,28 +48,32 @@ function iniciar3() {
 };
 
 function actualizarGrafico3() {
-  cargarDatos(archivo3)
-      .then(data3 => {
-        const parsedData3 = parsearDatos(data3);
+    cargarDatos(archivo3)
+        .then(data3 => {
+            const parsedData3 = parsearDatos(data3);
 
-        // Filtrar por el distrito seleccionado
-        const anioSeleccionado3 = document.getElementById("Anio3").value;
-        const datosFiltrados3 = filtrarPorAnio(parsedData3, anioSeleccionado3);
+            // Filtrar por el distrito seleccionado
+            const anioSeleccionado3 = document.getElementById("Anio3").value;
+            const datosFiltrados3 = filtrarPorAnio(parsedData3, anioSeleccionado3);
 
-        // Procesar datos
-        const { categories3, values3 } = procesarDatos3(datosFiltrados3);
+            // Procesar datos
+            const { categories3, values3 } = procesarDatos3(datosFiltrados3);
 
-        // Actualizar las series y categorías con animación
-        window.chart3.updateOptions({
-            ...window.chart3.w.config, // Copia las opciones actuales
-            series: [{data: [...values3]}],
-            xaxis: { categories: [...categories3]
-            }
+            document.getElementById("subtitulo_chart3").innerHTML =
+                `<i>${cambiarSubtitulo3(anioSeleccionado3)}</i>`;
+
+            // Actualizar las series y categorías con animación
+            window.chart3.updateOptions({
+                ...window.chart3.w.config, // Copia las opciones actuales
+                series: [{ data: [...values3] }],
+                xaxis: {
+                    categories: [...categories3]
+                }
+            });
+        })
+        .catch(error => {
+            document.getElementById("grafico3").textContent = `Error: ${error.message}`;
         });
-      })
-      .catch(error => {
-          document.getElementById("grafico3").textContent = `Error: ${error.message}`;
-      });
 };
 
 // 5. Función para configurar y renderizar el gráfico
@@ -76,7 +83,7 @@ function crearGrafico3(categories, values) {
             type: 'bar',
             height: '350px',
             toolbar: {
-              show: false
+                show: false
             }
         },
         series: [{
@@ -89,7 +96,13 @@ function crearGrafico3(categories, values) {
         yaxis: {
             title: {
                 text: "Cantidad"
-            }
+            },
+            max: 12000,
+            labels: {
+                formatter: function (value) {
+                    return value.toLocaleString("es-AR");
+                }
+            },
         },
         xaxis: {
             title: {
@@ -109,9 +122,9 @@ function crearGrafico3(categories, values) {
             }
         },
         dataLabels: {
-            enabled: true, 
-            formatter: function(value) {
-                return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            enabled: true,
+            formatter: function (value) {
+                return value.toLocaleString("es-AR");
             },
             offsetY: -20,
             style: {
@@ -120,3 +133,14 @@ function crearGrafico3(categories, values) {
         }
     });
 };
+
+// Función para actualizar dinámicamente el subtítulo
+function cambiarSubtitulo3(anio) {
+    let texto = "Por rangos etarios agrupados. Provincia de Salta.";
+
+    if (anio) {
+        texto += ` Año ${anio}`;
+    }
+
+    return texto;
+}
