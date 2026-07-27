@@ -68,7 +68,7 @@
                 <li><a href="https://ovcmsalta.gob.ar">Inicio</a></li>
                 <li><a href="../../">Estadísticas</a></li>
                 <li><a href="../">Salud y libertad -no- reproductiva</a></li>
-                <li class="active">Cesáreas y partos</li>
+                <li class="active">Egresos hospitalarios por aborto</li>
             </ul>
         </nav>
 
@@ -78,7 +78,7 @@
         </div>
 
         <div class="subtitleText">
-            <h2>CESÁREAS Y PARTOS</h2>
+            <h2>EGRESOS HOSPITALARIOS POR ABORTO</h2>
         </div>
 
         <hr>
@@ -89,9 +89,9 @@
 
         <!-- Contenedor de botones -->
         <nav class="indicador-container">
-            <button class="indicadorButton active" onclick="showChart('chart1')">Por departamento</button>
-            <button class="indicadorButton" onclick="showChart('chart2')">Tipo de parto</button>
-            <button class="indicadorButton" onclick="showChart('chart3')">Por edades agrupadas</button>
+            <button class="indicadorButton active" onclick="showChart('chart1')">Por diagnóstico de egreso hospitalario</button>
+            <button class="indicadorButton" onclick="showChart('chart2')">Por edades agrupadas</button>
+            <button class="indicadorButton" onclick="showChart('chart3')">Por departamento</button>
         </nav>
 
         <br>
@@ -101,10 +101,11 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Cesáreas y partos registrados en el sistema de salud pública de
-                            Salta</strong></span>
+                    <span style="font-size:20px"><strong>Egresos hospitalarios por aborto registrados en el sistema de
+                            salud pública de Salta</strong></span>
                     <br>
-                    <span id="subtitulo_chart1" style="font-size:15px"></span>
+                    <span style="font-size:15px"><i>Por diagnóstico de egreso hospitalario. Provincia de
+                            Salta.</i></span>
                 </p>
             </div>
 
@@ -117,23 +118,6 @@
                     <strong>FUENTE</strong>: Ministerio de Salud Pública de la Provincia de Salta.
                 </p>
             </div>
-
-            <!-- Listas desplegables -->
-            <div style="display:flex; flex-direction: row; justify-content: space-evenly;">
-                <div class="selectContainer">
-                    <p>
-                        Año:
-                    </p>
-                    <select id="Anio1" onchange="actualizarGrafico1()">
-                        <option value="2025">2025</option>
-                        <option value="2024">2024</option>
-                        <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                        <option value="2020">2020</option>
-                    </select>
-                </div>
-            </div>
         </div>
 
         <!-- Sección de gráficos -->
@@ -141,8 +125,8 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Cesáreas y partos registrados en el sistema de salud pública de
-                            Salta</strong></span>
+                    <span style="font-size:20px"><strong>Egresos hospitalarios por aborto registrados en el sistema de
+                            salud pública de Salta</strong></span>
                     <br>
                     <span id="subtitulo_chart2" style="font-size:15px"></span>
                 </p>
@@ -168,9 +152,6 @@
                         <option value="2025">2025</option>
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                        <option value="2020">2020</option>
                     </select>
                 </div>
             </div>
@@ -181,8 +162,8 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Cesáreas y partos registrados en el sistema de salud pública de
-                            Salta</strong></span>
+                    <span style="font-size:20px"><strong>Egresos hospitalarios por aborto registrados en el sistema de
+                            salud pública de Salta</strong></span>
                     <br>
                     <span id="subtitulo_chart3" style="font-size:15px"></span>
                 </p>
@@ -208,9 +189,6 @@
                         <option value="2025">2025</option>
                         <option value="2024">2024</option>
                         <option value="2023">2023</option>
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                        <option value="2020">2020</option>
                     </select>
                 </div>
             </div>
@@ -223,7 +201,7 @@
         </button>
 
         <!-- Última actualización -->
-        <span class="ultima-actualizacion" data-src="../../datos/json/actualizacion_salud_iveile.txt"
+        <span class="ultima-actualizacion" data-src="../../datos/json/actualizacion_salud_abortos.txt"
             style="font-size:0.75rem; display:block; text-align:center; margin-top: 10px;">
         </span>
 
@@ -243,21 +221,47 @@
 
             <h3>¿Qué se registra?</h3>
             <p>
-                El registro comprende los egresos hospitalarios correspondientes a la atención del parto, clasificados
-                según el procedimiento obstétrico principal consignado al momento del nacimiento. Para su presentación
-                se distinguen cuatro categorías: parto espontáneo de vértice, cesárea, parto con fórceps y extracción
-                con presentación de nalgas, de acuerdo con la codificación establecida en la Clasificación Internacional
-                de Enfermedades (CIE-10) y sus adaptaciones nacionales vigentes.
+                El registro comprende los egresos hospitalarios correspondientes a personas atendidas por abortos,
+                embarazos ectópicos, embarazos molares y otras patologías relacionadas con el embarazo temprano. Cada
+                egreso se clasifica según el diagnóstico principal consignado al momento del alta hospitalaria, de
+                acuerdo con la codificación establecida en la Clasificación Internacional de Enfermedades (CIE-10) y sus
+                adaptaciones nacionales vigentes.
             </p>
 
             <h3>Notas</h3>
-            <p>
-                Las estadísticas de partos y cesáreas no son directamente comparables con las de nacidos vivos. Mientras
-                que los nacidos vivos contabilizan a las personas nacidas con signos vitales, independientemente de la
-                vía de finalización del embarazo, los registros de partos y cesáreas corresponden a procedimientos
-                obstétricos realizados durante la atención del nacimiento. En consecuencia, ambas fuentes describen
-                fenómenos relacionados, pero conceptualmente diferentes, por lo que sus totales pueden no coincidir.
-            </p>
+            <ul>
+                <li>Con fines analíticos y de presentación, los diagnósticos originales fueron agrupados en categorías
+                    sintéticas elaboradas por el Observatorio. Esta reclasificación simplifica la codificación clínica
+                    de la
+                    CIE-10 y sus adaptaciones nacionales, permitiendo una interpretación más clara de los resultados sin
+                    modificar la naturaleza de los diagnósticos registrados en la fuente original.</li>
+                <li>Las cifras correspondientes a la categoría "Interrupción del embarazo" no son directamente
+                    comparables con las estadísticas de IVE/ILE presentadas en la <a
+                        href="https://ovcmsalta.gob.ar/estadisticas/salud-y-libertad-no-reproductiva/ive-ile/">sección
+                        específica del portal</a>. Mientras que los registros de IVE/ILE contabilizan las prestaciones
+                    realizadas por los servicios de salud, los egresos hospitalarios registran únicamente los casos que
+                    finalizaron con una internación y posterior alta hospitalaria. Dado que una proporción importante de
+                    las interrupciones del embarazo se realiza de manera ambulatoria, es esperable que el número de
+                    egresos hospitalarios sea considerablemente menor al total de IVE/ILE registradas.</li>
+            </ul>
+
+            <h3>Definiciones utilizadas en el registro</h3>
+            <ul>
+                <li><strong>Aborto espontáneo</strong>: comprende los egresos cuyo diagnóstico principal corresponde a
+                    abortos espontáneos, completos o incompletos, con o sin complicaciones, incluyendo los abortos
+                    retenidos.</li>
+                <li><strong>Interrupción del embarazo</strong>: comprende los egresos asociados a interrupciones del
+                    embarazo inducidas, incluyendo abortos médicos, interrupciones del embarazo sin otra especificación,
+                    fallas de la inducción médica del aborto y otros intentos fallidos de aborto.</li>
+                <li><strong>Aborto no especificado / otros abortos</strong>: comprende los egresos clasificados como
+                    abortos no especificados u otros abortos, completos o incompletos, con o sin complicaciones, así
+                    como aquellos correspondientes a productos anormales de la concepción no especificados.</li>
+                <li><strong>Embarazo ectópico, molar y otras patologías del embarazo temprano</strong>: comprende los
+                    egresos por embarazos ectópicos (tubario, ovárico, abdominal y otros), enfermedad trofoblástica
+                    gestacional (molas hidatiformes y otras formas), detención del desarrollo del huevo y otras
+                    patologías o complicaciones asociadas al embarazo temprano registradas en este grupo diagnóstico.
+                </li>
+            </ul>
         </div>
 
     </div>

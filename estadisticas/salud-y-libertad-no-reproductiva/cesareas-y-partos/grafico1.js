@@ -29,11 +29,14 @@ function iniciar1() {
             const parsedData1 = parsearDatos(data1);
 
             // Filtrar por el distrito seleccionado
-            const anioSeleccionado1 = "2024";
+            const anioSeleccionado1 = "2025";
             const datosFiltrados1 = filtrarPorAnio(parsedData1, anioSeleccionado1);
 
             // Procesar los datos filtrados
             const { categories1, values1 } = procesarDatos1(datosFiltrados1);
+
+            document.getElementById("subtitulo_chart1").innerHTML =
+                `<i>${cambiarSubtitulo1(anioSeleccionado1)}</i>`;
 
             // Crear y renderizar el gráfico
             window.chart1 = crearGrafico1(categories1, values1);
@@ -55,6 +58,9 @@ function actualizarGrafico1() {
 
         // Procesar datos
         const { categories1, values1 } = procesarDatos1(datosFiltrados1);
+
+        document.getElementById("subtitulo_chart1").innerHTML =
+                `<i>${cambiarSubtitulo1(anioSeleccionado1)}</i>`;
 
         // Actualizar las series y categorías con animación
         window.chart1.updateOptions({
@@ -89,7 +95,13 @@ function crearGrafico1(categories, values) {
         yaxis: {
             title: {
                 text: "Cantidad"
-            }
+            },
+            labels: {
+                formatter: function (value) {
+                    return value.toLocaleString("es-AR");
+                }
+            },
+            max: 7000
         },
         xaxis: {
             title: {
@@ -111,7 +123,7 @@ function crearGrafico1(categories, values) {
         dataLabels: {
             enabled: true, 
             formatter: function(value) {
-                return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                return value.toLocaleString("es-AR");
             },
             offsetY: -20,
             style: {
@@ -120,6 +132,17 @@ function crearGrafico1(categories, values) {
         }
     });
 };
+
+// Función para actualizar dinámicamente el subtítulo
+function cambiarSubtitulo1(anio) {
+    let texto = "Por departamento. Provincia de Salta.";
+
+    if (anio) {
+        texto += ` Año ${anio}`;
+    }
+
+    return texto;
+}
 
 // INICIALIZAR
 window.addEventListener("load", iniciar1);

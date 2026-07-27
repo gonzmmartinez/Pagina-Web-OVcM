@@ -18,8 +18,7 @@ dir <- dirname(rstudioapi::getActiveDocumentContext()$path)
 
 planilla <- "https://docs.google.com/spreadsheets/d/1Zq5ghQLxkpWY3munP3AS-qdx0PmcRzQ2oTW6f1nePZ4/edit?usp=sharing"
 
-Raw1 <- read_sheet(ss = planilla, sheet = "Cesareas_partos")
-Raw2 <- read_sheet(ss = planilla, sheet = "Cesareas_partos_edad")
+Raw1 <- read_sheet(ss = planilla, sheet = "Egresos_aborto")
 
 ######### DEPARTAMENTOS #########
 
@@ -30,15 +29,36 @@ Departamentos <- c("Anta", "Cachi", "Cafayate", "Capital", "Cerrillos", "Chicoan
                    "Rosario de la Frontera", "Rosario de Lerma", "San Carlos",
                    "Santa Victoria")
 
-Tipos <- c("Parto espontáneo de vértice", "Cesárea",
-           "Parto con fórceps", "Extracción con presentación de nalgas")
+Causas <- c("Aborto espontáneo",
+            "Interrupción del embarazo",
+            "Aborto no especificado / otros abortos",
+            "Embarazo ectópico, molar y otras patologías del embarazo temprano")
 
 Rangos_etarios <- c("10-14 años", "15-19 años", "20-49 años", "50-64 años", "65 años o más")
 
 ######### TRANSFORMAR DATOS #########
 
-# Cesáreas y partos por departamento
+# Cesáreas y partos por tipo de parto
 Data1 <- Raw1 %>%
+  filter(Causa != "Asesoramiento / atención IVE") %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año, Causa) %>%
+  summarise(Cantidad = sum(Cantidad), .groups = "drop") %>%
+  complete(Año, Causa = Causas, fill = list(Cantidad = 0)) %>%
+  mutate(Causa_ord = match(Causa, Causas)) %>%
+  arrange(Año, Causa_ord)
+
+# Cesáreas y partos por edades agrupadas
+Data2 <- Raw1 %>%
+  mutate(Año = as.character(Año)) %>%
+  group_by(Año, Rango_etario) %>%
+  summarise(Cantidad = sum(Cantidad), .groups = "drop") %>%
+  complete(Año, Rango_etario = Rangos_etarios, fill = list(Cantidad = 0)) %>%
+  mutate(Rango_ord = match(Rango_etario, Rangos_etarios)) %>%
+  arrange(Año, Rango_ord)
+
+# Cesáreas y partos por departamento
+Data3 <- Raw1 %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Año, Departamento) %>%
   summarise(Cantidad = sum(Cantidad), .groups = "drop") %>%
@@ -47,29 +67,11 @@ Data1 <- Raw1 %>%
   mutate(Departamento_ord = match(Departamento, Departamentos)) %>%
   arrange(Año, Departamento_ord)
 
-# Cesáreas y partos por tipo de parto
-Data2 <- Raw1 %>%
-  mutate(Año = as.character(Año)) %>%
-  group_by(Año, Tipo) %>%
-  summarise(Cantidad = sum(Cantidad), .groups = "drop") %>%
-  complete(Año, Tipo = Tipos, fill = list(Cantidad = 0)) %>%
-  mutate(Tipo_ord = match(Tipo, Tipos)) %>%
-  arrange(Año, Tipo_ord)
-
-# Cesáreas y partos por edades agrupadas
-Data3 <- Raw2 %>%
-  mutate(Año = as.character(Año)) %>%
-  group_by(Año, Rango_etario) %>%
-  summarise(Cantidad = sum(Cantidad), .groups = "drop") %>%
-  complete(Año, Rango_etario = Rangos_etarios, fill = list(Cantidad = 0)) %>%
-  mutate(Rango_ord = match(Rango_etario, Rangos_etarios)) %>%
-  arrange(Año, Rango_ord)
-
 ######### ACTUALIZACIÓN #########
 actualizacion <- paste0("Última actualización de los datos de esta sección: ", format(Sys.Date(), "%d/%m/%Y"))
-writeLines(actualizacion, paste0(dir, "/json/actualizacion_salud_partos.txt"))
+writeLines(actualizacion, paste0(dir, "/json/actualizacion_salud_abortos.txt"))
 
 ######### ESCRIBIR DATOS #########
-write_json(toJSON(Data1), path = paste0(dir, "/json/salud_partos_departamento.json"))
-write_json(toJSON(Data2), path = paste0(dir, "/json/salud_partos_tipo.json"))
-write_json(toJSON(Data3), path = paste0(dir, "/json/salud_partos_edad.json"))
+write_json(toJSON(Data1), path = paste0(dir, "/json/salud_abortos_causas.json"))
+write_json(toJSON(Data2), path = paste0(dir, "/json/salud_abortos_edad.json"))
+write_json(toJSON(Data3), path = paste0(dir, "/json/salud_abortos_departamentos.json"))
