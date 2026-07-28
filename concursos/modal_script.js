@@ -1,9 +1,9 @@
-// Datos de cada concurso
+// Datos de cada concurso - #51c33b para abierta y #c33b3b para cerrada
 const concursos = {
     'concurso-tesis-2026': {
         titulo: 'Concurso de Tesis de Grado con Perspectiva de Género 2026',
         descripcion: `
-        <strong style="color:#51c33b">CONVOCATORIA ABIERTA</strong><br><br><br>
+        <strong style="color:#c33b3b">CONVOCATORIA CERRADA</strong><br><br><br>
       🟣 <strong>El Observatorio de Violencia contra las Mujeres</strong> invita a estudiantes y graduadxs a participar del Concurso de Tesis 2026.<br><br>
       🟣 Esta convocatoria busca fomentar la investigación con perspectiva de género en distintas disciplinas.<br><br>
       🟣 <strong>Postulaciones:</strong> plazo extendido hasta el 23/06/2026 vía correo a: <a href="mailto:observatoriomujersalta@gmail.com">observatoriomujersalta@gmail.com</a><br><br>
