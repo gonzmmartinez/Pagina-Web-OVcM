@@ -157,7 +157,7 @@ Data13 <- Raw3 %>%
   mutate(Año = as.character(Año)) %>%
   mutate()
 
-# Registro completo
+# Registro femicidios
 Data14 <- Raw0 %>%
   mutate(Fecha = as.Date(Fecha, format="%Y-%m-%d")) %>%
   mutate(Año = as.character(Año)) %>%
@@ -167,7 +167,7 @@ Data14 <- Raw0 %>%
   ungroup %>%
   mutate(Fecha_short = format(as.Date(Fecha, format="%Y-%m-%d"), "%d-%m"))
 
-# Registro completo
+# Registro muertes
 Data15 <- Raw4 %>%
   mutate(Fecha = as.Date(Fecha, format="%Y-%m-%d")) %>%
   mutate(Año = as.character(Año)) %>%
@@ -175,7 +175,10 @@ Data15 <- Raw4 %>%
   group_by(Año) %>%
   mutate(Numero = row_number()) %>%
   ungroup %>%
-  mutate(Fecha_short = format(as.Date(Fecha, format="%Y-%m-%d"), "%d-%m"))
+  mutate(Fecha_short = format(as.Date(Fecha, format="%Y-%m-%d"), "%d-%m")) %>%
+  mutate(Fuente = ifelse(Fuente == "Periodística" & !is.na(Link), 
+                         paste0("<a href='", Link, "' target='_blank'>Periodística 🔗</a>"),
+                         Fuente))
 
 
 ######### ACTUALIZACIÓN #########
