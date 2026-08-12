@@ -12,6 +12,20 @@ library(readr)
 library(googlesheets4)
 library(janitor)
 
+######### DICCIONARIOS #########
+Rangos_etarios_vic <- data.frame(Rango_etario = c("0-5 años", "6-10 años", "11-14 años",
+                                   "15-17 años", "18-21 años", "22-29 años",
+                                   "30-39 años","40-49 años", "50-59 años",
+                                   "60-74 años", "Más de 74 años", "Sin especificar"),
+                                 Orden = 1:12)
+
+Rangos_etarios_den <- data.frame(
+  Rango_etario = c("0-17 años", "18-21 años", "22-29 años",
+                   "30-39 años","40-49 años", "50-59 años",
+                   "60-74 años", "Más de 74 años", "Sin especificar"),
+  Orden = 1:9
+)
+
 ######### LEER DATOS #########
 dir <- dirname(rstudioapi::getActiveDocumentContext()$path)
 
@@ -141,17 +155,19 @@ Data6 <- rbind(Data6, totalData6) %>%
 # Edades de las personas que denuncian
 Data7 <- Raw7 %>%
   filter(Rango_etario != "Sin especificar") %>%
-  mutate(Rango_etario = paste0(sprintf("%02d", Ord_rango_etario), "-", Rango_etario)) %>%
+  left_join(Rangos_etarios_vic, by = "Rango_etario") %>%
+  mutate(Rango_etario = paste0(sprintf("%02d", Orden), "-", Rango_etario)) %>%
   mutate(Año = as.character(Año)) %>%
-  group_by(Año, Género, Rango_etario) %>%
+  group_by(Año, Género, Orden, Rango_etario) %>%
   summarise(Cantidad = sum(Frecuencia)) %>%
   ungroup %>%
   group_by(Año) %>%
   mutate(Porcentaje = 100 * Cantidad / sum(Cantidad))
 totalData7 <- Raw7 %>%
   filter(Rango_etario != "Sin especificar") %>%
-  mutate(Rango_etario = paste0(sprintf("%02d", Ord_rango_etario), "-", Rango_etario)) %>%
-  group_by(Género, Rango_etario) %>%
+  left_join(Rangos_etarios_vic, by = "Rango_etario") %>%
+  mutate(Rango_etario = paste0(sprintf("%02d", Orden), "-", Rango_etario)) %>%
+  group_by(Género, Orden, Rango_etario) %>%
   summarise(Cantidad = sum(Frecuencia)) %>%
   ungroup %>%
   mutate(Porcentaje = 100 * Cantidad / sum(Cantidad)) %>%
@@ -160,22 +176,24 @@ Data7 <- rbind(Data7, totalData7)
 Data7 <- Data7 %>%
   mutate(Cantidad = ifelse(Género == "Mujeres", -1 * Cantidad, Cantidad)) %>%
   mutate(Porcentaje = ifelse(Género == "Mujeres", -1 * Porcentaje, Porcentaje)) %>%
-  arrange(desc(Rango_etario))
+  arrange(Orden)
 
 # Edades de las personas denunciadas
 Data8 <- Raw8 %>%
   filter(Rango_etario != "Sin especificar") %>%
-  mutate(Rango_etario = paste0(sprintf("%02d", Ord_rango_etario), "-", Rango_etario)) %>%
+  left_join(Rangos_etarios_den, by = "Rango_etario") %>%
+  mutate(Rango_etario = paste0(sprintf("%02d", Orden), "-", Rango_etario)) %>%
   mutate(Año = as.character(Año)) %>%
-  group_by(Año, Género, Rango_etario) %>%
+  group_by(Año, Género, Orden, Rango_etario) %>%
   summarise(Cantidad = sum(Frecuencia)) %>%
   ungroup %>%
   group_by(Año) %>%
   mutate(Porcentaje = 100 * Cantidad / sum(Cantidad))
 totalData8 <- Raw8 %>%
   filter(Rango_etario != "Sin especificar") %>%
-  mutate(Rango_etario = paste0(sprintf("%02d", Ord_rango_etario), "-", Rango_etario)) %>%
-  group_by(Género, Rango_etario) %>%
+  left_join(Rangos_etarios_den, by = "Rango_etario") %>%
+  mutate(Rango_etario = paste0(sprintf("%02d", Orden), "-", Rango_etario)) %>%
+  group_by(Género, Orden, Rango_etario) %>%
   summarise(Cantidad = sum(Frecuencia)) %>%
   ungroup %>%
   mutate(Porcentaje = 100 * Cantidad / sum(Cantidad)) %>%
@@ -184,7 +202,7 @@ Data8 <- rbind(Data8, totalData8)
 Data8 <- Data8 %>%
   mutate(Cantidad = ifelse(Género == "Mujeres", -1 * Cantidad, Cantidad)) %>%
   mutate(Porcentaje = ifelse(Género == "Mujeres", -1 * Porcentaje, Porcentaje)) %>%
-  arrange(desc(Rango_etario))
+  arrange(Orden)
 
 ######### ACTUALIZACIÓN #########
 actualizacion <- paste0("Última actualización de los datos de esta sección: ", format(Sys.Date(), "%d/%m/%Y"))
