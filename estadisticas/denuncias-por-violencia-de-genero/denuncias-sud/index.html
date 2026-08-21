@@ -84,7 +84,8 @@
             <ul class="breadcrumb">
                 <li><a href="https://ovcmsalta.gob.ar">Inicio</a></li>
                 <li><a href="../../">Estadísticas</a></li>
-                <li><a href="../../denuncias-por-violencia-de-genero/">Denuncias por violencia de género</a></li>
+                <li><a href="../../denuncias-por-violencia-de-genero/">Denuncias por violencia de género y/o
+                        familiar</a></li>
                 <li class="active">Denuncias registradas en el SUD</li>
             </ul>
         </nav>
@@ -121,8 +122,8 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Evolución de la cantidad de denuncias registradas en el
-                            SUD</strong></span>
+                    <span style="font-size:20px"><strong>Evolución de la cantidad de denuncias por violencia de género
+                            y/o familiar registradas en el SUD</strong></span>
                     <br>
                     <span id="subtitulo_chart1" style="font-size:15px"></span>
                 </p>
@@ -172,8 +173,8 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Denuncias registradas al Sistema Único de
-                            Denuncias</strong></span>
+                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en
+                            el SUD</strong></span>
                     <br>
                     <span style="font-size:15px"><i>Por tipo de denuncia</i></span>
                 </p>
@@ -198,6 +199,7 @@
                     Año:
                 </p>
                 <select id="Anio2" onchange="actualizarGrafico2()">
+                    <option value="2026">2026</option>
                     <option value="2025">2025</option>
                     <option value="2024">2024</option>
                     <option value="2023">2023</option>
@@ -209,8 +211,8 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Denuncias registradas al Sistema Único de
-                            Denuncias</strong></span>
+                    <span style="font-size:20px"><strong>Denuncias por violencia de género y/o familiar registradas en
+                            el SUD</strong></span>
                     <br>
                     <span style="font-size:15px"><i>Por boca de denuncia</i></span>
                 </p>
@@ -235,6 +237,7 @@
                     Año:
                 </p>
                 <select id="Anio3" onchange="actualizarGrafico3()">
+                    <option value="2026">2026</option>
                     <option value="2025">2025</option>
                     <option value="2024">2024</option>
                     <option value="2023">2023</option>
@@ -246,8 +249,8 @@
             <!-- Titulo del gráfico -->
             <div style="text-align: left;">
                 <p>
-                    <span style="font-size:20px"><strong>Tasa de denuncias registradas al Sistema Único de
-                            Denuncias</strong></span>
+                    <span style="font-size:20px"><strong>Tasa de denuncias por violencia de género y/o familiar
+                            registradas en el SUD</strong></span>
                     <br>
                     <span style="font-size:15px"><i>Denuncias por cada 100 habitantes, por departamento</i></span>
                 </p>
@@ -272,6 +275,7 @@
                     Año:
                 </p>
                 <select id="Anio4" onchange="actualizarGrafico4()">
+                    <option value="2026">2026</option>
                     <option value="2025">2025</option>
                     <option value="2024">2024</option>
                 </select>
@@ -302,6 +306,49 @@
                     Justicia de Salta.</li>
             </ul>
             </p>
+
+            <h3>¿Qué se registra?</h3>
+            <p>
+                Se registran las denuncias por violencia familiar y por violencia de género radicadas en el Sistema
+                Único de Denuncias (SUD) de la provincia de Salta. El sistema integra en un único registro las denuncias
+                recibidas por los organismos competentes, asignando a cada caso un código único que permite su
+                seguimiento y la intervención articulada entre el Ministerio Público Fiscal, la Corte de Justicia y la
+                Policía de la Provincia. El registro procura evitar la duplicación de actuaciones y la revictimización
+                de las personas denunciantes, agilizando la derivación e intervención de los organismos competentes.
+            </p>
+
+            <h3>Definiciones utilizadas en el registro</h3>
+            <p>
+            <ul>
+                <li><strong>Violencia por motivos de género</strong>: toda conducta, acción u omisión, basada en una
+                    relación desigual de poder, que afecte la vida, libertad, dignidad, integridad física, psicológica,
+                    sexual, económica o patrimonial de las mujeres, tanto en el ámbito público como en el privado,
+                    conforme a la Ley Nacional N.º 26.485.</li>
+                <li><strong>Violencia familiar</strong>: toda acción, omisión, abuso o maltrato que afecte la vida,
+                    libertad, integridad física, psicológica, sexual, económica o patrimonial de una persona dentro del
+                    grupo familiar o en el marco de relaciones familiares, de acuerdo con la Ley Provincial N.º 7.403.
+                </li>
+                <li><strong>Violencia no penal</strong>: categoría utilizada por el SUD
+                    para identificar situaciones de violencia familiar y/o por motivos de género que, de acuerdo con la
+                    evaluación inicial, no configuran un hecho tipificado como delito y, por lo tanto, no dan lugar al
+                    inicio de una investigación penal. Estos casos son derivados al fuero u organismo competente para la
+                    adopción de las medidas de protección y asistencia que correspondan.</li>
+                <li><strong>Boca de denuncia</strong>: organismo o dependencia habilitada para recibir denuncias por
+                    violencia familiar y/o por violencia de género e incorporarlas al SUD.
+                    Entre ellas se encuentran dependencias policiales, fiscalías, juzgados y otros organismos con
+                    competencia para la recepción de denuncias.</li>
+            </ul>
+            </p>
+
+            <h3>Notas</h3>
+            <p>Si bien la violencia familiar y la violencia por motivos de género constituyen categorías conceptualmente
+                diferentes, una parte importante de las situaciones de violencia por motivos de género ocurre en el
+                ámbito de las relaciones familiares o de pareja, por lo que ambas categorías presentan una significativa
+                superposición. En consecuencia, su análisis conjunto permite comprender con mayor profundidad las
+                dinámicas de la violencia en los vínculos familiares, sin desconocer que la violencia familiar también
+                puede afectar a personas que no son destinatarias de la protección específica de la normativa sobre
+                violencia por motivos de género. <i>Convención Interamericana para Prevenir, Sancionar y Erradicar la
+                    Violencia contra la Mujer (Convención de Belém do Pará)</i></p>
         </div>
 
     </div>

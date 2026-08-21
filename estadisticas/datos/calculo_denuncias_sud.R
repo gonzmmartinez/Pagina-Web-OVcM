@@ -11,6 +11,7 @@ library(stringr)
 library(readr)
 library(googlesheets4)
 library(janitor)
+library(lubridate)
 
 ######### LEER DATOS #########
 dir <- dirname(rstudioapi::getActiveDocumentContext()$path)
@@ -19,6 +20,14 @@ planilla <- "https://docs.google.com/spreadsheets/d/1mUMxGbv3x1hoVxWbTfAquSDR25Y
 
 Raw1 <- read_sheet(ss = planilla, sheet = "Denuncias_SUD")
 Raw2 <- read_sheet(ss = planilla, sheet = "SUD_db_completa")
+
+######### DICCIONARIOS #########
+Mes_orden <- data.frame(Mes_num = 1:12) %>%
+  mutate(Mes = str_to_title(as.character(month(
+    make_date(2026, Mes_num, 1),
+    label = TRUE,
+    abbr = FALSE,
+    locale = "es_AR.UTF-8"))))
 
 ######### TRANSFORMAR DATOS #########
 # Tipo de denuncias
@@ -36,22 +45,26 @@ Data1 <- Raw2 %>%
 # Evolucion
 Data2 <- Raw2 %>%
   filter(Tipo %in% c("Género", "Familiar", "No penal")) %>%
+  left_join(Mes_orden, by = "Mes") %>%
   mutate(Año = as.character(Año)) %>%
-  group_by(Año, Mes, Mes_ord) %>%
-  summarise(Cantidad = sum(Cantidad)) %>%
-  ungroup %>%
-  rename(Mes_num = "Mes_ord") %>%
-  mutate(Trimestre = case_when(Mes_num >= 1 & Mes_num <= 3 ~ 1,
-                               Mes_num >= 4 & Mes_num <= 6 ~ 2,
-                               Mes_num >= 7 & Mes_num <= 9 ~ 3,
-                               Mes_num >= 10 & Mes_num <= 12 ~ 4),
-         Semestre = case_when(Mes_num >= 1 & Mes_num <= 6 ~ 1,
-                              Mes_num >= 7 & Mes_num <= 12 ~ 2)) %>%
-  mutate(year_mes = paste0(sprintf("%02d", Mes_num), "-", str_sub(Año, 3,4)),
-         year_trimestre=paste0(sprintf("%02d", Trimestre), "-", str_sub(Año, 3, 4)),
-         year_semestre=paste0(sprintf("%02d",Semestre), "-", str_sub(Año,3,4))) %>%
-  arrange(Año, Mes_num) %>%
-  ungroup
+  group_by(Año, Mes, Mes_num) %>%
+  summarise(Cantidad = sum(Cantidad), .groups = "drop") %>%
+  mutate(
+    Trimestre = case_when(
+      Mes_num >= 1 & Mes_num <= 3 ~ 1,
+      Mes_num >= 4 & Mes_num <= 6 ~ 2,
+      Mes_num >= 7 & Mes_num <= 9 ~ 3,
+      Mes_num >= 10 & Mes_num <= 12 ~ 4
+    ),
+    Semestre = case_when(
+      Mes_num >= 1 & Mes_num <= 6 ~ 1,
+      Mes_num >= 7 & Mes_num <= 12 ~ 2
+    ),
+    year_mes = paste0(sprintf("%02d", Mes_num), "-", str_sub(Año, 3, 4)),
+    year_trimestre = paste0(sprintf("%02d", Trimestre), "-", str_sub(Año, 3, 4)),
+    year_semestre = paste0(sprintf("%02d", Semestre), "-", str_sub(Año, 3, 4))
+  ) %>%
+  arrange(Año, Mes_num)
 
 # Por boca de denuncia
 Data3 <- Raw2 %>%
