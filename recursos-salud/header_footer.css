@@ -1,0 +1,252 @@
+:root {
+    --background-color: #fbfbfb;
+    --grey-color: #8c8c8c;
+    --mid-light-grey-color: #c4c4c4;
+    --light-grey-color: #fafafa;
+    --accent-color: #51c33b;
+    --accent-color-dark: #398829;
+    --main-color: #3A1D51;
+    --main-color-light: #5a2d7d;
+    --secondary-color-light: #A682BA;
+}
+
+/* Header */
+.site-header {
+    padding: 0;
+    box-shadow: 0 10px 20px 0px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(248, 248, 248, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(25px);
+}
+
+.header-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0% 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Exo', sans-serif;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.logo img {
+    height: 40px;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+.nav-links a {
+    margin-left: 1.5rem;
+    padding: 25px 0px;
+    text-decoration: none;
+    color: #333;
+}
+
+.nav-links a:hover {
+    color: var(--secondary-color-light)
+}
+
+.repository-header {
+    background-image: url(./img/HeaderWebOVcM.png);
+    background-size: cover;        /* La imagen se escala para caber entera */
+    background-position: center;     /* Se centra en el div */
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0.75% 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Exo', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.miniLogo img {
+    height: 30px
+}
+
+.repository-header .nav-links a {
+    color: white;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.repository-header .nav-links a:hover {
+    color: var(--accent-color)
+}
+
+.repository-header a {
+    text-transform: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+/* Dropdown general */
+.nav-links .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.nav-links .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.dropdown-icon {
+    width: 10px;
+    height: 10px;
+    margin-top: 2px;
+    transition: transform 0.5s ease;
+}
+
+/* Menú desplegable */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--background-color);
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.05);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 999;
+    font-weight: 600;
+}
+
+.dropdown-menu a {
+    padding: 17.5px 15px;
+    display: block;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+    font-size: 0.75rem;
+}
+
+.dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Animación opcional para el ícono */
+.dropdown:hover .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+
+/* Footer moderno con tres secciones */
+.site-footer {
+    background-image: url(./img/FooterWebOVcM.png);
+    background-size: cover;        /* La imagen se escala para caber entera */
+    background-position: center;     /* Se centra en el div */
+    background-repeat: repeat;    /* No se repite */
+    color: white;
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+    margin-top: 150px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    gap: 20px;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+    flex: 1 1 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Logo */
+.footer-left .logo img {
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+/* Texto */
+.footer-left p,
+.footer-center p {
+    font-family: 'Exo', sans-serif;
+    color: white;
+    margin: 0;
+}
+
+/* Íconos sociales */
+.footer-right {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer-icon {
+    display: inline-flex;
+    width: 32px;
+    height: 32px;
+    background-color: #ffffff10;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.footer-icon:hover {
+    background-color: var(--accent-color-dark);
+    /* Modificá este valor a tu gusto */
+}
+
+.footer-icon img {
+    width: 18px;
+    height: 18px;
+}
+
+.logo-footer img {
+    height: 50px;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+    margin-bottom: 10px;
+}
+
+.logo-footer img:hover {
+    transform: scale(1.1);
+}
+
+/* Oculta submenús en dispositivos móviles */
+@media screen and (max-width: 767px) {
+  .dropdown-menu {
+    display: none !important;
+  }
+
+  /* Opcional: quitar ícono de flecha si no tiene sentido sin submenú */
+  .dropdown-icon {
+    display: none;
+  }
+}

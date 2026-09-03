@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "guia-practica-personal-de-salud",
+    "titulo": "Guía práctica para la actuación del personal de salud ante situaciones de violencia de género",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2026-03-09",
+    "tipo_documento": "Recursos",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/09/OVcM_Guia_practica_personal_de_salud_2026.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/09/OVcM_Guia_practica_personal_de_salud_2026_1.jpg"
+  },
+  {
+    "slug": "kit-herramientas-salud",
+    "titulo": "Kit de herramientas para la sensibilización y el abordaje de la violencia de género - Destinado a equipos de salud",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2026-03-09",
+    "tipo_documento": "Recursos",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/09/OVcM_kit_herramientas_salud_2026.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/09/OVcM_kit_herramientas_salud_2026_1.jpg"
+  },
+  {
+    "slug": "donde-denunciar-y-asesorarse",
+    "titulo": "Servicios y recursos ante situaciones de violencia de género",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2026-03-09",
+    "tipo_documento": "Recursos",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/09/OVcM_donde_denunciar_y_asesorarse_2026.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/09/OVcM_donde_denunciar_y_asesorarse_2026_1.jpg"
+  },
+  {
+    "slug": "ley-nacional-26485",
+    "titulo": "Ley Nacional N° 26.485 - Protección integral para prevenir, sancionar y erradicar la violencia contra las mujeres",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2009-03-09",
+    "tipo_documento": "Normativa",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/09/Ley_nacional_26485.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/09/Ley_nacional_26485_1.jpg"
+  },
+  {
+    "slug": "ley-provincial-7888",
+    "titulo": "Ley Provincial N° 7.888 - Protección contra la violencia de género",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2015-03-09",
+    "tipo_documento": "Normativa",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/09/Ley_provincial_7888.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/09/Ley_provincial_7888_1.jpg"
+  },
+  {
+    "slug": "protocolo-salud-res-0998",
+    "titulo": "Protocolo único de Atención Sanitaria ante la violencia de género - Ministerio de Salud Pública - Res. N° 0998",
+    "autor": ["Observatorio de Violencia contra las Mujeres"],
+    "fecha": "2018-03-09",
+    "tipo_documento": "Normativa",
+    "archivo": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/09/Protocolo_salud_res_0998.pdf",
+    "portada": "https://ovcmsalta.gob.ar/wp-content/uploads/2026/09/Protocolo_salud_res_0998_1.jpg"
+  }
+]
