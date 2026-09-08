@@ -107,7 +107,7 @@ function crearGrafico2(values) {
             },
             labels: {
                 formatter: function (value) {
-                    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                    return value.toLocaleString("es-AR");
                 }
             },
             min: 5000,
@@ -142,7 +142,7 @@ function crearGrafico2(values) {
             },
             y: {
                 formatter: function (value) {
-                    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                    return value.toString().toLocaleString("es-AR");
                 }
             }
         },
@@ -152,7 +152,7 @@ function crearGrafico2(values) {
         dataLabels: {
             enabled: false,
             formatter: function (value) {
-                return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                return value.toString().toLocaleString("es-AR");
             },
             style: {
                 fontSize: '0.65rem',

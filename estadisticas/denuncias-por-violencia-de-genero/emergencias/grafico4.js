@@ -3,44 +3,53 @@ const archivo4 = "../../datos/json/denuncias_911_dia.json";
 
 // PROCESAMIENTO
 function procesarDatos4(data) {
-    // Inicializar un objeto para organizar los datos por meses
-    const mesesAgrupados = {};
+    // Inicializar un objeto para organizar los datos por año
+    const aniosAgrupados = {};
 
     // Iterar sobre los datos para organizarlos
-    data.forEach(({ Mes, Dia, Cantidad }) => {
-        if (!mesesAgrupados[Mes]) {
-            mesesAgrupados[Mes] = [];
+    data.forEach(({ Año, Dia, Cantidad, Porcentaje }) => {
+        if (!aniosAgrupados[Año]) {
+            aniosAgrupados[Año] = [];
         }
-        mesesAgrupados[Mes].push({ x: Dia, y: Cantidad });
+
+        aniosAgrupados[Año].push({
+            x: Dia,
+            y: Porcentaje,
+            cantidad: Cantidad
+        });
     });
 
-    // Convertir el objeto organizado en el formato solicitado
-    const series = Object.keys(mesesAgrupados).map(mes => ({
-        name: mes,
-        data: mesesAgrupados[mes]
+    // Convertir el objeto organizado al formato solicitado
+    const series = Object.keys(aniosAgrupados).map(anio => ({
+        name: anio,
+        data: aniosAgrupados[anio]
     }));
 
     return series;
 }
 
 // FILTRAR DATOS
-function filtrarPorAnio(data, year) {
-    return data.filter(item => item.Año === year);
-};
+function filtrarPorAccion(data, accion) {
+    return data.filter(item => item.Accion === accion);
+}
 
 // INICIALIZACIÓN
 function iniciar4() {
-    cargarDatos(archivo4) // Cargar los datos del JSON
+    cargarDatos(archivo4)
         .then(data4 => {
-            // Parsear los datos
             const parsedData4 = parsearDatos(data4);
 
-            // Filtrar por el distrito seleccionado
-            const anioSeleccionado4 = "2025";
-            const datosFiltrados4 = filtrarPorAnio(parsedData4, anioSeleccionado4);
+            // Filtrar por la acción seleccionada
+            const accionSeleccionada4 = "Llamadas";
+            const datosFiltrados4 = filtrarPorAccion(parsedData4, accionSeleccionada4);
+
+            document.getElementById("subtitulo_chart4").innerHTML =
+                `<i>${cambiarSubtitulo4(accionSeleccionada4)}</i>`;
 
             // Procesar los datos filtrados
             const series4 = procesarDatos4(datosFiltrados4);
+
+            console.log(series4)
 
             // Crear y renderizar el gráfico
             window.chart4 = crearGrafico4(series4);
@@ -49,46 +58,76 @@ function iniciar4() {
         .catch(error1 => {
             document.getElementById("grafico4").textContent = `Error: ${error1.message}`;
         });
-};
+}
 
 function actualizarGrafico4() {
     cargarDatos(archivo4)
         .then(data4 => {
             const parsedData4 = parsearDatos(data4);
 
-            // Filtrar por el distrito seleccionado
-            const anioSeleccionado4 = document.getElementById("Anio4").value;
-            const datosFiltrados4 = filtrarPorAnio(parsedData4, anioSeleccionado4);
+            // Filtrar por la acción seleccionada
+            const accionSeleccionada4 = document.getElementById("Accion4").value;
+            const datosFiltrados4 = filtrarPorAccion(parsedData4, accionSeleccionada4);
+
+            document.getElementById("subtitulo_chart4").innerHTML =
+                `<i>${cambiarSubtitulo4(accionSeleccionada4)}</i>`;
 
             // Procesar datos
             const series4 = procesarDatos4(datosFiltrados4);
 
-            // Actualizar las series y categorías con animación
+            // Actualizar las series
             window.chart4.updateOptions({
-                ...window.chart4.w.config, // Copia las opciones actuales
+                ...window.chart4.w.config,
                 series: [...series4]
-            })
+            });
         })
         .catch(error => {
             document.getElementById("grafico4").textContent = `Error: ${error.message}`;
         });
-};
+}
 
-// 5. Función para configurar y renderizar el gráfico
+// Función para actualizar dinámicamente el subtítulo
+function cambiarSubtitulo4(accion) {
+    let texto = "";
+
+    switch (accion) {
+        case "Llamadas":
+            texto = "Llamadas al S.E. 911";
+            break;
+        case "Intervenciones":
+            texto = "Intervenciones del S.E. 911";
+            break;
+        case "Intervenciones SAMEC":
+            texto = "Intervenciones del S.E. 911 conjuntamente con agencia SAMEC";
+            break;
+        default:
+            texto = "";
+    }
+
+    return texto += ", por día de la semana. Provincia de Salta.";
+}
+
+// Función para configurar y renderizar el gráfico
 function crearGrafico4(series) {
 
-    // Rangos
-    const min = 1000;
-    const max = 6000;
-    const colores = ["#e6bc75", "#e7a071", "#e18675", "#d36f7e", "#bc5e87",
-        "#9c538f", "#754c91", "#45478c", "#42264d", "#23101c"]
+    const colores = [
+        "#e6bc75", "#e7a071", "#e18675", "#d36f7e", "#bc5e87",
+        "#9c538f", "#754c91", "#45478c", "#42264d", "#23101c"
+    ];
 
+    // Rangos
+    const min = 8.68;
+    const max = 25.45;
     const numDivisiones = 10;
-    const paso = Math.floor((max - min) / numDivisiones);
+
+    const paso = (max - min) / numDivisiones;
 
     const ranges = Array.from({ length: numDivisiones }, (_, i) => {
         const from = min + i * paso;
-        const to = i === numDivisiones - 1 ? max - 1 : from + paso - 1;
+        const to = i === numDivisiones - 1
+            ? max
+            : min + (i + 1) * paso;
+
         return {
             from,
             to,
@@ -104,27 +143,39 @@ function crearGrafico4(series) {
                 show: false
             }
         },
+
         series: series,
+
         title: {},
+
         yaxis: {
             title: {
-                text: "Mes"
+                text: "Año"
             }
         },
+
         xaxis: {
             title: {
                 text: "Día"
             }
         },
+
         tooltip: {
             enabled: true,
             followCursor: true,
             y: {
-                formatter: function (value) {
-                    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " requerimientos";
+                formatter: function (value, { seriesIndex, dataPointIndex, w }) {
+
+                    const cantidad =
+                        w.config.series[seriesIndex].data[dataPointIndex].cantidad;
+
+                    const porcentaje = value.toFixed(1);
+
+                    return `${porcentaje}% (${cantidad.toLocaleString("es-AR")})`;
                 }
             }
         },
+
         legend: {
             show: false,
             position: 'right',
@@ -140,10 +191,11 @@ function crearGrafico4(series) {
                 strokeWidth: 0
             },
             labels: {
-                colors: '#555', // o tu color base
+                colors: '#555',
                 useSeriesColors: false
             }
         },
+
         dataLabels: {
             enabled: true,
             offsetY: 1,
@@ -151,9 +203,10 @@ function crearGrafico4(series) {
                 fontSize: '0.75rem'
             },
             formatter: function (value) {
-                return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                return `${value.toFixed(1).toLocaleString("es-AR")}%`
             }
         },
+
         plotOptions: {
             heatmap: {
                 enableShades: false,
@@ -161,8 +214,8 @@ function crearGrafico4(series) {
                 useFillColorAsStroke: true,
                 colorScale: {
                     ranges: ranges
-                },
+                }
             }
         }
     });
-};
+}

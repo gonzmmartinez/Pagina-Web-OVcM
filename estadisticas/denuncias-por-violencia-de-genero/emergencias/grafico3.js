@@ -113,6 +113,11 @@ function crearGrafico3(categories, valuesa, valuesb, valuesc) {
         yaxis: {
             title: {
                 text: "Cantidad"
+            },
+            labels: {
+                formatter: function (value) {
+                    return value.toLocaleString("es-AR");
+                }
             }
         },
         xaxis: {
@@ -126,7 +131,7 @@ function crearGrafico3(categories, valuesa, valuesb, valuesc) {
             followCursor: true,
             y: {
                 formatter: function(value) {
-                    return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                    return value.toLocaleString("es-AR");
                 }
             }
         },
@@ -140,7 +145,7 @@ function crearGrafico3(categories, valuesa, valuesb, valuesc) {
                 fontSize: '0.75rem'
             },
             formatter: function(value) {
-                return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                return value.toLocaleString("es-AR");
             }
         }
     })

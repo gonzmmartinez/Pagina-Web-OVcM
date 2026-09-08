@@ -33,7 +33,7 @@ Meses <- data.frame(Mes = c("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio
 ######### TRANSFORMAR DATOS #########
 # Evolución
 Data1 <- Raw1 %>%
-  filter(Tipo != "Abuso sexual") %>%
+  filter(Tipo != "Abuso sexual", Accion != "Llamadas SAMEC") %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Mes, Año) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
@@ -61,7 +61,7 @@ Data1 <- Raw1 %>%
 # Por mes
 Data2 <- Raw1 %>%
   left_join(Meses, by="Mes") %>%
-  filter(Tipo != "Abuso sexual") %>%
+  filter(Tipo != "Abuso sexual", Accion != "Llamadas SAMEC") %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Año, Mes, Mes_num) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
@@ -71,7 +71,7 @@ Data2 <- Raw1 %>%
 
 # Tipo de violencia y accion
 Data3 <- Raw1 %>%
-  filter(Tipo != "Abuso sexual") %>%
+  filter(Tipo != "Abuso sexual", Accion != "Llamadas SAMEC") %>%
   mutate(Año = as.character(Año)) %>%
   group_by(Año, Accion, Tipo) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
@@ -83,23 +83,25 @@ Data3 <- Raw1 %>%
 
 # Requerimientos por dia
 Data4 <- Raw2 %>%
-  left_join(Meses, by="Mes") %>%
+  filter(Accion != "Llamadas SAMEC") %>%
   left_join(Dias, by="Dia") %>%
-  filter(Tipo != "Abuso sexual") %>%
   mutate(Año = as.character(Año)) %>%
-  group_by(Año, Mes, Mes_num, Dia, Dia_num) %>%
+  group_by(Año, Accion, Dia, Dia_num) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
-  arrange(Año, desc(Mes_num), Dia_num)
+  group_by(Año, Accion) %>%
+  mutate(Porcentaje = 100 * Cantidad / sum(Cantidad)) %>%
+  arrange(Año, Accion, Dia_num)
 
 # Requerimientos por hora
 Data5 <- Raw3 %>%
-  left_join(Meses, by="Mes") %>%
-  filter(Tipo != "Abuso sexual") %>%
+  filter(Accion != "Llamadas SAMEC") %>%
   mutate(Año = as.character(Año),
          Hora = formatC(Hora, width=2, flag="0")) %>%
-  group_by(Año, Mes, Mes_num, Hora) %>%
+  group_by(Año, Accion, Hora) %>%
   summarise(Cantidad = sum(Cantidad)) %>%
-  arrange(Año, desc(Mes_num), Hora)
+  group_by(Año, Accion) %>%
+  mutate(Porcentaje = 100 * Cantidad / sum(Cantidad)) %>%
+  arrange(Año, Accion, Hora)
 
 ######### ACTUALIZACIÓN #########
 actualizacion <- paste0("Última actualización de los datos de esta sección: ", format(Sys.Date(), "%d/%m/%Y"))
