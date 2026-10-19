@@ -1,0 +1,6 @@
+
+    {
+        "nombre": "Florencia Sánchez",
+        "img": "./img/Florencia.jpeg",
+        "descripcion": "Florencia Sánchez, es profesora de Historia por la Universidad Nacional de Salta. Integrante del Directorio del Observatorio de Violencia contra las Mujeres en representación de la Cámara de Diputados de la provincia.\nSe encuentra cursando la Maestría en Género, Sociedad y Políticas, Programa Regional en Género y Políticas Públicas.\nSe diplomó en Ciencias Sociales con Mención en Género y Políticas Públicas en la Facultad Latinoamericana de Ciencias Sociales; en Educación Sexual Integral y en “Género y movimientos feministas”.\nEs profesora del “Seminario de Educación Sexual integral” en diferentes instituciones educativas de nivel superior no universitario. También, de Historia y Política de la Educación Argentina y de Historia Argentina y Latinoamericana.\nDesde 2017 hasta 2021, coordinó el equipo de Educación Sexual Integral del Plan Nacional de Prevención del Embarazo no Intencional en la Adolescencia en Salta del Ministerio de Educación, Cultura, Ciencia y Tecnología de la Provincia de Salta."
+    },
