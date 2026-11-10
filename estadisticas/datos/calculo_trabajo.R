@@ -16,12 +16,21 @@ library(tidyr)
 ######### LEER DATOS #########
 dir <- dirname(rstudioapi::getActiveDocumentContext()$path)
 
-Raw <- get_microdata(
-        year = 2020:2025,
-        period = 1:4,
-        type = "individual",
-        vars = c("ANO4", "TRIMESTRE", "REGION", "AGLOMERADO", "PONDERA" , "CH04",
-                 "CH06", "ESTADO", "CAT_OCUP", "CAT_INAC", "INTENSI", "PP03J"))
+Raw_completa <- get_microdata(
+  year = 2020:2025,
+  period = 1:4,
+  type = "individual",
+  vars = c("ANO4", "TRIMESTRE", "REGION", "AGLOMERADO", "PONDERA" , "CH04",
+           "CH06", "ESTADO", "CAT_OCUP", "INTENSI", "PP03J"))
+
+Raw_incompleta <- get_microdata(
+  year = 2026,
+  period = 1:2,
+  type = "individual",
+  vars = c("ANO4", "TRIMESTRE", "REGION", "AGLOMERADO", "PONDERA" , "CH04",
+           "CH06", "ESTADO", "CAT_OCUP", "INTENSI", "PP03J"))
+
+Raw <- rbind(Raw_completa, Raw_incompleta)
 
 ######### TRANSFORMAR DATOS #########
 
